@@ -41,7 +41,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body ng-app="App" ng-controller="bodyController">
 	<div id="container">
-		<div id="header">
+		<!-- <div id="header">
             <md-toolbar layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
                 <div flex="33" layout="row" layout-align="start center">
                     <md-button class="md-raised header_button_menu"  ng-click="toggleRight()"></md-button>
@@ -70,7 +70,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     </md-list>
                 </md-content>
             </md-sidenav>
-		</div>
+		</div> -->		
+		 <md-toolbar>
+		  	<div class="md-toolbar-tools">
+		  		<span class="md-flex">Flickr Search</span>
+		  	</div>
+		 </md-toolbar>
+
 
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
