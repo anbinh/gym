@@ -41,7 +41,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body ng-app="App" ng-controller="bodyController">
 	<div id="container">
-		<!-- <div id="header">
+		 <div id="header">
             <md-toolbar layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
                 <div flex="33" layout="row" layout-align="start center">
                     <md-button class="md-raised header_button_menu"  ng-click="toggleRight()"></md-button>
@@ -52,8 +52,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <md-button class="logo" ng-click="logoClick()"></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="end center">
-                    <md-button class="header_button " hide-sm ng-click="programClick()">Sign in</md-button>
-                    <md-button class="header_button " hide-sm ng-click="programClick()">ENG</md-button>
+                    <md-button class="right_header_button "  ng-click="signInClick()"><img src="/img/images/picto.png"/> Sign in</md-button>
+                    <md-button class="right_header_button "  ng-click="engClick()"><img src="/img/images/earth.png"/> ENG</md-button>
                 </div>
             </md-toolbar>
             <md-sidenav class="md-sidenav-left md-whiteframe-z2 left-menu" md-component-id="right">
@@ -70,7 +70,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     </md-list>
                 </md-content>
             </md-sidenav>
-		</div> -->		
+		</div>
+
+
 		 <md-toolbar>
 		  	<div class="md-toolbar-tools">
 		  		<span class="md-flex">Flickr Search</span>
