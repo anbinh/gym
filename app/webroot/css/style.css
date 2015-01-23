@@ -10,3 +10,31 @@ width:100%;
 md-card{
 margin: 0 30px 25px 30px;
 }
+
+#header md-toolbar{
+    background-color: #a4c408;
+}
+
+.header_button_menu{
+    background: url("/img/images/menu.png") no-repeat !important;
+    width: 40px;
+    height: 30px;
+    border-radius: 0 !important;
+}
+
+.logo{
+    background: url("/img/images/logo.png") no-repeat !important;
+    width: 113px;
+    height: 48px;
+    border-radius: 0 !important;
+}
+
+.left-menu{
+    height: 550px;
+}
+
+.header_button span{
+    color: #000000;
+    border-bottom: 5px solid #000000;
+    padding-bottom: 2px;
+}

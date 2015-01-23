@@ -39,16 +39,45 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body>
+<body ng-app="App" ng-controller="bodyController">
 	<div id="container">
 		<div id="header">
-			
+            <md-toolbar layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
+                <div flex="33" layout="row" layout-align="start center">
+                    <md-button class="md-raised header_button_menu"  ng-click="toggleRight()"></md-button>
+                    <md-button class="header_button " hide-sm ng-click="programClick()">PROGRAMS</md-button>
+                    <md-button class="header_button " hide-sm ng-click="exerciseClick()">EXERCIES</md-button>
+                </div>
+                <div flex="33" layout="row" layout-align="center center">
+                    <md-button class="logo" ng-click="logoClick()"></md-button>
+                </div>
+                <div flex="33" layout="row" layout-align="end center">
+                    <md-button class="header_button " hide-sm ng-click="programClick()">Sign in</md-button>
+                    <md-button class="header_button " hide-sm ng-click="programClick()">ENG</md-button>
+                </div>
+            </md-toolbar>
+            <md-sidenav class="md-sidenav-left md-whiteframe-z2 left-menu" md-component-id="right">
+                <md-content ng-controller="LeftMenu" class="md-padding">
+                    <md-list>
+                        <md-item ng-repeat="item in lists">
+                            <md-item-content>
+                                <div class="md-tile-content">
+                                    <md-button md-no-ink class="md-primary" ng-click="itemMenuClick(item.link)">{{item.title}}</md-button>
+                                </div>
+                            </md-item-content>
+                            <md-divider ng-if="!$last"></md-divider>
+                        </md-item>
+                    </md-list>
+                </md-content>
+            </md-sidenav>
 		</div>
-		<div id="content">
 
+		<div id="content">
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
+
+            <div ng-view></div>
 		</div>
 		<div id="footer">
 			 <?php //echo $this->Html->link(

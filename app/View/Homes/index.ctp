@@ -1,5 +1,5 @@
 
-<div ng-app="flickrApp" ng-controller="ListController" layout="column" layout-align="top right">
+<div ng-app="App" ng-controller="ListController" layout="column" layout-align="top right">
   <md-toolbar>
   	<div class="md-toolbar-tools">
   		<span class="md-flex">Flickr Search</span>
@@ -15,6 +15,12 @@
   			<h3>{{picture.title}}</h3>
   		</md-card>
   	</div>
+      <section layout="row" layout-sm="column" layout-align="center center">
+          <md-button class="md-raised">Button</md-button>
+          <md-button class="md-raised md-primary">Primary</md-button>
+          <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+          <md-button class="md-raised md-warn">Warn</md-button>
+      </section>
   </md-content>
   <div layout="row" layout-sm="column">
     <div flex>
