@@ -39,11 +39,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body>
+<body ng-app="material">
 	<div id="container">
-		<div id="header">
+		<!-- <div id="header">
 			
-		</div>
+		</div> -->		
+		 <md-toolbar>
+		  	<div class="md-toolbar-tools">
+		  		<span class="md-flex">Flickr Search</span>
+		  	</div>
+		 </md-toolbar>
+
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
