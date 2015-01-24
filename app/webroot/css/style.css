@@ -13,6 +13,7 @@ margin: 0 30px 25px 30px;
 
 #header md-toolbar{
     background-color: #a4c408;
+    height: 70px;
 }
 
 .header_button_menu{
@@ -43,4 +44,29 @@ margin: 0 30px 25px 30px;
 .right_header_button span{
     color: #000000;
     font-size: 14px;
+}
+.titre_left{
+    height: 60px;
+    padding: 0 25px 0 10px;
+}
+.titre_right{
+    font-size: 18px;
+    font-weight: strong;
+}
+.favorite_box{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+.favorite_box p{
+    font-size: 11px;
+    margin: 0px;
+    line-height: 0.846;
+}
+.favorite_box img{
+    clear: both;
+}
+
+.wrap_content{
+    padding: 10px;
 }
