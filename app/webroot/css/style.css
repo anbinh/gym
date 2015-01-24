@@ -100,3 +100,27 @@ margin: 0 30px 25px 30px;
     margin: 0;
     font-size: 12px; 
 }
+
+.toolbar-title{
+    padding: 0 0 0 279px;
+}
+
+#content{
+    width: 980px;
+    margin: auto;
+}
+
+.right_banner{
+
+}
+
+@media (max-width: 1280px) {
+    .toolbar-title {
+        padding: 0;
+    }
+
+    #content{
+        width: 100%;
+        margin: 0;
+    }
+}

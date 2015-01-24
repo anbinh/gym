@@ -48,7 +48,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <md-button class="header_button " hide-sm ng-click="programClick()">PROGRAMS</md-button>
                     <md-button class="header_button " hide-sm ng-click="exerciseClick()">EXERCIES</md-button>
                 </div>
-                <div flex="33" layout="row" layout-align="center center">
+                <div flex="33" layout="row" layout-align="start center">
                     <md-button class="logo" ng-click="logoClick()"></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="end center">
