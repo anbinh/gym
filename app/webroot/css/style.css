@@ -13,6 +13,7 @@ margin: 0 30px 25px 30px;
 
 #header md-toolbar{
     background-color: #a4c408;
+    height: 70px;
 }
 
 .header_button_menu{
@@ -44,9 +45,58 @@ margin: 0 30px 25px 30px;
     color: #000000;
     font-size: 14px;
 }
-
-.toolbar-title{
-    padding: 0 0 0 279px;
+.titre_left{
+    height: 60px;
+    padding: 0 25px 0 10px;
+}
+.titre_right{
+    font-size: 18px;
+    font-weight: strong;
+}
+.favorite_box{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+.favorite_box p{
+    font-size: 11px;
+    margin: 3px 0px;
+    line-height: 0.846;
+}
+.favorite_box img{
+    clear: both;
 }
 
-.toolbar-title
+.wrap_content{
+    padding: 10px;
+}
+.mobile_app{
+    height: 60px;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+}
+.mobile_app img{
+    padding-left: 20px;
+    padding-right: 12px;
+}
+.mobile_app p{
+    font-size: 14px;
+}
+.create_program{
+    height: 60px;   
+    border: 1px solid #ccc;
+}
+.create_program p{
+    font-size: 14px;
+}
+.create_program img{
+    padding-left: 20px;
+    padding-right: 12px;
+}
+.advertising{
+    padding-top: 70px;
+}
+.advertising p{
+    margin: 0;
+    font-size: 12px; 
+}

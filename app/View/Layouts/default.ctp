@@ -71,15 +71,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 </md-content>
             </md-sidenav>
 		</div>
-
-
-		 <md-toolbar>
-		  	<div class="md-toolbar-tools">
-		  		<span class="md-flex">Flickr Search</span>
-		  	</div>
-		 </md-toolbar>
-
-
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
 
