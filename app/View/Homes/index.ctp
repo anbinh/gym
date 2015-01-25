@@ -9,7 +9,7 @@
 		<p>Extension horizontale à l’épaule - haltères en position incliné</p>
 	</div>
 </div>
-<div class="wrap_content" layout="row">
+<div class="wrap_content right_banner" layout="row" hide-sm>
 	<div flex>
 		a
 	</div>
