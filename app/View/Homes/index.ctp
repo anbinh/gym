@@ -10,10 +10,10 @@
 	</div>
 </div>
 <div class="wrap_content" layout="row">
-	<div flex="75">
+	<div flex>
 		a
 	</div>
-	<div flex="25" layout="column">		
+	<div style="width:300px;" layout="column">		
 		<div class="mobile_app" layout="row" layout-align="start center">					
 			<img src="/img/images/apple.png"/>	
 			<p><strong>MOBILE APPLICATION</strong></p> 				
