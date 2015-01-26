@@ -42,13 +42,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <body ng-app="App" ng-controller="bodyController">
 	<div id="container">
 		 <div id="header">
-            <md-toolbar class="toolbar-title" layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
+            <md-toolbar class="" layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
                 <div flex="33" layout="row" layout-align="start center">
                     <md-button class="md-raised header_button_menu"  ng-click="toggleRight()"></md-button>
                     <md-button class="header_button " hide-sm ng-click="programClick()">PROGRAMS</md-button>
                     <md-button class="header_button " hide-sm ng-click="exerciseClick()">EXERCIES</md-button>
                 </div>
-                <div flex="33" layout="row" layout-align="start center">
+                <div flex="33" layout="row" layout-align="center center">
                     <md-button class="logo" ng-click="logoClick()"></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="end center">
