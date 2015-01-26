@@ -124,3 +124,38 @@ margin: 0 30px 25px 30px;
         margin: 0;
     }
 }
+.region{
+    padding-left: 30px;
+    border-bottom: 1px solid #ccc;
+}
+.region p{
+    font-size:14px;
+    color: #ccc;
+}
+.position{
+    padding-left: 30px;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.position ul{
+    padding-left: 13px;
+}
+.position ul li{
+    font-size: 14px;
+}
+.position p{
+    font-size: 14px;
+}
+.execution{
+    padding-left: 30px;
+    border-bottom: 1px solid #ccc;
+}
+.execution ul{
+    padding-left: 13px;
+}
+.execution ul li{
+    font-size: 14px;
+}
+.execution p{
+    font-size: 14px;
+}

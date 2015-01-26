@@ -11,8 +11,36 @@
 </div>
 <div class="wrap_content right_banner" layout="row" hide-sm>
 	<div flex>
-		a
-	</div>
+		<div layout="row" layout-align="center start">
+			<img src="/img/images/calque_12.jpg"/>	
+		</div>
+		<div style="border:1px solid #ccc; margin: 10px;">
+			<div class="region" layout="row" layout-align="start center">
+				<p style="color:black; margin-right: 20px;"><strong>RÉGION</strong></p>
+				<p>Jambes  I   Quadriceps, fessiers, ischio jambiers</p>
+			</div>
+			<div layout="row">
+				<div class="position" flex>
+					<p><strong>POSITION</strong></p>
+					<ul>
+						<li> Placer le dos  contre le mur. </li>
+						<li> Placer les pieds à la large</li>
+					</ul>
+				</div>
+				<div class="execution" flex>
+					<p><strong>EXECUTION</strong></p>
+					<ul>
+						<li> Maintenir la position. </li>
+						<li> Maximiser l'appuie au niveau des tal</li>
+					</ul>
+				</div>
+			</div>
+			<div style="margin: 15px auto auto 30px;" layout="column">
+				<div style="font-size:14px;" ><strong>MISE EN GARDE</strong></div>
+				<div style="font-size:14px;"><p>Ne jamais courber le bas du dos. Toujours garder les abdominaux</p></div>
+			</div>	
+		</div>		
+	</div>	
 	<div style="width:300px;" layout="column">		
 		<div class="mobile_app" layout="row" layout-align="start center">					
 			<img src="/img/images/apple.png"/>	
