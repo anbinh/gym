@@ -17,12 +17,15 @@ margin: 0 30px 25px 30px;
 }
 
 .header_button_menu{
-    background: url("/img/images/menu.png") no-repeat !important;
-    width: 40px;
-    height: 30px;
-    border-radius: 0 !important;
-}
+  /*  background: url("/img/images/menu.png") no-repeat !important;*/
+   /* width: 40px;
+    height: 30px;*/
+    border-radius: 0 !important;   
 
+}
+.header_button_menu img{
+    width: 20px;
+}
 .logo{
     background: url("/img/images/logo.png") no-repeat !important;
     width: 113px;
@@ -33,17 +36,14 @@ margin: 0 30px 25px 30px;
 .left-menu{
     height: 550px;
 }
-
 .header_button span{
-    color: #000000;
-    border-bottom: 4px solid #000000;
-    padding-bottom: 2px;
-    margin-left: 20px;
+    color: #000000;  
+   font-weight: bold;
+   border-bottom: 3px solid black;
 }
 
 .right_header_button span{
-    color: #000000;
-    font-size: 14px;
+    color: #000000;    
 }
 .titre_left{
     height: 60px;

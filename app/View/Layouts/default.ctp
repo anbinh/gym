@@ -43,17 +43,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<div id="container">
 		 <div id="header">
             <md-toolbar class="" layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
-                <div flex="33" layout="row" layout-align="start center">
-                    <md-button class="md-raised header_button_menu"  ng-click="toggleRight()"></md-button>
-                    <md-button class="header_button " hide-sm ng-click="programClick()">PROGRAMS</md-button>
-                    <md-button class="header_button " hide-sm ng-click="exerciseClick()">EXERCIES</md-button>
+                <div flex="33" layout="row" layout-align="start center" style="padding-left:10px;">
+                    <md-button class="header_button_menu" ng-click="toggleRight()"><img src="/img/images/menu.png"></md-button>
+                    <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;">{{programs}}</md-button>
+                    <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;">{{exercises}}</md-button>                    
                 </div>
                 <div flex="33" layout="row" layout-align="center center">
                     <md-button class="logo" ng-click="logoClick()"></md-button>
                 </div>
-                <div flex="33" layout="row" layout-align="end center">
-                    <md-button class="right_header_button"  ng-click="signInClick()"><img src="/img/images/picto.png"/> Sign in</md-button>
-                    <md-button class="right_header_button"  ng-click="engClick()"><img src="/img/images/earth.png"/> ENG</md-button>
+                <div flex="33" layout="row" layout-align="end center" style="padding-right:10px;">
+                    <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;"><img src="/img/images/picto.png"/> Sign in</md-button>
+                    <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"><img src="/img/images/earth.png"/> ENG</md-button>
                 </div>
             </md-toolbar>
             <md-sidenav class="md-sidenav-left md-whiteframe-z2 left-menu" md-component-id="right">

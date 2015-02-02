@@ -6,6 +6,8 @@ angular.module('App', ['ngMaterial'])
     $scope.toggleRight = function() {
         $mdSidenav('right').toggle();
     };
+    $scope.programs = 'PROGRAMS';
+    $scope.exercises = 'EXERCIES';
 })
 .controller('LeftMenu', function($scope, $timeout, $mdSidenav, $log) {
     $scope.lists = [{
@@ -38,7 +40,7 @@ angular.module('App', ['ngMaterial'])
     $scope.itemMenuClick = function($link)
     {
         console.log($link);
-    };
+    };   
 })
 .controller('ListController', ['$scope', '$http', function($scope, $http){
     $scope.results=[];
