@@ -1,0 +1,126 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-02-05 16:18+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: PluginMongodbModelDatasourceMongodbSource.php:589
+msgid "Invalid schema object"
+msgstr ""
+
+#: PluginMongodbsamplesControllerGeosController.php:78
+msgid "Geo saved."
+msgstr ""
+
+#: PluginMongodbsamplesControllerGeosController.php:93
+msgid "Invalid Geo"
+msgstr ""
+
+#: PluginMongodbsamplesControllerGeosController.php:96
+msgid "Geo deleted"
+msgstr ""
+
+#: PluginMongodbsamplesControllerGeosController.php:98
+msgid "Geo deleted Fail"
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:53
+msgid "Post saved."
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:68;91
+msgid "Invalid Post"
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:72
+msgid "The Post has been saved."
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:94
+msgid "Post deleted"
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:96
+msgid "Post deleted Fail"
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:109
+msgid "Post deleteAll success"
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:112
+msgid "Post deleteAll Fail"
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:128
+msgid "Post updateAll success"
+msgstr ""
+
+#: PluginMongodbsamplesControllerPostsController.php:131
+msgid "Post updateAll Fail"
+msgstr ""
+
+#: PluginMongodbsamplesControllerSubdocumentsController.php:45
+msgid "Subdocument saved."
+msgstr ""
+
+#: PluginMongodbsamplesControllerSubdocumentsController.php:60;82
+msgid "Invalid Subdocument"
+msgstr ""
+
+#: PluginMongodbsamplesControllerSubdocumentsController.php:64
+msgid "The Subdocument has been saved."
+msgstr ""
+
+#: PluginMongodbsamplesControllerSubdocumentsController.php:85
+msgid "Subdocument deleted"
+msgstr ""
+
+#: PluginMongodbsamplesControllerSubdocumentsController.php:87
+msgid "Subdocument deleted Fail"
+msgstr ""
+
+#: PluginMongodbsamplesViewGeosadd.ctp:4
+msgid "Add Geo"
+msgstr ""
+
+#: PluginMongodbsamplesViewGeosadd.ctp:16;25
+msgid "List Geos"
+msgstr ""
+
+#: PluginMongodbsamplesViewPostsadd.ctp:4
+msgid "Add Post"
+msgstr ""
+
+#: PluginMongodbsamplesViewPostsadd.ctp:15
+#: PluginMongodbsamplesViewPostsedit.ctp:16
+msgid "List Posts"
+msgstr ""
+
+#: PluginMongodbsamplesViewPostsedit.ctp:4
+msgid "Edit Post"
+msgstr ""
+
+#: PluginMongodbsamplesViewSubdocumentsadd.ctp:4
+msgid "Add Subdocument"
+msgstr ""
+
+#: PluginMongodbsamplesViewSubdocumentsadd.ctp:20;29
+#: PluginMongodbsamplesViewSubdocumentsedit.ctp:19
+msgid "List Subdocuments"
+msgstr ""
+
+#: PluginMongodbsamplesViewSubdocumentsedit.ctp:4
+msgid "Edit Subdocument"
+msgstr ""
+
