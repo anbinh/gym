@@ -114,3 +114,8 @@ CakeLog::config('error', array(
 ));
 
 CakePlugin::load('Mongodb');
+
+Configure::write('defaultLanguage', 'eng');
+Configure::write('availableLanguages', array('eng' => 'English','fra' => 'French'));
+
+

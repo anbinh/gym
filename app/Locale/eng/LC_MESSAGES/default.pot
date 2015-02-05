@@ -1,18 +1,18 @@
 # LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-02-05 16:18+0100\n"
-"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"POT-Creation-Date: 2015-02-05 17:04+0100\n"
+"PO-Revision-Date: 2015-02-05 23:05+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 1.7.4\n"
 
 #: PluginMongodbModelDatasourceMongodbSource.php:589
 msgid "Invalid schema object"
@@ -124,3 +124,6 @@ msgstr ""
 msgid "Edit Subdocument"
 msgstr ""
 
+#: ViewUsersindex.ctp:29
+msgid "my program"
+msgstr "MY PROGRAM"

@@ -26,7 +26,7 @@
 <div layout="row">
 	<div flex>
 		<div class="my_program">
-			<div class="my_program_text" layout="row" layout-align="start center"><p>MY PROGRAMS</p></div>
+			<div class="my_program_text" layout="row" layout-align="start center"><p><?php echo __('my program')?></p></div>
 			<div layout="row" layout-sm="column" class="list_tile">
 				<div layout="column" flex class="tile_1">	
 					<div><img style="float:right;" src="/img/images/delete_copy.png"></div>

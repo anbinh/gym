@@ -1,34 +1,29 @@
 <?php
-/**
- * Application level Controller
- *
- * This file is application-wide controller file. You can put all
- * application-wide controller-related methods here.
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
 App::uses('Controller', 'Controller');
 
-/**
- * Application Controller
- *
- * Add your application-wide methods in the class below, your controllers
- * will inherit them.
- *
- * @package		app.Controller
- * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
- */
 class AppController extends Controller {
+
+    public $components = array('Session');
+    public $helpers = array('Html', 'Form', 'Text');
+
+    var $language, $availableLanguages;
+
+    public function beforeFilter() {
+        parent::beforeFilter();
+        if($this->Session->check('Config.language')) { // Check for existing language session
+            $this->language = $this->Session->read('Config.language'); // Read existing language
+        } else {
+            $this->language = Configure::read('defaultLanguage'); // No language session => get default language from Config file
+        }
+
+        $this->setLang($this->language); // call protected method setLang with the lang shortcode
+        $this->set('language',$this->language); // send $this->language value to the view
+        $this->availableLanguages = Configure::read('availableLanguages'); // get available languages from Config file
+        $this->set('availableLanguages', $this->availableLanguages); // send $this->availableLanguages value to the view
+    }
+
+    protected function setLang($lang) { // protected method used to set the language
+        $this->Session->write('Config.language', $lang); // write our language to session
+        Configure::write('Config.language', $lang); // tell CakePHP that we're using this language
+    }
 }
