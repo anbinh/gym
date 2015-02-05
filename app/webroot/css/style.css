@@ -106,7 +106,7 @@ margin: 0 30px 25px 30px;
 }
 
 #content{
-    width: 980px;
+    width: 1020px;
     margin: auto;
 }
 
@@ -158,4 +158,52 @@ margin: 0 30px 25px 30px;
 }
 .execution p{
     font-size: 14px;
+}
+.info_user{
+    padding-top:10px; border-bottom: 1px solid #ccc;
+}
+.avatar{
+    height:50px; border-bottom: 1px solid #ccc;
+}
+.username{
+    font-weight:bold; padding-left:10px;
+}
+.edit_profile{
+    padding-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.language{
+    font-size: 12px;
+    font-weight: bold;
+}
+.city{
+    font-size: 12px;
+    font-weight: bold;
+}
+.fullname{
+    padding-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.my_program{
+    border-bottom:1px solid #ccc; padding-bottom:10px;
+}
+.my_program_text{
+    height:40px; padding-left: 10px;
+}
+.my_program_text p{
+    font-size:14px; margin:0;
+}
+.list_tile{
+    height:240px;
+}
+.tile_1{
+    background-color:#d90947; margin:5px;
+}
+.tile_2{
+    background-color:#a4c408; margin:5px;
+}
+.tile_3{
+    background-color:#5aa09c; margin:5px;
 }
