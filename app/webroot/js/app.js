@@ -1,13 +1,25 @@
 (function(){
 
 'use strict';
-angular.module('App', ['ngMaterial'])
+angular.module('App', ['ngMaterial','ngDropdowns'])
 .controller('bodyController', function($scope,$timeout, $mdSidenav, $log){
     $scope.toggleRight = function() {
         $mdSidenav('right').toggle();
     };
     $scope.programs = 'PROGRAMS';
     $scope.exercises = 'EXERCIES';
+    $scope.ddSelectOptions = [
+        {
+            text: 'ENG',
+            href: '/App/changeLang/eng'
+        },
+        {
+            text: 'FRA',
+            href: '/App/changeLang/fra'
+        }
+    ];
+
+    $scope.ddSelectSelected = {}; // Must be an object
 })
 .controller('LeftMenu', function($scope, $timeout, $mdSidenav, $log) {
     $scope.lists = [{
