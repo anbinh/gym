@@ -207,3 +207,27 @@ margin: 0 30px 25px 30px;
 .tile_3{
     background-color:#5aa09c; margin:5px;
 }
+.sub{
+    font-family: "akn-proxima-reg",helvetica neue,helvetica,arial,sans-serif;
+    font-size: .875rem;
+    color: #8a8a8a;
+    text-align: center;
+    margin-bottom: 3px;
+}
+.btn-facebook {
+    background: #3c5a98;
+    font-size: .875rem;
+    padding: 1em 0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+}
+.btn-facebook:before {
+content: '';
+display: inline-block;
+width: 10px;
+height: 21px;
+margin: 0 1em 0 0;
+vertical-align: middle;
+background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxIiB4bWxucz0iaHR0cDovL3d3dy53M…UzNnYyLjUzOGgzLjc3M2wtLjE2NCAzLjQ3NWgtMy42MDh2OS42NTRoLTMuNjc1Ii8+PC9zdmc+) no-repeat;
+}

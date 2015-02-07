@@ -117,5 +117,6 @@ CakePlugin::load('Mongodb');
 
 Configure::write('defaultLanguage', 'eng');
 Configure::write('availableLanguages', array('eng' => 'English','fra' => 'French'));
+Configure::write('Config.language', 'eng');
 
 

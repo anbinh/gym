@@ -24,6 +24,6 @@ class AppController extends Controller {
 
     protected function setLang($lang) { // protected method used to set the language
         $this->Session->write('Config.language', $lang); // write our language to session
-        Configure::write('Config.language', $lang); // tell CakePHP that we're using this language
+        Configure::write('Config.language', 'eng'); // tell CakePHP that we're using this language
     }
 }

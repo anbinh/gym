@@ -31,7 +31,7 @@
 				<div layout="column" flex class="tile_1">	
 					<div><img style="float:right;" src="/img/images/delete_copy.png"></div>
 					<div style="text-align:center; padding-top:10px;"><img style="height:150px;" src="/img/images/bunnybacon.png"></div>
-					<div style="text-align:center; font-size:12px; font-weght:bold;"> SHAPE MODELING</div>				
+					<div style="text-align:center; font-size:12px; font-weght:bold;"> <?php echo __('shape modeling')?></div>				
 				</div>
 				<div layout="column" flex class="tile_2">
 					<div><img style="float:right;" src="/img/images/delete_copy.png"></div>

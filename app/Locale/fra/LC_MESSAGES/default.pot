@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-02-05 17:04+0100\n"
-"PO-Revision-Date: 2015-02-05 23:11+0700\n"
+"POT-Creation-Date: 2015-02-06 06:38+0100\n"
+"PO-Revision-Date: 2015-02-06 12:40+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -14,116 +14,120 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: Poedit 1.7.4\n"
 
-#: PluginMongodbModelDatasourceMongodbSource.php:589
+#: /Plugin/Mongodb/Model/Datasource/MongodbSource.php:589
 msgid "Invalid schema object"
 msgstr ""
 
-#: PluginMongodbsamplesControllerGeosController.php:78
+#: /Plugin/Mongodb/samples/Controller/GeosController.php:78
 msgid "Geo saved."
 msgstr ""
 
-#: PluginMongodbsamplesControllerGeosController.php:93
+#: /Plugin/Mongodb/samples/Controller/GeosController.php:93
 msgid "Invalid Geo"
 msgstr ""
 
-#: PluginMongodbsamplesControllerGeosController.php:96
+#: /Plugin/Mongodb/samples/Controller/GeosController.php:96
 msgid "Geo deleted"
 msgstr ""
 
-#: PluginMongodbsamplesControllerGeosController.php:98
+#: /Plugin/Mongodb/samples/Controller/GeosController.php:98
 msgid "Geo deleted Fail"
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:53
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:53
 msgid "Post saved."
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:68;91
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:68;91
 msgid "Invalid Post"
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:72
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:72
 msgid "The Post has been saved."
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:94
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:94
 msgid "Post deleted"
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:96
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:96
 msgid "Post deleted Fail"
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:109
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:109
 msgid "Post deleteAll success"
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:112
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:112
 msgid "Post deleteAll Fail"
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:128
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:128
 msgid "Post updateAll success"
 msgstr ""
 
-#: PluginMongodbsamplesControllerPostsController.php:131
+#: /Plugin/Mongodb/samples/Controller/PostsController.php:131
 msgid "Post updateAll Fail"
 msgstr ""
 
-#: PluginMongodbsamplesControllerSubdocumentsController.php:45
+#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:45
 msgid "Subdocument saved."
 msgstr ""
 
-#: PluginMongodbsamplesControllerSubdocumentsController.php:60;82
+#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:60;82
 msgid "Invalid Subdocument"
 msgstr ""
 
-#: PluginMongodbsamplesControllerSubdocumentsController.php:64
+#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:64
 msgid "The Subdocument has been saved."
 msgstr ""
 
-#: PluginMongodbsamplesControllerSubdocumentsController.php:85
+#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:85
 msgid "Subdocument deleted"
 msgstr ""
 
-#: PluginMongodbsamplesControllerSubdocumentsController.php:87
+#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:87
 msgid "Subdocument deleted Fail"
 msgstr ""
 
-#: PluginMongodbsamplesViewGeosadd.ctp:4
+#: /Plugin/Mongodb/samples/View/Geos/add.ctp:4
 msgid "Add Geo"
 msgstr ""
 
-#: PluginMongodbsamplesViewGeosadd.ctp:16;25
+#: /Plugin/Mongodb/samples/View/Geos/add.ctp:16;25
 msgid "List Geos"
 msgstr ""
 
-#: PluginMongodbsamplesViewPostsadd.ctp:4
+#: /Plugin/Mongodb/samples/View/Posts/add.ctp:4
 msgid "Add Post"
 msgstr ""
 
-#: PluginMongodbsamplesViewPostsadd.ctp:15
-#: PluginMongodbsamplesViewPostsedit.ctp:16
+#: /Plugin/Mongodb/samples/View/Posts/add.ctp:15
+#: /Plugin/Mongodb/samples/View/Posts/edit.ctp:16
 msgid "List Posts"
 msgstr ""
 
-#: PluginMongodbsamplesViewPostsedit.ctp:4
+#: /Plugin/Mongodb/samples/View/Posts/edit.ctp:4
 msgid "Edit Post"
 msgstr ""
 
-#: PluginMongodbsamplesViewSubdocumentsadd.ctp:4
+#: /Plugin/Mongodb/samples/View/Subdocuments/add.ctp:4
 msgid "Add Subdocument"
 msgstr ""
 
-#: PluginMongodbsamplesViewSubdocumentsadd.ctp:20;29
-#: PluginMongodbsamplesViewSubdocumentsedit.ctp:19
+#: /Plugin/Mongodb/samples/View/Subdocuments/add.ctp:20;29
+#: /Plugin/Mongodb/samples/View/Subdocuments/edit.ctp:19
 msgid "List Subdocuments"
 msgstr ""
 
-#: PluginMongodbsamplesViewSubdocumentsedit.ctp:4
+#: /Plugin/Mongodb/samples/View/Subdocuments/edit.ctp:4
 msgid "Edit Subdocument"
 msgstr ""
 
-#: ViewUsersindex.ctp:29
+#: /View/Users/index.ctp:29
 msgid "my program"
 msgstr "MON PROGRAMME"
+
+#: /View/Users/index.ctp:34
+msgid "shape modeling"
+msgstr "DSAFDSGFDSGFD"
