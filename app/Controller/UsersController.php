@@ -21,4 +21,7 @@ class UsersController extends AppController {
         $this->set('user', $this->User->findById($user_id));
     }
 
+    public function login(){
+    	
+    }
 }

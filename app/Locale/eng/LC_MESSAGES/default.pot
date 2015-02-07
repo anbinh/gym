@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-02-07 17:39+0100\n"
-"PO-Revision-Date: 2015-02-07 23:41+0700\n"
+"POT-Creation-Date: 2015-02-07 18:01+0100\n"
+"PO-Revision-Date: 2015-02-08 00:03+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: Poedit 1.7.4\n"
 
-#: /Controller/UsersController.php:8;18
+#: /Controller/UsersController.php:10;19
 msgid "Invalid user"
 msgstr ""
 
