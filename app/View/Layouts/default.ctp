@@ -26,9 +26,20 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php echo $this->fetch('title'); ?>
 	</title>
 	<?php
-		echo $this->Html->css(array('style', 'bower_components/angular-material/angular-material.min'));
+		echo $this->Html->css(array(
+            'style',
+            'bower_components/angular-material/angular-material.min',
+            'bower_components/angular-dropdown/angular-dropdowns',
+        ));
 
-		echo $this->Html->script(array('bower_components/hammerjs/hammer.min', 'bower_components/angular/angular.min', 'bower_components/angular-animate/angular-animate.min', 'bower_components/angular-aria/angular-aria.min', 'bower_components/angular-material/angular-material.min', 'app'));
+		echo $this->Html->script(array('bower_components/hammerjs/hammer.min',
+            'bower_components/angular/angular.min',
+            'bower_components/angular-animate/angular-animate.min',
+            'bower_components/angular-aria/angular-aria.min',
+            'bower_components/angular-material/angular-material.min',
+            'app',
+            'bower_components/angular-dropdown/angular-dropdowns',
+        ));
 
 		echo $this->Html->meta('icon');
 
@@ -39,9 +50,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body ng-app="App" ng-controller="bodyController">
+<body ng-app="App">
 	<div id="container">
-		 <div id="header">
+		 <div id="header" ng-controller="bodyController">
             <md-toolbar class="" layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
                 <div flex="33" layout="row" layout-align="start center" style="padding-left:10px;">
                     <md-button class="header_button_menu" ng-click="toggleRight()"><img src="/img/images/menu.png"></md-button>
@@ -53,7 +64,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 </div>
                 <div flex="33" layout="row" layout-align="end center" style="padding-right:10px;">
                     <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;"><img src="/img/images/picto.png"/> Sign in</md-button>
-                    <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"><img src="/img/images/earth.png"/> ENG</md-button>
+                    <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"
+                               dropdown-menu="ddSelectOptions"
+                               dropdown-model="ddSelectSelected"
+                               dropdown-item-label="text">
+                        <img src="/img/images/earth.png"/> <?php echo $language;?>
+                    </md-button>
                 </div>
             </md-toolbar>
             <md-sidenav class="md-sidenav-left md-whiteframe-z2 left-menu" md-component-id="right">

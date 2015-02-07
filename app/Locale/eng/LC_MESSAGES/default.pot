@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-02-06 06:38+0100\n"
-"PO-Revision-Date: 2015-02-06 12:39+0700\n"
+"POT-Creation-Date: 2015-02-07 17:39+0100\n"
+"PO-Revision-Date: 2015-02-07 23:41+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: Poedit 1.7.4\n"
+
+#: /Controller/UsersController.php:8;18
+msgid "Invalid user"
+msgstr ""
 
 #: /Plugin/Mongodb/Model/Datasource/MongodbSource.php:589
 msgid "Invalid schema object"
@@ -124,10 +128,26 @@ msgstr ""
 msgid "Edit Subdocument"
 msgstr ""
 
-#: /View/Users/index.ctp:29
+#: /View/Users/index.ctp:19
+msgid "edit"
+msgstr "Edit"
+
+#: /View/Users/index.ctp:24
+msgid "mobile application"
+msgstr "MOBILE APPLICATION"
+
+#: /View/Users/index.ctp:28
+msgid "create a program"
+msgstr "CREATE A PROGRAM"
+
+#: /View/Users/index.ctp:36
 msgid "my program"
 msgstr "MY PROGRAM"
 
-#: /View/Users/index.ctp:34
-msgid "shape modeling"
-msgstr "SHAPE MODELING"
+#: /View/Users/index.ctp:57
+msgid "advertising"
+msgstr "ADVERTISING"
+
+#: /View/Users/index.ctp:63
+msgid "favorite exercise"
+msgstr "FAVORITE EXERCISE"

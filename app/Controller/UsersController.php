@@ -1,14 +1,24 @@
 <?php
 class UsersController extends AppController {
 
-	
-    public function index() {
-        //$user = $this->User->find('all');
-        //pr($user);
-        // $this->set('user', $user);
+
+    public $components = array('RequestHandler');
+
+
+    public function index($user_id = null) {
+        if (!$user_id) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+
+        $user = $this->User->findById($user_id);
+        $this->set('user', $user['User']);
     }
 
-    public function login(){
-
+    public function view($user_id = null) {
+        if (!$this->User->exists($user_id)) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $this->set('user', $this->User->findById($user_id));
     }
+
 }
