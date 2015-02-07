@@ -6,7 +6,7 @@ class AppController extends Controller {
     public $components = array('Session');
     public $helpers = array('Html', 'Form', 'Text');
 
-    var $language, $availableLanguages; 
+    var $language, $availableLanguages;
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -28,6 +28,6 @@ class AppController extends Controller {
     public function changeLang($lang)
     {
         $this->Session->write('Config.language',$lang);
-        return $this->redirect('/Users');
+        return $this->redirect('/');
     }
 }

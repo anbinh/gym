@@ -1,8 +1,8 @@
 (function(){
 
 'use strict';
-angular.module('App', ['ngMaterial','ngDropdowns'])
-.controller('bodyController', function($scope,$timeout, $mdSidenav, $log){
+var app = angular.module('App', ['ngMaterial','ngDropdowns'])
+app.controller('bodyController', function($scope,$timeout, $mdSidenav, $log){
     $scope.toggleRight = function() {
         $mdSidenav('right').toggle();
     };
@@ -18,10 +18,9 @@ angular.module('App', ['ngMaterial','ngDropdowns'])
             href: '/App/changeLang/fra'
         }
     ];
-
     $scope.ddSelectSelected = {}; // Must be an object
-})
-.controller('LeftMenu', function($scope, $timeout, $mdSidenav, $log) {
+});
+app.controller('LeftMenu', function($scope, $timeout, $mdSidenav, $log) {
     $scope.lists = [{
         title: 'Search programs',
         link: '1'
@@ -53,8 +52,8 @@ angular.module('App', ['ngMaterial','ngDropdowns'])
     {
         console.log($link);
     };   
-})
-.controller('ListController', ['$scope', '$http', function($scope, $http){
+});
+app.controller('ListController', ['$scope', '$http', function($scope, $http){
     $scope.results=[];
     $scope.search = function(){
 
@@ -75,8 +74,17 @@ angular.module('App', ['ngMaterial','ngDropdowns'])
         });
 
     };
-}]);
+}
+]);
+
+app.controller('UserController', function($scope) {
+
+    $scope.user = {'name': name ,'city' : city , 'street' : street};
+
+});
 
 
 
-})();
+
+
+}());

@@ -50,9 +50,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body ng-app="App" ng-controller="bodyController">
+<body ng-app="App">
 	<div id="container">
-		 <div id="header">
+		 <div id="header" ng-controller="bodyController">
             <md-toolbar class="" layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
                 <div flex="33" layout="row" layout-align="start center" style="padding-left:10px;">
                     <md-button class="header_button_menu" ng-click="toggleRight()"><img src="/img/images/menu.png"></md-button>
