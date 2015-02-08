@@ -34,7 +34,9 @@ function check(){
 }
 
 
-
+$('.btn_facebook').on('click', function(){
+	alert('1');
+});
 </script>
 
 <style type="text/css">

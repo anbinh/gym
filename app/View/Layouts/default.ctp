@@ -30,6 +30,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'style',
             'bower_components/angular-material/angular-material.min',
             'bower_components/angular-dropdown/angular-dropdowns',
+            'bootstrap.min',
+            'bootstrap-theme.min'
         ));
 
 		echo $this->Html->script(array('bower_components/hammerjs/hammer.min',
@@ -39,6 +41,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-material/angular-material.min',
             'app',
             'bower_components/angular-dropdown/angular-dropdowns',
+            'bootstrap.min'
         ));
 
 		echo $this->Html->meta('icon');
