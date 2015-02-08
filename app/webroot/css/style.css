@@ -207,27 +207,84 @@ margin: 0 30px 25px 30px;
 .tile_3{
     background-color:#5aa09c; margin:5px;
 }
+.main_content_register{
+    text-align: center;
+    margin-top: 60px;
+    padding-bottom: 60px;
+}
 .sub{
     font-family: "akn-proxima-reg",helvetica neue,helvetica,arial,sans-serif;
     font-size: .875rem;
-    color: #8a8a8a;
-    text-align: center;
+    color: #8a8a8a;    
     margin-bottom: 3px;
+    margin-top: 50px;
 }
-.btn-facebook {
+.btn_facebook {
     background: #3c5a98;
     font-size: .875rem;
-    padding: 1em 0;
+    padding: 1em 3em;
     border-radius: 4px;
     text-decoration: none;
     color: white;
 }
-.btn-facebook:before {
-content: '';
-display: inline-block;
-width: 10px;
-height: 21px;
-margin: 0 1em 0 0;
-vertical-align: middle;
-background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxIiB4bWxucz0iaHR0cDovL3d3dy53M…UzNnYyLjUzOGgzLjc3M2wtLjE2NCAzLjQ3NWgtMy42MDh2OS42NTRoLTMuNjc1Ii8+PC9zdmc+) no-repeat;
+
+.btn_next_register{
+    background: #A4C408;
+    font-size: .875rem;
+    padding: 1em 7em;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+}
+.frm_register{
+    margin-bottom: 25px;
+}
+.back_to_login{
+    text-align: center;
+    padding: 30px;
+}
+.back_to_login a{
+    text-decoration: none;
+}
+
+.user_profile label{
+    width: 150px;
+    display:inline-block;
+    font-weight: bold;
+}
+.input_row_register{
+    height: 35px;
+}
+.input_row_register_fb{
+    height: 40px;
+    padding: 20px 0 45px 0;
+}
+.btn_change_pass{
+    background: gray;
+    font-size: .875rem;
+    padding: 1em 3em;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+}
+.user_profile hr{
+    border-width: 1px;
+    border-color: rgba(204, 204, 204, 0.46);
+}
+.btn_change_save{
+    background: black;
+    font-size: .875rem;
+    padding: 0.6em 3.5em;    
+    text-decoration: none;
+    color: white;
+}
+.btn_change_cancel{
+    background: rgb(195, 204, 240);
+    font-size: .875rem;
+    padding: 0.6em 3.5em;   
+    text-decoration: none;
+    color: white;
+}
+.input_row_save_cancel{
+    padding: 20px 0 20px 0;
 }
