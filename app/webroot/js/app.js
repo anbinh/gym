@@ -83,6 +83,27 @@ app.controller('UserController', function($scope) {
 
 });
 
+app.controller('UserProfileController', function($scope,$http){
+    $scope.message = '';
+    $scope.formData = {'gender' : '1'};
+    $scope.save = function() {
+        var data = $scope.formData;
+        console.log(data);
+        $http({
+            method  : 'POST',
+            url     : '/Users/save_profile.json',
+            data    : { id: 4, name: "Kim" },  // pass in data as strings
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+        })
+            .success(function(data) {
+                console.log(data);
+                // if successful, bind success message to message
+                $scope.message = data.message.text;
+
+            });
+    };
+});
+
 
 
 

@@ -27,4 +27,13 @@ class UsersController extends AppController {
     public function edit_profile(){
         
     }
+
+    public function save_profile() {
+        $data = $this->request->data;
+        $message = $data;
+        $this->set(array(
+            'message' => $message,
+            '_serialize' => array('message')
+        ));
+    }
 }
