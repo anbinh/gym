@@ -91,9 +91,9 @@ app.controller('UserProfileController', function($scope,$http){
         console.log(data);
         $http({
             method  : 'POST',
-            url     : '/Users/save_profile.json',
+            url     : '/gym/Users/save_profile.json',
             data    : { id: 4, name: "Kim" },  // pass in data as strings
-            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
         })
             .success(function(data) {
                 console.log(data);

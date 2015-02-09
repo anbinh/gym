@@ -29,7 +29,7 @@ class UsersController extends AppController {
     }
 
     public function save_profile() {
-        $data = $this->request->data;
+        $data = $this->request->input('json_decode',true);
         $message = $data;
         $this->set(array(
             'message' => $message,
