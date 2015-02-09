@@ -1,0 +1,581 @@
+2015-02-03 16:04:05 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/images/twiter_icon.png
+Stack Trace:
+#0 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-02-05 16:21:20 Error: [MissingDatasourceConfigException] The datasource configuration "default" was not found in database.php
+Exception Attributes: array (
+  'config' => 'default',
+)
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php(91): ConnectionManager::_getConnectionObject('default')
+#1 E:\project\GYM\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 E:\project\GYM\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 E:\project\GYM\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 E:\project\GYM\gym\lib\Cake\Model\Model.php(3018): Model->getDataSource()
+#5 E:\project\GYM\gym\lib\Cake\Model\Model.php(2990): Model->_readDataSource('all', Array)
+#6 E:\project\GYM\gym\app\Controller\UsersController.php(5): Model->find('all')
+#7 [internal function]: UsersController->index()
+#8 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-05 16:26:40 Error: [MissingDatasourceConfigException] The datasource configuration "default" was not found in database.php
+Exception Attributes: array (
+  'config' => 'default',
+)
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php(91): ConnectionManager::_getConnectionObject('default')
+#1 E:\project\GYM\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 E:\project\GYM\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 E:\project\GYM\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 E:\project\GYM\gym\lib\Cake\Model\Model.php(3018): Model->getDataSource()
+#5 E:\project\GYM\gym\lib\Cake\Model\Model.php(2990): Model->_readDataSource('all', Array)
+#6 E:\project\GYM\gym\app\Controller\UsersController.php(5): Model->find('all')
+#7 [internal function]: UsersController->index()
+#8 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-05 16:29:08 Error: [MissingDatasourceException] Datasource class MongodbSource could not be found. Mongodb
+Exception Attributes: array (
+  'class' => 'MongodbSource',
+  'plugin' => 'Mongodb',
+)
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php(94): ConnectionManager::loadDataSource('default')
+#1 E:\project\GYM\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 E:\project\GYM\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 E:\project\GYM\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 E:\project\GYM\gym\lib\Cake\Model\Model.php(3018): Model->getDataSource()
+#5 E:\project\GYM\gym\lib\Cake\Model\Model.php(2990): Model->_readDataSource('all', Array)
+#6 E:\project\GYM\gym\app\Controller\UsersController.php(5): Model->find('all')
+#7 [internal function]: UsersController->index()
+#8 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-05 16:37:58 Error: [MissingDatasourceException] Datasource class MongodbSource could not be found. Mongodb
+Exception Attributes: array (
+  'class' => 'MongodbSource',
+  'plugin' => 'Mongodb',
+)
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php(94): ConnectionManager::loadDataSource('default')
+#1 E:\project\GYM\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 E:\project\GYM\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 E:\project\GYM\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 E:\project\GYM\gym\lib\Cake\Model\Model.php(3018): Model->getDataSource()
+#5 E:\project\GYM\gym\lib\Cake\Model\Model.php(2990): Model->_readDataSource('all', Array)
+#6 E:\project\GYM\gym\app\Controller\UsersController.php(5): Model->find('all')
+#7 [internal function]: UsersController->index()
+#8 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-05 16:38:27 Error: [MissingDatasourceException] Datasource class MongodbSource could not be found. Mongodb
+Exception Attributes: array (
+  'class' => 'MongodbSource',
+  'plugin' => 'Mongodb',
+)
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php(94): ConnectionManager::loadDataSource('default')
+#1 E:\project\GYM\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 E:\project\GYM\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 E:\project\GYM\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 E:\project\GYM\gym\lib\Cake\Model\Model.php(3018): Model->getDataSource()
+#5 E:\project\GYM\gym\lib\Cake\Model\Model.php(2990): Model->_readDataSource('all', Array)
+#6 E:\project\GYM\gym\app\Controller\UsersController.php(5): Model->find('all')
+#7 [internal function]: UsersController->index()
+#8 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-05 16:38:28 Error: [MissingDatasourceException] Datasource class MongodbSource could not be found. Mongodb
+Exception Attributes: array (
+  'class' => 'MongodbSource',
+  'plugin' => 'Mongodb',
+)
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php(94): ConnectionManager::loadDataSource('default')
+#1 E:\project\GYM\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 E:\project\GYM\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 E:\project\GYM\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 E:\project\GYM\gym\lib\Cake\Model\Model.php(3018): Model->getDataSource()
+#5 E:\project\GYM\gym\lib\Cake\Model\Model.php(2990): Model->_readDataSource('all', Array)
+#6 E:\project\GYM\gym\app\Controller\UsersController.php(5): Model->find('all')
+#7 [internal function]: UsersController->index()
+#8 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-05 16:38:54 Error: [MissingDatasourceException] Datasource class MongodbSource could not be found. Mongodb
+Exception Attributes: array (
+  'class' => 'MongodbSource',
+  'plugin' => 'Mongodb',
+)
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php(94): ConnectionManager::loadDataSource('default')
+#1 E:\project\GYM\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 E:\project\GYM\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 E:\project\GYM\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 E:\project\GYM\gym\lib\Cake\Model\Model.php(3018): Model->getDataSource()
+#5 E:\project\GYM\gym\lib\Cake\Model\Model.php(2990): Model->_readDataSource('all', Array)
+#6 E:\project\GYM\gym\app\Controller\UsersController.php(5): Model->find('all')
+#7 [internal function]: UsersController->index()
+#8 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-05 16:39:12 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:39:12 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:40:57 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:40:57 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:46:43 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:46:43 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:46:45 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:46:45 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:49:58 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:49:58 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:50:00 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:50:00 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:50:02 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:50:02 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:50:19 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:50:19 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:51:38 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:51:38 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:51:40 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:51:40 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:52:51 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:52:51 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-05 16:52:52 Error: Fatal Error (1): Class 'Mongo' not found in [E:\project\GYM\gym\lib\Cake\Model\ConnectionManager.php, line 105]
+2015-02-05 16:52:52 Error: [FatalErrorException] Class 'Mongo' not found
+Request URL: /Users
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'Mongo' n...', 'E:\\project\\GYM\\...', 105, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-07 15:13:43 Error: [MissingActionException] Action UsersController::login.ctp() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login.ctp',
+)
+Request URL: /Users/login.ctp
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-02-07 15:14:15 Error: [MissingHelperException] Helper class FacebookHelper could not be found.
+Exception Attributes: array (
+  'class' => 'FacebookHelper',
+  'plugin' => false,
+)
+Request URL: /Users/login
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\HelperCollection.php(63): HelperCollection->load('Facebook')
+#1 E:\project\GYM\gym\lib\Cake\View\View.php(848): HelperCollection->__isset('Facebook')
+#2 E:\project\GYM\gym\app\View\Users\login.ctp(1): View->__get('Facebook')
+#3 E:\project\GYM\gym\lib\Cake\View\View.php(961): include('E:\\project\\GYM\\...')
+#4 E:\project\GYM\gym\lib\Cake\View\View.php(923): View->_evaluate('E:\\project\\GYM\\...', Array)
+#5 E:\project\GYM\gym\lib\Cake\View\View.php(473): View->_render('E:\\project\\GYM\\...')
+#6 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#7 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#8 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#9 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-02-07 15:14:54 Error: [ConfigureException] Could not load configuration file: E:\project\GYM\gym\app\Config\facebook.php
+Request URL: /Users/login
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Core\Configure.php(299): PhpReader->read('facebook')
+#1 E:\project\GYM\gym\app\Plugin\Facebook\Lib\FacebookInfo.php(38): Configure::load('facebook')
+#2 E:\project\GYM\gym\app\Plugin\Facebook\View\Helper\FacebookHelper.php(48): FacebookInfo::getConfig('locale')
+#3 E:\project\GYM\gym\lib\Cake\View\HelperCollection.php(136): FacebookHelper->__construct(Object(View), Array)
+#4 E:\project\GYM\gym\lib\Cake\View\View.php(897): HelperCollection->load('Facebook.Facebo...', Array)
+#5 E:\project\GYM\gym\lib\Cake\View\View.php(354): View->loadHelpers()
+#6 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(1246): View->__construct(Object(UsersController))
+#7 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(945): Controller->_getViewObject()
+#8 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-02-07 16:36:52 Error: [MissingPluginException] Plugin Facebook could not be found.
+Exception Attributes: array (
+  'plugin' => 'Facebook',
+)
+Request URL: /Users/login
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Core\App.php(227): CakePlugin::path('Facebook')
+#1 E:\project\GYM\gym\lib\Cake\Core\App.php(549): App::path('View/Helper', 'Facebook')
+#2 [internal function]: App::load('FacebookHelper')
+#3 [internal function]: spl_autoload_call('FacebookHelper')
+#4 E:\project\GYM\gym\lib\Cake\View\HelperCollection.php(130): class_exists('FacebookHelper')
+#5 E:\project\GYM\gym\lib\Cake\View\View.php(897): HelperCollection->load('Facebook.Facebo...', Array)
+#6 E:\project\GYM\gym\lib\Cake\View\View.php(354): View->loadHelpers()
+#7 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(1246): View->__construct(Object(UsersController))
+#8 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(945): Controller->_getViewObject()
+#9 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#10 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-07 18:04:41 Error: [MissingActionException] Action UsersController::logn() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'logn',
+)
+Request URL: /Users/logn
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-02-07 18:04:44 Error: [MissingActionException] Action UsersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+)
+Request URL: /Users/login
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-02-08 03:10:52 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/images/icon.png
+Stack Trace:
+#0 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-02-08 03:11:37 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /img/images/icon.png
+Stack Trace:
+#0 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-02-08 15:07:15 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:07:35 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:08:40 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:09:04 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:12:41 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:15:32 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:24:16 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:24:51 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:26:39 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 15:33:45 Error: Fatal Error (4): syntax error, unexpected '=>' (T_DOUBLE_ARROW) in [E:\project\GYM\gym\app\Controller\UsersController.php, line 31]
+2015-02-08 15:33:45 Error: [FatalErrorException] syntax error, unexpected '=>' (T_DOUBLE_ARROW)
+Request URL: /Users/login
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-08 16:07:21 Error: Fatal Error (4): syntax error, unexpected '=>' (T_DOUBLE_ARROW) in [E:\project\GYM\gym\app\Controller\UsersController.php, line 31]
+2015-02-08 16:07:21 Error: [FatalErrorException] syntax error, unexpected '=>' (T_DOUBLE_ARROW)
+Request URL: /Users/login
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-08 16:09:02 Error: Fatal Error (4): syntax error, unexpected '=>' (T_DOUBLE_ARROW) in [E:\project\GYM\gym\app\Controller\UsersController.php, line 31]
+2015-02-08 16:09:02 Error: [FatalErrorException] syntax error, unexpected '=>' (T_DOUBLE_ARROW)
+Request URL: /Users/login
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-08 16:35:11 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 16:36:30 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-08 16:43:54 Error: Fatal Error (4): syntax error, unexpected '=>' (T_DOUBLE_ARROW) in [E:\project\GYM\gym\app\Controller\UsersController.php, line 31]
+2015-02-08 16:43:54 Error: [FatalErrorException] syntax error, unexpected '=>' (T_DOUBLE_ARROW)
+Request URL: /Users/login
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31, Array)
+#2 E:\project\GYM\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'E:\\project\\GYM\\...', 31, Array)
+#3 E:\project\GYM\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-08 16:44:45 Error: [MissingViewException] View file "Users\login_ajax_call.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users\\login_ajax_call.ctp',
+)
+Request URL: /Users/login_ajax_call
+Stack Trace:
+#0 E:\project\GYM\gym\lib\Cake\View\View.php(470): View->_getViewFileName(NULL)
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(959): View->render(NULL, NULL)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-09 15:34:17 Error: [NotFoundException] Invalid user
+Request URL: /Users/view
+Stack Trace:
+#0 [internal function]: UsersController->view()
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-09 15:34:50 Error: [NotFoundException] Invalid user
+Request URL: /Users
+Stack Trace:
+#0 [internal function]: UsersController->index()
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-02-09 15:36:49 Error: [NotFoundException] Invalid user
+Request URL: /Users
+Stack Trace:
+#0 [internal function]: UsersController->index()
+#1 E:\project\GYM\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}

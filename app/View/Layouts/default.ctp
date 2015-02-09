@@ -41,6 +41,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-material/angular-material.min',
             'app',
             'bower_components/angular-dropdown/angular-dropdowns',
+            'jquery-1.11.2.min',
             'bootstrap.min'
         ));
 
@@ -66,7 +67,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <md-button class="logo" ng-click="logoClick()"></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="end center" style="padding-right:10px;">
-                    <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;"><img src="/img/images/picto.png"/> Sign in</md-button>
+                    <?php if($this->Session->check('user_id')):?>
+                        <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;">
+                            <a href="/Users"><?php echo $this->Session->read('name');?></a>
+                        </md-button>    
+                    <?php endif;?>                        
+                    <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;">
+                        <?php if($this->Session->check('user_id')):?>                            
+                            <a href="/Users/logout"><img src="/img/images/picto.png"/> Sign out</a>
+                        <?php else:?>                                                        
+                            <a href="/Users/login"><img src="/img/images/picto.png"/> Sign in</a>
+                        <?php endif;?>                        
+                    </md-button>
                     <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"
                                dropdown-menu="ddSelectOptions"
                                dropdown-model="ddSelectSelected"

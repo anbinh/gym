@@ -22,7 +22,25 @@ class UsersController extends AppController {
     }
 
     public function login(){
-    	
+        if(isset($_POST['id'])){
+            $id = $_POST['id'];       
+            $name = $_POST['name'];               
+            $gender = $_POST['gender'];       
+            $link = $_POST['link']; 
+            $locale = $_POST['locale'];          
+
+            $this->Session->write('user_id', '1');
+            $this->Session->write('name', $name);
+            return new CakeResponse(array('body'=> json_encode(array('val'=>$id)),'status'=>200));
+        }    	
+        
+    }    
+    public function logout(){
+        if($this->Session->check('user_id')){
+            $this->Session->delete('user_id');
+        }
+
+        return $this->render('login');
     }
     public function edit_profile(){
         
