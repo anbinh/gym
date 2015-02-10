@@ -80,21 +80,25 @@ app.controller('ListController', ['$scope', '$http', function($scope, $http){
 app.controller('UserController', function($scope) {
 
     $scope.user = {'name': name ,'city' : city , 'street' : street};
+    $scope.edit = function() {
+        window.location='/Users/edit_profile';
+    };
 
 });
 
 app.controller('UserProfileController', function($scope,$http){
     $scope.message = '';
     $scope.formData = {
-        'gender' : '1',
-        'username' : username,
+        'gender' : gender,
+        'username' : login,
         'firstname' : firstname,
         'lastname' : lastname,
         'email' : email,
         'language' : language,
-        'location' : location_,
-        'birthday' : birthday,
-        'receive_promote' : receive_promote
+        'address' : address,
+        'birthday' : new Date(birthday),
+        'receive_promote' : receive_promote,
+        'id' : id
     };
     $scope.save = function() {
         var data = $scope.formData;
@@ -109,6 +113,9 @@ app.controller('UserProfileController', function($scope,$http){
                 console.log(data);
                 window.location='index';
             });
+    };
+    $scope.cancel = function() {
+        window.location='index';
     };
 });
 
@@ -126,9 +133,9 @@ app.controller('LoginController', function($scope,$http,$location){
         })
             .success(function(data) {
                 console.log(data);  
-                 window.location='edit_profile';                              
+                 window.location='edit_profile';
             })
-    };
+    }; 
 });
 
 

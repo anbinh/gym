@@ -6,12 +6,13 @@ class UsersController extends AppController {
 
 
     public function index() {
-        /*if (!$this->Session->check('user_id')) {
+
+        $auth = $this->getAuthentication();
+        if (!$auth) {
             throw new NotFoundException(__('Invalid user'));
-        }*/
-        $user_id = $this->Session->read('user_id');
-        $user = $this->User->findById($user_id);
-        $this->set('user', $user['User']);        
+
+        }
+        $this->set('user', $auth);
     }
 
     public function view($user_id = null) {
@@ -22,70 +23,91 @@ class UsersController extends AppController {
     }
 
     public function signup(){
+        $this->Session->delete('user_id');
         if(isset($_POST['id'])){
             $id = $_POST['id'];       
-            $name = $_POST['name'];               
-            $gender = $_POST['gender'];       
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $gender = $_POST['gender'];
+            $email = $_POST['email'];
             $link = $_POST['link']; 
             $locale = $_POST['locale'];          
 
-            if($this->checkExistUser($id))
+            $user_ = $this->checkExistUser($id);
+            if(count($user_) > 0) // already have this user on db
             {
-
+                $this->setAuthentication($user_['User']);
             }
             else
             {
-                // user doesnot exist from fb
+                // user does not exist from fb
                 // add new info
+                $user['User']['firstname'] =  $firstname;
+                $user['User']['lastname'] =  $lastname;
+                $user['User']['email'] =  $email;
+                if($gender == 'male')
+                    $user['User']['sex'] =  1;
+                else
+                    $user['User']['sex'] = 0;
+                $user['User']['fb_id'] = $id;
+                $this->User->save($user);
+                $user['User']['id'] = $this->User->getLastInsertId();
+                $this->setAuthentication($user['User']);
             }
-
-            $this->Session->write('user_id', '1');
-            $this->Session->write('name', $name);
-            return new CakeResponse(array('body'=> json_encode(array('val'=>$id)),'status'=>200));
+            $this->set(array(
+                'message' => $user_,
+                '_serialize' => array('message')
+            ));
         }
+
     }    
 
     public function checkExistUser($fb_id)
     {
         // check fb_id from db
-        return true;
+        $user = $this->User->find('first',array(
+            'conditions' => array('User.fb_id' => $fb_id)
+        ));
+        return $user;
     }
 
     public function logout(){
-        if($this->Session->check('user_id')){
-            $this->Session->delete('user_id');
+
+        $auth = $this->getAuthentication();
+        if($auth){
             $this->removeAuthentication();
         }
-        return $this->render('signup');
+        $this->redirect('/Users/signup');
     }
 
     public function edit_profile(){
-        $profile = $this->getCurrentRegister();
-        // register mode
-        if($profile)
-        {
-            $fullname = explode(" ",$profile['fullname']);
-            if(count($fullname) > 1)
-            {
-                $profile['firstname'] = $fullname[0];
-                $profile['lastname'] = $fullname[1];
-            }
-            else
-                $profile['firstname'] = $profile['fullname'];
-            //pr($profile);
-            $this->set('profile',$profile);
-        }
-        else // edit user mode
+
+        $auth = $this->getAuthentication();
+        if($auth)
         {
 
+            $profile = $auth;
         }
+        else {
+            $profile = $this->getCurrentRegister();
+            // register mode
+            if ($profile) {
+                $fullname = explode(" ", $profile['fullname']);
+                if (count($fullname) > 1) {
+                    $profile['firstname'] = $fullname[0];
+                    $profile['lastname'] = $fullname[1];
+                } else
+                    $profile['firstname'] = $profile['fullname'];
+            }
+        }
+            
+        $this->set('profile',$profile);
     }
 
     public function save_profile() {
         $data = $this->request->input('json_decode',true);
-        if(isset($data['id']))
+        if($data['id'] != 0)
             $user['User']['id'] = $data['id'];
-        //$user['User']['id'] = '54da0cf7d5251d8417000029';
         $user['User']['login'] =  $data['username'];
         $user['User']['birthday'] =  $data['birthday'];
         $user['User']['email'] =  $data['email'];
@@ -94,10 +116,16 @@ class UsersController extends AppController {
         $user['User']['password'] =  md5('demo');
         $user['User']['sex'] =  $data['gender'];
         $user['User']['address']['street'] =  $data['address'];
+        $user['User']['language'] =  $data['language'];
+        $user['User']['receive_promote'] =  $data['receive_promote'];
         $this->User->save($user);
-        if(isset($data['id']))
-            $this->Session->write('user_id', $this->User->getLastInsertId());
-        $this->setAuthentication($this->User->getLastInsertId());
+
+        if($data['id'] == 0)
+        {
+            $user['User']['id'] = $this->User->getLastInsertId();
+            $this->saveCurrentRegister(null);
+        }
+        $this->setAuthentication($user['User']);
         $message = 'Save Profile Success';
         $this->set(array(
             'message' => $message,
@@ -115,12 +143,4 @@ class UsersController extends AppController {
             '_serialize' => array('message')
         ));
     }
-
-    function saveCurrentRegister($data) {
-        $this->Session->write('GYM_CURRENT_REGISTER',$data);
-    }
-
-    function getCurrentRegister() {
-        return $this->Session->read('GYM_CURRENT_REGISTER');
-    } 
 }

@@ -67,13 +67,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <md-button class="logo" ng-click="logoClick()"></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="end center" style="padding-right:10px;">
-                    <?php if($this->Session->check('user_id')):?>
+                    <?php if(isset($auth_user)):?>
                         <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;">
-                            <a href="/Users"><?php echo $this->Session->read('name');?></a>
+                            <a href="/Users"><?php echo $auth_user['firstname'].' '.$auth_user['lastname'];?></a>
                         </md-button>    
                     <?php endif;?>                        
                     <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;">
-                        <?php if($this->Session->check('user_id')):?>                            
+                        <?php if(isset($auth_user)):?>
                             <a href="/Users/logout"><img src="/img/images/picto.png"/> Sign out</a>
                         <?php else:?>                                                        
                             <a href="/Users/signup"><img src="/img/images/picto.png"/> Sign in</a>

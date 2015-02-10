@@ -7,7 +7,7 @@ class AppController extends Controller {
     public $helpers = array('Html', 'Form', 'Text');
 
     var $language, $availableLanguages;
-
+    public $auth_user;
     public function beforeFilter() {
         parent::beforeFilter();
         if($this->Session->check('Config.language')) { // Check for existing language session
@@ -19,15 +19,20 @@ class AppController extends Controller {
         $this->setLang($this->language); // call protected method setLang with the lang shortcode
         $this->set('language',$this->language); // send $this->language value to the view
 
-        /*if($this->params['controller'] != 'Users' || $this->params['action'] != 'signup'){
-            $auth = $this->getAuthentication();
-            if($auth == null) {
-                $this->redirect('/Users/signup');
+        if($this->params['controller'] != 'Users' || $this->params['action'] != 'signup'){
+            if($this->params['action'] != 'registerByUsername')
+            {
+                $auth_user = $this->getAuthentication();
+                if($auth_user == null) {
+                    $is_register = $this->getCurrentRegister();
+                    if($is_register == null)
+                        $this->redirect('/Users/signup');
+                }
+                else {
+                    $this->set('auth_user',$auth_user);
+                }
             }
-            else {
-                $this->set('auth',$auth);
-            }
-        }*/
+        }
     }
 
     protected function setLang($lang) { // protected method used to set the language
@@ -51,5 +56,13 @@ class AppController extends Controller {
 
     function removeAuthentication() {
         $this->Session->write('LOGIN_USER' ,null);
+    }
+
+    function saveCurrentRegister($data) {
+        $this->Session->write('GYM_CURRENT_REGISTER',$data);
+    }
+
+    function getCurrentRegister() {
+        return $this->Session->read('GYM_CURRENT_REGISTER');
     }
 }
