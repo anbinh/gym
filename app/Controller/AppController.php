@@ -20,14 +20,17 @@ class AppController extends Controller {
         $this->set('language',$this->language); // send $this->language value to the view
 
         if($this->params['controller'] != 'Users' || $this->params['action'] != 'signup'){
-            $auth_user = $this->getAuthentication();
-            if($auth_user == null) {
-                $is_register = $this->getCurrentRegister();
-                if($is_register == null)
-                    $this->redirect('/Users/signup');
-            }
-            else {
-                $this->set('auth_user',$auth_user);
+            if($this->params['action'] != 'registerByUsername')
+            {
+                $auth_user = $this->getAuthentication();
+                if($auth_user == null) {
+                    $is_register = $this->getCurrentRegister();
+                    if($is_register == null)
+                        $this->redirect('/Users/signup');
+                }
+                else {
+                    $this->set('auth_user',$auth_user);
+                }
             }
         }
     }

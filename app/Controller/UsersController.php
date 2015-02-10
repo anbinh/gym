@@ -88,21 +88,18 @@ class UsersController extends AppController {
 
             $profile = $auth;
         }
-        else
-        {
+        else {
             $profile = $this->getCurrentRegister();
             // register mode
-            if($profile)
-            {
-                $fullname = explode(" ",$profile['fullname']);
-                if(count($fullname) > 1)
-                {
+            if ($profile) {
+                $fullname = explode(" ", $profile['fullname']);
+                if (count($fullname) > 1) {
                     $profile['firstname'] = $fullname[0];
                     $profile['lastname'] = $fullname[1];
-                }
-                else
+                } else
                     $profile['firstname'] = $profile['fullname'];
             }
+        }
             
         $this->set('profile',$profile);
     }
@@ -111,7 +108,6 @@ class UsersController extends AppController {
         $data = $this->request->input('json_decode',true);
         if($data['id'] != 0)
             $user['User']['id'] = $data['id'];
-        //$user['User']['id'] = '54da0cf7d5251d8417000029';
         $user['User']['login'] =  $data['username'];
         $user['User']['birthday'] =  $data['birthday'];
         $user['User']['email'] =  $data['email'];
