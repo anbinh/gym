@@ -1,43 +1,5 @@
 <div id="fb-root"></div>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-<script type="text/javascript">
-FB.init({
-    appId: '607706552694436',
-    status: true,
-    cookie: true,
-    oauth: true
-});
-var userData = null;
-
-function getUserInfo() {
-    FB.api('/me', function(resp) {
-        userData = resp;
-        console.log(userData);
-    });
-}
-function check(){
-	FB.getLoginStatus(function(stsResp) {
-	    if(stsResp.authResponse) {	  
-	    	getUserInfo();  		        	        
-	    } else {	    	
-	        FB.login(function(loginResp) {
-	            if(loginResp.authResponse) {
-	                getUserInfo();
-	                console.log('2');
-	            } else {
-	            	console.log('3');
-	                alert('Please authorize this application to use it!');
-	            }
-	        });
-	    }
-	});	
-}
-
-
-$('.btn_facebook').on('click', function(){
-	alert('1');
-});
-</script>
 
 <style type="text/css">
 	.register_input_set {
@@ -90,12 +52,11 @@ padding: 15px 0 15px 0;
 	margin-left: -26px;
 }
 </style>
-<a href="#" onclick="check()">login</a>
 <div layout="row" layout-align="center center">
 	<div flex="50" class="main_content_register arrow_box">
 		<h1 class="sub">Sign Up</h1>
 		<h2 style="margin-top:0px; margin-bottom:35px;">Nice To Meet You</h2>
-		<a href="#" class="btn btn_facebook">Sign up with Facebook</a>
+		<a href="javascript:;" class="btn btn_facebook">Sign up with Facebook</a>
 		<h4 style="margin-bottom:0;">or</h4>
 		<form class="frm_register">				
 			<fieldset class="register_input_set">
@@ -118,3 +79,58 @@ padding: 15px 0 15px 0;
 		<a href="#">Already Registerred? Log In now!</a>
 	</div>
 </div>
+
+<script type="text/javascript">
+FB.init({
+    appId: '607706552694436',
+    status: true,
+    cookie: true,
+    oauth: true
+});
+var userData = null;
+
+function add_User(fb_info){  
+		$.ajax({
+  		type: 'post',
+		url : "/Users/login",
+		dataType : "json",
+		data:{				
+			id: fb_info.id,
+			name: fb_info.name,			
+			gender: fb_info.gender,
+			link: fb_info.link,
+			locale: fb_info.locale
+		},			
+		beforeSend:function() {				
+		},
+		success : function(data) {		
+			 window.location.href = 'http://localhost';	  		    	 
+		},
+		complete: function(){					
+		},
+		error : function(request, error) {
+			alert('error1');
+		}
+	});
+}
+function login()
+{	
+	FB.login(function(response) {
+	   if (response.authResponse) 
+	   {				   	  		   		  	 
+	    	FB.api('/me', function(response1) {				 				 	
+			 	console.log(response1);	 	
+			 	add_User(response1);	 	 					  	  	    
+		    });
+		} else 
+		{
+    	 console.log('User cancelled login or did not fully authorize.');
+		}
+	 },{scope: 'email,publish_actions,user_friends'});
+}
+
+
+$('.btn_facebook').on('click', function(){
+	login();
+});
+</script>
