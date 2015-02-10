@@ -1,23 +1,30 @@
 <script>
     // init variable
+
     var  login = '<?php echo isset($profile['login']) ? $profile['login'] : ''  ?>';
     var  email = '<?php echo isset($profile['email']) ? $profile['email'] : ''  ?>';
     var  firstname = '<?php echo isset($profile['firstname']) ? $profile['firstname'] : ''  ?>';
     var  lastname = '<?php echo isset($profile['lastname']) ? $profile['lastname'] : ''  ?>';
+
     var  gender = '<?php echo isset($profile['sex']) ? $profile['sex'] : '1'  ?>';
     var  language = '<?php echo isset($profile['language']) ? $profile['language'] : ''  ?>';
+
     var  address = '<?php echo isset($profile['address']['street']) ? $profile['address']['street'] : ''  ?>';
     var  birthday = '<?php echo isset($profile['birthday']) ? $profile['birthday'] : ''  ?>';
+
     var  receive_promote = <?php echo isset($profile['receive_promote']) ? ($profile['receive_promote'] == 1)? 'true' : 'false' : 'false'  ?>;
     var  id = '<?php echo isset($profile['id']) ? $profile['id'] : 0  ?>';
 </script>
-<div class="wrap_content right_banner" layout="row" hide-sm ng-controller="UserProfileController">
+
+<div class="wrap_content right_banner" layout="row" ng-controller="UserProfileController">
 	<div flex>
         <div id="messages" ng-show="message">{{ message }}</div>
 		<div layout="row" layout-align="center start">
 			<form action="#" class="user_profile">
+
                 <input type="hidden" name="id" id="id" ng-model="formData.id">
-				<div class="input_row_register">
+
+				<div class="input_row_register">	
 					<label>User Name</label>
 					<input type="text" name="username" ng-model="formData.username">
 				</div>
@@ -72,7 +79,7 @@
 
 		</div>		
 	</div>	
-	<div style="width:300px;" layout="column">		
+	<div style="width:300px;" class="advertisement" layout="column">		
 		<div class="mobile_app" layout="row" layout-align="start center">					
 			<img src="/img/images/apple.png"/>	
 			<p><strong><?php echo __('mobile application')?></strong></p>

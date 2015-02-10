@@ -6,9 +6,11 @@ class UsersController extends AppController {
 
 
     public function index() {
+
         $auth = $this->getAuthentication();
         if (!$auth) {
             throw new NotFoundException(__('Invalid user'));
+
         }
         $this->set('user', $auth);
     }
@@ -70,6 +72,7 @@ class UsersController extends AppController {
     }
 
     public function logout(){
+
         $auth = $this->getAuthentication();
         if($auth){
             $this->removeAuthentication();
@@ -78,9 +81,11 @@ class UsersController extends AppController {
     }
 
     public function edit_profile(){
+
         $auth = $this->getAuthentication();
         if($auth)
         {
+
             $profile = $auth;
         }
         else
@@ -98,7 +103,7 @@ class UsersController extends AppController {
                 else
                     $profile['firstname'] = $profile['fullname'];
             }
-        }
+            
         $this->set('profile',$profile);
     }
 
@@ -118,6 +123,7 @@ class UsersController extends AppController {
         $user['User']['language'] =  $data['language'];
         $user['User']['receive_promote'] =  $data['receive_promote'];
         $this->User->save($user);
+
         if($data['id'] == 0)
         {
             $user['User']['id'] = $this->User->getLastInsertId();
