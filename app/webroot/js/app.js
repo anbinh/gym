@@ -135,7 +135,7 @@ app.controller('LoginController', function($scope,$http,$location){
                 console.log(data);  
                  window.location='edit_profile';
             })
-    };
+    }; 
 });
 
 
