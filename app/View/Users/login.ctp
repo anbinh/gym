@@ -104,7 +104,7 @@ function add_User(fb_info){
 		beforeSend:function() {				
 		},
 		success : function(data) {		
-			 window.location.href = 'http://localhost';	  		    	 
+			 window.location.href = 'http://localhost/Users';	  		    	 
 		},
 		complete: function(){					
 		},

@@ -5,11 +5,12 @@ class UsersController extends AppController {
     public $components = array('RequestHandler');
 
 
-    public function index($user_id = null) {
-        if (!$user_id) {
+    public function index() {
+        $this->Session->write('user_id', '54cf959dacc46c81b036a716');
+        if (!$this->Session->check('user_id')) {
             throw new NotFoundException(__('Invalid user'));
         }
-
+        $user_id = $this->Session->read('user_id');
         $user = $this->User->findById($user_id);
         $this->set('user', $user['User']);
     }
@@ -29,12 +30,29 @@ class UsersController extends AppController {
             $link = $_POST['link']; 
             $locale = $_POST['locale'];          
 
+            if($this->checkExistUser($id))
+            {
+
+            }
+            else
+            {
+                // user doesnot exist from fb
+                // add new info
+            }
+
             $this->Session->write('user_id', '1');
             $this->Session->write('name', $name);
             return new CakeResponse(array('body'=> json_encode(array('val'=>$id)),'status'=>200));
         }    	
         
     }    
+
+    public function checkExistUser($fb_id)
+    {
+        // check fb_id from db
+        return true;
+    }
+
     public function logout(){
         if($this->Session->check('user_id')){
             $this->Session->delete('user_id');
