@@ -211,10 +211,12 @@ margin: 0 30px 25px 30px;
     text-align: center;
     margin-top: 60px;
     padding-bottom: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .sub{
     font-family: "akn-proxima-reg",helvetica neue,helvetica,arial,sans-serif;
-    font-size: .875rem;
+    font-size: 16px;
     color: #8a8a8a;    
     margin-bottom: 3px;
     margin-top: 50px;
@@ -222,7 +224,7 @@ margin: 0 30px 25px 30px;
 .btn_facebook {
     background: #3c5a98;
     font-size: .875rem;
-    padding: 1em 3em;
+    padding: 1em 3em !important;
     border-radius: 4px;
     text-decoration: none;
     color: white;
@@ -230,7 +232,7 @@ margin: 0 30px 25px 30px;
 .btn_next_register{
     background: #A4C408;
     font-size: .875rem;
-    padding: 1em 7em;
+    padding: 1em 7em !important;
     border-radius: 4px;
     text-decoration: none;
     color: white;
@@ -286,4 +288,10 @@ margin: 0 30px 25px 30px;
 }
 .input_row_save_cancel{
     padding: 20px 0 20px 0;
+}
+@media (max-width: 610px) {
+   .main_content_register{       
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }

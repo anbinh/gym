@@ -53,7 +53,7 @@ padding: 15px 0 15px 0;
 }
 </style>
 <div layout="row" layout-align="center center">
-	<div flex="50" class="main_content_register arrow_box">
+	<div class="main_content_register arrow_box">
 		<h1 class="sub">Sign Up</h1>
 		<h2 style="margin-top:0px; margin-bottom:35px;">Nice To Meet You</h2>
 		<a href="javascript:;" class="btn btn_facebook">Sign up with Facebook</a>
