@@ -579,3 +579,82 @@ Stack Trace:
 #3 E:\project\GYM\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #4 E:\project\GYM\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2015-02-10 06:13:23 Error: [MissingDatasourceConfigException] The datasource configuration "default" was not found in database.php
+Exception Attributes: array (
+  'config' => 'default',
+)
+Request URL: /Users/index/54cf959dacc46c81b036a716
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Model\ConnectionManager.php(91): ConnectionManager::_getConnectionObject('default')
+#1 D:\p4\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 D:\p4\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 D:\p4\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 D:\p4\gym\lib\Cake\Model\Model.php(827): Model->getDataSource()
+#5 D:\p4\gym\app\Controller\UsersController.php(13): Model->__call('findById', Array)
+#6 D:\p4\gym\app\Controller\UsersController.php(13): User->findById('54cf959dacc46c8...')
+#7 [internal function]: UsersController->index('54cf959dacc46c8...')
+#8 D:\p4\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-10 06:16:48 Error: [MissingDatasourceException] Datasource class MongodbSource could not be found. Mongodb
+Exception Attributes: array (
+  'class' => 'MongodbSource',
+  'plugin' => 'Mongodb',
+)
+Request URL: /Users/index/54cf959dacc46c81b036a716
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Model\ConnectionManager.php(94): ConnectionManager::loadDataSource('default')
+#1 D:\p4\gym\lib\Cake\Model\Model.php(3613): ConnectionManager::getDataSource('default')
+#2 D:\p4\gym\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#3 D:\p4\gym\lib\Cake\Model\Model.php(3640): Model->setSource('users')
+#4 D:\p4\gym\lib\Cake\Model\Model.php(827): Model->getDataSource()
+#5 D:\p4\gym\app\Controller\UsersController.php(13): Model->__call('findById', Array)
+#6 D:\p4\gym\app\Controller\UsersController.php(13): User->findById('54cf959dacc46c8...')
+#7 [internal function]: UsersController->index('54cf959dacc46c8...')
+#8 D:\p4\gym\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#11 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-02-10 11:32:08 Error: [MissingControllerException] Controller class GymController could not be found.
+Exception Attributes: array (
+  'class' => 'GymController',
+  'plugin' => NULL,
+)
+Request URL: /gym/Users/registerByUsername.json
+Stack Trace:
+#0 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-02-10 11:38:58 Error: Fatal Error (1): Call to a member function write() on a non-object in [D:\p4\gym\app\Controller\UsersController.php, line 90]
+2015-02-10 11:38:58 Error: [FatalErrorException] Call to a member function write() on a non-object
+Request URL: /Users/registerByUsername.json
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\p4\gym\app\C...', 90)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\p4\gym\app\C...', 90, Array)
+#2 D:\p4\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\p4\gym\app\C...', 90, Array)
+#3 D:\p4\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-10 11:39:20 Error: Fatal Error (1): Call to a member function write() on a non-object in [D:\p4\gym\app\Controller\UsersController.php, line 90]
+2015-02-10 11:39:20 Error: [FatalErrorException] Call to a member function write() on a non-object
+Request URL: /Users/registerByUsername.json
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\p4\gym\app\C...', 90)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\p4\gym\app\C...', 90, Array)
+#2 D:\p4\gym\lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\p4\gym\app\C...', 90, Array)
+#3 D:\p4\gym\lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-02-10 12:02:03 Error: [MissingActionException] Action UsersController::Users() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'Users',
+)
+Request URL: /Users/Users
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
