@@ -1,7 +1,7 @@
 <script>
     // init variable
     var name = '<?php echo $user['firstname'].' '.$user['lastname'];?>';
-    var city = '<?php echo $user['address']['city'];?>';
+    var city = '<?php echo isset($user['address']['city'])? $user['address']['city'] : '' ;?>';
     var street = '<?php echo $user['address']['street'];?>';
 </script>
 <div ng-controller="UserController">

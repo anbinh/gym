@@ -18,6 +18,16 @@ class AppController extends Controller {
 
         $this->setLang($this->language); // call protected method setLang with the lang shortcode
         $this->set('language',$this->language); // send $this->language value to the view
+
+        /*if($this->params['controller'] != 'Users' || $this->params['action'] != 'signup'){
+            $auth = $this->getAuthentication();
+            if($auth == null) {
+                $this->redirect('/Users/signup');
+            }
+            else {
+                $this->set('auth',$auth);
+            }
+        }*/
     }
 
     protected function setLang($lang) { // protected method used to set the language
@@ -29,5 +39,17 @@ class AppController extends Controller {
     {
         $this->Session->write('Config.language',$lang);
         return $this->redirect('/');
+    }
+
+    function getAuthentication(){
+        return $this->Session->read('LOGIN_USER');
+    }
+
+    function setAuthentication($user){
+        $this->Session->write('LOGIN_USER',$user);
+    }
+
+    function removeAuthentication() {
+        $this->Session->write('LOGIN_USER' ,null);
     }
 }

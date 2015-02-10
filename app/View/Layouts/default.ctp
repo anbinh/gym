@@ -76,7 +76,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <?php if($this->Session->check('user_id')):?>                            
                             <a href="/Users/logout"><img src="/img/images/picto.png"/> Sign out</a>
                         <?php else:?>                                                        
-                            <a href="/Users/login"><img src="/img/images/picto.png"/> Sign in</a>
+                            <a href="/Users/signup"><img src="/img/images/picto.png"/> Sign in</a>
                         <?php endif;?>                        
                     </md-button>
                     <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"

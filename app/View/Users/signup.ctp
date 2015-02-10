@@ -60,20 +60,29 @@ padding: 15px 0 15px 0;
 			<h2 style="margin-top:0px; margin-bottom:35px;">Nice To Meet You</h2>
 			<a href="javascript:;" class="btn btn_facebook">Sign up with Facebook</a>
 			<h4 style="margin-bottom:0;">or</h4>
-			<form class="frm_register">				
+			<form class="frm_register" name="signup_form">
 				<fieldset class="register_input_set">
 					<div class="register_input_bottom_border">				
-						<input type="fullname" placeholder="First and Last Name" name="fullname" ng-model="formData.fullname" value="" maxlength="255">
+						<input type="text" required placeholder="First and Last Name" name="fullname" ng-model="formData.fullname" value="" maxlength="255">
+                        <div class="error-container" ng-show="signup_form.fullname.$dirty && signup_form.fullname.$invalid">
+                            <small class="error" ng-show="signup_form.fullname.$error.required">Please input the name</small>
+                        </div>
 					</div>
 					<div class="register_input_bottom_border">				
-						<input type="email" placeholder="Email" ng-model="formData.email" name="email">
+						<input type="email" required placeholder="Email" ng-model="formData.email" name="email">
+                        <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
+                            <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
+                        </div>
 					</div>
 					<div>				
-						<input type="password" placeholder="Password" ng-model="formData.password" name="password">
+						<input type="password" required placeholder="Password" ng-model="formData.password" name="password">
+                        <div class="error-container" ng-show="signup_form.password.$dirty && signup_form.password.$invalid">
+                            <small class="error" ng-show="signup_form.password.$error.required">Please input the password</small>
+                        </div>
 					</div>
 				</fieldset>
 			</form>
-			<a href="javascript:void(0);" ng-click='next()' class="btn btn_next_register">NEXT</a>
+			<a href="javascript:void(0);" ng-click='next()' class="btn btn_next_register" ng-disabled="signup_form.$invalid">NEXT</a>
 		</div>	
 	</div>
 	<div layout="row" layout-align="center center">
@@ -95,7 +104,7 @@ var userData = null;
 function add_User(fb_info){  
 		$.ajax({
   		type: 'post',
-		url : "/Users/login",
+		url : "/Users/signup",
 		dataType : "json",
 		data:{				
 			id: fb_info.id,
@@ -107,7 +116,7 @@ function add_User(fb_info){
 		beforeSend:function() {				
 		},
 		success : function(data) {		
-			 window.location.href = 'http://localhost/Users';	  		    	 
+			 window.location.href = '/Users';
 		},
 		complete: function(){					
 		},

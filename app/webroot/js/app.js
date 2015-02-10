@@ -85,7 +85,17 @@ app.controller('UserController', function($scope) {
 
 app.controller('UserProfileController', function($scope,$http){
     $scope.message = '';
-    $scope.formData = {'gender' : '1'};
+    $scope.formData = {
+        'gender' : '1',
+        'username' : username,
+        'firstname' : firstname,
+        'lastname' : lastname,
+        'email' : email,
+        'language' : language,
+        'location' : location_,
+        'birthday' : birthday,
+        'receive_promote' : receive_promote
+    };
     $scope.save = function() {
         var data = $scope.formData;
         console.log(data);
@@ -97,9 +107,7 @@ app.controller('UserProfileController', function($scope,$http){
         })
             .success(function(data) {
                 console.log(data);
-                // if successful, bind success message to message
-                $scope.message = data.message.username;
-
+                window.location='index';
             });
     };
 });

@@ -287,3 +287,7 @@ margin: 0 30px 25px 30px;
 .input_row_save_cancel{
     padding: 20px 0 20px 0;
 }
+
+.error{
+    color: red;
+}
