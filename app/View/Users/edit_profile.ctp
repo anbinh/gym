@@ -50,10 +50,10 @@
 				</div>
 				<hr>
 				<div class="input_row_save_cancel" layout="row">
-					<div flex><a href="#" class="btn btn_change_save" ng-click='save()'>SAVE</a></div>
-					<div flex><a href="#" class="btn btn_change_cancel">CANCEL</a></div>
+					<div flex><a href="javascript:void(0);" class="btn btn_change_save" ng-click='save()'>SAVE</a></div>
+					<div flex><a href="javascript:void(0);" class="btn btn_change_cancel">CANCEL</a></div>
 				</div>
-				<p style="font-weight:bold;">To remove your Keep account please <a href="#" style="color:#ccc; text-decoration:none;">click here.</a></p>		
+				<p style="font-weight:bold;">To remove your Keep account please <a href="javascript:void(0);" style="color:#ccc; text-decoration:none;">click here.</a></p>		
 			</form>	
 
 		</div>		

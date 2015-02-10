@@ -92,13 +92,14 @@ app.controller('UserProfileController', function($scope,$http){
         $http({
             method  : 'POST',
             url     : '/gym/Users/save_profile.json',
-            data    : { id: 4, name: "Kim" },  // pass in data as strings
+            //data    : { id: 4, name: "Kim" },  // pass in data as strings
+            data    : $scope.formData,  // pass in data as strings
             headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
         })
             .success(function(data) {
                 console.log(data);
                 // if successful, bind success message to message
-                $scope.message = data.message.text;
+                $scope.message = data.message.username;
 
             });
     };
