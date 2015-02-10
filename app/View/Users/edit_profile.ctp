@@ -10,13 +10,13 @@
     var  birthday = '<?php echo isset($profile['birthday']) ? $profile['birthday'] : ''  ?>';
     var  receive_promote = '<?php echo isset($profile['receive_promote']) ? $profile['receive_promote'] : true  ?>';
 </script>
-<div class="wrap_content right_banner" layout="row" hide-sm ng-controller="UserProfileController">
+<div class="wrap_content right_banner" layout="row" ng-controller="UserProfileController">
 	<div flex>
         <div id="messages" ng-show="message">{{ message }}</div>
 		<div layout="row" layout-align="center start">
 			<form action="#" class="user_profile">
                 <input type="hidden" name="id" value="<?php echo isset($profile['id']) ? $profile['id'] : null  ?>">
-				<div class="input_row_register">
+				<div class="input_row_register">	
 					<label>User Name</label>
 					<input type="text" name="username" ng-model="formData.username">
 				</div>
@@ -71,7 +71,7 @@
 
 		</div>		
 	</div>	
-	<div style="width:300px;" layout="column">		
+	<div style="width:300px;" class="advertisement" layout="column">		
 		<div class="mobile_app" layout="row" layout-align="start center">					
 			<img src="/img/images/apple.png"/>	
 			<p><strong><?php echo __('mobile application')?></strong></p>

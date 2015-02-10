@@ -72,7 +72,7 @@ class UsersController extends AppController {
             }
             else
                 $profile['firstname'] = $profile['fullname'];
-            pr($profile);
+            //pr($profile);
             $this->set('profile',$profile);
         }
         else // edit user mode
