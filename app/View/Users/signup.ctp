@@ -105,17 +105,18 @@ function add_User(fb_info){
 		$.ajax({
   		type: 'post',
 		url : "/Users/signup",
-		dataType : "json",
 		data:{				
 			id: fb_info.id,
-			name: fb_info.name,			
+			firstname: fb_info.first_name,
+            lastname: fb_info.last_name,
 			gender: fb_info.gender,
 			link: fb_info.link,
-			locale: fb_info.locale
+			locale: fb_info.locale,
+            email: fb_info.email
 		},			
 		beforeSend:function() {				
 		},
-		success : function(data) {		
+		success : function(data) {
 			 window.location.href = '/Users';
 		},
 		complete: function(){					

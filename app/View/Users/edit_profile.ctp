@@ -1,21 +1,22 @@
 <script>
     // init variable
-    var  username = '<?php echo isset($profile['username']) ? $profile['username'] : ''  ?>';
+    var  login = '<?php echo isset($profile['login']) ? $profile['login'] : ''  ?>';
     var  email = '<?php echo isset($profile['email']) ? $profile['email'] : ''  ?>';
     var  firstname = '<?php echo isset($profile['firstname']) ? $profile['firstname'] : ''  ?>';
     var  lastname = '<?php echo isset($profile['lastname']) ? $profile['lastname'] : ''  ?>';
-    var  gender = '<?php echo isset($profile['gender']) ? $profile['gender'] : '1'  ?>';
+    var  gender = '<?php echo isset($profile['sex']) ? $profile['sex'] : '1'  ?>';
     var  language = '<?php echo isset($profile['language']) ? $profile['language'] : ''  ?>';
-    var  location_ = '<?php echo isset($profile['location']) ? $profile['location'] : ''  ?>';
+    var  address = '<?php echo isset($profile['address']['street']) ? $profile['address']['street'] : ''  ?>';
     var  birthday = '<?php echo isset($profile['birthday']) ? $profile['birthday'] : ''  ?>';
-    var  receive_promote = '<?php echo isset($profile['receive_promote']) ? $profile['receive_promote'] : true  ?>';
+    var  receive_promote = <?php echo isset($profile['receive_promote']) ? ($profile['receive_promote'] == 1)? 'true' : 'false' : 'false'  ?>;
+    var  id = '<?php echo isset($profile['id']) ? $profile['id'] : 0  ?>';
 </script>
 <div class="wrap_content right_banner" layout="row" hide-sm ng-controller="UserProfileController">
 	<div flex>
         <div id="messages" ng-show="message">{{ message }}</div>
 		<div layout="row" layout-align="center start">
 			<form action="#" class="user_profile">
-                <input type="hidden" name="id" value="<?php echo isset($profile['id']) ? $profile['id'] : null  ?>">
+                <input type="hidden" name="id" id="id" ng-model="formData.id">
 				<div class="input_row_register">
 					<label>User Name</label>
 					<input type="text" name="username" ng-model="formData.username">
@@ -64,7 +65,7 @@
 				<hr>
 				<div class="input_row_save_cancel" layout="row">
 					<div flex><a href="javascript:void(0);" class="btn btn_change_save" ng-click='save()'>SAVE</a></div>
-					<div flex><a href="javascript:void(0);" class="btn btn_change_cancel">CANCEL</a></div>
+					<div flex><a href="javascript:void(0);" class="btn btn_change_cancel" ng-click='cancel()'>CANCEL</a></div>
 				</div>
 				<p style="font-weight:bold;">To remove your Keep account please <a href="javascript:void(0);" style="color:#ccc; text-decoration:none;">click here.</a></p>		
 			</form>	

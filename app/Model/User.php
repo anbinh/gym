@@ -17,6 +17,9 @@ class User extends AppModel {
         'bookmark' => array('type'=>'Object'),
         'role' => array('type'=>'Array'),
         'favorite_exercises' => array('type'=>'Array'),
-        'assigned_programs' => array('type'=>'Array')
+        'assigned_programs' => array('type'=>'Array'),
+        'language' => array('type'=>'String'),
+        'receive_promote' => array('type'=>'Bool'),
+        'fb_id' => array('type'=>'String'),
     );
 }

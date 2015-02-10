@@ -2,7 +2,7 @@
     // init variable
     var name = '<?php echo $user['firstname'].' '.$user['lastname'];?>';
     var city = '<?php echo isset($user['address']['city'])? $user['address']['city'] : '' ;?>';
-    var street = '<?php echo $user['address']['street'];?>';
+    var street = '<?php echo isset($user['address']['street'])? $user['address']['street'] : '';?>';
 </script>
 <div ng-controller="UserController">
     <div layout="column" class="info_user">
@@ -16,7 +16,7 @@
                 <div class="fullname">{{user.name}}</div>
                 <div class="city">{{user.city}}</div>
                 <div class="language">{{user.street}}</div>
-                <div class="edit_profile"><a href="#"><?php echo __('edit')?></a></div>
+                <div class="edit_profile"><a href="javascript:void(0);" ng-click='edit()'><?php echo __('edit')?></a></div>
             </div>
             <div style="width:300px;">
                 <div class="mobile_app" layout="row" layout-align="start center" style="border-top:0;">
