@@ -1,8 +1,21 @@
+<script>
+    // init variable
+    var  username = '<?php echo isset($profile['username']) ? $profile['username'] : ''  ?>';
+    var  email = '<?php echo isset($profile['email']) ? $profile['email'] : ''  ?>';
+    var  firstname = '<?php echo isset($profile['firstname']) ? $profile['firstname'] : ''  ?>';
+    var  lastname = '<?php echo isset($profile['lastname']) ? $profile['lastname'] : ''  ?>';
+    var  gender = '<?php echo isset($profile['gender']) ? $profile['gender'] : '1'  ?>';
+    var  language = '<?php echo isset($profile['language']) ? $profile['language'] : ''  ?>';
+    var  location_ = '<?php echo isset($profile['location']) ? $profile['location'] : ''  ?>';
+    var  birthday = '<?php echo isset($profile['birthday']) ? $profile['birthday'] : ''  ?>';
+    var  receive_promote = '<?php echo isset($profile['receive_promote']) ? $profile['receive_promote'] : true  ?>';
+</script>
 <div class="wrap_content right_banner" layout="row" hide-sm ng-controller="UserProfileController">
 	<div flex>
         <div id="messages" ng-show="message">{{ message }}</div>
 		<div layout="row" layout-align="center start">
 			<form action="#" class="user_profile">
+                <input type="hidden" name="id" value="<?php echo isset($profile['id']) ? $profile['id'] : null  ?>">
 				<div class="input_row_register">
 					<label>User Name</label>
 					<input type="text" name="username" ng-model="formData.username">
@@ -50,10 +63,10 @@
 				</div>
 				<hr>
 				<div class="input_row_save_cancel" layout="row">
-					<div flex><a href="#" class="btn btn_change_save" ng-click='save()'>SAVE</a></div>
-					<div flex><a href="#" class="btn btn_change_cancel">CANCEL</a></div>
+					<div flex><a href="javascript:void(0);" class="btn btn_change_save" ng-click='save()'>SAVE</a></div>
+					<div flex><a href="javascript:void(0);" class="btn btn_change_cancel">CANCEL</a></div>
 				</div>
-				<p style="font-weight:bold;">To remove your Keep account please <a href="#" style="color:#ccc; text-decoration:none;">click here.</a></p>		
+				<p style="font-weight:bold;">To remove your Keep account please <a href="javascript:void(0);" style="color:#ccc; text-decoration:none;">click here.</a></p>		
 			</form>	
 
 		</div>		
