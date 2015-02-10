@@ -52,31 +52,34 @@ padding: 15px 0 15px 0;
 	margin-left: -26px;
 }
 </style>
-<div layout="row" layout-align="center center">
-	<div flex="50" class="main_content_register arrow_box">
-		<h1 class="sub">Sign Up</h1>
-		<h2 style="margin-top:0px; margin-bottom:35px;">Nice To Meet You</h2>
-		<a href="javascript:;" class="btn btn_facebook">Sign up with Facebook</a>
-		<h4 style="margin-bottom:0;">or</h4>
-		<form class="frm_register">				
-			<fieldset class="register_input_set">
-				<div class="register_input_bottom_border">					
-					<input type="fullname" placeholder="First and Last Name" name="fullname" value="" maxlength="255">
-				</div>
-				<div class="register_input_bottom_border">				
-					<input type="email" placeholder="Email" name="email">
-				</div>
-				<div>				
-					<input type="password" placeholder="Password" name="password">
-				</div>
-			</fieldset>
-		</form>
-		<a href="#" class="btn btn_next_register">NEXT</a>
-	</div>	
-</div>
-<div layout="row" layout-align="center center">
-	<div flex="50" class="back_to_login">
-		<a href="#">Already Registerred? Log In now!</a>
+<div ng-controller="LoginController">
+	<div id="messages" ng-show="message">{{ message }}</div>
+	<div layout="row" layout-align="center center">
+		<div flex="50" class="main_content_register arrow_box">
+			<h1 class="sub">Sign Up</h1>
+			<h2 style="margin-top:0px; margin-bottom:35px;">Nice To Meet You</h2>
+			<a href="javascript:;" class="btn btn_facebook">Sign up with Facebook</a>
+			<h4 style="margin-bottom:0;">or</h4>
+			<form class="frm_register">				
+				<fieldset class="register_input_set">
+					<div class="register_input_bottom_border">				
+						<input type="fullname" placeholder="First and Last Name" name="fullname" ng-model="formData.fullname" value="" maxlength="255">
+					</div>
+					<div class="register_input_bottom_border">				
+						<input type="email" placeholder="Email" ng-model="formData.email" name="email">
+					</div>
+					<div>				
+						<input type="password" placeholder="Password" ng-model="formData.password" name="password">
+					</div>
+				</fieldset>
+			</form>
+			<a href="javascript:void(0);" ng-click='next()' class="btn btn_next_register">NEXT</a>
+		</div>	
+	</div>
+	<div layout="row" layout-align="center center">
+		<div flex="50" class="back_to_login">
+			<a href="#">Already Registerred? Log In now!</a>
+		</div>
 	</div>
 </div>
 

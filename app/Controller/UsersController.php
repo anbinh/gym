@@ -12,7 +12,7 @@ class UsersController extends AppController {
         }
         $user_id = $this->Session->read('user_id');
         $user = $this->User->findById($user_id);
-        $this->set('user', $user['User']);
+        $this->set('user', $user['User']);        
     }
 
     public function view($user_id = null) {
@@ -60,8 +60,9 @@ class UsersController extends AppController {
 
         return $this->render('login');
     }
+
     public function edit_profile(){
-        
+        pr($this->getCurrentRegister());
     }
 
     public function save_profile() {
@@ -72,4 +73,23 @@ class UsersController extends AppController {
             '_serialize' => array('message')
         ));
     }
+
+    public function registerByUsername()
+    {
+        $data = $this->request->input('json_decode',true);
+        $message = $data;
+        $this->saveCurrentRegister($data);
+        $this->set(array(
+            'message' => $message,
+            '_serialize' => array('message')
+        ));
+    }
+
+    function saveCurrentRegister($data) {
+        $this->Session->write('GYM_CURRENT_REGISTER',$data);
+    }
+
+    function getCurrentRegister() {
+        return $this->Session->read('GYM_CURRENT_REGISTER');
+    } 
 }

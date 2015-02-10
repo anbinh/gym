@@ -91,8 +91,7 @@ app.controller('UserProfileController', function($scope,$http){
         console.log(data);
         $http({
             method  : 'POST',
-            url     : '/gym/Users/save_profile.json',
-            //data    : { id: 4, name: "Kim" },  // pass in data as strings
+            url     : '/Users/save_profile.json',            
             data    : $scope.formData,  // pass in data as strings
             headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -102,6 +101,25 @@ app.controller('UserProfileController', function($scope,$http){
                 $scope.message = data.message.username;
 
             });
+    };
+});
+
+app.controller('LoginController', function($scope,$http,$location){    
+    $scope.formData = {};
+    $scope.message = '';
+    $scope.next = function() {
+        var data = $scope.formData;
+        console.log(data);
+        $http({
+            method  : 'POST',
+            url     : '/Users/registerByUsername.json',            
+            data    : $scope.formData,  // pass in data as strings
+            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+        })
+            .success(function(data) {
+                console.log(data);  
+                 window.location='edit_profile';                              
+            })
     };
 });
 
