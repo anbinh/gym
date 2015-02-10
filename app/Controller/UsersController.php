@@ -56,7 +56,7 @@ class UsersController extends AppController {
             $this->Session->delete('user_id');
             $this->removeAuthentication();
         }
-        return $this->render('login');
+        return $this->render('signup');
     }
 
     public function edit_profile(){
