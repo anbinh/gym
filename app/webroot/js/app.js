@@ -2,10 +2,7 @@
 
 'use strict';
 var app = angular.module('App', ['ngMaterial','ngDropdowns'])
-app.controller('bodyController', function($scope,$timeout, $mdSidenav, $log){
-    $scope.toggleRight = function() {
-        $mdSidenav('right').toggle();
-    };
+app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
     $scope.programs = 'PROGRAMS';
     $scope.exercises = 'EXERCIES';
     $scope.ddSelectOptions = [
@@ -19,40 +16,40 @@ app.controller('bodyController', function($scope,$timeout, $mdSidenav, $log){
         }
     ];
     $scope.ddSelectSelected = {}; // Must be an object
-});
-app.controller('LeftMenu', function($scope, $timeout, $mdSidenav, $log) {
-    $scope.lists = [{
-        title: 'Search programs',
-        link: '1'
+    $scope.ddMenuOptions = [{
+        text: 'Search programs',
+        href: '#'
     }, {
-        title: 'Search exercises',
-        link: '2'
+        text: 'Search exercises',
+        href: '#'
     },{
-        title: 'Create a program',
-        link: '3'
+        text: 'Create a program',
+        href: '#'
     },{
-        title: 'Get the App',
-        link: '4'
+        text: 'Get the App',
+        href: '#'
     },{
-        title: 'Profile',
-        link: '5'
+        text: 'Profile',
+        href: '#'
     },{
-        title: 'Lexic',
-        link: '6'
+        text: 'Lexic',
+        href: '#'
     },{
-        title: 'About',
-        link: '7'
+        text: 'About',
+        href: '#'
     },{
-        title: 'Privacy Terms',
-        link: '8'
+        text: 'Privacy Terms',
+        href: '#'
     }
     ];
+    $scope.ddMenuSelected = {};
 
     $scope.itemMenuClick = function($link)
     {
         console.log($link);
-    };   
+    };
 });
+
 app.controller('ListController', ['$scope', '$http', function($scope, $http){
     $scope.results=[];
     $scope.search = function(){
@@ -135,7 +132,7 @@ app.controller('LoginController', function($scope,$http,$location){
                 console.log(data);  
                  window.location='edit_profile';
             })
-    }; 
+    };
 });
 
 
