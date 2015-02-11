@@ -7,7 +7,7 @@ CakePlugin::load('Mongodb');
 class DATABASE_CONFIG {
     public $default = array(
         'datasource' => 'Mongodb.MongodbSource',
-        'host' => 'localhost',
+        'host' => '54.69.254.197',
         'database' => 'gym',
         'port' => 27017,
         'prefix' => '',
