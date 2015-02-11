@@ -171,6 +171,7 @@ margin: 0 30px 25px 30px;
 }
 .username{
     font-weight:bold; padding-left:10px;
+    font-size: xx-large;
 }
 .edit_profile{
     padding-top: 10px;
@@ -198,9 +199,10 @@ margin: 0 30px 25px 30px;
 }
 .my_program_text p{
     font-size:14px; margin:0;
+    font-weight: bold;
 }
 .list_tile{
-    height:240px;
+    min-height:240px;
 }
 .tile_1{
     background-color:#d90947; margin:5px;
@@ -307,7 +309,7 @@ margin: 0 30px 25px 30px;
     }
 }
 @media (max-width: 720px) {
-   .advertisement{       
+   .advertisement{
        display: none !important;
     }
     form{       
@@ -315,5 +317,60 @@ margin: 0 30px 25px 30px;
     }
     .input_row_save_cancel{
         padding: 10px 0 10px 0;
+    }
+}
+
+
+/* TRI ---- User Index
+*/
+.user_favorite_exercise_img{
+    background-size: 240px 230px;
+    background-repeat: no-repeat;
+}
+.user_favorite_exercise{
+    min-height: 240px;
+}
+.avatar img{
+    border: solid lightgray 4px;
+}
+
+.UserIndexLeftContent{
+    width: 724px;
+}
+
+.program_text_name{
+    text-align:center; font-size:12px; font-weight:bold;
+}
+
+@media (max-width: 768px) {
+    .UserIndexLeftContent{
+        width: 460px;
+    }
+}
+
+@media (max-width: 640px) {
+    .user_favorite_exercise_img{
+        background-size: 306px 195px !important;
+        background-repeat: no-repeat;
+        height: 195px;
+    }
+}
+
+@media (max-width: 960px) {
+    .menu-right{
+        display: none !important;
+    }
+    .username{
+        font-weight:bold; padding-left:10px;
+        font-size: large;
+    }
+    .list_tile{
+        min-height:240px;
+    }
+
+    .user_favorite_exercise_img{
+        background-size: 450px 195px !important;
+        background-repeat: no-repeat;
+        height: 195px;
     }
 }
