@@ -8,7 +8,7 @@ md-input-group.long > input{
 width:100%;
 }
 md-card{
-margin: 0 30px 25px 30px; 
+margin: 0 30px 25px 30px;
 }
 
 #header md-toolbar{
@@ -21,10 +21,14 @@ margin: 0 30px 25px 30px;
    /* width: 40px;
     height: 30px;*/
     border-radius: 0 !important;   
-
 }
 .header_button_menu img{
     width: 20px;
+}
+.header_menu li{
+    width: 200px;
+    background: #a4c408;
+    border-radius: 7px;
 }
 .logo{
     /*background: url("/img/images/logo.png") no-repeat !important;*/
@@ -157,6 +161,7 @@ margin: 0 30px 25px 30px;
 }
 .username{
     font-weight:bold; padding-left:10px;
+    font-size: xx-large;
 }
 .edit_profile{
     padding-top: 10px;
@@ -184,9 +189,10 @@ margin: 0 30px 25px 30px;
 }
 .my_program_text p{
     font-size:14px; margin:0;
+    font-weight: bold;
 }
 .list_tile{
-    height:240px;
+    min-height:240px;
 }
 .tile_1{
     background-color:#d90947; margin:5px;
@@ -306,8 +312,8 @@ input[type=date]{
     line-height: 20px !important;
 }
 
-@media (max-width: 720px) {
-   .advertisement{       
+@media (max-width: 720px) {   
+   .advertisement{
        display: none !important;
     }
     form{       
@@ -318,80 +324,80 @@ input[type=date]{
     }
 }
 
-@media (max-width: 1280px) {
-    .toolbar-title {
-        padding: 0;
-    }
 
-    #content{
-        width: 100%;
-        margin: 0;
+/* TRI ---- User Index
+*/
+.user_favorite_exercise_img{
+    background-size: 240px 230px;
+    background-repeat: no-repeat;
+}
+.user_favorite_exercise{
+    min-height: 240px;
+}
+.avatar img{
+    border: solid lightgray 4px;
+}
+
+.UserIndexLeftContent{
+    width: 724px;
+}
+
+.program_text_name{
+    text-align:center; font-size:12px; font-weight:bold;
+}
+
+@media (max-width: 768px) {
+    .UserIndexLeftContent{
+        width: 460px;
     }
 }
+
 @media (max-width: 640px) {
-    .user_profile label{
-        width: 90px;
-        
-        font-size: 12px;
+    .user_favorite_exercise_img{
+        background-size: 306px 195px !important;
+        background-repeat: no-repeat;
+        height: 195px;
     }
-    .user_profile input{
-        font-size: 12px;   
+}
+
+@media (max-width: 960px) {
+    .menu-right{
+        display: none !important;
     }
-    .btn_change_pass{
-        font-size: 12px !important;
-        padding: 0.5em 1em !important;
+    .username{
+        font-weight:bold; padding-left:10px;
+        font-size: large;
     }
-    .btn_facebook_user_profile{        
-        font-size: 12px !important;
-        padding: 0.5em 1em !important;        
-    }
-    .btn_change_save{        
-        font-size: 12px !important;
-        padding: 0.5em 2em !important;            
-    }
-    .btn_change_cancel{        
-        font-size: 12px !important;
-        padding: 0.5em 2em !important;           
+    .list_tile{
+        min-height:240px;
     }
 
-    .main_content_register{       
-        padding-left: 30px;
-        padding-right: 30px;
-        padding-bottom: 20px;
+    .user_favorite_exercise_img{
+        background-size: 450px 195px !important;
+        background-repeat: no-repeat;
+        height: 195px;
     }
-    .sub{
-        margin-top: 20px;
-        font-size: 12px;
-    }
-    .sub_nice_to_meet_you{
-        margin-top:0px; 
-        margin-bottom:25px;
-        font-size: 20px;
-    }
-    .btn_facebook {        
-        font-size: 15px !important;
-        padding: 0.5em 1em !important;        
-    }
-    .register_input_set{
-        width: 200px !important;
-    }
-    .btn_next_register{        
-        font-size: 15px;
-        padding: 0.5em 2em !important;        
-    }
-    .back_to_login{
-        padding: 10px 0;        
-    }
-    .login_logout{
-        padding-right: 0;
-    }
-    .login_logout p1{
-        display: none;
-    }  
-    .wrap-dd-menu{
-        padding: 0 !important;
-    }
-    .logo_img{
-        width: 98px;
-    }
+}
+
+.register_input_set{
+    width: 200px !important;
+}
+.btn_next_register{        
+    font-size: 15px;
+    padding: 0.5em 2em !important;        
+}
+.back_to_login{
+    padding: 10px 0;        
+}
+.login_logout{
+    padding-right: 0;
+}
+.login_logout p1{
+    display: none;
+}  
+.wrap-dd-menu{
+    padding: 0 !important;
+}
+.logo_img{
+    width: 98px;
 }

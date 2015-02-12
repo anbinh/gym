@@ -56,10 +56,15 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body ng-app="App">
 	<div id="container">
-		 <div id="header" ng-controller="bodyController">
+		 <div id="header" ng-controller="headerController">
             <md-toolbar class="" layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
-                <div flex="33" layout="row" layout-align="start center" style="padding-left:10px;">
-                    <md-button class="header_button_menu" ng-click="toggleRight()"><img src="/img/images/menu.png"></md-button>
+                <div flex="33" layout="row" layout-align="start center" style="padding-left:10px;" class="header_menu">
+                    <md-button class="header_button_menu"
+                       dropdown-menu="ddMenuOptions"
+                       dropdown-model="ddMenuSelected"
+                       dropdown-item-label="text">
+                        <img src="/img/images/menu.png">
+                    </md-button>
                     <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;">{{programs}}</md-button>
                     <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;">{{exercises}}</md-button>                    
                 </div>
@@ -89,20 +94,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     </md-button>
                 </div>
             </md-toolbar>
-            <md-sidenav class="md-sidenav-left md-whiteframe-z2 left-menu" md-component-id="right">
-                <md-content ng-controller="LeftMenu" class="md-padding">
-                    <md-list>
-                        <md-item ng-repeat="item in lists">
-                            <md-item-content>
-                                <div class="md-tile-content">
-                                    <md-button md-no-ink class="md-primary" ng-click="itemMenuClick(item.link)">{{item.title}}</md-button>
-                                </div>
-                            </md-item-content>
-                            <md-divider ng-if="!$last"></md-divider>
-                        </md-item>
-                    </md-list>
-                </md-content>
-            </md-sidenav>
 		</div>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
