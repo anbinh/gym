@@ -64,20 +64,22 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;">{{exercises}}</md-button>                    
                 </div>
                 <div flex="33" layout="row" layout-align="center center">
-                    <md-button class="logo" ng-click="logoClick()"></md-button>
+                    <md-button class="logo" ng-click="logoClick()"> <img class="logo_img" src="/img/images/logo.png"></md-button>
                 </div>
-                <div flex="33" layout="row" layout-align="end center" style="padding-right:10px;">
+                <div flex="33" layout="row" layout-align="end center" class="login_logout">
                     <?php if(isset($auth_user)):?>
                         <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;">
                             <a href="/Users"><?php echo $auth_user['firstname'].' '.$auth_user['lastname'];?></a>
                         </md-button>    
                     <?php endif;?>                        
                     <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;">
+                        <div>
                         <?php if(isset($auth_user)):?>
-                            <a href="/Users/logout"><img src="/img/images/picto.png"/> Sign out</a>
+                            <a href="/Users/logout"><img src="/img/images/picto.png"/> <p1>Sign out</p1></a>
                         <?php else:?>                                                        
-                            <a href="/Users/signup"><img src="/img/images/picto.png"/> Sign in</a>
+                            <a href="/Users/signup"><img src="/img/images/picto.png"/> <p1>Sign in</p1></a>
                         <?php endif;?>                        
+                        </div>
                     </md-button>
                     <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"
                                dropdown-menu="ddSelectOptions"

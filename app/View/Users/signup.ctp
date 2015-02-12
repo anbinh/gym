@@ -57,7 +57,7 @@ padding: 15px 0 15px 0;
 	<div layout="row" layout-align="center center">
 		<div class="main_content_register arrow_box">
 			<h1 class="sub">Sign Up</h1>
-			<h2 style="margin-top:0px; margin-bottom:35px;">Nice To Meet You</h2>
+			<h2 class="sub_nice_to_meet_you">Nice To Meet You</h2>
 			<a href="javascript:;" class="btn btn_facebook">Sign up with Facebook</a>
 			<h4 style="margin-bottom:0;">or</h4>
 			<form class="frm_register" name="signup_form">
@@ -95,7 +95,7 @@ padding: 15px 0 15px 0;
 <script type="text/javascript">
 FB.init({
     appId: '607706552694436', 
-   // appId: '609280322537059', // gym.miratik.com account test
+    //appId: '609280322537059', // gym.miratik.com account test
     status: true,
     cookie: true,
     oauth: true

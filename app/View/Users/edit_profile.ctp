@@ -63,7 +63,7 @@
 				</div>
 				<div class="input_row_register_fb">
 					<label>Facebook</label>
-					<a href="#" class="btn btn_facebook">Connect Facebook</a>
+					<a href="#" class="btn btn_facebook_user_profile">Connect Facebook</a>
 				</div>
 				<div class="input_row_register">
 					<label>Promotion Email</label>					
