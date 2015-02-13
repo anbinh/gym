@@ -195,13 +195,16 @@ margin: 0 30px 25px 30px;
     min-height:240px;
 }
 .tile_1{
-    background-color:#d90947; margin:5px;
+    background-color:#d90947; 
+    border: 5px solid #FFFFFF;    
 }
 .tile_2{
-    background-color:#a4c408; margin:5px;
+    background-color:#a4c408;
+    border: 5px solid #FFFFFF;    
 }
 .tile_3{
-    background-color:#5aa09c; margin:5px;
+    background-color:#5aa09c;
+    border: 5px solid #FFFFFF;    
 }
 .main_content_register{
     text-align: center;
@@ -330,6 +333,10 @@ input[type=date]{
 .user_favorite_exercise_img{
     background-size: 240px 230px;
     background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 240px;
+    min-width: 230px;
+    background-position: center center;
 }
 .user_favorite_exercise{
     min-height: 240px;
@@ -343,20 +350,97 @@ input[type=date]{
 }
 
 .program_text_name{
-    text-align:center; font-size:12px; font-weight:bold;
+    text-align:center;
+    font-size:12px; 
+    font-weight:bold;        
+    position: absolute;
+    left: 60px;
+    bottom: 0;
 }
 
+.delete_icon_program{
+    padding-top:10px;
+}
+
+.img_program{
+    min-height: 160px;
+}
+
+.program_box{
+    min-height: 220px !important;
+    width: 25%;
+    float: left;
+
+}
+/* Desktop */
+@media (max-width: 1280px) {
+    .toolbar-title {
+        padding: 0;
+    }
+
+    #content{
+        width: 100%;
+        margin: 0;
+    }
+
+    .program_box{
+        width: 25%;
+    }
+}
+
+/* Ipad Ngang*/
+@media (max-width: 1024px) {
+    .program_box{
+        width: 33%;
+    }
+
+}
+
+/* Ipad Doc */
 @media (max-width: 768px) {
     .UserIndexLeftContent{
         width: 460px;
     }
+    .program_box{
+        width: 50%;
+    }
 }
 
-@media (max-width: 640px) {
+/* Iphone Ngang */
+@media (max-width: 500px) {
+    .program_box{
+        width: 50%;
+    }
     .user_favorite_exercise_img{
-        background-size: 306px 195px !important;
-        background-repeat: no-repeat;
-        height: 195px;
+        background-size: cover;
+    }    
+    .username{
+        font-weight:bold; padding-left:10px;
+        font-size: large;
+    }
+    .list_tile{
+        min-height:240px;
+    }    
+    .program_text_name{
+        text-align:center;
+        font-size:12px; 
+        font-weight:bold;        
+        position: absolute;
+        left: 120px;
+        bottom: 0;
+    }
+    .menu-right{
+        display: none !important;
+    }     
+    .UserIndexLeftContent{
+        width: 100%;
+    }
+}
+
+/* Iphone Doc*/
+@media (max-width: 400px) {    
+    .program_box{
+        width: 100%;
     }
     .user_profile label{
         width: 90px;
@@ -422,35 +506,11 @@ input[type=date]{
     }
     .logo_img{
         width: 98px;
-    }
-}
-
-@media (max-width: 960px) {
+    }   
     .menu-right{
         display: none !important;
-    }
-    .username{
-        font-weight:bold; padding-left:10px;
-        font-size: large;
-    }
-    .list_tile{
-        min-height:240px;
-    }
-
-    .user_favorite_exercise_img{
-        background-size: 450px 195px !important;
-        background-repeat: no-repeat;
-        height: 195px;
-    }
-}
-
-@media (max-width: 1280px) {
-    .toolbar-title {
-        padding: 0;
-    }
-
-    #content{
+    }     
+    .UserIndexLeftContent{
         width: 100%;
-        margin: 0;
-    }
+    }   
 }
