@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-02-07 18:01+0100\n"
-"PO-Revision-Date: 2015-02-08 00:03+0700\n"
+"POT-Creation-Date: 2015-02-13 16:01+0100\n"
+"PO-Revision-Date: 2015-02-13 22:02+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: Poedit 1.7.4\n"
 
-#: /Controller/UsersController.php:10;19
+#: /Controller/UsersController.php:14;22
 msgid "Invalid user"
 msgstr ""
 
@@ -128,26 +128,37 @@ msgstr ""
 msgid "Edit Subdocument"
 msgstr ""
 
-#: /View/Users/index.ctp:19
-msgid "edit"
-msgstr "Edit"
-
-#: /View/Users/index.ctp:24
+#: /View/Exercises/index.ctp:52 /View/Users/edit_profile.ctp:85
+#: /View/Users/index.ctp:100
 msgid "mobile application"
 msgstr "MOBILE APPLICATION"
 
-#: /View/Users/index.ctp:28
+#: /View/Exercises/index.ctp:56 /View/Users/edit_profile.ctp:89
+#: /View/Users/index.ctp:104
 msgid "create a program"
 msgstr "CREATE A PROGRAM"
 
-#: /View/Users/index.ctp:36
-msgid "my program"
-msgstr "MY PROGRAM"
-
-#: /View/Users/index.ctp:57
+#: /View/Exercises/index.ctp:59 /View/Users/edit_profile.ctp:92
+#: /View/Users/index.ctp:107
 msgid "advertising"
 msgstr "ADVERTISING"
 
-#: /View/Users/index.ctp:63
+#: /View/Layouts/default.ctp:69
+msgid "program header"
+msgstr "PROGRAMS"
+
+#: /View/Layouts/default.ctp:70
+msgid "exercise header"
+msgstr "EXERCISES"
+
+#: /View/Users/index.ctp:20
+msgid "edit"
+msgstr "Edit"
+
+#: /View/Users/index.ctp:27
+msgid "my program"
+msgstr "MY PROGRAM"
+
+#: /View/Users/index.ctp:55
 msgid "favorite exercise"
 msgstr "FAVORITE EXERCISE"

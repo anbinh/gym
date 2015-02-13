@@ -5,6 +5,7 @@ var app = angular.module('App', ['ngMaterial','ngDropdowns'])
 app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
     $scope.programs = 'PROGRAMS';
     $scope.exercises = 'EXERCIES';
+    $scope.isProgramSelect = true;
     $scope.ddSelectOptions = [
         {
             text: 'ENG',
@@ -48,7 +49,31 @@ app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
     {
         console.log($link);
     };
+    $scope.programClick = function(){
+        window.location='/Programs/index';
+    };
+    $scope.exerciseClick = function(){
+        window.location='/Exercises/index';
+    };
+    /*$scope.click = function(param){
+        console.log('param is', param);
+        window.location = "/" + param;
+    };*/
 });
+
+/*app.directive('header', function(){
+    var curr = curr_page;
+    return {
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        scope: {
+            active: '=',
+            click: '&'
+        },
+        template: '<a hide-sm ng-click="active = $id; click({param: param});" ng-class="{bottomline: $id === active}" ng-transclude class="header_text"></a>'
+    }
+});*/
 
 app.controller('ListController', ['$scope', '$http', function($scope, $http){
     $scope.results=[];
@@ -69,7 +94,6 @@ app.controller('ListController', ['$scope', '$http', function($scope, $http){
         }).error(function(error){
             console.log(error);
         });
-
     };
 }
 ]);

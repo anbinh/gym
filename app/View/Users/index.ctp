@@ -28,34 +28,24 @@
                     <div class="list_tile" class="row">
                         <div class="program_box tile_1">
                             <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png" class="img-responsive"></div>
-                            <div style="text-align:center; padding-top:10px;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
+                            <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                             <div class="program_text_name"> SHAPE MODELING</div>
                         </div>
                         <div class="program_box tile_2">
                             <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                            <div style="text-align:center; padding-top:10px;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
+                            <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
                             <div class="program_text_name"> LOOSING WEIGHT </div>
                         </div>
                         <div class="program_box tile_3">
                             <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                            <div style="text-align:center; padding-top:10px;"><img class="img_program" src="/img/images/burn.png"></div>
+                            <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/burn.png"></div>
                             <div class="program_text_name"> LOOSING WEIGHT </div>
                         </div> 
                         <div class="program_box tile_1">
                             <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png" class="img-responsive"></div>
-                            <div style="text-align:center; padding-top:10px;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
+                            <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                             <div class="program_text_name"> SHAPE MODELING</div>
                         </div>
-                        <!--<div class="program_box tile_2 col-lg-4 col-sm-6 col-xs-12">
-                            <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                            <div style="text-align:center; padding-top:10px;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div>
-                        <div class="program_box tile_3 col-lg-4 col-sm-6 col-xs-12">
-                            <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                            <div style="text-align:center; padding-top:10px;"><img class="img_program" src="/img/images/burn.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div>  -->                                              
                     </div>
                 </div>
             </div>
@@ -64,41 +54,42 @@
             <div flex>
                 <div layout="row" class="my_program_text" layout-align="start center"><p><?php echo __('favorite exercise')?></p></div>
                 <div class="list_tile" class="row">
-                    <div class="program_box col-lg-4 col-sm-6 col-xs-12">   
+                    <div class="program_box">
                         <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
-                    </div>   
-                    <div class="program_box col-lg-4 col-sm-6 col-xs-12">                        
-                        <div class="user_favorite_exercise_img" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
+                    </div>
+                    <div class="program_box">
+                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
-                    </div>   
-                    <div class="program_box col-lg-4 col-sm-6 col-xs-12">                        
-                        <div class="user_favorite_exercise_img" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
+                    </div>
+                    <div class="program_box">
+                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
-                    </div> 
-                    <div class="program_box col-lg-4 col-sm-6 col-xs-12">                        
-                        <div class="user_favorite_exercise_img" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
+                    </div>
+                    <div class="program_box">
+                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
-                    </div> 
-                    <div class="program_box col-lg-4 col-sm-6 col-xs-12">                        
-                        <div class="user_favorite_exercise_img" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
+                    </div>
+                    <div class="program_box">
+                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
-                    </div> 
-                    <div class="program_box col-lg-4 col-sm-6 col-xs-12">                        
-                        <div class="user_favorite_exercise_img" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
+                    </div>
+                    <div class="program_box">
+                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
-                    </div> 
-                    <div class="program_box col-lg-4 col-sm-6 col-xs-12">                        
-                        <div class="user_favorite_exercise_img" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
+                    </div>
+                    <div class="program_box">
+                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
-                    </div>     
+                    </div>
+
                 </div>                
             </div>
         </div>
