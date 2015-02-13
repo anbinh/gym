@@ -65,8 +65,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                        dropdown-item-label="text">
                         <img src="/img/images/menu.png">
                     </md-button>
-                    <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;">{{programs}}</md-button>
-                    <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;">{{exercises}}</md-button>                    
+
+                    <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;"><span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Programs')? 'bottomline' : '' : ''?>"><?php echo __('program header')?></span></md-button>
+                    <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="center center">
                     <md-button class="logo" ng-click="logoClick()"> <img class="logo_img" src="/img/images/logo.png"></md-button>

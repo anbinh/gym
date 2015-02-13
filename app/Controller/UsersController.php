@@ -97,7 +97,13 @@ class UsersController extends AppController {
                 $fullname = explode(" ", $profile['fullname']);
                 if (count($fullname) > 1) {
                     $profile['firstname'] = $fullname[0];
-                    $profile['lastname'] = $fullname[1];
+                    $profile['lastname'] = "";
+                    foreach($fullname as $key => $value)
+                    {
+                        if($key == 0)
+                            continue;
+                        $profile['lastname'] .= $value." ";
+                    }
                 } else
                     $profile['firstname'] = $profile['fullname'];
             }

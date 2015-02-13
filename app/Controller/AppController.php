@@ -19,6 +19,14 @@ class AppController extends Controller {
         $this->setLang($this->language); // call protected method setLang with the lang shortcode
         $this->set('language',$this->language); // send $this->language value to the view
 
+        if($this->params['controller'] == 'Exercises')
+        {
+            $this->set('curr_page', 'Exercises');
+        }elseif($this->params['controller'] == 'Programs')
+        {
+            $this->set('curr_page', 'Programs');
+        }
+
         if($this->params['controller'] != 'Users' || $this->params['action'] != 'signup'){
             if($this->params['action'] != 'registerByUsername')
             {
