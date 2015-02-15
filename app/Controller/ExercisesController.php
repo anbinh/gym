@@ -7,7 +7,9 @@ class ExercisesController  extends AppController {
     	$this->set('exercises', $exercises);
     }
 
-    public function detail($id){    	
+    public function detail($id){    
+    	$exercise_item = $this->Exercise->find('first', array('conditions'=>array('id'=>$id)));
+    	//pr($exercise_item);
     	return $this->render('exercise_item');
     }
 }
