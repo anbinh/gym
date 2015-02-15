@@ -345,12 +345,15 @@ input[type=date]{
     background-size: 240px 230px;
     background-repeat: no-repeat;
     background-size: contain;
-    min-height: 240px;
+    min-height: 176px;
+    min-width: 176px;
     background-position: center center;
+    margin:2px; 
+    border:1px solid #ccc;
 }
-.user_favorite_exercise{
+/*.user_favorite_exercise{
     min-height: 240px;
-}
+}*/
 .avatar img{
     border: solid lightgray 4px;
 }
@@ -396,21 +399,26 @@ input[type=date]{
 }
 
 /* Ipad Ngang*/
-@media (max-width: 1024px) {
+@media (min-width: 1020px) and (max-width: 1040px) {
     .program_box{
         width: 33%;
     }
-
+    .user_favorite_exercise_img{
+        min-height: 236px !important;
+    }
 }
 
 /* Ipad Doc */
-@media (max-width: 768px) {
+@media (min-width: 750px) and (max-width: 790px) {
     .UserIndexLeftContent{
         width: 460px;
     }
     .program_box{
         width: 50%;
     }
+    .user_favorite_exercise_img{
+        min-height: 228px !important;
+    }        
 }
 
 /* Iphone Ngang */
@@ -419,7 +427,8 @@ input[type=date]{
         width: 50%;
     }
     .user_favorite_exercise_img{
-        background-size: cover;
+        background-size: cover;        
+        min-height: 234px !important;
     }    
     .username{
         font-weight:bold; padding-left:10px;
@@ -433,6 +442,10 @@ input[type=date]{
     }     
     .UserIndexLeftContent{
         width: 100%;
+    }
+    .exercise_box{
+        width:50% !important;
+        float: left;
     }
 }
 
@@ -512,4 +525,21 @@ input[type=date]{
     .UserIndexLeftContent{
         width: 100%;
     }   
+    .exercise_box{
+        width:240px !important;      
+    }
+    .user_favorite_exercise_img{
+        margin-left: 4px !important;
+    }
+}
+
+.exercise_box{
+    padding: 0px !important;
+}
+
+.musculation{
+    padding: 20px;
+}
+.stretching{
+    padding: 20px;
 }

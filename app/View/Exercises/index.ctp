@@ -1,47 +1,27 @@
 <div layout="row">
-    <div ng-controller="ExercisesController" class="UserIndexLeftContent">
-        <div layout="column" class="info_user">
-
-        </div>
+    <span class="musculation">Musculation</span>
+    <span class="stretching">Stretching</span>
+    <select>
+        <option>Part</option>
+    </select>
+</div>
+<div layout="row">
+    <div ng-controller="ExercisesController" flex>       
         <div layout="row">
             <div flex>
                 <div class="list_tile" class="row">
-                    <div class="program_box">
-                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                            <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                        </div>
-                    </div>
-                    <div class="program_box">
-                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                            <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                        </div>
-                    </div>
-                    <div class="program_box">
-                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                            <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                        </div>
-                    </div>
-                    <div class="program_box">
-                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                            <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                        </div>
-                    </div>
-                    <div class="program_box">
-                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                            <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                        </div>
-                    </div>
-                    <div class="program_box">
-                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                            <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                        </div>
-                    </div>
-                    <div class="program_box">
-                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                            <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                        </div>
-                    </div>
-
+                    <?php foreach($exercises as $item):?>
+                        <!-- <div class="program_box">
+                            <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
+                                <div style="padding:5px;"><img src="/img/images/star.png"></div>
+                            </div>
+                        </div> -->
+                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="user_favorite_exercise_img" flex style="background-image: url('/img/images/6035.jpeg')">
+                                <div style="padding:5px;"><img src="/img/images/star.png"></div>
+                            </div>
+                        </div>                   
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
