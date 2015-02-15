@@ -382,6 +382,13 @@ input[type=date]{
     float: left;
 
 }
+
+.foo_exercise{
+    margin: 15px auto auto 30px;
+}
+.foo_exercise p {
+    font-size: 14px;
+}
 /* Desktop */
 @media (max-width: 1280px) {
     .toolbar-title {
@@ -530,6 +537,57 @@ input[type=date]{
     }
     .user_favorite_exercise_img{
         margin-left: 4px !important;
+    }
+    .titre_right{
+        font-size: 14px;
+        font-weight: strong;
+    }
+    .region{
+        padding-left: 5px;
+        border-bottom: 1px solid #ccc;
+    }
+    .region p{
+        font-size:12px;
+        color: #ccc;
+    }
+
+    .position{
+        padding-left: 10px;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    .position ul{
+        padding-left: 13px;
+    }
+    .position ul li{
+        font-size: 11px;
+    }
+    .position p{
+        font-size: 12px;
+    }
+
+    .execution{
+        padding-left: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    .execution ul{
+        padding-left: 13px;
+    }
+    .execution ul li{
+        font-size: 11px;
+    }
+    .execution p{
+        font-size: 12px;
+    }
+
+    .foo_exercise{
+        margin: 15px auto auto 10px;
+    }
+    .foo_exercise strong {
+        font-size: 12px;
+    }
+    .foo_exercise p {
+        font-size: 11px;
     }
 }
 

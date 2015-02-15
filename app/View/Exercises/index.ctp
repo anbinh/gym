@@ -15,12 +15,16 @@
                             <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                                 <div style="padding:5px;"><img src="/img/images/star.png"></div>
                             </div>
-                        </div> -->
-                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                            <div class="user_favorite_exercise_img" flex style="background-image: url('/img/images/6035.jpeg')">
-                                <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                            </div>
-                        </div>                   
+                        </div> -->                        
+                            <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                                <div class="user_favorite_exercise_img" flex >
+                                    <div style="padding:5px;"><img src="/img/images/star.png"></div>
+                                    <a href="/Exercises/detail/<?php echo $item['Exercise']['id'];?>">
+                                        <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                        <p style="text-align:center;">sample text</p>
+                                    </a>
+                                </div>
+                            </div>                                           
                     <?php endforeach;?>
                 </div>
             </div>
