@@ -6,26 +6,48 @@
     </select>
 </div>
 <div layout="row">
-    <div ng-controller="ExercisesController" flex>       
+    <div ng-controller="ExerciseController" flex>
         <div layout="row">
             <div flex>
                 <div class="list_tile" class="row">
-                    <?php foreach($exercises as $item):?>
-                        <!-- <div class="program_box">
-                            <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                                <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                            </div>
-                        </div> -->                        
-                            <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                                <div class="user_favorite_exercise_img" flex >
-                                    <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                                    <a href="/Exercises/detail/<?php echo $item['Exercise']['id'];?>">
-                                        <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
-                                        <p style="text-align:center;">sample text</p>
-                                    </a>
+                    <div ng-repeat="data in exercises_like">
+                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="user_favorite_exercise_img" flex >
+                                <div ng-switch="switchPoint === data.Exercise.id" ng-click="toggle(data.Exercise.id)">
+                                    <div style="padding:5px;" ng-switch-when="true">
+                                        <img class="img_start" src="{{ImgStartLike}}">
+                                    </div>
+                                    <div style="padding:5px;" ng-switch-when="false">
+                                        <img class="img_start" src="{{ImgStartUnLike}}">
+                                    </div>
                                 </div>
-                            </div>                                           
-                    <?php endforeach;?>
+                                <!-- <div ><img src="/img/images/star.png"></div>-->
+                                <a href="/Exercises/detail/{{data.Exercise.id}}">
+                                    <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                    <p style="text-align:center;">sample text</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-repeat="data in exercises_unlike">
+                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="user_favorite_exercise_img" flex >
+                                <div ng-switch="switchPoint === data.Exercise.id" ng-click="toggle(data.Exercise.id)">
+                                    <div style="padding:5px;" ng-switch-when="true">
+                                        <img class="img_start" src="{{ImgStartLike}}">
+                                    </div>
+                                    <div style="padding:5px;" ng-switch-when="false">
+                                        <img class="img_start" src="{{ImgStartUnLike}}">
+                                    </div>
+                                </div>
+                               <!-- <div ><img src="/img/images/star.png"></div>-->
+                                <a href="/Exercises/detail/{{data.Exercise.id}}">
+                                    <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                    <p style="text-align:center;">sample text</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

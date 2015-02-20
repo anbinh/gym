@@ -601,3 +601,7 @@ input[type=date]{
 .stretching{
     padding: 20px;
 }
+
+.img_start{
+    cursor: pointer;
+}

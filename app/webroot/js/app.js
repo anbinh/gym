@@ -140,7 +140,7 @@ app.controller('UserProfileController', function($scope,$http){
     };
 });
 
-app.controller('LoginController', function($scope,$http,$location){    
+app.controller('signupController', function($scope,$http,$location){
     $scope.formData = {};
     $scope.message = '';
     $scope.next = function() {
@@ -157,6 +157,61 @@ app.controller('LoginController', function($scope,$http,$location){
                  window.location='edit_profile';
             })
     };
+    $scope.signIn = function() {
+        window.location='login';
+    }
+});
+
+app.controller('LoginController', function($scope,$http,$location){
+    $scope.formData = {};
+    $scope.message = '';
+    $scope.signIn = function() {
+        var data = $scope.formData;
+        console.log(data);
+        $http({
+            method  : 'POST',
+            url     : '/Users/loginByEmailAndPassword.json',
+            data    : $scope.formData,  // pass in data as strings
+            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+        })
+            .success(function(data) {
+                console.log(data);
+                if(data.message == 'success')
+                    window.location='index';
+                else
+                    $scope.message = data.message;
+            })
+    };
+    $scope.signUp = function() {
+        window.location='signup';
+    }
+});
+
+app.controller('ExerciseController', function($scope,$http){
+    $http.get('/Exercises/getListExercise.json')
+        .then(function(res){
+            console.log(res);
+            $scope.exercises_like = res.data.exercises_like;
+            $scope.exercises_unlike = res.data.exercises_unlike;
+        });
+    $scope.ImgStartLike= "/img/images/star.png";
+    $scope.ImgStartUnLike= "/img/images/star_unlike.png";
+    $scope.switchPoint = true;
+    $scope.toggle= function(id) {
+        console.log(id);
+        $scope.switchPoint= id;
+    };
+    /*$scope.followBtnImgUrl = '/img/images/star.png'
+    $scope.merchants = [{imgUrl: "/img/images/star.png", name:"star"},
+        {imgUrl: "/img/images/star_unlike.png", name: "star_unlike"}];
+    $scope.toggleImage = function(merchant) {
+        if(merchant.imgUrl === $scope.followBtnImgUrl) {
+            merchant.imgUrl = merchant.$backupUrl;
+        } else {
+            merchant.$backupUrl = merchant.imgUrl;
+            merchant.imgUrl = $scope.followBtnImgUrl;
+        }
+    };*/
 });
 
 

@@ -27,7 +27,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?php
 		echo $this->Html->css(array(
-            'style?123456',
+            'style',
             'bower_components/angular-material/angular-material.min',
             'bower_components/angular-dropdown/angular-dropdowns',
             'bootstrap.min',
@@ -39,7 +39,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-animate/angular-animate.min',
             'bower_components/angular-aria/angular-aria.min',
             'bower_components/angular-material/angular-material.min',
-            'app?123456',
+            'app',
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-1.11.2.min',
             'bootstrap.min'
@@ -83,7 +83,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <?php if(isset($auth_user)):?>
                             <a href="/Users/logout"><img src="/img/images/picto.png"/> <p1>Sign out</p1></a>
                         <?php else:?>                                                        
-                            <a href="/Users/signup"><img src="/img/images/picto.png"/> <p1>Sign in</p1></a>
+                            <a href="/Users/login"><img src="/img/images/picto.png"/> <p1>Sign in</p1></a>
                         <?php endif;?>                        
                         </div>
                     </md-button>
@@ -115,6 +115,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</p>
 		</div>
 	</div>
-	<?php //echo $this->element('sql_dump'); ?>
+	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
