@@ -192,30 +192,61 @@ app.controller('ExerciseController', function($scope,$http){
         .then(function(res){
             console.log(res);
             $scope.exercises_like = res.data.exercises_like;
-            $scope.exercises_unlike = res.data.exercises_unlike;
+            $scope.exercises_list = res.data.exercises_list;
         });
-    $scope.ImgStartLike= "/img/images/star.png";
-    $scope.ImgStartUnLike= "/img/images/star_unlike.png";
-    $scope.switchPoint = true;
-    $scope.toggle= function(id) {
-        console.log(id);
-        $scope.switchPoint= id;
-    };
-    /*$scope.followBtnImgUrl = '/img/images/star.png'
-    $scope.merchants = [{imgUrl: "/img/images/star.png", name:"star"},
-        {imgUrl: "/img/images/star_unlike.png", name: "star_unlike"}];
-    $scope.toggleImage = function(merchant) {
-        if(merchant.imgUrl === $scope.followBtnImgUrl) {
-            merchant.imgUrl = merchant.$backupUrl;
-        } else {
-            merchant.$backupUrl = merchant.imgUrl;
-            merchant.imgUrl = $scope.followBtnImgUrl;
+    $scope.deselectFriend = function( exercise ) {
+        var index = $scope.exercises_like.indexOf( exercise );
+        if ( index >= 0 ) {
+            $scope.exercises_like.splice( index, 1 );
         }
-    };*/
+    };
+    $scope.selectFriend = function( exercise ) {
+        $scope.exercises_like.push( exercise );
+    };
 });
 
+app.controller('ItemExerciseController', function($scope,$http,$filter){
+    $scope.toggleSelection = function() {
+        $scope.isSelected = ! $scope.isSelected;
+        if ( $scope.isSelected ) {
+            $http.get('/Exercises/likeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
+                .then(function(res){
+                    console.log(res);
+                });
+            $scope.selectFriend( $scope.exercise );
+        } else {
+            $http.get('/Exercises/unlikeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
+                .then(function(res){
+                    console.log(res);
+                });
+            $scope.deselectFriend( $scope.exercise );
+        }
+    };
+    $scope.getImage = function() {
+        if ( $scope.isSelected ) {
+            return "/img/images/star.png";
+        } else {
+            return "/img/images/star_blank.png";
+        }
+    };
 
+    if ( $filter('checkExerciseIsLike')($scope.exercises_like, $scope.exercise.Exercise.id))
+        $scope.isSelected = true;
+    else
+        $scope.isSelected = false;
+});
 
+app.filter('checkExerciseIsLike', function() {
+    return function(input, id) {
+        var i=0, len=input.length;
+        for (i; i<len; i++) {
+            if (input[i].Exercise.id == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+});
 
 
 }());

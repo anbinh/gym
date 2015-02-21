@@ -602,6 +602,10 @@ input[type=date]{
     padding: 20px;
 }
 
-.img_start{
+.img_star{
     cursor: pointer;
+}
+
+.img_star_container{
+    padding:7px;
 }

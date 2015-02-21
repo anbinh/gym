@@ -10,40 +10,18 @@
         <div layout="row">
             <div flex>
                 <div class="list_tile" class="row">
-                    <div ng-repeat="data in exercises_like">
+                    <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
                         <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
                             <div class="user_favorite_exercise_img" flex >
-                                <div ng-switch="switchPoint === data.Exercise.id" ng-click="toggle(data.Exercise.id)">
-                                    <div style="padding:5px;" ng-switch-when="true">
-                                        <img class="img_start" src="{{ImgStartLike}}">
-                                    </div>
-                                    <div style="padding:5px;" ng-switch-when="false">
-                                        <img class="img_start" src="{{ImgStartUnLike}}">
-                                    </div>
+                                <div class="img_star_container">
+                                    <img class="img_star"
+                                         ng-src="{{getImage()}}"
+                                         ng-click="toggleSelection()"
+                                        >
                                 </div>
-                                <!-- <div ><img src="/img/images/star.png"></div>-->
-                                <a href="/Exercises/detail/{{data.Exercise.id}}">
+                                <a href="/Exercises/detail/{{exercise.Exercise.id}}">
                                     <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
-                                    <p style="text-align:center;">sample text</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div ng-repeat="data in exercises_unlike">
-                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                            <div class="user_favorite_exercise_img" flex >
-                                <div ng-switch="switchPoint === data.Exercise.id" ng-click="toggle(data.Exercise.id)">
-                                    <div style="padding:5px;" ng-switch-when="true">
-                                        <img class="img_start" src="{{ImgStartLike}}">
-                                    </div>
-                                    <div style="padding:5px;" ng-switch-when="false">
-                                        <img class="img_start" src="{{ImgStartUnLike}}">
-                                    </div>
-                                </div>
-                               <!-- <div ><img src="/img/images/star.png"></div>-->
-                                <a href="/Exercises/detail/{{data.Exercise.id}}">
-                                    <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
-                                    <p style="text-align:center;">sample text</p>
+                                    <p style="text-align:center;">{{exercise.Exercise.care}}</p>
                                 </a>
                             </div>
                         </div>

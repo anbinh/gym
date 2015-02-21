@@ -14,20 +14,21 @@ class ExercisesController  extends AppController {
         $user = $this->getAuthentication();
         $user = $this->User->findById($user['id']);
         $user = $user['User'];
-        // find all exercise this user unlike
-        $search = array(
+        // find all exercise
+        /*$search = array(
             '_id' => array('$nin' => $user['favorite_exercises'])
         );
-        $exercises_unlike = $this->Exercise->find('all',array('conditions'=>$search));
+        $exercises_list = $this->Exercise->find('all',array('conditions'=>$search));*/
+        $exercises_list = $this->Exercise->find('all',array('limit' => 16));
         // find all exercise this user like
         $search = array(
             '_id' => array('$in' => $user['favorite_exercises'])
         );
         $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));
         $this->set(array(
-            'exercises_unlike' => $exercises_unlike,
+            'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,
-            '_serialize' => array('exercises_unlike','exercises_like')
+            '_serialize' => array('exercises_list','exercises_like')
         ));
     }
 
