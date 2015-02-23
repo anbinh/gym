@@ -6,7 +6,6 @@ class UsersController extends AppController {
 
 
     public function index() {
-
         $auth = $this->getAuthentication();
         //$auth = $this->User->findById("54cf959dacc46c81b036a729");
         //$auth = $auth['User'];
@@ -22,6 +21,33 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         $this->set('user', $this->User->findById($user_id));
+    }
+
+    public function login() {
+
+    }
+
+    public function loginByEmailAndPassword(){
+        $data = $this->request->input('json_decode',true);
+        $user = $this->User->find("first",array( "conditions" => array(
+                'email' => $data['email'],'password'=>$data['password']))
+        );
+        if($user)
+        {
+            $this->setAuthentication($user['User']);
+            $this->set(array(
+                'message' => 'success',
+                '_serialize' => array('message')
+            ));
+        }
+        else
+        {
+            $this->set(array(
+                'message' => 'Email or Password does not match !',
+                '_serialize' => array('message')
+            ));
+        }
+
     }
 
     public function signup(){
@@ -79,7 +105,7 @@ class UsersController extends AppController {
         if($auth){
             $this->removeAuthentication();
         }
-        $this->redirect('/Users/signup');
+        $this->redirect('/Users/login');
     }
 
     public function edit_profile(){

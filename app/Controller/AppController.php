@@ -3,8 +3,9 @@ App::uses('Controller', 'Controller');
 
 class AppController extends Controller {
 
-    public $components = array('Session');
-    public $helpers = array('Html', 'Form', 'Text');
+    public $components = array('Session', 'RequestHandler', 'Cookie');
+    public $helpers = array('Form', 'Html', 'Js', 'Time');
+    public $uses = array('User');
 
     var $language, $availableLanguages;
     public $auth_user;
@@ -27,14 +28,14 @@ class AppController extends Controller {
             $this->set('curr_page', 'Programs');
         }
 
-        if($this->params['controller'] != 'Users' || $this->params['action'] != 'signup'){
-            if($this->params['action'] != 'registerByUsername')
+        if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup')){
+            if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword')
             {
                 $auth_user = $this->getAuthentication();
                 if($auth_user == null) {
                     $is_register = $this->getCurrentRegister();
                     if($is_register == null)
-                        $this->redirect('/Users/signup');
+                        $this->redirect('/Users/login');
                 }
                 else {
                     $this->set('auth_user',$auth_user);

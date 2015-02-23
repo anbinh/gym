@@ -6,26 +6,26 @@
     </select>
 </div>
 <div layout="row">
-    <div ng-controller="ExercisesController" flex>       
+    <div ng-controller="ExerciseController" flex>
         <div layout="row">
             <div flex>
                 <div class="list_tile" class="row">
-                    <?php foreach($exercises as $item):?>
-                        <!-- <div class="program_box">
-                            <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
-                                <div style="padding:5px;"><img src="/img/images/star.png"></div>
-                            </div>
-                        </div> -->                        
-                            <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                                <div class="user_favorite_exercise_img" flex >
-                                    <div class="check_favorite"><img id="vote_star_<?php echo $item['Exercise']['id'];?>" src="/img/images/star01.png"></div>
-                                    <a href="/Exercises/detail/<?php echo $item['Exercise']['id'];?>">
-                                        <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
-                                        <p style="text-align:center;">sample text</p>
-                                    </a>
+                    <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
+                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="user_favorite_exercise_img" flex >
+                                <div class="img_star_container">
+                                    <img class="img_star"
+                                         ng-src="{{getImage()}}"
+                                         ng-click="toggleSelection()"
+                                        >
                                 </div>
-                            </div>                                           
-                    <?php endforeach;?>
+                                <a href="/Exercises/detail/{{exercise.Exercise.id}}">
+                                    <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                    <p style="text-align:center;">{{exercise.Exercise.care}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

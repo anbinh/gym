@@ -140,7 +140,7 @@ app.controller('UserProfileController', function($scope,$http){
     };
 });
 
-app.controller('LoginController', function($scope,$http,$location){    
+app.controller('signupController', function($scope,$http,$location){
     $scope.formData = {};
     $scope.message = '';
     $scope.next = function() {
@@ -157,10 +157,96 @@ app.controller('LoginController', function($scope,$http,$location){
                  window.location='edit_profile';
             })
     };
+    $scope.signIn = function() {
+        window.location='login';
+    }
 });
 
+app.controller('LoginController', function($scope,$http,$location){
+    $scope.formData = {};
+    $scope.message = '';
+    $scope.signIn = function() {
+        var data = $scope.formData;
+        console.log(data);
+        $http({
+            method  : 'POST',
+            url     : '/Users/loginByEmailAndPassword.json',
+            data    : $scope.formData,  // pass in data as strings
+            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+        })
+            .success(function(data) {
+                console.log(data);
+                if(data.message == 'success')
+                    window.location='index';
+                else
+                    $scope.message = data.message;
+            })
+    };
+    $scope.signUp = function() {
+        window.location='signup';
+    }
+});
 
+app.controller('ExerciseController', function($scope,$http){
+    $http.get('/Exercises/getListExercise.json')
+        .then(function(res){
+            console.log(res);
+            $scope.exercises_like = res.data.exercises_like;
+            $scope.exercises_list = res.data.exercises_list;
+        });
+    $scope.deselectFriend = function( exercise ) {
+        var index = $scope.exercises_like.indexOf( exercise );
+        if ( index >= 0 ) {
+            $scope.exercises_like.splice( index, 1 );
+        }
+    };
+    $scope.selectFriend = function( exercise ) {
+        $scope.exercises_like.push( exercise );
+    };
+});
 
+app.controller('ItemExerciseController', function($scope,$http,$filter){
+    $scope.toggleSelection = function() {
+        $scope.isSelected = ! $scope.isSelected;
+        if ( $scope.isSelected ) {
+            $http.get('/Exercises/likeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
+                .then(function(res){
+                    console.log(res);
+                });
+            $scope.selectFriend( $scope.exercise );
+        } else {
+            $http.get('/Exercises/unlikeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
+                .then(function(res){
+                    console.log(res);
+                });
+            $scope.deselectFriend( $scope.exercise );
+        }
+    };
+    $scope.getImage = function() {
+        if ( $scope.isSelected ) {
+            return "/img/images/star.png";
+        } else {
+            return "/img/images/star_blank.png";
+        }
+    };
+
+    if ( $filter('checkExerciseIsLike')($scope.exercises_like, $scope.exercise.Exercise.id))
+        $scope.isSelected = true;
+    else
+        $scope.isSelected = false;
+});
+
+app.filter('checkExerciseIsLike', function() {
+    return function(input, id) {
+        var i=0, len=input.length;
+        for (i; i<len; i++) {
+            if (input[i].Exercise.id == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+});
 
 
 }());

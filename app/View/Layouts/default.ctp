@@ -83,7 +83,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <?php if(isset($auth_user)):?>
                             <a href="/Users/logout"><img src="/img/images/picto.png"/> <p1>Sign out</p1></a>
                         <?php else:?>                                                        
-                            <a href="/Users/signup"><img src="/img/images/picto.png"/> <p1>Sign in</p1></a>
+                            <a href="/Users/login"><img src="/img/images/picto.png"/> <p1>Sign in</p1></a>
                         <?php endif;?>                        
                         </div>
                     </md-button>
@@ -115,6 +115,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</p>
 		</div>
 	</div>
-	<?php //echo $this->element('sql_dump'); ?>
+	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

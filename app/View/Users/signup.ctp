@@ -52,7 +52,7 @@ padding: 15px 0 15px 0;
 	margin-left: -26px;
 }
 </style>
-<div ng-controller="LoginController">
+<div ng-controller="signupController">
 	<div id="messages" ng-show="message">{{ message }}</div>
 	<div layout="row" layout-align="center center">
 		<div class="main_content_register arrow_box">
@@ -87,7 +87,7 @@ padding: 15px 0 15px 0;
 	</div>
 	<div layout="row" layout-align="center center">
 		<div flex="50" class="back_to_login">
-			<a href="#">Already Registerred? Log In now!</a>
+			<a href="javascript:void(0);" ng-click="signIn()">Already Registerred? Log In now!</a>
 		</div>
 	</div>
 </div>
