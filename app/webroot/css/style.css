@@ -601,3 +601,9 @@ input[type=date]{
 .stretching{
     padding: 20px;
 }
+.check_favorite{
+    padding:5px;
+}
+.check_favorite:hover{
+    cursor: pointer;
+}
