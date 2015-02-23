@@ -187,13 +187,26 @@ app.controller('LoginController', function($scope,$http,$location){
     }
 });
 
-app.controller('ExerciseController', function($scope,$http){
+app.controller('ExerciseController', function($scope,$http,$filter){
+    $scope.exercises_list_backup = [];
+    $scope.exercises_beforefilter_backup = [];
+    $scope.exercises_list = [];
+    // get list exercise
     $http.get('/Exercises/getListExercise.json')
         .then(function(res){
             console.log(res);
             $scope.exercises_like = res.data.exercises_like;
-            $scope.exercises_list = res.data.exercises_list;
+            $scope.exercises_list = angular.copy(res.data.exercises_list);
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
         });
+    // get list part body for select
+    $http.get('/Exercises/getListBodyPart.json')
+        .then(function(res){
+            console.log(res);
+            $scope.body_part_items = res.data.body_list;
+        });
+
+    // like star handler
     $scope.deselectFriend = function( exercise ) {
         var index = $scope.exercises_like.indexOf( exercise );
         if ( index >= 0 ) {
@@ -203,6 +216,115 @@ app.controller('ExerciseController', function($scope,$http){
     $scope.selectFriend = function( exercise ) {
         $scope.exercises_like.push( exercise );
     };
+
+    // filter action click
+    $scope.muscleClick = function() {
+        if($scope.isMuscleSelected)
+        {
+            $scope.isMuscleSelected = false;
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+            $scope.exercises_list = angular.copy($scope.exercises_list_backup);
+        }
+        else
+        {
+            var temp = angular.copy($scope.exercises_list_backup);
+            $scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,1));
+            $scope.isMuscleSelected = true;
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+        }
+        $scope.exercises_beforefilter_backup = angular.copy($scope.exercises_list);
+        $scope.selectedBodyPartItem = "";
+    }
+    $scope.stretchingClick = function() {
+        if($scope.isStretchingSelected)
+        {
+            $scope.isMuscleSelected = false;
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+            $scope.exercises_list = angular.copy($scope.exercises_list_backup);
+        }
+        else
+        {
+            var temp = angular.copy($scope.exercises_list_backup);
+            $scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,2));
+            $scope.isMuscleSelected = false;
+            $scope.isStretchingSelected = true;
+            $scope.isCardioSelected = false;
+        }
+        $scope.exercises_beforefilter_backup = angular.copy($scope.exercises_list);
+        $scope.selectedBodyPartItem = "";
+    }
+    $scope.cardioClick = function() {
+        if($scope.isCardioSelected)
+        {
+            $scope.isMuscleSelected = false;
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+            $scope.exercises_list = angular.copy($scope.exercises_list_backup);
+        }
+        else
+        {
+            var temp = angular.copy($scope.exercises_list_backup);
+            $scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,3));
+            $scope.isMuscleSelected = false;
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = true;
+        }
+        $scope.exercises_beforefilter_backup = angular.copy($scope.exercises_list);
+        $scope.selectedBodyPartItem = "";
+    }
+    $scope.isMuscleSelected = false;
+    $scope.isStretchingSelected = false;
+    $scope.isCardioSelected = false;
+
+    // select body part change
+    $scope.changedValue=function(item){
+        if(item.length > 0)
+        {
+            var temp = angular.copy($scope.exercises_beforefilter_backup);
+            if($scope.isMuscleSelected)
+            {
+                $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,1,item));
+                return;
+            }
+            if($scope.isStretchingSelected)
+            {
+                $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,2,item));
+                return;
+            }
+            if($scope.isCardioSelected)
+            {
+                $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,3,item));
+                return;
+            }
+            $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,4,item));
+            return;
+        }
+        else
+        {
+            var mode = 0;
+            if($scope.isMuscleSelected)
+                mode = 1;
+            if($scope.isStretchingSelected)
+                mode = 2;
+            if($scope.isCardioSelected)
+                mode = 3;
+            if(mode != 0)
+            {
+                var temp = angular.copy($scope.exercises_list_backup);
+                $scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,mode));
+            }
+            else
+            {
+                $scope.exercises_list = angular.copy($scope.exercises_list_backup);
+            }
+            return;
+        }
+    }
+
+
 });
 
 app.controller('ItemExerciseController', function($scope,$http,$filter){
@@ -245,6 +367,100 @@ app.filter('checkExerciseIsLike', function() {
             }
         }
         return false;
+    }
+});
+
+app.filter('exerciseOptionFilter', function() {
+    return function(input , mode) {
+        var i=0, len=input.length;
+        var option = "";
+        var offset = 0;
+        switch (mode)
+        {
+            case 1:
+                option = "body_building";
+                break;
+            case 2:
+                option = "stretching";
+                break;
+            case 3:
+                option = "cardio";
+                break;
+            default :
+                return input;
+        }
+        for (i; i<len; i++) {
+            if (input[i - offset].Exercise[option].length == 0 || input[i - offset].Exercise[option] == null) {
+                input.splice( i - offset, 1 );
+                offset++ ;
+            }
+        }
+        return input;
+    }
+});
+
+app.filter('exerciseOptionBodyPartFilter', function() {
+    return function(input , mode , body_part_id) {
+        var i=0, len=input.length;
+        var option = "";
+        var offset = 0;
+        switch (mode)
+        {
+            case 1:
+                option = "body_building";
+                break;
+            case 2:
+                option = "stretching";
+                break;
+            case 3:
+                option = "cardio";
+                break;
+            default :
+                break;
+        }
+
+        if(option == "")
+        {
+            for (i; i<len; i++) {
+                console.log(i);
+                if (input[i - offset].Exercise["body_building"].length > 0)
+                {
+                    if(input[i - offset].Exercise["body_building"][0]['bodypart'] == body_part_id)
+                    {
+                        continue;
+                    }
+                }
+                if (input[i - offset].Exercise["stretching"].length > 0)
+                {
+                    if(input[i - offset].Exercise["stretching"][0]['bodypart'] == body_part_id)
+                    {
+                        continue;
+                    }
+                }
+                if (input[i - offset].Exercise["cardio"].length > 0)
+                {
+                    if(input[i - offset].Exercise["cardio"][0]['bodypart'] == body_part_id)
+                    {
+                        continue;
+                    }
+                }
+                input.splice( i - offset, 1 );
+                offset++ ;
+            }
+        }
+        else
+        {
+            for (i; i<len; i++) {
+                console.log(i);
+                if (input[i - offset].Exercise[option].length > 0) {
+                    if (input[i - offset].Exercise[option][0]['bodypart'] != body_part_id) {
+                        input.splice(i - offset, 1);
+                        offset++;
+                    }
+                }
+            }
+        }
+        return input;
     }
 });
 

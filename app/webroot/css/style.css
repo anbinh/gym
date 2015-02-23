@@ -609,3 +609,8 @@ input[type=date]{
 .img_star_container{
     padding:7px;
 }
+
+.exercise_filter{
+    text-transform: none !important;
+    font-weight: bold !important;
+}
