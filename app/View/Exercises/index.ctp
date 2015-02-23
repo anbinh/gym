@@ -18,7 +18,7 @@
                         </div> -->                        
                             <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
                                 <div class="user_favorite_exercise_img" flex >
-                                    <div style="padding:5px;"><img src="/img/images/star.png"></div>
+                                    <div class="check_favorite"><img id="vote_star_<?php echo $item['Exercise']['id'];?>" src="/img/images/star01.png"></div>
                                     <a href="/Exercises/detail/<?php echo $item['Exercise']['id'];?>">
                                         <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
                                         <p style="text-align:center;">sample text</p>
@@ -45,3 +45,18 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">   
+    $('.check_favorite').on('click', function(){
+        var oldSrc = $(this).children().attr('src');    
+        var id_vote_img = $(this).children().attr('id');
+        var newSrc = '';
+
+        if(oldSrc.indexOf('star01') >= 0){
+           newSrc = '<img src="/img/images/star.png">';                    
+        }else{
+           newSrc = '<img src="/img/images/star01.png">';
+        }  
+        $('img[id="'+id_vote_img+'" src="' + oldSrc + '"]').attr('src', newSrc);     
+    });    
+</script>

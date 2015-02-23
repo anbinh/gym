@@ -3,8 +3,10 @@ App::uses('AppController', 'Controller');
 class ExercisesController  extends AppController {
     //var $layout = "template";
     public function index(){
-    	$exercises = $this->Exercise->find('all');
-    	$this->set('exercises', $exercises);
+        $conditions = array('muscle.0' => array('$exists'=>true));
+        $exercises = $this->Exercise->find('all',array('conditions'=>$conditions));
+            //pr($exercises);
+        $this->set('exercises', $exercises);
     }
 
     public function detail($id){    

@@ -95,8 +95,8 @@ padding: 15px 0 15px 0;
 <script type="text/javascript">
 FB.init({
 
-    appId: '607706552694436', 
-    //appId: '609280322537059', // gym.miratik.com account test
+    //appId: '607706552694436', 
+    appId: '609280322537059', // gym.miratik.com account test
     status: true,
     cookie: true,
     oauth: true
