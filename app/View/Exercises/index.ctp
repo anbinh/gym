@@ -19,10 +19,6 @@
             <option value=""><?php echo __('Part')?></option>
             <option ng-repeat="item in body_part_items" value="{{item.id}}">{{item.name}}</option>
         </select>
-        <!--<select  ng-model="blisterPackTemplateSelected" ng-change="changedValue(blisterPackTemplateSelected)"
-                 data-ng-options="blisterPackTemplate as blisterPackTemplate.name for blisterPackTemplate in blisterPackTemplates">
-            <option value=""></option>
-        </select>-->
     </div>
     <div layout="row">
         <div flex>

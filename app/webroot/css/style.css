@@ -614,3 +614,11 @@ input[type=date]{
     text-transform: none !important;
     font-weight: bold !important;
 }
+
+.check_favorite{
+    padding:5px;
+}
+.check_favorite:hover{
+    cursor: pointer;
+}
+
