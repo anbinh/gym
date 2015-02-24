@@ -108,20 +108,42 @@ app.controller('UserController', function($scope) {
 });
 
 app.controller('UserProfileController', function($scope,$http){
+    $scope.formData = [];
     $scope.message = '';
-    $scope.formData = {
-        'gender' : gender,
-        'username' : login,
-        'firstname' : firstname,
-        'lastname' : lastname,
-        'email' : email,
-        'language' : language,
-        'address' : address,
-        'birthday' : new Date(birthday),
-        'receive_promote' : receive_promote,
-        'id' : id
-    };
-    $scope.save = function() {
+    $scope.isHasPicture = false;
+    $scope.imgURL = "/img/images/add_picture_icon.png";
+    if(id != 0)
+    {
+        $http.get('/apis/getUserProfileById/' + id +'.json')
+            .then(function(res){
+                console.log(res);
+                $scope.formData = res.data.user;
+                $scope.formData.birthday = new Date(res.data.user.birthday);
+                if($scope.formData.picture.length > 0)
+                {
+                    $scope.isHasPicture = true;
+                    $scope.imgURL = $scope.formData.picture;
+                }
+                /*$scope.formData.receive_promote = true;*/
+            });
+    }
+    else
+    {
+        $http.get('/apis/getRegisterUser.json')
+            .then(function(res){
+                console.log(res);
+                $scope.formData = res.data.user;
+            });
+    }
+
+    $scope.getClassBtnAddPicture= function(isHasPicture){
+        if(isHasPicture)
+            return "hasProfilePicture";
+        else
+            return "hasNoPicture";
+    }
+
+    /*$scope.save = function() {
         var data = $scope.formData;
         console.log(data);
         $http({
@@ -134,7 +156,7 @@ app.controller('UserProfileController', function($scope,$http){
                 console.log(data);
                 window.location='index';
             });
-    };
+    };*/
     $scope.cancel = function() {
         window.location='index';
     };

@@ -262,6 +262,7 @@ margin: 0 30px 25px 30px;
 .input_row_register{
     height: 35px;
 }
+
 .input_row_register_fb{
     height: 40px;
    margin: 15px 0 15px 0;
@@ -621,4 +622,47 @@ input[type=date]{
 .check_favorite:hover{
     cursor: pointer;
 }
+
+.input_textbox{
+    min-width: 250px;
+}
+
+.add_picture_box{
+    border: solid 4px #C5E3D1;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.add_picture_img{
+/*    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;*/
+    height: 180px;
+    width: 180px;
+}
+
+.btn_add_picture{
+    margin-top: 60px;
+    text-decoration: underline;
+    color: #000000;
+}
+
+#upload{
+    display: none;
+}​
+
+.hasNoPicture{
+    padding-top: 110px;
+}
+
+.hasProfilePicture{
+    padding-top: 210px !important;
+}
+
+
 

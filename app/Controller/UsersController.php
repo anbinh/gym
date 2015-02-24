@@ -139,47 +139,36 @@ class UsersController extends AppController {
     }
 
     public function save_profile() {
-        $data = $this->request->input('json_decode',true);
-        if($data['id'] != 0)
-        {
-            $user['User']['id'] = $data['id'];
-            $user_old = $this->User->findById($data['id']);
-            if(isset($user_old['User']['favorite_exercises']))
-                $user['User']['favorite_exercises'] = $user_old['User']['favorite_exercises'];
+        if ($this->data) {
+            $data=$this->data;
+            if($_FILES){
+                if($_FILES['picture']['name']){
+                    $path = $_FILES['picture']['name'];
+                    $ext = pathinfo($path, PATHINFO_EXTENSION);
+                    $sFileName = $this->generateRandomString().'.'.$ext;
+                    $file_uri = '/upload/image/'.$sFileName;
+                    $data['User']['picture'] = $file_uri;
+                    move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri);
+                }
+            }
+            if(isset($data['User']['id']))
+            {
+                $user = $this->User->findById($data['User']['id']);
+                if($user)
+                {
+                    $data['User']['password'] = $user['User']['password'];
+                    $data['User']['favorite_exercises'] = $user['User']['favorite_exercises'];
+                    $data['User']['role'] = $user['User']['role'];
+                    $data['User']['assigned_programs'] = $user['User']['assigned_programs'];
+                }
+            }
+            if(isset($data['User']['receive_promote']))
+                $data['User']['receive_promote'] = true;
             else
-                $user['User']['favorite_exercises'] = array();
-            if(isset($user_old['User']['role']))
-                $user['User']['role'] = $user_old['User']['role'];
-            else
-                $user['User']['role'] = array();
-            if(isset($user_old['User']['assigned_programs']))
-                $user['User']['assigned_programs'] = $user_old['User']['assigned_programs'];
-            else
-                $user['User']['assigned_programs'] = array();
+                $data['User']['receive_promote'] = false;
+            $this->User->save($data);
         }
-        $user['User']['login'] =  $data['username'];
-        $user['User']['birthday'] =  $data['birthday'];
-        $user['User']['email'] =  $data['email'];
-        $user['User']['firstname'] =  $data['firstname'];
-        $user['User']['lastname'] =  $data['lastname'];
-        $user['User']['password'] =  md5('miratik');
-        $user['User']['sex'] =  $data['gender'];
-        $user['User']['address']['street'] =  $data['address'];
-        $user['User']['language'] =  $data['language'];
-        $user['User']['receive_promote'] =  $data['receive_promote'];
-        $this->User->save($user);
-
-        if($data['id'] == 0)
-        {
-            $user['User']['id'] = $this->User->getLastInsertId();
-            $this->saveCurrentRegister(null);
-        }
-        $this->setAuthentication($user['User']);
-        $message = 'Save Profile Success';
-        $this->set(array(
-            'message' => $message,
-            '_serialize' => array('message')
-        ));
+        $this->redirect('/Users/index');
     }
 
     public function registerByUsername()

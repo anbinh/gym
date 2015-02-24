@@ -21,5 +21,6 @@ class User extends AppModel {
         'language' => array('type'=>'String'),
         'receive_promote' => array('type'=>'Bool'),
         'fb_id' => array('type'=>'String'),
+        'picture' => array('type'=>'String'),
     );
 }
