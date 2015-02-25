@@ -3,8 +3,8 @@ App::uses('AppController', 'Controller');
 class ExercisesController  extends AppController {
     //var $layout = "template";
     public function index(){
-        /*$exercises = $this->Exercise->find('all');
-        $this->set('exercises', $exercises);*/
+        $exercises = $this->Exercise->find('all');
+        $this->set('exercises', $exercises);
 
         //pr((string)$test['User']['favorite_exercises'][0]->{'$id'});
     }
