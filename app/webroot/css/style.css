@@ -285,6 +285,7 @@ margin: 0 30px 25px 30px;
     padding: 0.6em 3.5em !important;    
     text-decoration: none;
     color: white;
+    border-radius: 0 !important;
 }
 .btn_change_cancel{
     background: rgb(195, 204, 240);
@@ -292,6 +293,7 @@ margin: 0 30px 25px 30px;
     padding: 0.6em 3.5em !important;   
     text-decoration: none;
     color: white;
+    border-radius: 0 !important;
 }
 .input_row_save_cancel{
     padding: 20px 0 20px 0;
@@ -413,7 +415,7 @@ input[type=date]{
     }
     .user_favorite_exercise_img{
         min-height: 236px !important;
-    }
+    }    
 }
 
 /* Ipad Doc */
@@ -426,7 +428,10 @@ input[type=date]{
     }
     .user_favorite_exercise_img{
         min-height: 228px !important;
-    }        
+    }      
+    .input_textbox{
+        width: 210px !important;
+    }
 }
 
 /* Iphone Ngang */
@@ -458,7 +463,10 @@ input[type=date]{
 }
 
 /* Iphone Doc*/
-@media (max-width: 400px) {    
+@media (max-width: 400px) {   
+    .input_textbox{
+        width: 200px !important;
+    } 
     .program_box{
         width: 100%;
     }
@@ -624,7 +632,7 @@ input[type=date]{
 }
 
 .input_textbox{
-    min-width: 250px;
+    width: 250px;
 }
 
 .add_picture_box{
@@ -663,6 +671,11 @@ input[type=date]{
 .hasProfilePicture{
     padding-top: 210px !important;
 }
+
+.picture_box{
+    height: 250px;
+}
+
 
 
 

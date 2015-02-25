@@ -658,3 +658,65 @@ Stack Trace:
 #1 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #2 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2015-02-25 04:09:26 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /js/bootstrap-formhelpers-languages.js
+Stack Trace:
+#0 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-02-25 04:11:01 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /js/bootstrap-formhelpers-languages.js
+Stack Trace:
+#0 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-02-25 08:21:02 Error: [MissingActionException] Action UsersController::language() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'language',
+)
+Request URL: /Users/language.json
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-02-25 08:23:50 Error: [MissingActionException] Action UsersController::language() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'language',
+)
+Request URL: /Users/language.json
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-02-25 08:25:23 Error: [MissingActionException] Action UsersController::json() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'json',
+)
+Request URL: /Users/json/language.json
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-02-25 08:27:42 Error: [MissingActionException] Action UsersController::~() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => '~',
+)
+Request URL: /Users/~/json/language.json
+Stack Trace:
+#0 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\p4\gym\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 D:\p4\gym\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

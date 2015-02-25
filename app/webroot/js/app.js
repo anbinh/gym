@@ -108,7 +108,12 @@ app.controller('UserController', function($scope) {
 });
 
 app.controller('UserProfileController', function($scope,$http){
+    $http.get('/language.json').success(function(response) {
+        $scope.options = response;
+    });
+
     $scope.formData = [];
+    $scope.formData.language = {name: "English", value:"English"};
     $scope.message = '';
     $scope.isHasPicture = false;
     $scope.imgURL = "/img/images/add_picture_icon.png";
@@ -117,6 +122,7 @@ app.controller('UserProfileController', function($scope,$http){
         $http.get('/apis/getUserProfileById/' + id +'.json')
             .then(function(res){
                 console.log(res);
+                
                 $scope.formData = res.data.user;
                 $scope.formData.birthday = new Date(res.data.user.birthday);
                 if($scope.formData.picture.length > 0)
@@ -124,7 +130,7 @@ app.controller('UserProfileController', function($scope,$http){
                     $scope.isHasPicture = true;
                     $scope.imgURL = $scope.formData.picture;
                 }
-                /*$scope.formData.receive_promote = true;*/
+                $scope.formData.language = {name: res.data.user.language, value:res.data.user.language};
             });
     }
     else
@@ -133,6 +139,7 @@ app.controller('UserProfileController', function($scope,$http){
             .then(function(res){
                 console.log(res);
                 $scope.formData = res.data.user;
+                $scope.formData.birthday = new Date(res.data.user.birthday);
             });
     }
 
@@ -142,21 +149,7 @@ app.controller('UserProfileController', function($scope,$http){
         else
             return "hasNoPicture";
     }
-
-    /*$scope.save = function() {
-        var data = $scope.formData;
-        console.log(data);
-        $http({
-            method  : 'POST',
-            url     : '/Users/save_profile.json',            
-            data    : $scope.formData,  // pass in data as strings
-            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
-        })
-            .success(function(data) {
-                console.log(data);
-                window.location='index';
-            });
-    };*/
+    
     $scope.cancel = function() {
         window.location='index';
     };
