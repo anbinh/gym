@@ -168,7 +168,7 @@ margin: 0 30px 25px 30px;
 }
 .username{
     font-weight:bold; padding-left:10px;
-    font-size: xx-large;
+    font-size: 18pt;
 }
 .edit_profile{
     padding-top: 10px;
@@ -189,7 +189,7 @@ margin: 0 30px 25px 30px;
     font-weight: bold;
 }
 .my_program{
-    border-bottom:1px solid #ccc; padding-bottom:10px;
+    padding-bottom:10px;
 }
 .my_program_text{
     height:40px; padding-left: 10px;
@@ -199,19 +199,19 @@ margin: 0 30px 25px 30px;
     font-weight: bold;
 }
 .list_tile{
-    min-height:240px;
+    
 }
 .tile_1{
     background-color:#d90947; 
-    border: 5px solid #FFFFFF;    
+    
 }
 .tile_2{
     background-color:#a4c408;
-    border: 5px solid #FFFFFF;    
+     
 }
 .tile_3{
     background-color:#5aa09c;
-    border: 5px solid #FFFFFF;    
+   
 }
 .main_content_register{
     text-align: center;
@@ -262,6 +262,7 @@ margin: 0 30px 25px 30px;
 .input_row_register{
     height: 35px;
 }
+
 .input_row_register_fb{
     height: 40px;
    margin: 15px 0 15px 0;
@@ -284,6 +285,7 @@ margin: 0 30px 25px 30px;
     padding: 0.6em 3.5em !important;    
     text-decoration: none;
     color: white;
+    border-radius: 0 !important;
 }
 .btn_change_cancel{
     background: rgb(195, 204, 240);
@@ -291,6 +293,7 @@ margin: 0 30px 25px 30px;
     padding: 0.6em 3.5em !important;   
     text-decoration: none;
     color: white;
+    border-radius: 0 !important;
 }
 .input_row_save_cancel{
     padding: 20px 0 20px 0;
@@ -363,9 +366,11 @@ input[type=date]{
 }
 
 .program_text_name{
-    text-align:center;
-    font-size:12px; 
-    font-weight:bold;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    left: 20%;
 }
 
 .delete_icon_program{
@@ -374,6 +379,7 @@ input[type=date]{
 
 .img_program{
     height: 130px;
+    margin-top:10px;
 }
 
 .program_box{
@@ -412,6 +418,13 @@ input[type=date]{
     }
     .user_favorite_exercise_img{
         min-height: 236px !important;
+    }    
+    .program_text_name{       
+        left: 25%;
+    }
+    .img_program{
+        height: auto;
+        margin-top:25px;
     }
 }
 
@@ -425,7 +438,17 @@ input[type=date]{
     }
     .user_favorite_exercise_img{
         min-height: 228px !important;
-    }        
+    }      
+    .input_textbox{
+        width: 210px !important;
+    }
+    .program_text_name{       
+        left: 25%;
+    }
+    .img_program{
+        height: auto;
+        margin-top:25px;
+    }
 }
 
 /* Iphone Ngang */
@@ -442,7 +465,7 @@ input[type=date]{
         font-size: large;
     }
     .list_tile{
-        min-height:240px;
+        
     }
     .menu-right{
         display: none !important;
@@ -454,10 +477,20 @@ input[type=date]{
         width:50% !important;
         float: left;
     }
+    .program_text_name{       
+        left: 25%;
+    }
+    .img_program{
+        height: auto;
+        margin-top:25px;
+    }
 }
 
 /* Iphone Doc*/
-@media (max-width: 400px) {    
+@media (max-width: 400px) {   
+    .input_textbox{
+        width: 200px !important;
+    } 
     .program_box{
         width: 100%;
     }
@@ -589,6 +622,13 @@ input[type=date]{
     .foo_exercise p {
         font-size: 11px;
     }
+    .program_text_name{       
+        left: 25%;
+    }
+    .img_program{
+        height: auto;
+        margin-top:25px;
+    }
 }
 
 .exercise_box{
@@ -609,10 +649,106 @@ input[type=date]{
 .img_star_container{
     padding:7px;
 }
+
+.exercise_filter{
+    text-transform: none !important;
+    font-weight: bold !important;
 }
+
 .check_favorite{
     padding:5px;
 }
 .check_favorite:hover{
     cursor: pointer;
 }
+
+.input_textbox{
+    width: 250px;
+}
+
+.add_picture_box{
+    border: solid 4px #C5E3D1;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.add_picture_img{
+/*    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;*/
+    height: 180px;
+    width: 180px;
+}
+
+.btn_add_picture{
+    margin-top: 60px;
+    text-decoration: underline;
+    color: #000000;
+}
+
+#upload{
+    display: none;
+}​
+
+.hasNoPicture{
+    padding-top: 110px;
+}
+
+.hasProfilePicture{
+    padding-top: 210px !important;
+}
+
+.picture_box{
+    height: 250px;
+}
+
+.arrow_box_left_menu {
+    position: relative;
+    background: #ffffff;
+    border: 6px solid #c2e1f5;
+}
+.arrow_box_left_menu:after, .arrow_box_left_menu:before {
+    bottom: 100%;   
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box_left_menu:after {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #c2e1f5;
+    border-width: 20px;
+    margin-left: -20px;
+}
+.arrow_box_left_menu:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #c2e1f5;
+    border-width: 28px;
+    margin-left: -28px;
+}
+ul.arrow_box_left_menu li{
+    list-style: none;
+    margin-left: -40px;
+    padding-left: 10px;
+}
+ul.arrow_box_left_menu li:hover{
+    background: #c2e1f5;
+}
+.arrow_down {
+    width: 0; 
+    height: 0; 
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;    
+    border-top: 8px solid black;
+    margin-right: 5px;
+}
+
+

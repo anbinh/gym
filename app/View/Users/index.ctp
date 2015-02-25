@@ -13,7 +13,7 @@
             </div>
             <div layout="row" style="height:120px;">
                 <div style="padding:8px 0 0 190px;" flex>
-                    <div><img src="/img/images/facebook_icon.png"/> &nbsp&nbsp <img src="/img/images/twitter_icon.png"/></div>
+                    <!-- <div><img src="/img/images/facebook_icon.png"/> &nbsp&nbsp <img src="/img/images/twitter_icon.png"/></div> -->
                     <div class="fullname">{{user.name}}</div>
                     <div class="city">{{user.city}}</div>
                     <div class="language">{{user.street}}</div>
@@ -22,11 +22,35 @@
             </div>
         </div>
         <div layout="row">
-            <div flex>
+            <div flex style="padding-bottom: 10px; border-bottom: 1px solid #ccc;">
                 <div class="my_program">
-                    <div class="my_program_text" layout="row" layout-align="start center"><p><?php echo __('my program')?></p></div>
+                    <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_down"></div><p><?php echo __('my program')?></p><a style="padding-left:10px;" href="#"> <?php echo __('edit')?></a></div>
                     <div class="list_tile" class="row">
-                        <div class="program_box tile_1">
+                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="user_favorite_exercise_img tile_1" >                              
+                                <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
+                                <div class="program_text_name"> SHAPE MODELING</div>
+                            </div>                            
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="user_favorite_exercise_img tile_2"  >                              
+                                <div style="text-align:center;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
+                                <div class="program_text_name"> LOOSING WEIGHT </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="user_favorite_exercise_img tile_3"  >                              
+                                <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
+                                <div class="program_text_name"> LOOSING WEIGHT </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="user_favorite_exercise_img tile_1"  >                              
+                                <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
+                                <div class="program_text_name"> SHAPE MODELING</div>
+                            </div>                            
+                        </div>
+                       <!--  <div class="program_box tile_1">
                             <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png" class="img-responsive"></div>
                             <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                             <div class="program_text_name"> SHAPE MODELING</div>
@@ -45,16 +69,72 @@
                             <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png" class="img-responsive"></div>
                             <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                             <div class="program_text_name"> SHAPE MODELING</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
         <div layout="row">
             <div flex>
-                <div layout="row" class="my_program_text" layout-align="start center"><p><?php echo __('favorite exercise')?></p></div>
+                <div layout="row" class="my_program_text" layout-align="start center"><div class="arrow_down"></div><p><?php echo __('favorite exercise')?></p></div>
                 <div class="list_tile" class="row">
-                    <div class="program_box">
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img" flex >
+                            <div class="img_star_container">
+                                <img class="img_star"
+                                     ng-src="{{getImage()}}"
+                                     ng-click="toggleSelection()"
+                                    >
+                            </div>
+                            <a href="/Exercises/detail/{{exercise.Exercise.id}}">
+                                <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                <p style="text-align:center;">{{exercise.Exercise.care}}</p>
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img" flex >
+                            <div class="img_star_container">
+                                <img class="img_star"
+                                     ng-src="{{getImage()}}"
+                                     ng-click="toggleSelection()"
+                                    >
+                            </div>
+                            <a href="/Exercises/detail/{{exercise.Exercise.id}}">
+                                <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                <p style="text-align:center;">{{exercise.Exercise.care}}</p>
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img" flex >
+                            <div class="img_star_container">
+                                <img class="img_star"
+                                     ng-src="{{getImage()}}"
+                                     ng-click="toggleSelection()"
+                                    >
+                            </div>
+                            <a href="/Exercises/detail/{{exercise.Exercise.id}}">
+                                <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                <p style="text-align:center;">{{exercise.Exercise.care}}</p>
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img" flex >
+                            <div class="img_star_container">
+                                <img class="img_star"
+                                     ng-src="{{getImage()}}"
+                                     ng-click="toggleSelection()"
+                                    >
+                            </div>
+                            <a href="/Exercises/detail/{{exercise.Exercise.id}}">
+                                <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                <p style="text-align:center;">{{exercise.Exercise.care}}</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div class="program_box">
                         <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
@@ -88,7 +168,7 @@
                         <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;background-image: url('/img/images/6035.jpeg')">
                             <div style="padding:5px;"><img src="/img/images/star.png"></div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>                
             </div>
