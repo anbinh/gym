@@ -16,7 +16,7 @@ class ApisController extends AppController {
 
     public function getRegisterUser()
     {
-        $auth = $this->getAuthentication();
+        $auth = $this->getCurrentRegister();
         $this->set(array(
             'user' => $auth,
             '_serialize' => array('user')

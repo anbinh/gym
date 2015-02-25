@@ -111,12 +111,7 @@ class UsersController extends AppController {
     public function edit_profile(){
 
         $auth = $this->getAuthentication();
-        if($auth)
-        {
-
-            $profile = $auth;
-        }
-        else {
+        /*else {
             $profile = $this->getCurrentRegister();
             // register mode
             if ($profile) {
@@ -133,9 +128,9 @@ class UsersController extends AppController {
                 } else
                     $profile['firstname'] = $profile['fullname'];
             }
-        }
+        }*/
             
-        $this->set('profile',$profile);
+        $this->set('profile',$auth);
     }
 
     public function save_profile() {
@@ -151,7 +146,7 @@ class UsersController extends AppController {
                     move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri);
                 }
             }
-            if(isset($data['User']['id']))
+            if($data['User']['id'] != 0)
             {
                 $user = $this->User->findById($data['User']['id']);
                 if($user)
@@ -162,11 +157,21 @@ class UsersController extends AppController {
                     $data['User']['assigned_programs'] = $user['User']['assigned_programs'];
                 }
             }
+            else
+            {
+                $data['User']['password'] = "demo";
+                $data['User']['favorite_exercises'] = array();
+                $data['User']['role'] = array();
+                $data['User']['assigned_programs'] = array();
+            }
             if(isset($data['User']['receive_promote']))
                 $data['User']['receive_promote'] = true;
             else
                 $data['User']['receive_promote'] = false;
             $this->User->save($data);
+            if($data['User']['id'] == 0)
+                $data['User']['id'] = $this->User->getLastInsertId();
+            $this->setAuthentication($data['User']);
         }
         $this->redirect('/Users/index');
     }
