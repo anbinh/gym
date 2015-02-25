@@ -1,12 +1,18 @@
 <?php
 App::uses('AppController', 'Controller');
 class ExercisesController  extends AppController {
-    //var $layout = "template";
     public function index(){
-        $exercises = $this->Exercise->find('all');
-        $this->set('exercises', $exercises);
 
-        //pr((string)$test['User']['favorite_exercises'][0]->{'$id'});
+    }
+
+    public function test($id)
+    {
+        $conditions = array('body_building.bodypart' => $id);
+        $exercises_list = $this->Exercise->find('all',array('conditions'=>$conditions));
+        $this->set(array(
+            'exercises_list' => $exercises_list,
+            '_serialize' => array('exercises_list')
+        ));
     }
 
     public function getListExercise(){
@@ -19,7 +25,7 @@ class ExercisesController  extends AppController {
             '_id' => array('$nin' => $user['favorite_exercises'])
         );
         $exercises_list = $this->Exercise->find('all',array('conditions'=>$search));*/
-        $exercises_list = $this->Exercise->find('all',array('limit' => 16));
+        $exercises_list = $this->Exercise->find('all');
         // find all exercise this user like
         $search = array(
             '_id' => array('$in' => $user['favorite_exercises'])
@@ -29,6 +35,21 @@ class ExercisesController  extends AppController {
             'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,
             '_serialize' => array('exercises_list','exercises_like')
+        ));
+    }
+
+    public function getListBodyPart(){
+        $body_list = $this->BodyPart->find('all');
+        $list = array();
+        foreach($body_list as $item)
+        {
+            $temp['id'] = $item['BodyPart']['body_part_id'];
+            $temp['name'] = $item['BodyPart']['description'];
+            array_push($list,$temp);
+        }
+        $this->set(array(
+            'body_list' => $list,
+            '_serialize' => array('body_list')
         ));
     }
 
