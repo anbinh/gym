@@ -7,7 +7,7 @@
         margin: 0;
         border: 2px solid #e6e6e6;
         border-radius: 3px;
-        width: 250px;
+        width: 220px;
         margin: auto;
     }
     .register_input_bottom_border {
@@ -90,8 +90,8 @@
 
 <script type="text/javascript">
     FB.init({
-        appId: '607706552694436',
-        //appId: '609280322537059', // gym.miratik.com account test
+        //appId: '607706552694436',
+        appId: '609280322537059', // gym.miratik.com account test
         status: true,
         cookie: true,
         oauth: true

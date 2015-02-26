@@ -5,7 +5,7 @@ class AppController extends Controller {
 
     public $components = array('Session', 'RequestHandler', 'Cookie');
     public $helpers = array('Form', 'Html', 'Js', 'Time');
-    public $uses = array('User');
+    public $uses = array('User','BodyPart');
 
     var $language, $availableLanguages;
     public $auth_user;
@@ -73,5 +73,15 @@ class AppController extends Controller {
 
     function getCurrentRegister() {
         return $this->Session->read('GYM_CURRENT_REGISTER');
+    }
+
+    function generateRandomString ($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
     }
 }
