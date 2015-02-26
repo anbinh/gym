@@ -87,12 +87,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <?php endif;?>                        
                         </div>
                     </md-button>
-                    <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"
-                               dropdown-menu="ddSelectOptions"
-                               dropdown-model="ddSelectSelected"
-                               dropdown-item-label="text">
-                        <img src="/img/images/earth.png"/> <?php echo $language;?>
-                    </md-button>
+                    <div class="language_menu">
+                        <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"
+                                   dropdown-menu="ddSelectOptions"
+                                   dropdown-model="ddSelectSelected"
+                                   dropdown-item-label="text">
+                            <img src="/img/images/earth.png"/> <?php echo $language;?>
+                        </md-button>
+                    </div>                    
                 </div>
             </md-toolbar>
 		</div>

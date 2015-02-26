@@ -54,38 +54,54 @@
 </style>
 <div ng-controller="LoginController">
     <div layout="row" layout-align="center center">
-        <div class="main_content_register arrow_box">
-            <h1 class="sub">Sign In</h1>
-            <h2 class="sub_nice_to_meet_you">Nice To Meet You</h2>
-            <a href="javascript:;" class="btn btn_facebook">Sign in with Facebook</a>
-            <h4 style="margin-bottom:0;">or</h4>
+        <div class="main_content_register arrow_box">            
+            <h4 style="font-weight:bold; margin-left:26px;">Login</h4>
+            <a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>
+            <h4 style="margin-left:15px;">or</h4>
             <form class="frm_register" name="signup_form">
+                <fieldset class="register_input_set1" style="float:left; border:0 !important;">
+                    <div>
+                        <div style="max-width:15px; background:black; margin: 18px 16px 16px 0;">
+                            <img src="/img/images/icon_user_white.png" class="img-responsive">
+                        </div>                                               
+                    </div>
+                    <div>
+                        <div style="max-width:15px; margin: 35px 16px 16px 0;">
+                            <img src="/img/images/lock.png" class="img-responsive">
+                        </div>                        
+                    </div>
+                </fieldset>
                 <fieldset class="register_input_set">
-                    <div class="register_input_bottom_border">
+                    <div class="register_input_bottom_border">                                            
                         <input type="email" required placeholder="Email" ng-model="formData.email" name="email">
                         <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
                             <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
                         </div>
                     </div>
-                    <div>
+                    <div>                                        
                         <input type="password" required placeholder="Password" ng-model="formData.password" name="password">
                         <div class="error-container" ng-show="signup_form.password.$dirty && signup_form.password.$invalid">
                             <small class="error" ng-show="signup_form.password.$error.required">Please input the password</small>
                         </div>
                     </div>
+
                 </fieldset>
+                <div>
+                    <a href="javascript:void(0);" ng-click='signIn()' class="btn btn_sign_in" ng-disabled="signup_form.$invalid">SIGN IN</a>
+                </div>
                 <div>
                     <small class="error">{{ message }}</small>
                 </div>
             </form>
-            <a href="javascript:void(0);" ng-click='signIn()' class="btn btn_next_register" ng-disabled="signup_form.$invalid">SIGN IN</a>
+            <h5 style="margin-left:15px; color: #615F5F; font-size:15px;">Forgot password</h5>
+            <h5 style="margin-left:15px; font-size:15px;"><span style="color: #615F5F;">Don't have an account?</span> <a style="color:black;" href="/Users/signup">Sign Up now!</a></h5>
         </div>
     </div>
-    <div layout="row" layout-align="center center">
+   <!--  <div layout="row" layout-align="center center">
         <div flex="50" class="back_to_login">
             <a href="javascript:void(0);" ng-click='signUp()'>Sign Up Here!</a>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <script type="text/javascript">
