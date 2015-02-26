@@ -39,7 +39,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-animate/angular-animate.min',
             'bower_components/angular-aria/angular-aria.min',
             'bower_components/angular-material/angular-material.min',
-            'app',
+            'app?12345',
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-1.11.2.min',
             'bootstrap.min'
