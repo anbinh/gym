@@ -95,38 +95,40 @@ padding: 15px 0 15px 0;
 <script type="text/javascript">
 FB.init({
 
-    //appId: '607706552694436', 
-    appId: '609280322537059', // gym.miratik.com account test
+    appId: '607706552694436',
+    //appId: '609280322537059', // gym.miratik.com account test
     status: true,
     cookie: true,
     oauth: true
 });
 var userData = null;
 
-function add_User(fb_info){  
-		$.ajax({
-  		type: 'post',
-		url : "/Users/signup",
-		data:{				
-			id: fb_info.id,
-			firstname: fb_info.first_name,
+function add_User(fb_info){
+    $.ajax({
+        type: 'post',
+        url : "/Apis/signup.json",
+        data:{
+            id: fb_info.id,
+            firstname: fb_info.first_name,
             lastname: fb_info.last_name,
-			gender: fb_info.gender,
-			link: fb_info.link,
-			locale: fb_info.locale,
+            name:fb_info.name,
+            gender: fb_info.gender,
+            link: fb_info.link,
+            locale: fb_info.locale,
             email: fb_info.email
-		},			
-		beforeSend:function() {				
-		},
-		success : function(data) {
-			 window.location.href = '/Users';
-		},
-		complete: function(){					
-		},
-		error : function(request, error) {
-			alert('error1');
-		}
-	});
+        },
+        beforeSend:function() {
+        },
+        success : function(data) {
+            console.log(data);
+            window.location.href = '/Users';
+        },
+        complete: function(){
+        },
+        error : function(request, error) {
+            alert('error1');
+        }
+    });
 }
 function login()
 {	
