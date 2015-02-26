@@ -24,10 +24,11 @@
         <div layout="row">
             <div flex style="padding-bottom: 10px; border-bottom: 1px solid #ccc;">
                 <div class="my_program">
-                    <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_down"></div><p><?php echo __('my program')?></p><a style="padding-left:10px;" href="#"> <?php echo __('edit')?></a></div>
+                    <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_down"></div><p><?php echo __('my program')?></p><a ng-click="editProgram()" style="padding-left:10px;" href="#"> <?php echo __('edit')?></a></div>
                     <div class="list_tile" class="row">
                         <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                            <div class="user_favorite_exercise_img tile_1" >                              
+                            <div class="user_favorite_exercise_img tile_1" >   
+                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                           
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                                 <div class="program_text_name"> SHAPE MODELING</div>
                             </div>                            

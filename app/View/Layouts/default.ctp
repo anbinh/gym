@@ -70,7 +70,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text exercise_menu <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="center center">
-                     <img class="logo_img" src="/img/images/logo.png">
+                    <?php if($language=="eng") :?>
+                     <img class="logo_img" src="/img/images/logo_eng.png">
+                 <?php else :?>
+                     <img class="logo_img" src="/img/images/logo_fr.png">
+                 <?php endif;?>
                 </div>
                 <div flex="33" layout="row" layout-align="end center" class="login_logout">                        
                     <div class="logout_menu">
