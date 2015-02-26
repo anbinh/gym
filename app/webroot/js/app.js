@@ -112,17 +112,51 @@ app.controller('ListController', ['$scope', '$http', function($scope, $http){
 }
 ]);
 
-app.controller('UserController', function($scope) {
-
-    $scope.user = {'name': name ,'city' : city , 'street' : street};
+app.controller('UserController', function($scope,$http) {
+    $scope.user = [];
+    $scope.exercises_list = [];
+    $scope.exercises_like = [];
+    $http.get('/apis/getUserProfileAndExerciseById/' + id +'.json')
+        .then(function(res){
+            console.log(res);
+            $scope.user = res.data.user;
+            $scope.exercises_list = angular.copy(res.data.exercises_like);
+            $scope.exercises_like = angular.copy(res.data.exercises_like);
+        });
     $scope.edit = function() {
         window.location='/Users/edit_profile';
     };
     $scope.editProgram = function() {
         $scope.isEdit = true;
     };
-    $scope.isEdit = false;
+    $scope.getImage = function() {
+        if ( $scope.isSelected ) {
+            return "/img/images/star.png";
+        } else {
+            return "/img/images/star_blank.png";
+        }
+    };
+    // like star handler
+    $scope.deselectFriend = function( exercise ) {
+        var index = $scope.exercises_like.indexOf( exercise );
+        if ( index >= 0 ) {
+            $scope.exercises_like.splice( index, 1 );
+        }
+    };
+    $scope.selectFriend = function( exercise ) {
+        $scope.exercises_like.push( exercise );
+    };
 
+    $scope.toggleMyProgram = function(){
+        $scope.isProgramShow = !$scope.isProgramShow;
+    };
+    $scope.toggleExercise = function(){
+        $scope.isExerciseShow = !$scope.isExerciseShow;
+    };
+    $scope.isExerciseShow = true;
+    $scope.isProgramShow = true;
+    $scope.isEdit = false;
+    $scope.isSelected = true;
 });
 
 app.controller('UserProfileController', function($scope,$http){
@@ -146,7 +180,7 @@ app.controller('UserProfileController', function($scope,$http){
     $scope.imgURL = "/img/images/add_picture_icon.png";
     if(id != 0)
     {
-        $http.get('/apis/getUserProfileById/' + id +'.json')
+        $http.get('/apis/getUserProfileAndExerciseById/' + id +'.json')
             .then(function(res){
                 console.log(res);
                 
@@ -165,8 +199,8 @@ app.controller('UserProfileController', function($scope,$http){
                     $scope.month = {name: splitBirthday[1], value:splitBirthday[1]};
                     $scope.year = {name: splitBirthday[2], value:splitBirthday[2]};                    
                 }
-                
-
+                $scope.exercises_list = angular.copy(res.data.exercises_like);
+                $scope.exercises_like = angular.copy(res.data.exercises_like);
             });
     }
     else
@@ -202,6 +236,38 @@ app.controller('UserProfileController', function($scope,$http){
     $scope.cancel = function() {
         window.location='index';
     };
+
+    $scope.editProgram = function() {
+        $scope.isEdit = true;
+    };
+    $scope.getImage = function() {
+        if ( $scope.isSelected ) {
+            return "/img/images/star.png";
+        } else {
+            return "/img/images/star_blank.png";
+        }
+    };
+    // like star handler
+    $scope.deselectFriend = function( exercise ) {
+        var index = $scope.exercises_like.indexOf( exercise );
+        if ( index >= 0 ) {
+            $scope.exercises_like.splice( index, 1 );
+        }
+    };
+    $scope.selectFriend = function( exercise ) {
+        $scope.exercises_like.push( exercise );
+    };
+
+    $scope.toggleMyProgram = function(){
+        $scope.isProgramShow = !$scope.isProgramShow;
+    };
+    $scope.toggleExercise = function(){
+        $scope.isExerciseShow = !$scope.isExerciseShow;
+    };
+    $scope.isExerciseShow = true;
+    $scope.isProgramShow = true;
+    $scope.isEdit = false;
+    $scope.isSelected = true;
 });
 
 app.controller('signupController', function($scope,$http,$location){

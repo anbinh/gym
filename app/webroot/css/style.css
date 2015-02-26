@@ -302,8 +302,11 @@ margin: 0 30px 25px 30px;
 }
 .edit_profile{
     padding-top: 10px;
+}
+.edit_text{
+    color: #000000;
+    text-decoration: underline !important;
     font-size: 12px;
-    font-weight: bold;
 }
 .language{
     font-size: 12px;
@@ -897,6 +900,19 @@ input[type=date]{
     margin-right: 5px;
 }
 
+.arrow_right {
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-left: 8px solid black;
+    margin-right: 5px;
+}
+
+.arrow_click{
+    cursor: pointer;
+}
+
 input:invalid {
     box-shadow: none;
 }
@@ -914,4 +930,11 @@ input:invalid {
     border: none;
 }
 
+.exercise_box_highlight{
+    border: solid 6px #000000;
+}
+
+.img_avatar{
+    width: 170px;
+}
 

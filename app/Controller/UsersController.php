@@ -50,54 +50,9 @@ class UsersController extends AppController {
 
     }
 
-    public function signup(){
-        $this->Session->delete('user_id');
-        if(isset($_POST['id'])){
-            $id = $_POST['id'];       
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
-            $gender = $_POST['gender'];
-            $email = $_POST['email'];
-            $link = $_POST['link']; 
-            $locale = $_POST['locale'];          
 
-            $user_ = $this->checkExistUser($id);
-            if(count($user_) > 0) // already have this user on db
-            {
-                $this->setAuthentication($user_['User']);
-            }
-            else
-            {
-                // user does not exist from fb
-                // add new info
-                $user['User']['firstname'] =  $firstname;
-                $user['User']['lastname'] =  $lastname;
-                $user['User']['email'] =  $email;
-                if($gender == 'male')
-                    $user['User']['sex'] =  1;
-                else
-                    $user['User']['sex'] = 0;
-                $user['User']['fb_id'] = $id;
-                $this->User->save($user);
-                $user['User']['id'] = $this->User->getLastInsertId();
-                $this->setAuthentication($user['User']);
-            }
-            $this->set(array(
-                'message' => $user_,
-                '_serialize' => array('message')
-            ));
-        }
 
-    }    
 
-    public function checkExistUser($fb_id)
-    {
-        // check fb_id from db
-        $user = $this->User->find('first',array(
-            'conditions' => array('User.fb_id' => $fb_id)
-        ));
-        return $user;
-    }
 
     public function logout(){
 

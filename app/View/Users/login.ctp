@@ -107,8 +107,8 @@
 
 <script type="text/javascript">
     FB.init({
-        //appId: '607706552694436',
-        appId: '609280322537059', // gym.miratik.com account test
+        appId: '607706552694436',
+        //appId: '609280322537059', // gym.miratik.com account test
         status: true,
         cookie: true,
         oauth: true
@@ -118,11 +118,12 @@
     function add_User(fb_info){
         $.ajax({
             type: 'post',
-            url : "/Users/signup",
+            url : "/Apis/signup.json",
             data:{
                 id: fb_info.id,
                 firstname: fb_info.first_name,
                 lastname: fb_info.last_name,
+                name:fb_info.name,
                 gender: fb_info.gender,
                 link: fb_info.link,
                 locale: fb_info.locale,
@@ -131,6 +132,7 @@
             beforeSend:function() {
             },
             success : function(data) {
+                console.log(data);
                 window.location.href = '/Users';
             },
             complete: function(){

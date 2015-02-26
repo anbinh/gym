@@ -5,7 +5,7 @@ class AppController extends Controller {
 
     public $components = array('Session', 'RequestHandler', 'Cookie');
     public $helpers = array('Form', 'Html', 'Js', 'Time');
-    public $uses = array('User','BodyPart');
+    public $uses = array('User','BodyPart','Exercise');
 
     var $language, $availableLanguages;
     public $auth_user;
@@ -30,21 +30,23 @@ class AppController extends Controller {
             $this->set('curr_page', 'Users');
         }
 
-        if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup')){
-            if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword')
-            {
-                $auth_user = $this->getAuthentication();
-                if($auth_user == null) {
-                    $is_register = $this->getCurrentRegister();
-                    if($is_register == null)
-                        $this->redirect('/Users/login');
+        if($this->params['controller'] != 'Apis'){
+            if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup')){
+                if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword')
+                {
+                    $auth_user = $this->getAuthentication();
+                    if($auth_user == null) {
+                        $is_register = $this->getCurrentRegister();
+                        if($is_register == null)
+                            $this->redirect('/Users/login');
+                    }
+                    else {
+                        $this->set('auth_user',$auth_user);
+                    }
                 }
-                else {
-                    $this->set('auth_user',$auth_user);
-                }
-            }
 
-        }        
+            }
+        }
     }
 
     protected function setLang($lang) { // protected method used to set the language
