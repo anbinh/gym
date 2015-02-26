@@ -24,7 +24,7 @@
             /*oImage.attr("src",e.target.result);*/
             oImage.css('background-image', 'url(' + e.target.result + ')');
             $('#btn_add_picture').css('padding-top', '210px');
-            $('#btn_add_picture').html("<?php echo __("Edit Picture")?>");
+            $('#btn_add_picture a').html("<?php echo __("Edit Picture")?>");
         };
 
         // read selected file as DataURL
@@ -77,7 +77,7 @@
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Language")?></label>
-                            <select 
+                            <select class="input_select input_location"
                                     name="data[User][language]"
                                     id="language"
                                     ng-model="formData.language" 
@@ -87,24 +87,24 @@
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Location")?></label>
-                            <input id="address" class="input_textbox" type="text" name="data[User][address][street]" ng-model="formData.address.street">
+                            <input id="address" class="input_textbox input_location" type="text" name="data[User][address][street]" ng-model="formData.address.street">
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Birthday")?></label>
                             <!-- <input class="input_textbox" type="date" name="data[User][birthday]" ng-model="formData.birthday"> -->
-                            <select 
+                            <select class="input_select input_location"
                                     name="data[User][day]"
                                     ng-model="day" 
                                     ng-init="day || optionDays[0]"
                                     ng-options="option.name for option in optionDays track by option.value">
                             </select>
-                            <select 
+                            <select class="input_select input_location"
                                     name="data[User][month]"
                                     ng-model="month" 
                                     ng-init="month || optionMonths[0]"
                                     ng-options="option.name for option in optionMonths track by option.value">
                             </select>
-                            <select 
+                            <select class="input_select input_location"
                                     name="data[User][year]"
                                     ng-model="year" 
                                     ng-init="year || optionYears[0]"
@@ -113,7 +113,12 @@
                         </div>
                         <div class="input_row_register_fb">
                             <label><?php echo __("Your Password")?></label>
-                            <a href="#" class="btn btn_change_pass"><?php echo __("Change Password")?></a>
+                            <a href="#" class="btn btn_change_pass">
+                                <?php if(isset($profile['id']))
+                                        echo __("Change Password");
+                                     else
+                                        echo __("Set Password");
+                                ?></a>
                         </div>
                         <div class="input_row_register_fb">
                             <label><?php echo __("Facebook")?></label>
