@@ -334,7 +334,7 @@ margin: 0 30px 25px 30px;
     padding: 1em 5.9em !important;    
     text-decoration: none;
     color: white;
-    margin-left:31px; 
+    margin-left:30px; 
     border-radius:0 !important;
 }
 .frm_register{
@@ -724,7 +724,7 @@ input[type=date]{
         margin-top:25px;
     }
     .btn_sign_in {      
-        padding: 1em 5.2em !important;        
+        padding: 1em 5.1em !important;        
     }
 }
 
