@@ -26,6 +26,8 @@ class AppController extends Controller {
         }elseif($this->params['controller'] == 'Programs')
         {
             $this->set('curr_page', 'Programs');
+        }elseif($this->params['controller'] == 'Users' && ($this->params['action'] != 'index' || $this->params['action'] != '')){
+            $this->set('curr_page', 'Users');
         }
 
         if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup')){
@@ -41,7 +43,8 @@ class AppController extends Controller {
                     $this->set('auth_user',$auth_user);
                 }
             }
-        }
+
+        }        
     }
 
     protected function setLang($lang) { // protected method used to set the language

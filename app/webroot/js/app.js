@@ -6,6 +6,16 @@ app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
     $scope.programs = 'PROGRAMS';
     $scope.exercises = 'EXERCIES';
     $scope.isProgramSelect = true;
+    $scope.ddLoginSelectOptions = [
+        {
+            text: 'Profile page',
+            href: '/Users'
+        },
+        {
+            text: 'Sign-out',
+            href: '/Users/logout'
+        }
+    ];
     $scope.ddSelectOptions = [
         {
             text: 'ENG',
@@ -54,6 +64,9 @@ app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
     };
     $scope.exerciseClick = function(){
         window.location='/Exercises/index';
+    };
+    $scope.loginClick = function(){
+        window.location='/Users/login';
     };
     /*$scope.click = function(param){
         console.log('param is', param);
