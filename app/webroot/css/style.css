@@ -844,6 +844,7 @@ input[type=date]{
 .input_textbox{
     width: 250px;
     height: 34px;
+    padding-left: 5px;
 }
 
 .add_picture_box{
