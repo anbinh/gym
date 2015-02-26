@@ -66,11 +66,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <img src="/img/images/menu.png">
                     </md-button>
 
-                    <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;"><span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Programs')? 'bottomline' : '' : ''?>"><?php echo __('program header')?></span></md-button>
-                    <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
+                    <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;"><span class="header_text program_menu <?php echo isset($curr_page)? ($curr_page == 'Programs')? 'bottomline' : '' : ''?>"><?php echo __('program header')?></span></md-button>
+                    <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text exercise_menu <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="center center">
-                    <md-button class="logo" ng-click="logoClick()"> <img class="logo_img" src="/img/images/logo.png"></md-button>
+                     <img class="logo_img" src="/img/images/logo.png">
                 </div>
                 <div flex="33" layout="row" layout-align="end center" class="login_logout">                        
                     <div class="logout_menu">
@@ -89,7 +89,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                             <?php if(!isset($auth_user)):?>
                                 <span class="header_text"><?php echo __('Login')?></span></a>
                             <?php else:?>                                                  
-                                <span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Users')? 'bottomline' : '' : ''?>"><?php echo $auth_user['login'];?></span></a>
+                                <span class="header_text hidden_username <?php echo isset($curr_page)? ($curr_page == 'Users')? 'bottomline' : '' : ''?>"><?php echo $auth_user['login'];?></span></a>
                             <?php endif;?>                        
                             </div>
                         </md-button>
@@ -99,7 +99,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                    dropdown-menu="ddSelectOptions"
                                    dropdown-model="ddSelectSelected"
                                    dropdown-item-label="text">
-                            <img src="/img/images/earth.png"/> <?php echo $language;?>
+                            <img src="/img/images/earth.png" class="icon_language"/> <span class="hidden_language"><?php echo $language;?></span>
                         </md-button>
                     </div>                    
                 </div>

@@ -30,7 +30,7 @@ margin: 0 30px 25px 30px;
     width: 150px;
     top: 125% !important;
     left: -18px !important;
-    border: 6px solid #c2e1f5 !important;
+    border: 6px solid #D9E5DD !important;
     border-radius: 0 !important;
 }
 .logout_menu ul:after, .logout_menu ul:before {
@@ -45,7 +45,7 @@ margin: 0 30px 25px 30px;
 }
 .logout_menu ul:before {
     border-color: rgba(194, 225, 245, 0);
-    border-bottom-color: #c2e1f5;
+    border-bottom-color: #D9E5DD;
     border-width: 28px;
     margin-left: -1px;
 }
@@ -61,7 +61,7 @@ margin: 0 30px 25px 30px;
     font-size: 15px;
 }
 .logout_menu li a:hover{
-    background: #c2e1f5 !important;
+    background: #D9E5DD !important;
 }
 .logout_menu li:first-of-type a{
     border-radius: 0 !important;
@@ -74,7 +74,7 @@ margin: 0 30px 25px 30px;
     width: 100px;
     top: 125% !important;
     left: -18px !important;
-    border: 6px solid #c2e1f5 !important;
+    border: 6px solid #D9E5DD !important;
     border-radius: 0 !important;
 }
 .language_menu ul:after, .language_menu ul:before {
@@ -89,7 +89,7 @@ margin: 0 30px 25px 30px;
 }
 .language_menu ul:before {
     border-color: rgba(194, 225, 245, 0);
-    border-bottom-color: #c2e1f5;
+    border-bottom-color: #D9E5DD;
     border-width: 28px;
     margin-left: -1px;
 }
@@ -105,7 +105,7 @@ margin: 0 30px 25px 30px;
     font-size: 15px;
 }
 .language_menu li a:hover{
-    background: #c2e1f5 !important;
+    background: #D9E5DD !important;
 }
 .language_menu li:first-of-type a{
     border-radius: 0 !important;
@@ -117,7 +117,7 @@ margin: 0 30px 25px 30px;
     width: 250px;
     top: 125% !important;
     left: -7px !important;
-    border: 6px solid #c2e1f5 !important;
+    border: 6px solid #D9E5DD !important;
     border-radius: 0 !important;
 }
 .header_menu ul:after, .header_menu ul:before {
@@ -134,7 +134,7 @@ margin: 0 30px 25px 30px;
 }
 .header_menu ul:before {
     border-color: rgba(194, 225, 245, 0);
-    border-bottom-color: #c2e1f5;
+    border-bottom-color: #D9E5DD;
     border-width: 28px;
     margin-left: -1px;
 }
@@ -145,7 +145,7 @@ margin: 0 30px 25px 30px;
     /*border-radius: 7px;*/
 }
 .header_menu li a:hover{
-    background: #c2e1f5 !important;
+    background: #D9E5DD !important;
 }
 .header_menu li a{
     border-bottom: 0 !important;
@@ -587,7 +587,13 @@ input[type=date]{
     .img_program{
         height: auto;
         margin-top:25px;
-    }   
+    }    
+    .program_menu{
+        font-size: 14px;
+    }
+    .exercise_menu{
+        font-size: 14px;
+    }
 }
 
 /* Iphone Ngang */
@@ -622,6 +628,21 @@ input[type=date]{
     .img_program{
         height: auto;
         margin-top:25px;
+    }
+    .hidden_username{
+        display: none;
+    }
+    .hidden_language{
+        display: none;
+    } 
+    .logout_menu ul{
+        top: 135% !important;
+        left: -95px !important;
+    }
+    .language_menu ul{        
+        top: 135% !important;  
+        left: -43px !important;
+        width: 94px;
     }
 }
 
@@ -770,6 +791,22 @@ input[type=date]{
     }
     .btn_sign_in {      
         padding: 1em 5.1em !important;        
+    }
+    .logout_menu ul{
+        top: 182% !important;
+        left: -106px !important;
+    }
+    .language_menu ul{        
+        top: 182% !important;  
+        left: -51px !important;
+        width: 94px;
+    }
+    .icon_language{
+        padding-right: 18px;
+    }
+    .header_menu ul{
+        width: 230px !important;
+        top: 171% !important;
     }
 }
 
