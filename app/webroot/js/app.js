@@ -3,6 +3,7 @@
 'use strict';
 var app = angular.module('App', ['ngMaterial','ngDropdowns'])
 app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
+    $scope.main_logo = "";
     $scope.programs = 'PROGRAMS';
     $scope.exercises = 'EXERCIES';
     $scope.isProgramSelect = true;
@@ -117,6 +118,10 @@ app.controller('UserController', function($scope) {
     $scope.edit = function() {
         window.location='/Users/edit_profile';
     };
+    $scope.editProgram = function() {
+        $scope.isEdit = true;
+    };
+    $scope.isEdit = false;
 
 });
 

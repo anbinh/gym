@@ -27,7 +27,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?php
 		echo $this->Html->css(array(
-            'style?12345',
+            'style',
             'bower_components/angular-material/angular-material.min',
             'bower_components/angular-dropdown/angular-dropdowns',
             'bootstrap.min',
@@ -39,7 +39,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-animate/angular-animate.min',
             'bower_components/angular-aria/angular-aria.min',
             'bower_components/angular-material/angular-material.min',
-            'app?12345',
+            'app',
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-1.11.2.min',
             'bootstrap.min'
@@ -70,7 +70,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text exercise_menu <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="center center">
-                     <img class="logo_img" src="/img/images/logo.png">
+                    <?php if($language=="eng") :?>
+                     <img class="logo_img" src="/img/images/logo_eng.png">
+                 <?php else :?>
+                     <img class="logo_img" src="/img/images/logo_fr.png">
+                 <?php endif;?>
                 </div>
                 <div flex="33" layout="row" layout-align="end center" class="login_logout">                        
                     <div class="logout_menu">
