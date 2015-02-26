@@ -8,7 +8,8 @@
         border: 2px solid #e6e6e6;
         border-radius: 3px;
         width: 220px;
-        margin: auto;
+        /*margin: auto;*/
+        margin-left: 30px;
     }
     .register_input_bottom_border {
         border-bottom: 2px solid #e6e6e6;
@@ -59,14 +60,14 @@
             <a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>
             <h4 style="margin-left:15px;">or</h4>
             <form class="frm_register" name="signup_form">
-                <fieldset class="register_input_set1" style="float:left; border:0 !important;">
+                <fieldset style="float:left; border:0 !important;">
                     <div>
-                        <div style="max-width:15px; background:black; margin: 18px 16px 16px 0;">
+                        <div style="max-width:15px; background:black; margin: 18px 11px 16px 0;">
                             <img src="/img/images/icon_user_white.png" class="img-responsive">
                         </div>                                               
                     </div>
                     <div>
-                        <div style="max-width:15px; margin: 35px 16px 16px 0;">
+                        <div style="max-width:15px; margin: 35px 11px 16px 0;">
                             <img src="/img/images/lock.png" class="img-responsive">
                         </div>                        
                     </div>

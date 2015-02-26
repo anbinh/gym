@@ -27,7 +27,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?php
 		echo $this->Html->css(array(
-            'style',
+            'style?12345',
             'bower_components/angular-material/angular-material.min',
             'bower_components/angular-dropdown/angular-dropdowns',
             'bootstrap.min',
@@ -39,7 +39,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-animate/angular-animate.min',
             'bower_components/angular-aria/angular-aria.min',
             'bower_components/angular-material/angular-material.min',
-            'app',
+            'app?12345',
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-1.11.2.min',
             'bootstrap.min'
@@ -66,38 +66,40 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <img src="/img/images/menu.png">
                     </md-button>
 
-                    <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;"><span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Programs')? 'bottomline' : '' : ''?>"><?php echo __('program header')?></span></md-button>
-                    <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
+                    <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;"><span class="header_text program_menu <?php echo isset($curr_page)? ($curr_page == 'Programs')? 'bottomline' : '' : ''?>"><?php echo __('program header')?></span></md-button>
+                    <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text exercise_menu <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
                 </div>
                 <div flex="33" layout="row" layout-align="center center">
-                    <md-button class="logo" ng-click="logoClick()"> <img class="logo_img" src="/img/images/logo.png"></md-button>
+                     <img class="logo_img" src="/img/images/logo.png">
                 </div>
                 <div flex="33" layout="row" layout-align="end center" class="login_logout">                        
-                    <md-button class="right_header_button" 
-                        style="font-size:14px;"
-                        <?php if(!isset($auth_user)):?> 
-                        ng-click="loginClick()" 
-                        <?php else:?>
-                        dropdown-menu="ddLoginSelectOptions"
-                        dropdown-model="ddLoginSelectSelected"
-                        dropdown-item-label="text"
-                        <?php endif;?>                        
-                        >
-                        <div id="loginBtn">
-                            <img src="/img/images/picto.png"/>
-                        <?php if(!isset($auth_user)):?>
-                            <span class="header_text"><?php echo __('Login')?></span></a>
-                        <?php else:?>                                                  
-                            <span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Users')? 'bottomline' : '' : ''?>"><?php echo $auth_user['login'];?></span></a>
-                        <?php endif;?>                        
-                        </div>
-                    </md-button>
+                    <div class="logout_menu">
+                        <md-button class="right_header_button" 
+                            style="font-size:14px;"
+                            <?php if(!isset($auth_user)):?> 
+                            ng-click="loginClick()" 
+                            <?php else:?>
+                            dropdown-menu="ddLoginSelectOptions"
+                            dropdown-model="ddLoginSelectSelected"
+                            dropdown-item-label="text"
+                            <?php endif;?>                        
+                            >
+                            <div id="loginBtn">
+                                <img src="/img/images/picto.png"/>
+                            <?php if(!isset($auth_user)):?>
+                                <span class="header_text"><?php echo __('Login')?></span></a>
+                            <?php else:?>                                                  
+                                <span class="header_text hidden_username <?php echo isset($curr_page)? ($curr_page == 'Users')? 'bottomline' : '' : ''?>"><?php echo $auth_user['login'];?></span></a>
+                            <?php endif;?>                        
+                            </div>
+                        </md-button>
+                    </div>
                     <div class="language_menu">
                         <md-button class="right_header_button" style="font-size:14px;"
                                    dropdown-menu="ddSelectOptions"
                                    dropdown-model="ddSelectSelected"
                                    dropdown-item-label="text">
-                            <img src="/img/images/earth.png"/> <?php echo $language;?>
+                            <img src="/img/images/earth.png" class="icon_language"/> <span class="hidden_language"><?php echo $language;?></span>
                         </md-button>
                     </div>                    
                 </div>
