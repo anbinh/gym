@@ -91,7 +91,25 @@
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Birthday")?></label>
-                            <input class="input_textbox" type="date" name="data[User][birthday]" ng-model="formData.birthday">
+                            <!-- <input class="input_textbox" type="date" name="data[User][birthday]" ng-model="formData.birthday"> -->
+                            <select 
+                                    name="data[User][day]"
+                                    ng-model="day" 
+                                    ng-init="day || optionDays[0]"
+                                    ng-options="option.name for option in optionDays track by option.value">
+                            </select>
+                            <select 
+                                    name="data[User][month]"
+                                    ng-model="month" 
+                                    ng-init="month || optionMonths[0]"
+                                    ng-options="option.name for option in optionMonths track by option.value">
+                            </select>
+                            <select 
+                                    name="data[User][year]"
+                                    ng-model="year" 
+                                    ng-init="year || optionYears[0]"
+                                    ng-options="option.name for option in optionYears track by option.value">
+                            </select>
                         </div>
                         <div class="input_row_register_fb">
                             <label><?php echo __("Your Password")?></label>
