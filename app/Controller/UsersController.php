@@ -136,6 +136,7 @@ class UsersController extends AppController {
     public function save_profile() {
         if ($this->data) {
             $data=$this->data;
+            $data['User']['birthday'] = $data['User']['day'] . "-" . $data['User']['month'] . "-" . $data['User']['year'];
             if($_FILES){
                 if($_FILES['picture']['name']){
                     $path = $_FILES['picture']['name'];

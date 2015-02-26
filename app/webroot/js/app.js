@@ -121,11 +121,20 @@ app.controller('UserController', function($scope) {
 });
 
 app.controller('UserProfileController', function($scope,$http){
+    $scope.formData = [];
     $http.get('/language.json').success(function(response) {
         $scope.options = response;
     });
+    $http.get('/datetime.json').success(function(response) {
+        $scope.optionDays = response.day;
+        $scope.optionMonths = response.month;
+        $scope.optionYears = response.year;
+        $scope.day = $scope.optionDays[0];
+        $scope.month = $scope.optionMonths[0];
+        $scope.year = $scope.optionYears[0];
+    });
 
-    $scope.formData = [];
+    
     $scope.formData.language = {name: "English", value:"English"};
     $scope.message = '';
     $scope.isHasPicture = false;
@@ -137,13 +146,22 @@ app.controller('UserProfileController', function($scope,$http){
                 console.log(res);
                 
                 $scope.formData = res.data.user;
-                $scope.formData.birthday = new Date(res.data.user.birthday);
+                //$scope.formData.birthday = new Date(res.data.user.birthday);
                 if($scope.formData.picture.length > 0)
                 {
                     $scope.isHasPicture = true;
                     $scope.imgURL = $scope.formData.picture;
                 }
-                $scope.formData.language = {name: res.data.user.language, value:res.data.user.language};
+                $scope.formData.language = {name: res.data.user.language, value:res.data.user.language};                
+                var splitBirthday = res.data.user.birthday.split("-");
+                if(splitBirthday.length > 0)
+                {
+                    $scope.day = {name: splitBirthday[0], value:splitBirthday[0]};
+                    $scope.month = {name: splitBirthday[1], value:splitBirthday[1]};
+                    $scope.year = {name: splitBirthday[2], value:splitBirthday[2]};                    
+                }
+                
+
             });
     }
     else
