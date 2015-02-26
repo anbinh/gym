@@ -25,6 +25,50 @@ margin: 0 30px 25px 30px;
 .header_button_menu img{
     width: 20px;
 }
+/* logout menu*/
+.logout_menu ul{
+    width: 150px;
+    top: 125% !important;
+    left: -18px !important;
+    border: 6px solid #c2e1f5 !important;
+    border-radius: 0 !important;
+}
+.logout_menu ul:after, .logout_menu ul:before {
+    bottom: 100%;    
+    right: 0;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.logout_menu ul:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #c2e1f5;
+    border-width: 28px;
+    margin-left: -1px;
+}
+.logout_menu li{
+  /*  width: 200px;*/
+    background: #ffffff;
+    /*border-radius: 7px;*/
+}
+.logout_menu li a{
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    padding-left: 18px !important;
+    font-size: 15px;
+}
+.logout_menu li a:hover{
+    background: #c2e1f5 !important;
+}
+.logout_menu li:first-of-type a{
+    border-radius: 0 !important;
+}
+.logout_menu li:last-of-type a{
+    border-radius: 0 !important;
+}
 /* language*/
 .language_menu ul{
     width: 100px;
