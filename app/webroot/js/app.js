@@ -139,7 +139,20 @@ app.controller('UserProfileController', function($scope,$http){
             .then(function(res){
                 console.log(res);
                 $scope.formData = res.data.user;
-                $scope.formData.birthday = new Date(res.data.user.birthday);
+                var split_fullname = res.data.user.fullname.split(" ");
+                var lastname = "";
+                if (split_fullname.length > 1) {
+                    $scope.formData.firstname = split_fullname[0];
+                    var i = 0;
+                    for(i;i<split_fullname.length;i++)
+                    {
+                        if(i == 0)
+                            continue;
+                        lastname = lastname + split_fullname[i] + " ";
+                    }
+                } else
+                    $scope.formData.firstname = $profile['fullname'];
+                $scope.formData.lastname = lastname;
             });
     }
 
