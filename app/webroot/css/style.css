@@ -140,6 +140,7 @@ margin: 0 30px 25px 30px;
 
 .right_header_button span{
     color: #000000;    
+    text-transform: capitalize !important;
 }
 .titre_left{
     height: 60px;
@@ -811,6 +812,14 @@ input[type=date]{
     border-right: 8px solid transparent;    
     border-top: 8px solid black;
     margin-right: 5px;
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
+#loginBtn :hover{
+    border-bottom: 3px solid black;
 }
 
 

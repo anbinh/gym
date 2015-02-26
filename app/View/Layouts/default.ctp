@@ -72,23 +72,28 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 <div flex="33" layout="row" layout-align="center center">
                     <md-button class="logo" ng-click="logoClick()"> <img class="logo_img" src="/img/images/logo.png"></md-button>
                 </div>
-                <div flex="33" layout="row" layout-align="end center" class="login_logout">
-                    <?php if(isset($auth_user)):?>
-                        <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;">
-                            <a href="/Users"><?php echo $auth_user['firstname'].' '.$auth_user['lastname'];?></a>
-                        </md-button>    
-                    <?php endif;?>                        
-                    <md-button class="right_header_button"  ng-click="signInClick()" style="font-size:14px;">
-                        <div>
-                        <?php if(isset($auth_user)):?>
-                            <a href="/Users/logout"><img src="/img/images/picto.png"/> <p1>Sign out</p1></a>
-                        <?php else:?>                                                        
-                            <a href="/Users/login"><img src="/img/images/picto.png"/> <p1>Sign in</p1></a>
+                <div flex="33" layout="row" layout-align="end center" class="login_logout">                        
+                    <md-button class="right_header_button" 
+                        style="font-size:14px;"
+                        <?php if(!isset($auth_user)):?> 
+                        ng-click="loginClick()" 
+                        <?php else:?>
+                        dropdown-menu="ddLoginSelectOptions"
+                        dropdown-model="ddLoginSelectSelected"
+                        dropdown-item-label="text"
+                        <?php endif;?>                        
+                        >
+                        <div id="loginBtn">
+                            <img src="/img/images/picto.png"/>
+                        <?php if(!isset($auth_user)):?>
+                            <span class="header_text"><?php echo __('Login')?></span></a>
+                        <?php else:?>                                                  
+                            <span class="header_text <?php echo isset($curr_page)? ($curr_page == 'Users')? 'bottomline' : '' : ''?>"><?php echo $auth_user['login'];?></span></a>
                         <?php endif;?>                        
                         </div>
                     </md-button>
                     <div class="language_menu">
-                        <md-button class="right_header_button"  ng-click="engClick()" style="font-size:14px;"
+                        <md-button class="right_header_button" style="font-size:14px;"
                                    dropdown-menu="ddSelectOptions"
                                    dropdown-model="ddSelectSelected"
                                    dropdown-item-label="text">
