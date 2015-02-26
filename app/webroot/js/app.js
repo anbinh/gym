@@ -429,6 +429,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
                 $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,3,item));
                 return;
             }
+            temp = angular.copy($scope.exercises_list_backup);
             $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,4,item));
             return;
         }
