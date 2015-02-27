@@ -16,6 +16,10 @@ class UsersController extends AppController {
         $this->set('user', $auth);
     }
 
+    public function signup(){
+        
+    }
+
     public function view($user_id = null) {
         if (!$this->User->exists($user_id)) {
             throw new NotFoundException(__('Invalid user'));

@@ -2,7 +2,7 @@
     // init variable
     var  id = '<?php echo isset($user['id']) ? $user['id'] : 0  ?>';
 </script>
-<div layout="row">
+<div layout="row" layout-align="center start">
     <div ng-controller="UserController" class="UserIndexLeftContent">
         <div layout="column" class="info_user">
             <div layout="row" class="avatar">
