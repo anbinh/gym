@@ -1,22 +1,69 @@
-<ul class="list-inline">
-  <li>Musculation</li>
-  <li>Stretching</li>
-  <li>
-  		<select>
-  			<option>Part</option>
-  		</select>
-  </li>
+<ul class="list-inline filter_objective_program">
+    <li>OBJECTIVE</li>
+    <li>
+        <select class="input_select input_select_objective">
+      		<option>Choose</option>
+      	</select>
+    </li>
 </ul>
 
 <div layout="row">
     <div ng-controller="UserController" class="UserIndexLeftContent">                
         <div layout="row">
-            <div flex>
-                <div layout="row" class="my_program_text" layout-align="start center"><p><?php echo __('favorite exercise')?></p></div>
+            <div flex>                
                 <div class="list_tile" class="row">
-                    <div class="program_box">
-                        <div class="user_favorite_exercise_img test1" flex style="margin:5px; border:1px solid #ccc;">
-                            <div style="padding:5px;"><img src="/img/images/star.png"></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_butcher">                           
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/butcher.png"></div>
+                            <div class="program_text_name"> SHAPE MODELING</div>
+                        </div>                            
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_packabs"  >                                
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/packabs.png"></div>
+                            <div class="program_text_name"> LOOSING WEIGHT </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_packabs"  >                                 
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/eugenie.png"></div>
+                            <div class="program_text_name"> LOOSING WEIGHT </div>
+                        </div>
+                    </div>                    
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_1">                           
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
+                            <div class="program_text_name"> SHAPE MODELING</div>
+                        </div>                            
+                    </div>
+                     <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_2"  >                                
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
+                            <div class="program_text_name"> LOOSING WEIGHT </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_3"  >                                 
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
+                            <div class="program_text_name"> LOOSING WEIGHT </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_packabs">                           
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
+                            <div class="program_text_name"> SHAPE MODELING</div>
+                        </div>                            
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_butcher">                           
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
+                            <div class="program_text_name"> SHAPE MODELING</div>
+                        </div>                            
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="user_favorite_exercise_img tile_2"  >                                 
+                            <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
+                            <div class="program_text_name"> LOOSING WEIGHT </div>
                         </div>
                     </div>
                 </div>                

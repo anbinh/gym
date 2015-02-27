@@ -334,6 +334,14 @@ margin: 0 30px 25px 30px;
 .list_tile{
     
 }
+.tile_packabs{
+    background-color:#d8e6dc; 
+    
+}
+.tile_butcher{
+    background-color:#58585a; 
+    
+}
 .tile_1{
     background-color:#d90947; 
     
@@ -938,3 +946,11 @@ input:invalid {
     width: 170px;
 }
 
+.filter_objective_program{
+    padding: 10px;
+    margin: 0;
+}
+.input_select_objective {
+    background: #D9E5DD;
+    border: none;
+}

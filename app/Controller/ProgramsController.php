@@ -5,7 +5,10 @@ class ProgramsController  extends AppController {
     public function index(){
     	$programs = $this->Program->find('all');
 
-    	pr($programs);
+    	//pr($programs);
+    }
+    public function program_view(){
+    	
     }
 }
 ?>
