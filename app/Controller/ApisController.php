@@ -110,7 +110,7 @@ class ApisController extends AppController {
                     $user['User']['sex'] = 0;
                 $user['User']['login'] = $name;
                 $user['User']['fb_id'] = $id;
-                $user['User']['password'] = "demo";
+                $user['User']['password'] = md5("demo");
                 $user['User']['language'] = "";
                 $user['User']['address']['street'] = "";
                 $user['User']['birthday'] = "";
@@ -137,5 +137,52 @@ class ApisController extends AppController {
             'conditions' => array('User.fb_id' => $fb_id)
         ));
         return $user;
+    }
+
+    public function loginByEmailAndPassword(){
+        $data = $this->request->input('json_decode',true);
+        $user = $this->User->find("first",array( "conditions" => array(
+                'email' => $data['email'],'password'=>md5($data['password'])))
+        );
+        if($user)
+        {
+            $this->setAuthentication($user['User']);
+            $this->set(array(
+                'message' => 'success',
+                '_serialize' => array('message')
+            ));
+        }
+        else
+        {
+            $this->set(array(
+                'message' => 'Email or Password does not match !',
+                '_serialize' => array('message')
+            ));
+        }
+    }
+
+    public function registerByUsername()
+    {
+        $data = $this->request->input('json_decode',true);
+        $message = $data;
+        // validate email
+        $user = $this->User->find("first",array( "conditions" => array(
+                'email' => $data['email']))
+        );
+        if($user)
+        {            
+            $this->set(array(
+                'message' => 'This Email existed !',
+                '_serialize' => array('message')
+            ));
+        }
+        else
+        {
+            $this->saveCurrentRegister($data);
+            $this->set(array(
+                'message' => 'success',
+                '_serialize' => array('message')
+            ));
+        }               
     }
 }

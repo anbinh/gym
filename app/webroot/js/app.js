@@ -221,8 +221,9 @@ app.controller('UserProfileController', function($scope,$http){
                         lastname = lastname + split_fullname[i] + " ";
                     }
                 } else
-                    $scope.formData.firstname = $profile['fullname'];
+                    $scope.formData.firstname = res.data.user.fullname;
                 $scope.formData.lastname = lastname;
+                $scope.formData.password = res.data.user.password;
             });
     }
 
@@ -278,13 +279,16 @@ app.controller('signupController', function($scope,$http,$location){
         console.log(data);
         $http({
             method  : 'POST',
-            url     : '/Users/registerByUsername.json',            
+            url     : '/Apis/registerByUsername.json',            
             data    : $scope.formData,  // pass in data as strings
             headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
         })
             .success(function(data) {
                 console.log(data);  
-                 window.location='edit_profile';
+                if(data.message == "success")
+                    window.location='edit_profile';
+                else
+                    $scope.message = data.message;
             })
     };
     $scope.signIn = function() {
@@ -300,7 +304,7 @@ app.controller('LoginController', function($scope,$http,$location){
         console.log(data);
         $http({
             method  : 'POST',
-            url     : '/Users/loginByEmailAndPassword.json',
+            url     : '/Apis/loginByEmailAndPassword.json',
             data    : $scope.formData,  // pass in data as strings
             headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
         })

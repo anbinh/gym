@@ -1,6 +1,6 @@
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places" type="text/javascript"></script>
 <script>
-    var  id = '<?php echo isset($profile['id']) ? $profile['id'] : 0  ?>';
+    var  id = '<?php echo isset($profile['id']) ? $profile['id'] : 0  ?>';    
     $(function(){
         $("#upload_link").on('click', function(e){
             e.preventDefault();
@@ -43,6 +43,7 @@
                     'id' => 'userProfileForm')); ?>
 			<!--<form action="/Users/save_profile" class="user_profile" enctype="multipart/form-data">-->
                 <input type="hidden" name="data[User][id]" id="id" ng-model="formData.id">
+                <input type="hidden" name="data[User][password]" id="password" ng-value="formData.password">
                 <div layout-gt-md="row" layout-md="column" layout-gt-sm="column" layout-sm="column">
                     <div flex-gt-md="33" flex-lg="33" flex-gt-lg="33" flex-md="95" flex-gt-sm="95" flex-sm="100" class="picture_box">
                         <div id="AccountImage" class="add_picture_box" ng-style="{'background-image':'url('+imgURL+')'}">

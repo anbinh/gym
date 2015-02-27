@@ -74,7 +74,7 @@
                 </fieldset>
                 <fieldset class="register_input_set">
                     <div class="register_input_bottom_border">                                            
-                        <input type="email" required placeholder="Email" ng-model="formData.email" name="email">
+                        <input type="email" required placeholder="Email" ng-model="formData.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
                         <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
                             <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
                         </div>
@@ -107,8 +107,8 @@
 
 <script type="text/javascript">
     FB.init({
-        appId: '607706552694436',
-        //appId: '609280322537059', // gym.miratik.com account test
+        //appId: '607706552694436',
+        appId: '609280322537059', // gym.miratik.com account test
         status: true,
         cookie: true,
         oauth: true
