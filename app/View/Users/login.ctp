@@ -57,7 +57,11 @@
     <div layout="row" layout-align="center center">
         <div class="main_content_register arrow_box">            
             <h4 style="font-weight:bold; margin-left:26px;">Login</h4>
-            <a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>
+            <!--<a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>-->
+            <a style="width: 216px;border-radius: 0;margin-left: 25px;" id="btn_facebook" class="btn btn-social btn-facebook" href="javascript:void(0);">
+                <i class="fa fa-facebook"></i>
+                <?php echo __("Login with Facebook")?>
+            </a>
             <h4 style="margin-left:15px;">or</h4>
             <form class="frm_register" name="signup_form">
                 <fieldset style="float:left; border:0 !important;">
@@ -74,7 +78,7 @@
                 </fieldset>
                 <fieldset class="register_input_set">
                     <div class="register_input_bottom_border">                                            
-                        <input type="email" required placeholder="Email" ng-model="formData.email" name="email">
+                        <input type="email" required placeholder="Email" ng-model="formData.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
                         <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
                             <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
                         </div>
@@ -159,7 +163,7 @@
     }
 
 
-    $('.btn_facebook').on('click', function(){
+    $('#btn_facebook').on('click', function(){
         login();
     });
 </script>

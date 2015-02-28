@@ -28,35 +28,8 @@ class UsersController extends AppController {
     }
 
     public function login() {
-
+        $this->removeAuthentication();
     }
-
-    public function loginByEmailAndPassword(){
-        $data = $this->request->input('json_decode',true);
-        $user = $this->User->find("first",array( "conditions" => array(
-                'email' => $data['email'],'password'=>md5($data['password'])))
-        );
-        if($user)
-        {
-            $this->setAuthentication($user['User']);
-            $this->set(array(
-                'message' => 'success',
-                '_serialize' => array('message')
-            ));
-        }
-        else
-        {
-            $this->set(array(
-                'message' => 'Email or Password does not match !',
-                '_serialize' => array('message')
-            ));
-        }
-
-    }
-
-
-
-
 
     public function logout(){
 
@@ -88,13 +61,13 @@ class UsersController extends AppController {
                     $profile['firstname'] = $profile['fullname'];
             }
         }*/
-            
         $this->set('profile',$auth);
     }
 
     public function save_profile() {
         if ($this->data) {
             $data=$this->data;
+            pr($data);
             $data['User']['birthday'] = $data['User']['day'] . "-" . $data['User']['month'] . "-" . $data['User']['year'];
             if($_FILES){
                 if($_FILES['picture']['name']){
@@ -106,6 +79,10 @@ class UsersController extends AppController {
                     //move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri);
                     move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri);
                 }
+            }
+            else{
+                if($data['User']['picture'] == "")
+                    unset($data['User']['picture']);
             }
             if($data['User']['id'] != 0)
             {
@@ -120,7 +97,7 @@ class UsersController extends AppController {
             }
             else
             {
-                $data['User']['password'] = "demo";
+                $data['User']['password'] = md5($data['User']['password']);
                 $data['User']['favorite_exercises'] = array();
                 $data['User']['role'] = array();
                 $data['User']['assigned_programs'] = array();
@@ -129,22 +106,13 @@ class UsersController extends AppController {
                 $data['User']['receive_promote'] = true;
             else
                 $data['User']['receive_promote'] = false;
+
             $this->User->save($data);
             if($data['User']['id'] == 0)
                 $data['User']['id'] = $this->User->getLastInsertId();
             $this->setAuthentication($data['User']);
-        }
-        $this->redirect('/Users/index');
-    }
 
-    public function registerByUsername()
-    {
-        $data = $this->request->input('json_decode',true);
-        $message = $data;
-        $this->saveCurrentRegister($data);
-        $this->set(array(
-            'message' => $message,
-            '_serialize' => array('message')
-        ));
+        }
+        $this->redirect('/Users/index');        
     }
 }

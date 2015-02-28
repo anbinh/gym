@@ -7,8 +7,9 @@ class ProgramsController  extends AppController {
 
     	//pr($programs);
     }
-    public function program_view(){
-    	
+    public function program_view($id){
+        $programs = $this->Program->findById($id);
+        pr($programs);
     }
 }
 ?>

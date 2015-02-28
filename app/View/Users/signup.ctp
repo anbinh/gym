@@ -53,7 +53,6 @@ padding: 15px 0 15px 0;
 }
 </style>
 <div ng-controller="signupController">
-	<div id="messages" ng-show="message">{{ message }}</div>
 	<div layout="row" layout-align="center center">
 		<div class="main_content_register arrow_box">
 			<h1 class="sub">Sign Up</h1>
@@ -69,8 +68,8 @@ padding: 15px 0 15px 0;
                         </div>
 					</div>
 					<div class="register_input_bottom_border">				
-						<input type="email" required placeholder="Email" ng-model="formData.email" name="email">
-                        <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
+						<input type="email" required placeholder="Email" ng-model="formData.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
+                        <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid" >
                             <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
                         </div>
 					</div>
@@ -79,9 +78,12 @@ padding: 15px 0 15px 0;
                         <div class="error-container" ng-show="signup_form.password.$dirty && signup_form.password.$invalid">
                             <small class="error" ng-show="signup_form.password.$error.required">Please input the password</small>
                         </div>
-					</div>
+					</div>					
 				</fieldset>
 			</form>
+			<div>
+            	<small class="error">{{ message }}</small>
+        	</div>
 			<a href="javascript:void(0);" ng-click='next()' class="btn btn_next_register" ng-disabled="signup_form.$invalid">NEXT</a>
 		</div>	
 	</div>
