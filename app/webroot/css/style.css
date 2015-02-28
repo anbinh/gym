@@ -582,7 +582,10 @@ input[type=date]{
 @media (min-width: 750px) and (max-width: 790px) {
     .UserIndexLeftContent{
         width: 460px;
-    }
+    }  
+    .ProgramIndexLeftContent{
+       width: 460px !important; 
+    }  
     .program_box{
         width: 50%;
     }
@@ -628,6 +631,9 @@ input[type=date]{
     }     
     .UserIndexLeftContent{
         width: 100%;
+    }    
+    .ProgramIndexLeftContent{
+        width: 100% !important;
     }
     .exercise_box{
         width:50% !important;
@@ -736,6 +742,9 @@ input[type=date]{
     .UserIndexLeftContent{
         width: 100%;
     }   
+    .ProgramIndexLeftContent{
+        width: 100% !important;
+    }
     .exercise_box{
         width:240px !important;      
     }
@@ -944,6 +953,7 @@ input:invalid {
 
 .img_avatar{
     width: 170px;
+    height: 170px;
 }
 
 .filter_objective_program{
@@ -953,4 +963,70 @@ input:invalid {
 .input_select_objective {
     background: #D9E5DD;
     border: none;
+}
+.ProgramIndexLeftContent{
+   width: 724px; 
+}
+.title_program{
+    font-weight:bold; padding-left:10px;
+    font-size: 19px;   
+}
+.btn_save_program{
+    background: #a4c408;
+    border-radius: 0 !important;
+    padding: 0px 40px 0px 40px !important;
+    height: 35px !important;
+}
+.sharing_program_social_fb{
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    float: left;
+    margin: 10px 0 25px 10px;
+}
+.sharing_program_social_twitter{
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    float: left;
+    border-left: 0;   
+    margin: 10px 0 25px 0;
+}
+.content_program {
+    padding: 10px 0 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.summary_program {
+    padding-top: 10px;    
+}
+.sharing_program_link{
+    padding: 20px 20px 20px 100px;    
+}
+.sharing_program_link a{
+    color: #ccc !important;
+    font-size: 17px;
+}
+.header_program{
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+}
+.program_view_text_name {
+    font-size: 12px;
+    font-weight: bold;
+    bottom: 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+.program_logo_topic{
+    background-size: 240px 230px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 176px;
+    min-width: 176px;
+    background-position: center center;
+    margin:2px; 
+    border:1px solid #ccc;
+}
+.img_program_view {
+    height: 130px;
+    margin-top: 10px;
 }

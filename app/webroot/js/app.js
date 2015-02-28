@@ -489,6 +489,33 @@ app.controller('ItemExerciseController', function($scope,$http,$filter){
         $scope.isSelected = false;
 });
 
+app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
+   var tabs = [
+      { title: 'Day 1', content: "Tabs will become paginated if there isn't enough room for them."},
+      { title: 'Day 2', content: "You can swipe left and right on a mobile device to change tabs."},
+      { title: 'Day 3', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
+      { title: 'Day 4', content: "If you set the selected tab binding to -1, it will leave no tab selected."},      
+    ];
+    $scope.tabs = tabs;
+    $scope.selectedIndex = 0;
+    $scope.$watch('selectedIndex', function(current, old){
+      if ( old && (old != current)) $log.debug('Goodbye ' + tabs[old].title + '!');
+      if ( current )                $log.debug('Hello ' + tabs[current].title + '!');
+    });
+    $scope.addTab = function (title, view) {
+      view = view || title + " Content View";
+      tabs.push({ title: title, content: view, disabled: false});
+    };
+    $scope.removeTab = function (tab) {
+      for (var j = 0; j < tabs.length; j++) {
+        if (tab.title == tabs[j].title) {
+          $scope.tabs.splice(j, 1);
+          break;
+        }
+      }
+    };
+}
+]);
 app.filter('checkExerciseIsLike', function() {
     return function(input, id) {
         var i=0, len=input.length;
