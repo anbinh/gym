@@ -1,3 +1,5 @@
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places" type="text/javascript"></script>
 <script>
     var  id = '<?php echo isset($profile['id']) ? $profile['id'] : 0  ?>';    
@@ -43,11 +45,12 @@
                     'id' => 'userProfileForm')); ?>
 			<!--<form action="/Users/save_profile" class="user_profile" enctype="multipart/form-data">-->
                 <input type="hidden" name="data[User][id]" id="id" ng-model="formData.id">
+                <input type="hidden" name="data[User][picture]" id="picture_fb">
+                <input type="hidden" name="data[User][fb_id]" id="fb_id" ng-value="formData.fb_id">
                 <input type="hidden" name="data[User][password]" id="password" ng-value="formData.password">
                 <div layout-gt-md="row" layout-md="column" layout-gt-sm="column" layout-sm="column">
                     <div flex-gt-md="33" flex-lg="33" flex-gt-lg="33" flex-md="95" flex-gt-sm="95" flex-sm="100" class="picture_box">
                         <div id="AccountImage" class="add_picture_box" ng-style="{'background-image':'url('+imgURL+')'}">
-                            <!--<img id="AccountImage" src="" class="add_picture_img">-->
                             <input id="upload" type="file" name="picture" ng-model="formData.picture" onchange='fileSelected()'/>
                             <div id="btn_add_picture" ng-class='getClassBtnAddPicture(isHasPicture)' style="padding-top: 110px;">
                                 <a href="javascript:void(0);" class="btn_add_picture" id="upload_link"><?php echo __("Edit Picture")?></a>
@@ -61,20 +64,20 @@
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Email Address")?></label>
-                            <input class="input_textbox" type="text" name="data[User][email]" ng-model="formData.email">
+                            <input id="email" class="input_textbox" type="text" name="data[User][email]" ng-model="formData.email">
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("First Name")?></label>
-                            <input class="input_textbox" type="text" name="data[User][firstname]" ng-model="formData.firstname">
+                            <input id="firstname" class="input_textbox" type="text" name="data[User][firstname]" ng-model="formData.firstname">
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Last Name")?></label>
-                            <input class="input_textbox" type="text" name="data[User][lastname]" ng-model="formData.lastname">
+                            <input id="lastname" class="input_textbox" type="text" name="data[User][lastname]" ng-model="formData.lastname">
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Gender")?></label>
-                            <input type="radio" name="data[User][sex]" value="1" ng-model="formData.sex"> <?php echo __("Men")?>
-                            <input type="radio" name="data[User][sex]" value="0" ng-model="formData.sex"> <?php echo __("Women")?>
+                            <input id="sexMen" type="radio" name="data[User][sex]" value="1" ng-model="formData.sex"> <?php echo __("Men")?>
+                            <input id="sexWomen" type="radio" name="data[User][sex]" value="0" ng-model="formData.sex"> <?php echo __("Women")?>
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Language")?></label>
@@ -123,7 +126,11 @@
                         </div>
                         <div class="input_row_register_fb">
                             <label><?php echo __("Facebook")?></label>
-                            <a href="#" class="btn btn_facebook_user_profile"><?php echo __("Connect Facebook")?></a>
+                            <!--<a href="#"><p class="logo">Facebook</p></a>-->
+                            <a style="width: 45%" id="btn_facebook" class="btn btn-social btn-facebook" href="javascript:void(0);">
+                                <i class="fa fa-facebook"></i>
+                                <?php echo __("Connect Facebook")?>
+                            </a>
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Promotion Email")?></label>
@@ -217,3 +224,47 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+    FB.init({
+        appId: '607706552694436',
+        //appId: '609280322537059', // gym.miratik.com account test
+        status: true,
+        cookie: true,
+        oauth: true
+    });
+    var userData = null;
+
+    function add_User(fb_info){
+        $('#firstname').val(fb_info.first_name);
+        $('#lastname').val(fb_info.last_name);
+        $('#email').val(fb_info.email);
+        if(fb_info.gender == "male")
+            $('#sexMen').prop('checked', true);
+        else
+            $('#sexWomen').prop('checked', true);
+        var imageUrl = "//graph.facebook.com/" + fb_info.id + "/picture?type=large";
+        $('#AccountImage').css('background-image', 'url(' + imageUrl + ')');
+        $('#picture_fb').val(imageUrl);
+        $('#fb_id').val(fb_info.id);
+    }
+    function login()
+    {
+        FB.login(function(response) {
+            if (response.authResponse)
+            {
+                FB.api('/me', function(response1) {
+                    console.log(response1);
+                    add_User(response1);
+                });
+            } else
+            {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        },{scope: 'email,publish_actions,user_friends'});
+    }
+
+
+    $('#btn_facebook').on('click', function(){
+        login();
+    });
+</script>

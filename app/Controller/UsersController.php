@@ -80,6 +80,10 @@ class UsersController extends AppController {
                     move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri);
                 }
             }
+            else{
+                if($data['User']['picture'] == "")
+                    unset($data['User']['picture']);
+            }
             if($data['User']['id'] != 0)
             {
                 $user = $this->User->findById($data['User']['id']);
@@ -102,6 +106,7 @@ class UsersController extends AppController {
                 $data['User']['receive_promote'] = true;
             else
                 $data['User']['receive_promote'] = false;
+
             $this->User->save($data);
             if($data['User']['id'] == 0)
                 $data['User']['id'] = $this->User->getLastInsertId();

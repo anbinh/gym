@@ -201,6 +201,7 @@ app.controller('UserProfileController', function($scope,$http){
                 }
                 $scope.exercises_list = angular.copy(res.data.exercises_like);
                 $scope.exercises_like = angular.copy(res.data.exercises_like);
+                $scope.fb_id = res.data.user.fb_id;
             });
     }
     else
