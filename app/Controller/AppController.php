@@ -23,6 +23,7 @@ class AppController extends Controller {
         if($this->params['controller'] == 'Exercises')
         {
             $this->set('curr_page', 'Exercises');
+            return;
         }elseif($this->params['controller'] == 'Programs')
         {
             $this->set('curr_page', 'Programs');
