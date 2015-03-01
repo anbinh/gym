@@ -42,7 +42,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'app',
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-1.11.2.min',
-            'bootstrap.min'
+            'bootstrap.min',
+            'custom',
         ));
 
 		echo $this->Html->meta('icon');

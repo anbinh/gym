@@ -33,21 +33,21 @@
                             </div>                            
                         </div>
                         <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                            <div class="user_favorite_exercise_img tile_2"  >    
+                            <div class="user_favorite_exercise_img tile_2 none_border"  >    
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                          
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
                                 <div class="program_text_name"> LOOSING WEIGHT </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                            <div class="user_favorite_exercise_img tile_3"  >     
+                            <div class="user_favorite_exercise_img tile_3 none_border"  >     
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                         
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
                                 <div class="program_text_name"> LOOSING WEIGHT </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                            <div class="user_favorite_exercise_img tile_1"  >       
+                            <div class="user_favorite_exercise_img tile_1 none_border"  >       
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                     
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                                 <div class="program_text_name"> SHAPE MODELING</div>
