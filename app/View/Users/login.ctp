@@ -58,7 +58,7 @@
         <div class="main_content_register arrow_box">            
             <h4 style="font-weight:bold; margin-left:26px;">Login</h4>
             <!--<a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>-->
-            <a style="width: 216px;border-radius: 0;margin-left: 25px;" id="btn_facebook" class="btn btn-social btn-facebook" href="javascript:void(0);">
+            <a id="btn_facebook" class="btn btn-social btn-facebook btn-fb" href="javascript:void(0);">
                 <i class="fa fa-facebook"></i>
                 <?php echo __("Login with Facebook")?>
             </a>

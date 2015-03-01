@@ -20,6 +20,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		<?php echo "Studio Gym" ?>
@@ -93,7 +94,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                             <div id="loginBtn">
                                 <img src="/img/images/picto.png"/>
                             <?php if(!isset($auth_user)):?>
-                                <span class="header_text"><?php echo __('Login')?></span></a>
+                                <span class="header_text hidden_username"><?php echo __('Login')?></span></a>
                             <?php else:?>                                                  
                                 <span class="header_text hidden_username <?php echo isset($curr_page)? ($curr_page == 'Users')? 'bottomline' : '' : ''?>"><?php echo $auth_user['login'];?></span></a>
                             <?php endif;?>                        

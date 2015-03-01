@@ -127,7 +127,7 @@
                         <div class="input_row_register_fb">
                             <label><?php echo __("Facebook")?></label>
                             <!--<a href="#"><p class="logo">Facebook</p></a>-->
-                            <a style="width: 45%" id="btn_facebook" class="btn btn-social btn-facebook" href="javascript:void(0);">
+                            <a id="btn_facebook" class="btn btn-social btn-facebook btn-fb-profile" href="javascript:void(0);">
                                 <i class="fa fa-facebook"></i>
                                 <?php echo __("Connect Facebook")?>
                             </a>
@@ -157,7 +157,7 @@
                             <div class="user_favorite_exercise_img tile_1 exercise_box_highlight" >
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                                <div class="program_text_name"> SHAPE MODELING</div>
+                                <span class="program_text_name"> SHAPE MODELING</span>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
