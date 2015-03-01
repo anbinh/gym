@@ -1,18 +1,26 @@
 $(document).ready(function(){	
 	$('.wrap-dd-menu').hover(		
-		function() {						
+		function() {		
+			//ishover = false;
 		    $(this).find('ul').addClass('active');
-		}, function() {					
-			$('.wrap-dd-menu ul').hover(				
-				function() {				    
-					console.log('1');
-					//$(this).addClass('active');
-				}, function() {				
-					$(this).removeClass('active');
-				}	
-			);	
-			console.log('2');
+		  // alert($(this).parent().html());
+		}, function() {				
+			$('ul').hover(
+				// function() {				    
+				// 	//ishover = true;	
+				// 	alert('1');
+				// }, function() {				
+				// 	//$(this).removeClass('active');
+				// 	alert('1');
+				// }	
+			);
+			//alert('2');
 			//$(this).find('ul').removeClass('active');				
+			// console.log('2');
+			// if(!ishover){
+			// 	$(this).parent().find('ul').removeClass('active');			
+			// }			
+			//$(this).find('ul').removeClass('active');			
 		}
 	);
 });

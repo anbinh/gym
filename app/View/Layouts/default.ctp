@@ -61,13 +61,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		 <div id="header" ng-controller="headerController">
             <md-toolbar class="" layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
                 <div flex="33" layout="row" layout-align="start center" style="padding-left:10px;" class="header_menu">
+                    <div class="hover_dropdown"></div>
                     <md-button class="header_button_menu"
                        dropdown-menu="ddMenuOptions"
                        dropdown-model="ddMenuSelected"
                        dropdown-item-label="text">
                         <img src="/img/images/menu.png">
-                    </md-button>
-
+                    </md-button>                    
                     <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;"><span class="header_text program_menu <?php echo isset($curr_page)? ($curr_page == 'Programs')? 'bottomline' : '' : ''?>"><?php echo __('program header')?></span></md-button>
                     <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text exercise_menu <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
                 </div>
