@@ -23,7 +23,6 @@ class AppController extends Controller {
         if($this->params['controller'] == 'Exercises')
         {
             $this->set('curr_page', 'Exercises');
-            return;
         }elseif($this->params['controller'] == 'Programs')
         {
             $this->set('curr_page', 'Programs');
@@ -38,7 +37,7 @@ class AppController extends Controller {
                     $auth_user = $this->getAuthentication();
                     if($auth_user == null) {
                         $is_register = $this->getCurrentRegister();
-                        if($is_register == null)
+                        if($is_register == null && $this->params['controller'] != 'Exercises')
                             $this->redirect('/Users/login');
                     }
                     else {

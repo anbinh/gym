@@ -149,7 +149,8 @@ class ApisController extends AppController {
             $this->setAuthentication($user['User']);
             $this->set(array(
                 'message' => 'success',
-                '_serialize' => array('message')
+                'id' => $user['User']['id'],
+                '_serialize' => array('message','id')
             ));
         }
         else
@@ -184,5 +185,119 @@ class ApisController extends AppController {
                 '_serialize' => array('message')
             ));
         }               
+    }
+
+    public function getListExercise(){
+        //$exercises = $this->Exercise->find('all',array('limit' => 8));
+        $user = $this->getAuthentication();
+        $exercises_like = array();
+        if($user)
+        {
+            $user = $this->User->findById($user['id']);
+            $user = $user['User'];
+            $search = array(
+                '_id' => array('$in' => $user['favorite_exercises'])
+            );
+            $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
+        }  
+        // find all exercise
+        /*$search = array(
+            '_id' => array('$nin' => $user['favorite_exercises'])
+        );
+        $exercises_list = $this->Exercise->find('all',array('conditions'=>$search));*/
+        
+        // find all exercise this user like
+        $exercises_list = $this->Exercise->find('all');
+        $this->set(array(
+            'exercises_list' => $exercises_list,
+            'exercises_like' => $exercises_like,
+            '_serialize' => array('exercises_list','exercises_like')
+        ));
+    }
+
+    public function getListExerciseLike(){        
+        $user = $this->getAuthentication();
+        $exercises_like = array();
+        if($user)
+        {
+            $user = $this->User->findById($user['id']);
+            $user = $user['User'];
+            $search = array(
+                '_id' => array('$in' => $user['favorite_exercises'])
+            );
+            $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
+        }    
+        $this->set(array(
+            'exercises_like' => $exercises_like,
+            '_serialize' => array('exercises_like')
+        ));
+    }
+
+    public function getListBodyPart(){
+        $body_list = $this->BodyPart->find('all');
+        $list = array();
+        foreach($body_list as $item)
+        {
+            $temp['id'] = $item['BodyPart']['body_part_id'];
+            $temp['name'] = $item['BodyPart']['description'];
+            array_push($list,$temp);
+        }
+        $this->set(array(
+            'body_list' => $list,
+            '_serialize' => array('body_list')
+        ));
+    }
+
+    public function likeExerciseByUser($exercise_id)
+    {
+        $user = $this->getAuthentication();
+        if($user)
+        {
+            $user_id = $user['id'];
+            // add new object Id
+            $this->User->mongoNoSetOperator = '$addToSet';
+            $susp = array(
+                "id" => $user_id,
+                "favorite_exercises" => new MongoId($exercise_id)
+            );
+            $result = $this->User->save($susp);
+            $this->set(array(
+                'message' => $result,
+                '_serialize' => array('message')
+            ));
+        }
+        else{
+            $this->set(array(
+                'message' => "UnAuthentication",
+                '_serialize' => array('message')
+            ));
+        }
+        
+    }
+
+    public function unlikeExerciseByUser($exercise_id)
+    {
+        $user = $this->getAuthentication();
+        if($user)
+        {
+            $user_id = $user['id'];
+            $this->User->mongoNoSetOperator = '$pull';
+            $susp = array(
+                "id" => $user_id,
+                "favorite_exercises" => new MongoId($exercise_id)
+            );
+            $result = $this->User->save($susp);
+            $this->set(array(
+                'message' => $result,
+                '_serialize' => array('message')
+            ));
+        }
+        else
+        {
+            $this->set(array(
+                'message' => "UnAuthentication",
+                '_serialize' => array('message')
+            ));
+        }        
     }
 }

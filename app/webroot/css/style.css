@@ -1057,3 +1057,68 @@ input:invalid {
     border-radius: 0 !important;
     margin-left: 25px;
 }
+
+.backdropClass_custom{
+    background-color: grey !important;
+    height: 1000%;
+}
+
+.register_input_set {
+    padding: 0;
+    margin: 0;
+    border: 2px solid #e6e6e6;
+    border-radius: 3px;
+    width: 220px;
+    /*margin: auto;*/
+    margin-left: 30px;
+}
+.register_input_bottom_border {
+    border-bottom: 2px solid #e6e6e6;
+    overflow: hidden;
+}
+.register_input_set input {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    width: 83%;
+    border-color: #e6e6e6!important;
+    padding: 15px 0 15px 0;
+}
+
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+    border: 7px solid #f2f2f2;
+}
+.arrow_box:after, .arrow_box:before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #ffffff;
+    border-width: 16px;
+    margin-left: -16px;
+}
+.arrow_box:before {
+    border-color: rgba(242, 242, 242, 0);
+    border-bottom-color: #f2f2f2;
+    border-width: 26px;
+    margin-left: -26px;
+}
+.overide-modal-content{
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important; 
+    border: none !important;
+}
+.modal-dialog-custom{
+    width: 40% !important;
+    margin-top: 90px !important;
+}

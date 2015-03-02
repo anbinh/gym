@@ -1,3 +1,6 @@
+<script type="text/javascript">
+    var  id = '<?php echo isset($auth_user['id']) ? $auth_user['id'] : "0"  ?>';
+</script>
 <div ng-controller="ExerciseController">
     <div layout="row">
         <md-button class="exercise_filter" ng-click="muscleClick()">

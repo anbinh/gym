@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-var app = angular.module('App', ['ngMaterial','ngDropdowns'])
+var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap'])
 app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
     $scope.main_logo = "";
     $scope.programs = 'PROGRAMS';
@@ -327,7 +327,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
     // get list exercise
-    $http.get('/Exercises/getListExercise.json')
+    $http.get('/Apis/getListExercise.json')
         .then(function(res){
             console.log(res);
             $scope.exercises_like = res.data.exercises_like;
@@ -335,7 +335,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
         });
     // get list part body for select
-    $http.get('/Exercises/getListBodyPart.json')
+    $http.get('/Apis/getListBodyPart.json')
         .then(function(res){
             console.log(res);
             $scope.body_part_items = res.data.body_list;
@@ -463,17 +463,43 @@ app.controller('ExerciseController', function($scope,$http,$filter){
 
 });
 
-app.controller('ItemExerciseController', function($scope,$http,$filter){
+app.controller('ItemExerciseController', function($scope,$http,$filter,$modal){
     $scope.toggleSelection = function() {
+        if(id == 0)
+        {
+            var modalInstance = $modal.open({
+              templateUrl:'login_modal.ctp',
+              controller: 'LoginModalInstanceCtrl',
+              backdropClass: 'backdropClass_custom'                    
+            });            
+            modalInstance.result.then(function (Id) {
+                  console.log(Id);
+                  id = Id;
+                  $http.get('/Apis/getListExerciseLike.json')
+                    .then(function(res){
+                        console.log(res);
+                        $scope.exercises_like = res.data.exercises_like;     
+                        $scope.toggleStar();                   
+                    });                  
+                }, function () {                 
+            });
+        }
+        else
+        {
+            $scope.toggleStar();
+        }        
+    };
+
+    $scope.toggleStar = function(){
         $scope.isSelected = ! $scope.isSelected;
         if ( $scope.isSelected ) {
-            $http.get('/Exercises/likeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
+            $http.get('/Apis/likeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
                 .then(function(res){
                     console.log(res);
                 });
             $scope.selectFriend( $scope.exercise );
         } else {
-            $http.get('/Exercises/unlikeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
+            $http.get('/Apis/unlikeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
                 .then(function(res){
                     console.log(res);
                 });
@@ -521,6 +547,33 @@ app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
     };
 }
 ]);
+
+app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
+    $scope.formData = {};
+    $scope.message = '';
+    $scope.signIn = function() {
+        var data = $scope.formData;
+        console.log(data);
+        $http({
+            method  : 'POST',
+            url     : '/Apis/loginByEmailAndPassword.json',
+            data    : $scope.formData,  // pass in data as strings
+            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+        })
+            .success(function(data) {                
+                if(data.message == 'success')                
+                    $modalInstance.close(data.id);                        
+                else
+                    $scope.message = data.message;
+            })
+    };
+    $scope.signUp = function() {
+        window.location='signup';
+    }     
+}
+);
+
+// Filter part
 app.filter('checkExerciseIsLike', function() {
     return function(input, id) {
         var i=0, len=input.length;

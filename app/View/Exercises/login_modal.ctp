@@ -1,8 +1,7 @@
 <div id="fb-root"></div>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-<div ng-controller="LoginController">
     <div layout="row" layout-align="center center">
-        <div class="main_content_register arrow_box">            
+        <div class="main_content_register">            
             <h4 style="font-weight:bold; margin-left:26px;">Login</h4>
             <!--<a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>-->
             <a id="btn_facebook" class="btn btn-social btn-facebook btn-fb" href="javascript:void(0);">
@@ -49,13 +48,6 @@
             <h5 style="margin-left:15px; font-size:15px;"><span style="color: #615F5F;">Don't have an account?</span> <a style="color:black;" href="/Users/signup">Sign Up now!</a></h5>
         </div>
     </div>
-   <!--  <div layout="row" layout-align="center center">
-        <div flex="50" class="back_to_login">
-            <a href="javascript:void(0);" ng-click='signUp()'>Sign Up Here!</a>
-        </div>
-    </div> -->
-</div>
-
 <script type="text/javascript">
     FB.init({
         appId: '607706552694436',
