@@ -1092,7 +1092,7 @@ input:invalid {
 .arrow_box {
     position: relative;
     background: #ffffff;
-    border: 7px solid #f2f2f2;
+    border: 7px solid #D8E6DC;
 }
 .arrow_box:after, .arrow_box:before {
     bottom: 100%;
@@ -1113,7 +1113,7 @@ input:invalid {
 }
 .arrow_box:before {
     border-color: rgba(242, 242, 242, 0);
-    border-bottom-color: #f2f2f2;
+    border-bottom-color: #D8E6DC;
     border-width: 26px;
     margin-left: -26px;
 }

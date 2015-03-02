@@ -3,7 +3,7 @@
 <div ng-controller="LoginController">
     <div layout="row" layout-align="center center">
         <div class="main_content_register arrow_box">            
-            <h4 style="font-weight:bold; margin-left:26px;">Login</h4>
+            <h4 style="font-weight:bold; margin: 40px 30px;">Login</h4>
             <!--<a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>-->
             <a id="btn_facebook" class="btn btn-social btn-facebook btn-fb" href="javascript:void(0);">
                 <i class="fa fa-facebook"></i>
