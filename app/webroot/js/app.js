@@ -463,7 +463,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
 
 });
 
-app.controller('ItemExerciseController', function($scope,$http,$filter,$modal){
+app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$window){
     $scope.toggleSelection = function() {
         if(id == 0)
         {
@@ -473,15 +473,13 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal){
               backdropClass: 'backdropClass_custom'                    
             });            
             modalInstance.result.then(function (Id) {
-                  console.log(Id);
-                  id = Id;
-                  $http.get('/Apis/getListExerciseLike.json')
+                console.log(Id);
+                $http.get('/Apis/likeExerciseByUser/' + $scope.exercise.Exercise.id +'.json')
                     .then(function(res){
                         console.log(res);
-                        $scope.exercises_like = res.data.exercises_like;     
-                        $scope.toggleStar();                   
-                    });                  
-                }, function () {                 
+                        $window.location.reload();
+                    });
+            }, function () {
             });
         }
         else
@@ -568,8 +566,58 @@ app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
             })
     };
     $scope.signUp = function() {
-        window.location='signup';
-    }     
+        window.location='/Users/signup';
+    };
+
+    FB.init({
+        appId: '607706552694436',
+        //appId: '609280322537059', // gym.miratik.com account test
+        status: true,
+        cookie: true,
+        oauth: true
+    });
+
+    $scope.login = function ()
+    {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                FB.api('/me', function(response1) {
+                    console.log(response1);
+                    $http({
+                        method  : 'GET',
+                        url     : '/Apis/loginByFbId/' + response1.id +'.json'
+                    })
+                        .success(function(data) {
+                            if(data.message == 'success')
+                                $modalInstance.close("123");
+                        })
+                });
+            } else {
+                FB.login(function(response) {
+                 if (response.authResponse)
+                 {
+                     FB.api('/me', function(response1) {
+                     console.log(response1);
+                     $http({
+                         method  : 'GET',
+                         url     : '/Apis/loginByFbId/' + response1.id +'.json'
+                         })
+                         .success(function(data) {
+                         if(data.message == 'success')
+                              $modalInstance.close();
+                         else
+                             window.location='/Users/signup';
+                         })
+                     });
+                 } else
+                 {
+                     console.log('User cancelled login or did not fully authorize.');
+                 }
+                 },{scope: 'email,publish_actions,user_friends'});
+                 //window.location='/Users/signup';
+            }
+        })
+    }
 }
 );
 
