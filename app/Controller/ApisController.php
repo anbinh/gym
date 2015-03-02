@@ -300,4 +300,24 @@ class ApisController extends AppController {
             ));
         }        
     }
+
+    public function loginByFbId($fb_id)
+    {
+        $user = $this->checkExistUser($fb_id);
+        if($user)
+        {
+            $this->setAuthentication($user['User']);
+            $this->set(array(
+                'message' => 'success',
+                '_serialize' => array('message')
+            ));
+        }
+        else
+        {
+            $this->set(array(
+                'message' => 'Fail',
+                '_serialize' => array('message')
+            ));
+        }
+    }
 }
