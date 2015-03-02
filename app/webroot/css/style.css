@@ -388,8 +388,7 @@ margin: 0 30px 25px 30px;
     font-size: .875rem;
     padding: 1em 5.9em !important;    
     text-decoration: none;
-    color: white;
-    margin-left:30px;
+    color: white;    
     border-radius:0 !important;
 }
 .frm_register{
@@ -520,6 +519,9 @@ input[type=date]{
     display: table;
     margin: 0 auto;
     bottom: 10px;
+    position: absolute;
+    width: 93%;
+    text-align: center;
 }
 
 .delete_icon_program{
@@ -604,7 +606,7 @@ input[type=date]{
         font-size: 14px;
     }
     .btn_sign_in{
-        margin-left:30px;
+       
     }
 }
 
@@ -658,11 +660,11 @@ input[type=date]{
         width: 94px;
     }
     .btn_sign_in {
-        margin-left:5px;
+        
     }
 
     .btn-fb{
-        margin-left: 5px !important;
+        margin-left: 11px !important;
     }
 }
 
@@ -678,7 +680,7 @@ input[type=date]{
         display: none;
     }
     .btn-fb{
-        margin-left: 12px !important;
+        margin-left: 30px !important;
         width: 200px !important;
     }
     .input_textbox{
@@ -823,8 +825,7 @@ input[type=date]{
         height: auto;
         margin-top:25px;
     }
-    .btn_sign_in {
-        margin-left: 15px;
+    .btn_sign_in {       
         width: 196px;
     }
     .logout_menu ul{

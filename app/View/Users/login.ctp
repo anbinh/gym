@@ -35,11 +35,12 @@
                         <div class="error-container" ng-show="signup_form.password.$dirty && signup_form.password.$invalid">
                             <small class="error" ng-show="signup_form.password.$error.required">Please input the password</small>
                         </div>
-                    </div>
-
-                </fieldset>
-                <div>
-                    <a href="javascript:void(0);" ng-click='signIn()' class="btn btn_sign_in" ng-disabled="signup_form.$invalid">SIGN IN</a>
+                    </div>                    
+                </fieldset>                
+                <div>   
+                    <fieldset class="register_input_set" style="border:0 !important;">                
+                        <a href="javascript:void(0);" ng-click='signIn()' class="btn btn_sign_in" ng-disabled="signup_form.$invalid">SIGN IN</a>
+                    </fieldset>     
                 </div>
                 <div>
                     <small class="error">{{ message }}</small>
