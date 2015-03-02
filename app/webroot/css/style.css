@@ -171,15 +171,14 @@ margin: 0 30px 25px 30px;
 }
 
 .bottomline{
-    border-bottom: 3px solid black;
+    border-bottom: 5px solid black;
 }
 
 .header_text{
     margin-left: 5px;
     text-decoration: none;
     cursor: pointer;
-    color: #000000;
-    font-weight: bold;
+    color: #000000;    
 }
 
 .right_header_button span{
@@ -567,7 +566,8 @@ input[type=date]{
         width: 33%;
     }
     .user_favorite_exercise_img{
-        min-height: 236px !important;
+        width: 230px !important;
+        height: 230px !important;
     }
     .img_program{
         height: auto;
@@ -587,7 +587,8 @@ input[type=date]{
         width: 50%;
     }
     .user_favorite_exercise_img{
-        min-height: 228px !important;
+        width: 225px !important;
+        height: 225px !important;
     }      
     .input_textbox{
         width: 210px !important;
@@ -614,7 +615,8 @@ input[type=date]{
     }
     .user_favorite_exercise_img{
         background-size: cover;        
-        min-height: 234px !important;
+        width: 229px !important;
+        height: 229px !important;
     }    
     .username{
         font-weight:bold; padding-left:10px;
@@ -763,7 +765,8 @@ input[type=date]{
         width:240px !important;      
     }
     .user_favorite_exercise_img{
-        margin-left: 4px !important;
+        width: 230px !important;
+        height: 230px !important;
     }
     .titre_right{
         font-size: 14px;
@@ -864,7 +867,7 @@ input[type=date]{
 }
 
 .img_star_container{
-    padding:7px;
+    padding-left:6px;
 }
 
 .exercise_filter{
