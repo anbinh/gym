@@ -1045,7 +1045,7 @@ input:invalid {
     border: none;
 }
 .ProgramIndexLeftContent{
-   width: 724px; 
+  /* width: 724px; */
 }
 .title_program{
     font-weight:bold; padding-left:10px;
@@ -1185,4 +1185,39 @@ input:invalid {
     -webkit-box-shadow: none !important;
     box-shadow: none !important; 
     border: none !important;
+}
+.box_program_vew{
+    height: 225px;
+    width: 225px;    
+    margin: 2px;
+    border: 1px solid #ccc;  
+    background: white; 
+}
+.list_program_view{
+    margin: auto;
+}
+.no_padding{
+    padding: 0 !important;
+}
+.no_margin{
+    margin: 0 !important;
+}
+.small_box{
+    border: 1px solid #ccc;
+    height: 70px;
+    margin: 3px 5px 3px 5px;
+    background: #f0f0ef;
+}
+.serie{
+    padding-top:2px;
+    padding-left: 10px;
+}
+.serie p{
+    float:left;
+}
+
+.sequence_number_box{
+    font-weight: bold;
+    padding: 5px 0 0 10px;
+    font-size: 15px;
 }

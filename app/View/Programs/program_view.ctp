@@ -68,7 +68,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
 </style>
 
 <div layout="row" layout-align="center start">
-    <div class="ProgramIndexLeftContent">
+    <div flex class="ProgramIndexLeftContent">
         <div layout="column" class="summary_program">
             <div layout="row" class="header_program">
                 <div style="padding-left:10px;">
@@ -98,16 +98,23 @@ md-tabs.md-default-theme md-tabs-ink-bar {
 
         <div ng-controller="ProgramController" class="program_tab" layout="column">
           <md-tabs md-selected="selectedIndex" flex>
-            <md-tab ng-repeat="tab in tabs"
-                    ng-disabled="tab.disabled"
-                    label="{{tab.title}}">
-              <div class="demo-tab tab{{$index%4}}" layout="column" layout-align="space-around center">
-                <div ng-bind="tab.content"></div>                 
-              </div>
+            <md-tab label="Day 1">
+              <?php echo $this->Element('exercise_stretching');?>
+            </md-tab>           
+            <md-tab label="Day 2">
+              2
+            </md-tab>            
+            <md-tab label="Day 3">
+              3
             </md-tab>
-          </md-tabs>          
+            <md-tab label="Day 4">
+              3
+            </md-tab>
+          </md-tabs>              
         </div>
-
+        <div>
+          
+        </div>
     </div>    
     <div style="width:300px;margin-top: 60px" layout="column" class="menu-right">
         <div class="mobile_app" layout="row" layout-align="start center">
