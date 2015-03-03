@@ -552,10 +552,10 @@ input[type=date]{
         padding: 0;
     }
 
-    /*#content{
+    #content{
         width: 100%;
         margin: 0;
-    }*/
+    }
 
     .program_box{
         width: 25%;
