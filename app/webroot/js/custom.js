@@ -6,13 +6,13 @@ $(document).ready(function(){
 		  // alert($(this).parent().html());
 		}, function() {				
 			$('ul').hover(
-				function() {				    
-					//ishover = true;	
-					//alert('1');
-				}, function() {				
-					$(this).removeClass('active');
-					//alert('1');
-				}	
+				// function() {				    
+				// 	//ishover = true;	
+				// 	alert('1');
+				// }, function() {				
+				// 	//$(this).removeClass('active');
+				// 	alert('1');
+				// }	
 			);
 			//alert('2');
 			//$(this).find('ul').removeClass('active');				

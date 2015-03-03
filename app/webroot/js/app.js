@@ -272,7 +272,7 @@ app.controller('UserProfileController', function($scope,$http){
     $scope.isSelected = true;
 });
 
-app.controller('signupController', function($scope,$http,$location){
+app.controller('signupController', function($scope,$http){
     $scope.formData = {};
     $scope.message = '';
     $scope.next = function() {
@@ -518,8 +518,26 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
         $scope.isSelected = false;
 });
 
-app.controller('ProgramController', ['$scope', '$http', function($scope, $http,$log){
-    $scope.selectedIndex = 0;   
+app.controller('ProgramListController', function($scope,$http,$filter,$modal,$window){
+    // get list exercise
+    $http.get('/Apis/getListProgram.json')
+        .then(function(res){
+            console.log(res);
+            /*$scope.exercises_like = res.data.exercises_like;
+            $scope.exercises_list = angular.copy(res.data.exercises_list);
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);*/
+        });
+    // get list part body for select
+    $http.get('/Apis/getListObjective.json')
+        .then(function(res){
+            console.log(res);
+            /*$scope.body_part_items = res.data.body_list;*/
+        });
+}
+);
+
+app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
+    $scope.selectedIndex = 0;
 }
 ]);
 

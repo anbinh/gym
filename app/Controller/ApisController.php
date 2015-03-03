@@ -320,4 +320,27 @@ class ApisController extends AppController {
             ));
         }
     }
+
+    public function getListProgram(){
+        $programs_list = $this->Program->find('all');
+        $this->set(array(
+            'programs_list' => $programs_list,
+            '_serialize' => array('programs_list')
+        ));
+    }
+
+    public function getListObjective(){
+        $objective_list = $this->Objective->find('all');
+        $list = array();
+        foreach($objective_list as $item)
+        {
+            $temp['id'] = $item['Objective']['objective_id'];
+            $temp['name'] = $item['Objective']['description'];
+            array_push($list,$temp);
+        }
+        $this->set(array(
+            'objective_list' => $list,
+            '_serialize' => array('objective_list')
+        ));
+    }
 }

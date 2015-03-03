@@ -1,9 +1,11 @@
+<div ng-controller="ProgramListController">
 <ul class="list-inline filter_objective_program">
     <li>OBJECTIVE</li>
     <li>
-        <select class="input_select input_select_objective">
-      		<option>Choose</option>
-      	</select>
+        <select ng-model="selectedObjectiveItem" ng-change="changedValue(selectedObjectiveItem)">
+            <option value=""><?php echo __('Choose')?></option>
+            <option ng-repeat="item in objective_items" value="{{item.id}}">{{item.name}}</option>
+        </select>
     </li>
 </ul>
 
@@ -84,4 +86,5 @@
             <img src="/img/images/Ad_example.jpg"/>
         </div>
     </div>
+</div>
 </div>
