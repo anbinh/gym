@@ -25,6 +25,7 @@
                     <input type="email" required placeholder="Email" ng-model="formData.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
                     <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
                         <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
+                        <small class="error" ng-show="signup_form.email.$error.pattern">Please type a valid email.</small>
                     </div>
                 </div>
                 <div>

@@ -272,7 +272,7 @@ app.controller('UserProfileController', function($scope,$http){
     $scope.isSelected = true;
 });
 
-app.controller('signupController', function($scope,$http,$location){
+app.controller('signupController', function($scope,$http){
     $scope.formData = {};
     $scope.message = '';
     $scope.next = function() {
@@ -518,31 +518,26 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
         $scope.isSelected = false;
 });
 
+app.controller('ProgramListController', function($scope,$http,$filter,$modal,$window){
+    // get list exercise
+    $http.get('/Apis/getListProgram.json')
+        .then(function(res){
+            console.log(res);
+            /*$scope.exercises_like = res.data.exercises_like;
+            $scope.exercises_list = angular.copy(res.data.exercises_list);
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);*/
+        });
+    // get list part body for select
+    $http.get('/Apis/getListObjective.json')
+        .then(function(res){
+            console.log(res);
+            /*$scope.body_part_items = res.data.body_list;*/
+        });
+}
+);
+
 app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
-   var tabs = [
-      { title: 'Day 1', content: "Tabs will become paginated if there isn't enough room for them."},
-      { title: 'Day 2', content: "You can swipe left and right on a mobile device to change tabs."},
-      { title: 'Day 3', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
-      { title: 'Day 4', content: "If you set the selected tab binding to -1, it will leave no tab selected."},      
-    ];
-    $scope.tabs = tabs;
     $scope.selectedIndex = 0;
-    $scope.$watch('selectedIndex', function(current, old){
-      if ( old && (old != current)) $log.debug('Goodbye ' + tabs[old].title + '!');
-      if ( current )                $log.debug('Hello ' + tabs[current].title + '!');
-    });
-    $scope.addTab = function (title, view) {
-      view = view || title + " Content View";
-      tabs.push({ title: title, content: view, disabled: false});
-    };
-    $scope.removeTab = function (tab) {
-      for (var j = 0; j < tabs.length; j++) {
-        if (tab.title == tabs[j].title) {
-          $scope.tabs.splice(j, 1);
-          break;
-        }
-      }
-    };
 }
 ]);
 
