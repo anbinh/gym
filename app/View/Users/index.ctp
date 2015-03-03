@@ -3,7 +3,7 @@
     var  id = '<?php echo isset($user['id']) ? $user['id'] : 0  ?>';
 </script>
 <div layout="row" layout-align="center start">
-    <div ng-controller="UserController" class="UserIndexLeftContent">
+    <div flex ng-controller="UserController" class="UserIndexLeftContent">
         <div layout="column" class="info_user">
             <div layout="row" class="avatar">
                 <div style="padding-left:10px;"><img class="img_avatar" ng-src="{{user.picture}}"/></div>

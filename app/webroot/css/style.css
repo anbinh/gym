@@ -246,7 +246,7 @@ margin: 0 30px 25px 30px;
 }
 
 #content{
-    width: 1020px;
+    width: 1230px;
     margin: auto;
 }
 
@@ -496,8 +496,8 @@ input[type=date]{
     background-size: 240px 230px;
     background-repeat: no-repeat;
     background-size: contain;
-    min-height: 176px;
-    min-width: 176px;
+    min-height: 230px;
+    min-width: 230px;
     background-position: center center;
     margin:2px; 
     border:1px solid #ccc;
@@ -510,7 +510,7 @@ input[type=date]{
 }
 
 .UserIndexLeftContent{
-    width: 724px;
+    /*width: 724px;*/
 }
 
 .program_text_name{
@@ -529,8 +529,8 @@ input[type=date]{
 }
 
 .img_program{
-    height: 130px;
-    margin-top:10px;
+    /*height: 130px;*/
+    margin-top:20px;
 }
 
 .program_box{
@@ -579,6 +579,9 @@ input[type=date]{
         height: auto;
         margin-top:25px;
     }
+    .exercise_box {    
+        margin-bottom: 6px;
+    }
 }
 
 /* Ipad Doc */
@@ -595,6 +598,7 @@ input[type=date]{
     .user_favorite_exercise_img{
         width: 225px !important;
         height: 225px !important;
+        margin:1px !important;
     }      
     .input_textbox{
         width: 210px !important;
@@ -628,6 +632,21 @@ input[type=date]{
     }
     .modal-dialog-custom{
         width: 400px !important;
+    }
+    .menu-right{
+        display: none !important;
+    }
+    .user_favorite_exercise_img{
+        width: 230px;
+        height: 230px;
+        float:left;
+        position: relative;
+    }
+    .hidden_username{
+        display: none;
+    }
+    .list_tile {
+        margin-left: 40px;
     }
 }
 
@@ -663,6 +682,7 @@ input[type=date]{
     .exercise_box{
         width:50% !important;
         float: left;
+        margin-bottom: 4px;
     }
     .img_program{
         height: auto;
@@ -693,7 +713,7 @@ input[type=date]{
 
     .btn-fb-modal{
         margin-left: 8px !important;
-    }
+    }    
 }
 
 /* Iphone Doc*/
@@ -884,6 +904,9 @@ input[type=date]{
     }
     .input_select{
         font-size: smaller !important;
+    }
+    .list_tile {
+        margin-left: 20px;
     }
 }
 

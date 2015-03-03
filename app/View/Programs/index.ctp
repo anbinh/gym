@@ -8,7 +8,7 @@
 </ul>
 
 <div layout="row" layout-align="center start">
-    <div ng-controller="UserController" class="UserIndexLeftContent">                
+    <div flex ng-controller="UserController" class="UserIndexLeftContent">                
         <div layout="row">
             <div flex>                
                 <div class="list_tile" class="row">
