@@ -2,7 +2,7 @@
     <div class="main_content_register">
         <h4 style="font-weight:bold; margin-left:26px;">Login</h4>
         <!--<a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>-->
-        <a id="btn_facebook" class="btn btn-social btn-facebook btn-fb" href="javascript:void(0);" ng-click="login()">
+        <a id="btn_facebook" class="btn btn-social btn-facebook btn-fb-modal" href="javascript:void(0);" ng-click="login()">
             <i class="fa fa-facebook"></i>
             <?php echo __("Login with Facebook")?>
         </a>
@@ -36,7 +36,9 @@
 
             </fieldset>
             <div>
-                <a href="javascript:void(0);" ng-click='signIn()' class="btn btn_sign_in" ng-disabled="signup_form.$invalid">SIGN IN</a>
+                <fieldset class="register_input_set" style="border:0 !important;">
+                    <a href="javascript:void(0);" ng-click='signIn()' class="btn btn_sign_in" ng-disabled="signup_form.$invalid">SIGN IN</a>
+                </fieldset>
             </div>
             <div>
                 <small class="error">{{ message }}</small>

@@ -355,7 +355,7 @@ margin: 0 30px 25px 30px;
 }
 .main_content_register{
     text-align: center;
-    margin-top: 60px;
+    margin-top: 40px;
     padding-bottom: 60px;
     padding-left: 60px;
     padding-right: 60px;
@@ -547,7 +547,7 @@ input[type=date]{
     font-size: 14px;
 }
 /* Desktop */
-@media (max-width: 1280px) {
+@media (max-width: 1041px) {
     .toolbar-title {
         padding: 0;
     }
@@ -559,6 +559,10 @@ input[type=date]{
 
     .program_box{
         width: 25%;
+    }
+    .modal-dialog-custom{
+        width: 450px !important;
+        margin-top: 90px !important;
     }
 }
 
@@ -610,8 +614,28 @@ input[type=date]{
     }
 }
 
-/* Iphone Ngang */
+/* Iphone Ngang 5 6*/
+@media (min-width: 501px) and (max-width: 749px) {
+    .btn-fb{
+        margin-left: 5px !important;
+    }
+    .btn-fb-modal{
+        margin-left: 5px !important;
+    }
+    .main_content_register{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .modal-dialog-custom{
+        width: 400px !important;
+    }
+}
+
+/* Iphone Ngang 4*/
 @media (min-width: 401px) and (max-width: 500px) {
+    .modal-dialog-custom{
+        width: 400px !important;
+    }
     .program_box{
         width: 50%;
     }
@@ -664,12 +688,19 @@ input[type=date]{
     }
 
     .btn-fb{
-        margin-left: 11px !important;
+        margin-left: 8px !important;
+    }
+
+    .btn-fb-modal{
+        margin-left: 8px !important;
     }
 }
 
 /* Iphone Doc*/
 @media (max-width: 400px) {
+    .modal-dialog-custom{
+        width: 300px !important;
+    }
     .username{
         font-size: small;
     }
@@ -680,6 +711,10 @@ input[type=date]{
         display: none;
     }
     .btn-fb{
+        margin-left: 20px !important;
+        width: 200px !important;
+    }
+    .btn-fb-modal{
         margin-left: 30px !important;
         width: 200px !important;
     }
@@ -1062,6 +1097,12 @@ input:invalid {
     margin-left: 25px;
 }
 
+.btn-fb-modal{
+    width: 216px;
+    border-radius: 0 !important;
+    margin-left: 25px;
+}
+
 .backdropClass_custom{
     background-color: grey !important;
     height: 1000%;
@@ -1121,8 +1162,4 @@ input:invalid {
     -webkit-box-shadow: none !important;
     box-shadow: none !important; 
     border: none !important;
-}
-.modal-dialog-custom{
-    width: 40% !important;
-    margin-top: 90px !important;
 }
