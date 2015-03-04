@@ -3,13 +3,13 @@
 <div ng-controller="LoginController">
     <div layout="row" layout-align="center center">
         <div class="main_content_register arrow_box">            
-            <h4 style="font-weight:bold; margin: 40px 30px;">Login</h4>
+            <h4 style="font-weight:bold; margin: 40px 30px;"><?php echo __("Login")?></h4>
             <!--<a href="javascript:;" class="btn btn_facebook" style="margin-left:29px;">Login with Facebook</a>-->
             <a id="btn_facebook" class="btn btn-social btn-facebook btn-fb" href="javascript:void(0);">
                 <i class="fa fa-facebook"></i>
                 <?php echo __("Login with Facebook")?>
             </a>
-            <h4 style="margin-left:15px;">or</h4>
+            <h4 style="margin-left:15px;"><?php echo __("or")?></h4>
             <form class="frm_register" name="signup_form">
                 <fieldset style="float:left; border:0 !important;">
                     <div>
@@ -25,22 +25,22 @@
                 </fieldset>
                 <fieldset class="register_input_set">
                     <div class="register_input_bottom_border">                                            
-                        <input type="email" required placeholder="Email" ng-model="formData.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
+                        <input type="email" required placeholder="<?php echo __("Email")?>" ng-model="formData.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
                         <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
-                            <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
-                            <small class="error" ng-show="signup_form.email.$error.pattern">Please type a valid email.</small>
+                            <small class="error" ng-show="signup_form.email.$error.required"><?php echo __("Your email is required.")?></small>
+                            <small class="error" ng-show="signup_form.email.$error.pattern"><?php echo __("Please type a valid email.")?></small>
                         </div>
                     </div>
                     <div>                                        
-                        <input type="password" required placeholder="Password" ng-model="formData.password" name="password">
+                        <input type="password" required placeholder="<?php echo __("Password")?>" ng-model="formData.password" name="password">
                         <div class="error-container" ng-show="signup_form.password.$dirty && signup_form.password.$invalid">
-                            <small class="error" ng-show="signup_form.password.$error.required">Please input the password</small>
+                            <small class="error" ng-show="signup_form.password.$error.required"><?php echo __("Please input the password")?></small>
                         </div>
                     </div>                    
                 </fieldset>                
                 <div>   
                     <fieldset class="register_input_set" style="border:0 !important;">                
-                        <a href="javascript:void(0);" ng-click='signIn()' class="btn btn_sign_in" ng-disabled="signup_form.$invalid">SIGN IN</a>
+                        <a href="javascript:void(0);" ng-click='signIn()' class="btn btn_sign_in" ng-disabled="signup_form.$invalid"><?php echo __("SIGN IN")?></a>
                     </fieldset>     
                 </div>
                 <div>
@@ -48,20 +48,15 @@
                 </div>
             </form>
             <h5 style="margin-left:15px; color: #615F5F; font-size:15px;">Forgot password</h5>
-            <h5 style="margin-left:15px; font-size:15px;"><span style="color: #615F5F;">Don't have an account?</span> <a style="color:black;" href="/Users/signup">Sign Up now!</a></h5>
+            <h5 style="margin-left:15px; font-size:15px;"><span style="color: #615F5F;"><?php echo __("Don't have an account?")?></span> <a style="color:black;" href="/Users/signup"><?php echo __("Sign Up now!")?></a></h5>
         </div>
     </div>
-   <!--  <div layout="row" layout-align="center center">
-        <div flex="50" class="back_to_login">
-            <a href="javascript:void(0);" ng-click='signUp()'>Sign Up Here!</a>
-        </div>
-    </div> -->
 </div>
 
 <script type="text/javascript">
     FB.init({
-        appId: '607706552694436',
-        //appId: '609280322537059', // gym.miratik.com account test
+        //appId: '607706552694436',
+        appId: '609280322537059', // gym.miratik.com account test
         status: true,
         cookie: true,
         oauth: true

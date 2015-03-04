@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-02-13 16:01+0100\n"
+"POT-Creation-Date: 2015-03-04 15:23+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,155 +14,355 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: /Controller/UsersController.php:14;22
+#: Controller/UsersController.php:13;25
 msgid "Invalid user"
 msgstr ""
 
-#: /Plugin/Mongodb/Model/Datasource/MongodbSource.php:589
+#: Plugin/Mongodb/Model/Datasource/MongodbSource.php:589
 msgid "Invalid schema object"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/GeosController.php:78
+#: Plugin/Mongodb/samples/Controller/GeosController.php:78
 msgid "Geo saved."
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/GeosController.php:93
+#: Plugin/Mongodb/samples/Controller/GeosController.php:93
 msgid "Invalid Geo"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/GeosController.php:96
+#: Plugin/Mongodb/samples/Controller/GeosController.php:96
 msgid "Geo deleted"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/GeosController.php:98
+#: Plugin/Mongodb/samples/Controller/GeosController.php:98
 msgid "Geo deleted Fail"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:53
+#: Plugin/Mongodb/samples/Controller/PostsController.php:53
 msgid "Post saved."
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:68;91
+#: Plugin/Mongodb/samples/Controller/PostsController.php:68;91
 msgid "Invalid Post"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:72
+#: Plugin/Mongodb/samples/Controller/PostsController.php:72
 msgid "The Post has been saved."
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:94
+#: Plugin/Mongodb/samples/Controller/PostsController.php:94
 msgid "Post deleted"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:96
+#: Plugin/Mongodb/samples/Controller/PostsController.php:96
 msgid "Post deleted Fail"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:109
+#: Plugin/Mongodb/samples/Controller/PostsController.php:109
 msgid "Post deleteAll success"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:112
+#: Plugin/Mongodb/samples/Controller/PostsController.php:112
 msgid "Post deleteAll Fail"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:128
+#: Plugin/Mongodb/samples/Controller/PostsController.php:128
 msgid "Post updateAll success"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/PostsController.php:131
+#: Plugin/Mongodb/samples/Controller/PostsController.php:131
 msgid "Post updateAll Fail"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:45
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:45
 msgid "Subdocument saved."
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:60;82
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:60;82
 msgid "Invalid Subdocument"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:64
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:64
 msgid "The Subdocument has been saved."
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:85
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:85
 msgid "Subdocument deleted"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/Controller/SubdocumentsController.php:87
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:87
 msgid "Subdocument deleted Fail"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/View/Geos/add.ctp:4
+#: Plugin/Mongodb/samples/View/Geos/add.ctp:4
 msgid "Add Geo"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/View/Geos/add.ctp:16;25
+#: Plugin/Mongodb/samples/View/Geos/add.ctp:16;25
 msgid "List Geos"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/View/Posts/add.ctp:4
+#: Plugin/Mongodb/samples/View/Posts/add.ctp:4
 msgid "Add Post"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/View/Posts/add.ctp:15
-#: /Plugin/Mongodb/samples/View/Posts/edit.ctp:16
+#: Plugin/Mongodb/samples/View/Posts/add.ctp:15
+#: Plugin/Mongodb/samples/View/Posts/edit.ctp:16
 msgid "List Posts"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/View/Posts/edit.ctp:4
+#: Plugin/Mongodb/samples/View/Posts/edit.ctp:4
 msgid "Edit Post"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/View/Subdocuments/add.ctp:4
+#: Plugin/Mongodb/samples/View/Subdocuments/add.ctp:4
 msgid "Add Subdocument"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/View/Subdocuments/add.ctp:20;29
-#: /Plugin/Mongodb/samples/View/Subdocuments/edit.ctp:19
+#: Plugin/Mongodb/samples/View/Subdocuments/add.ctp:20;29
+#: Plugin/Mongodb/samples/View/Subdocuments/edit.ctp:19
 msgid "List Subdocuments"
 msgstr ""
 
-#: /Plugin/Mongodb/samples/View/Subdocuments/edit.ctp:4
+#: Plugin/Mongodb/samples/View/Subdocuments/edit.ctp:4
 msgid "Edit Subdocument"
 msgstr ""
 
-#: /View/Exercises/index.ctp:52
-#: /View/Users/edit_profile.ctp:85
-#: /View/Users/index.ctp:100
+#: View/Exercises/exercise_item.ctp:47
+#: View/Exercises/index.ctp:55
+#: View/Programs/index.ctp:89
+#: View/Programs/program_view.ctp:122
+#: View/Users/edit_profile.ctp:215
+#: View/Users/index.ctp:107
 msgid "mobile application"
 msgstr ""
 
-#: /View/Exercises/index.ctp:56
-#: /View/Users/edit_profile.ctp:89
-#: /View/Users/index.ctp:104
+#: View/Exercises/exercise_item.ctp:51
+#: View/Exercises/index.ctp:59
+#: View/Programs/index.ctp:93
+#: View/Programs/program_view.ctp:126
+#: View/Users/edit_profile.ctp:219
+#: View/Users/index.ctp:111
 msgid "create a program"
 msgstr ""
 
-#: /View/Exercises/index.ctp:59
-#: /View/Users/edit_profile.ctp:92
-#: /View/Users/index.ctp:107
+#: View/Exercises/exercise_item.ctp:54
+#: View/Exercises/index.ctp:62
+#: View/Programs/index.ctp:96
+#: View/Programs/program_view.ctp:129
+#: View/Users/edit_profile.ctp:222
+#: View/Users/index.ctp:114
 msgid "advertising"
 msgstr ""
 
-#: /View/Layouts/default.ctp:69
+#: View/Exercises/index.ctp:9
+msgid "Musculation"
+msgstr ""
+
+#: View/Exercises/index.ctp:14
+msgid "Stretching"
+msgstr ""
+
+#: View/Exercises/index.ctp:19
+msgid "Cardio"
+msgstr ""
+
+#: View/Exercises/index.ctp:23
+msgid "Part"
+msgstr ""
+
+#: View/Exercises/login_modal.ctp:7
+#: View/Users/login.ctp:10
+msgid "Login with Facebook"
+msgstr ""
+
+#: View/Layouts/default.ctp:74
 msgid "program header"
 msgstr ""
 
-#: /View/Layouts/default.ctp:70
+#: View/Layouts/default.ctp:75
 msgid "exercise header"
 msgstr ""
 
-#: /View/Users/index.ctp:20
-msgid "edit"
+#: View/Layouts/default.ctp:99
+#: View/Users/login.ctp:6
+msgid "Login"
 msgstr ""
 
-#: /View/Users/index.ctp:27
+#: View/Programs/index.ctp:7
+msgid "Choose"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:29;56
+msgid "Edit Picture"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:62
+msgid "User Name"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:66
+msgid "Email Address"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:70
+msgid "First Name"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:74
+msgid "Last Name"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:78
+msgid "Gender"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:79
+msgid "Men"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:80
+msgid "Women"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:83
+msgid "Language"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:93
+msgid "Location"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:97
+msgid "Birthday"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:119
+msgid "Your Password"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:122
+msgid "Change Password"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:124
+msgid "Set Password"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:128
+msgid "Facebook"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:132
+msgid "Connect Facebook"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:136
+msgid "Promotion Email"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:137
+msgid "Receive promotion emails"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:141
+msgid "SAVE"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:142
+msgid "CANCEL"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:144
+msgid "To remove your Keep account please"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:144
+msgid "click here"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:153
+#: View/Users/index.ctp:25
 msgid "my program"
 msgstr ""
 
-#: /View/Users/index.ctp:55
+#: View/Users/edit_profile.ctp:154
+#: View/Users/index.ctp:18;26
+msgid "edit"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:190
+#: View/Users/index.ctp:82
 msgid "favorite exercise"
+msgstr ""
+
+#: View/Users/login.ctp:12
+#: View/Users/signup.ctp:61
+msgid "or"
+msgstr ""
+
+#: View/Users/login.ctp:28
+#: View/Users/signup.ctp:71
+msgid "Email"
+msgstr ""
+
+#: View/Users/login.ctp:30
+#: View/Users/signup.ctp:73
+msgid "Your email is required."
+msgstr ""
+
+#: View/Users/login.ctp:31
+#: View/Users/signup.ctp:74
+msgid "Please type a valid email."
+msgstr ""
+
+#: View/Users/login.ctp:35
+#: View/Users/signup.ctp:78
+msgid "Password"
+msgstr ""
+
+#: View/Users/login.ctp:37
+#: View/Users/signup.ctp:80
+msgid "Please input the password"
+msgstr ""
+
+#: View/Users/login.ctp:43
+msgid "SIGN IN"
+msgstr ""
+
+#: View/Users/login.ctp:51
+msgid "Don't have an account?"
+msgstr ""
+
+#: View/Users/login.ctp:51
+msgid "Sign Up now!"
+msgstr ""
+
+#: View/Users/signup.ctp:58
+msgid "Sign Up"
+msgstr ""
+
+#: View/Users/signup.ctp:59
+msgid "Nice To Meet You"
+msgstr ""
+
+#: View/Users/signup.ctp:60
+msgid "Sign up with Facebook"
+msgstr ""
+
+#: View/Users/signup.ctp:65
+msgid "First and Last Name"
+msgstr ""
+
+#: View/Users/signup.ctp:67
+msgid "Please input the name"
+msgstr ""
+
+#: View/Users/signup.ctp:88
+msgid "NEXT"
+msgstr ""
+
+#: View/Users/signup.ctp:93
+msgid "Already Registerred? Log In now!"
 msgstr ""
 

@@ -36,7 +36,7 @@
 
 <div class="wrap_content right_banner" layout="row" ng-controller="UserProfileController">
 	<div flex>
-		<div layout-align="center start">
+		<div layout-align="center start" style="border-bottom: 1px solid #ccc;">
             <?php
             echo $this -> Form -> create('User',
                 array('enctype' => 'multipart/form-data',
@@ -44,10 +44,10 @@
                     'url' => '/Users/save_profile',
                     'id' => 'userProfileForm')); ?>
 			<!--<form action="/Users/save_profile" class="user_profile" enctype="multipart/form-data">-->
-                <input type="hidden" name="data[User][id]" id="id" ng-model="formData.id">
-                <input type="hidden" name="data[User][picture]" id="picture_fb">
-                <input type="hidden" name="data[User][fb_id]" id="fb_id" ng-value="formData.fb_id">
-                <input type="hidden" name="data[User][password]" id="password" ng-value="formData.password">
+                <input type="hidden" name="data[User][id]" id="id" ng-value="id">
+                <input type="hidden" name="data[User][picture]" id="picture_fb" ng-value="picture">
+                <input type="hidden" name="data[User][fb_id]" id="fb_id" ng-value="fb_id">
+                <input type="hidden" name="data[User][password]" id="password" ng-value="password">
                 <div layout-gt-md="row" layout-md="column" layout-gt-sm="column" layout-sm="column">
                     <div flex-gt-md="33" flex-lg="33" flex-gt-lg="33" flex-md="95" flex-gt-sm="95" flex-sm="100" class="picture_box">
                         <div id="AccountImage" class="add_picture_box" ng-style="{'background-image':'url('+imgURL+')'}">
@@ -138,8 +138,8 @@
                         </div>
                         <hr>
                         <div class="input_row_save_cancel" layout="row">
-                            <div flex><input type="submit" value="<?php echo __("SAVE")?>" class="btn btn_change_save"></div>
-                            <div flex><a href="javascript:void(0);" class="btn btn_change_cancel" ng-click='cancel()'><?php echo __("CANCEL")?></a></div>
+                            <div flex="40"><input type="submit" value="<?php echo __("SAVE")?>" class="btn btn_change_save"></div>
+                            <div flex="40"><a href="javascript:void(0);" class="btn btn_change_cancel" ng-click='cancel()'><?php echo __("CANCEL")?></a></div>
                         </div>
                         <p style="font-weight:bold;"><?php echo __("To remove your Keep account please")?> <a href="javascript:void(0);" style="color:#ccc; text-decoration:none;"><?php echo __("click here")?>.</a></p>
                     </div>
@@ -226,8 +226,8 @@
 </div>
 <script type="text/javascript">
     FB.init({
-        appId: '607706552694436',
-        //appId: '609280322537059', // gym.miratik.com account test
+        //appId: '607706552694436',
+        appId: '609280322537059', // gym.miratik.com account test
         status: true,
         cookie: true,
         oauth: true

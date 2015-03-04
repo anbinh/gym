@@ -76,8 +76,8 @@ class UsersController extends AppController {
                     $sFileName = $this->generateRandomString().'.'.$ext;
                     $file_uri = '/upload/image/'.$sFileName;
                     $data['User']['picture'] = $file_uri;
-                    //move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri);
-                    move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri);
+                    move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri);
+                    //move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri);
                 }
             }
             else{
@@ -93,6 +93,8 @@ class UsersController extends AppController {
                     $data['User']['favorite_exercises'] = $user['User']['favorite_exercises'];
                     $data['User']['role'] = $user['User']['role'];
                     $data['User']['assigned_programs'] = $user['User']['assigned_programs'];
+                    if(!$_FILES)
+                        $data['User']['picture'] = $user['User']['picture'];
                 }
             }
             else
@@ -113,6 +115,7 @@ class UsersController extends AppController {
             $this->setAuthentication($data['User']);
 
         }
-        $this->redirect('/Users/index');        
+        $this->redirect('/Users/index');
+        //$this->render(FALSE);
     }
 }

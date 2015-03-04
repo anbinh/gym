@@ -17,11 +17,16 @@ margin: 0 30px 25px 30px;
 }
 
 .header_button_menu{
-  /*  background: url("/img/images/menu.png") no-repeat !important;*/
-   /* width: 40px;
-    height: 30px;*/
-    border-radius: 0 !important;   
+    background-color: #a4c408;
+    border-radius: 0 !important;
+    border: none;
 }
+
+.header_button{
+    background-color: #a4c408;
+    border: none;
+}
+
 .header_button_menu img{
     width: 20px;
 }
@@ -434,6 +439,7 @@ margin: 0 30px 25px 30px;
     text-decoration: none;
     color: white;
     border-radius: 0 !important;
+    width: 180px;
 }
 .btn_change_cancel{
     background: #D9E5DD;
@@ -442,6 +448,8 @@ margin: 0 30px 25px 30px;
     text-decoration: none;
     color: black;
     border-radius: 0 !important;
+    width: 180px;
+    margin-left: 10px;
 }
 .input_row_save_cancel{
     padding: 20px 0 20px 0;
@@ -1221,4 +1229,12 @@ input:invalid {
     font-weight: bold;
     padding: 5px 0 0 10px;
     font-size: 15px;
+}
+
+.mobile_app p{
+    padding-top: 17px;
+}
+
+.create_program p{
+    padding-top: 17px;
 }

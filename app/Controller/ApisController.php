@@ -343,4 +343,13 @@ class ApisController extends AppController {
             '_serialize' => array('objective_list')
         ));
     }
+
+    public function toggleLanguage($language)
+    {
+        $this->Session->write('Config.language',$language);
+        $this->set(array(
+            'message' => "success",
+            '_serialize' => array('message')
+        ));
+    }
 }

@@ -44,7 +44,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-1.11.2.min',
             'bootstrap.min',
-            'custom?32134534',
+            'custom',
             'bower_components/angular-ui/ui-bootstrap-tpls-0.12.1'
             /*'bower_components/angular-ui/ui-bootstrap-0.12.1'*/
         ));
@@ -65,14 +65,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             <md-toolbar class="" layout="row" layout-sm="row" layout-align="center center" layout-align-sm="center center">
                 <div flex layout="row" layout-align="start center" style="padding-left:10px;" class="header_menu">
                     <div class="hover_dropdown"></div>
-                    <md-button class="header_button_menu"
+                    <button class="header_button_menu"
                        dropdown-menu="ddMenuOptions"
                        dropdown-model="ddMenuSelected"
                        dropdown-item-label="text">
                         <img src="/img/images/menu.png">
-                    </md-button>                    
-                    <md-button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;"><span class="header_text program_menu <?php echo isset($curr_page)? ($curr_page == 'Programs')? 'bottomline' : '' : ''?>"><?php echo __('program header')?></span></md-button>
-                    <md-button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text exercise_menu <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></md-button>
+                    </button>
+                    <button class="header_button" hide-sm ng-click="programClick()" style="font-size:16px;"><span class="header_text program_menu <?php echo isset($curr_page)? ($curr_page == 'Programs')? 'bottomline' : '' : ''?>"><?php echo __('program header')?></span></button>
+                    <button class="header_button" hide-sm ng-click="exerciseClick()" style="font-size:16px;"><span class="header_text exercise_menu <?php echo isset($curr_page)? ($curr_page == 'Exercises')? 'bottomline' : '' : ''?>"><?php echo __('exercise header')?></span></button>
                 </div>
                 <div flex layout="row" layout-align="center center">
                     <?php if($language=="eng") :?>
@@ -83,7 +83,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 </div>
                 <div flex layout="row" layout-align="end center" class="login_logout">                        
                     <div class="logout_menu">
-                        <md-button class="right_header_button" 
+                        <button class="header_button right_header_button"
                             style="font-size:14px;"
                             <?php if(!isset($auth_user)):?> 
                             ng-click="loginClick()" 
@@ -101,15 +101,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                 <span class="header_text hidden_username <?php echo isset($curr_page)? ($curr_page == 'Users')? 'bottomline' : '' : ''?>"><?php echo $auth_user['login'];?></span></a>
                             <?php endif;?>                        
                             </div>
-                        </md-button>
+                        </button>
                     </div>
                     <div class="language_menu">
-                        <md-button class="right_header_button" style="font-size:14px;"
+                        <button class="header_button right_header_button" style="font-size:14px;"
                                    dropdown-menu="ddSelectOptions"
                                    dropdown-model="ddSelectSelected"
-                                   dropdown-item-label="text">
+                                   dropdown-item-label="text"
+                                   dropdown-onchange="toggleLanguageClick(selected)"
+                            >
                             <img src="/img/images/earth.png" class="icon_language"/> <span class="hidden_language"><?php echo $language;?></span>
-                        </md-button>
+                        </button>
                     </div>                    
                 </div>
             </md-toolbar>

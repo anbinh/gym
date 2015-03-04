@@ -55,29 +55,29 @@ padding: 15px 0 15px 0;
 <div ng-controller="signupController">
 	<div layout="row" layout-align="center center">
 		<div class="main_content_register arrow_box">
-			<h1 class="sub">Sign Up</h1>
-			<h2 class="sub_nice_to_meet_you">Nice To Meet You</h2>
-			<a href="javascript:;" class="btn btn_facebook">Sign up with Facebook</a>
-			<h4 style="margin-bottom:0;">or</h4>
+			<h1 class="sub"><?php echo __("Sign Up")?></h1>
+			<h2 class="sub_nice_to_meet_you"><?php echo __("Nice To Meet You")?></h2>
+			<a href="javascript:;" class="btn btn_facebook"><?php echo __("Sign up with Facebook")?></a>
+			<h4 style="margin-bottom:0;"><?php echo __("or")?></h4>
 			<form class="frm_register" name="signup_form">
 				<fieldset class="register_input_set">
 					<div class="register_input_bottom_border">				
-						<input type="text" required placeholder="First and Last Name" name="fullname" ng-model="formData.fullname" value="" maxlength="255">
+						<input type="text" required placeholder="<?php echo __("First and Last Name")?>" name="fullname" ng-model="formData.fullname" value="" maxlength="255">
                         <div class="error-container" ng-show="signup_form.fullname.$dirty && signup_form.fullname.$invalid">
-                            <small class="error" ng-show="signup_form.fullname.$error.required">Please input the name</small>
+                            <small class="error" ng-show="signup_form.fullname.$error.required"><?php echo __("Please input the name")?></small>
                         </div>
 					</div>
 					<div class="register_input_bottom_border">				
-						<input type="email" required placeholder="Email" ng-model="formData.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
+						<input type="email" required placeholder="<?php echo __("Email")?>" ng-model="formData.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
                         <div class="error-container" ng-show="signup_form.email.$dirty && signup_form.email.$invalid" >
-                            <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
-                            <small class="error" ng-show="signup_form.email.$error.pattern">Please type a valid email.</small>
+                            <small class="error" ng-show="signup_form.email.$error.required"><?php echo __("Your email is required.")?></small>
+                            <small class="error" ng-show="signup_form.email.$error.pattern"><?php echo __("Please type a valid email.")?></small>
                         </div>
 					</div>
 					<div>				
-						<input type="password" required placeholder="Password" ng-model="formData.password" name="password">
+						<input type="password" required placeholder="<?php echo __("Password")?>" ng-model="formData.password" name="password">
                         <div class="error-container" ng-show="signup_form.password.$dirty && signup_form.password.$invalid">
-                            <small class="error" ng-show="signup_form.password.$error.required">Please input the password</small>
+                            <small class="error" ng-show="signup_form.password.$error.required"><?php echo __("Please input the password")?></small>
                         </div>
 					</div>					
 				</fieldset>
@@ -85,12 +85,12 @@ padding: 15px 0 15px 0;
 			<div>
             	<small class="error">{{ message }}</small>
         	</div>
-			<a href="javascript:void(0);" ng-click='next()' class="btn btn_next_register" ng-disabled="signup_form.$invalid">NEXT</a>
+			<a href="javascript:void(0);" ng-click='next()' class="btn btn_next_register" ng-disabled="signup_form.$invalid"><?php echo __("NEXT")?></a>
 		</div>	
 	</div>
 	<div layout="row" layout-align="center center">
 		<div flex="50" class="back_to_login">
-			<a href="javascript:void(0);" ng-click="signIn()">Already Registerred? Log In now!</a>
+			<a href="javascript:void(0);" ng-click="signIn()"><?php echo __("Already Registerred? Log In now!")?></a>
 		</div>
 	</div>
 </div>

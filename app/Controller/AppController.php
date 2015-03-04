@@ -54,12 +54,6 @@ class AppController extends Controller {
         Configure::write('Config.language', 'eng'); // tell CakePHP that we're using this language
     }
 
-    public function changeLang($lang)
-    {
-        $this->Session->write('Config.language',$lang);
-        return $this->redirect('/');
-    }
-
     function getAuthentication(){
         return $this->Session->read('LOGIN_USER');
     }

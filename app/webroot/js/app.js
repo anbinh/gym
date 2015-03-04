@@ -2,7 +2,7 @@
 
 'use strict';
 var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap'])
-app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
+app.controller('headerController', function($scope,$http){
     $scope.main_logo = "";
     $scope.programs = 'PROGRAMS';
     $scope.exercises = 'EXERCIES';
@@ -20,11 +20,11 @@ app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
     $scope.ddSelectOptions = [
         {
             text: 'ENG',
-            href: '/App/changeLang/eng'
+            value: 'eng'
         },
         {
             text: 'FRA',
-            href: '/App/changeLang/fra'
+            value: 'fra'
         }
     ];
     $scope.ddSelectSelected = {}; // Must be an object
@@ -56,9 +56,14 @@ app.controller('headerController', function($scope,$timeout, $mdSidenav, $log){
     ];
     $scope.ddMenuSelected = {};
 
-    $scope.itemMenuClick = function($link)
+    $scope.toggleLanguageClick = function($value)
     {
-        console.log($link);
+        console.log($value.value);
+        $http.get('/Apis/toggleLanguage/' +  $value.value +'.json')
+            .then(function(res){
+                console.log(res);
+                window.location.reload();
+            });
     };
     $scope.programClick = function(){
         window.location='/Programs/index';
@@ -202,6 +207,9 @@ app.controller('UserProfileController', function($scope,$http){
                 $scope.exercises_list = angular.copy(res.data.exercises_like);
                 $scope.exercises_like = angular.copy(res.data.exercises_like);
                 $scope.fb_id = res.data.user.fb_id;
+                $scope.id = res.data.user.id;
+                $scope.picture = res.data.user.picture;
+                $scope.password = res.data.user.password;
             });
     }
     else
