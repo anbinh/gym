@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-03-04 15:23+0100\n"
-"PO-Revision-Date: 2015-03-04 21:27+0700\n"
+"PO-Revision-Date: 2015-03-04 21:43+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -164,7 +164,7 @@ msgstr ""
 
 #: View/Exercises/login_modal.ctp:7 View/Users/login.ctp:10
 msgid "Login with Facebook"
-msgstr ""
+msgstr "Connectez-vous avec Facebook"
 
 #: View/Layouts/default.ctp:74
 msgid "program header"
@@ -176,7 +176,7 @@ msgstr "EXERCICE"
 
 #: View/Layouts/default.ctp:99 View/Users/login.ctp:6
 msgid "Login"
-msgstr ""
+msgstr "S'identifier"
 
 #: View/Programs/index.ctp:7
 msgid "Choose"
@@ -184,59 +184,59 @@ msgstr ""
 
 #: View/Users/edit_profile.ctp:29;56
 msgid "Edit Picture"
-msgstr ""
+msgstr "Modifier l'image"
 
 #: View/Users/edit_profile.ctp:62
 msgid "User Name"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 #: View/Users/edit_profile.ctp:66
 msgid "Email Address"
-msgstr ""
+msgstr "Adresse e-mail"
 
 #: View/Users/edit_profile.ctp:70
 msgid "First Name"
-msgstr ""
+msgstr "Prénom"
 
 #: View/Users/edit_profile.ctp:74
 msgid "Last Name"
-msgstr ""
+msgstr "Nom De Famille"
 
 #: View/Users/edit_profile.ctp:78
 msgid "Gender"
-msgstr ""
+msgstr "Sexe"
 
 #: View/Users/edit_profile.ctp:79
 msgid "Men"
-msgstr ""
+msgstr "Hommes"
 
 #: View/Users/edit_profile.ctp:80
 msgid "Women"
-msgstr ""
+msgstr "Femmes"
 
 #: View/Users/edit_profile.ctp:83
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: View/Users/edit_profile.ctp:93
 msgid "Location"
-msgstr ""
+msgstr "Emplacement"
 
 #: View/Users/edit_profile.ctp:97
 msgid "Birthday"
-msgstr ""
+msgstr "Aniversaire"
 
 #: View/Users/edit_profile.ctp:119
 msgid "Your Password"
-msgstr ""
+msgstr "Votre mot de passe"
 
 #: View/Users/edit_profile.ctp:122
 msgid "Change Password"
-msgstr ""
+msgstr "Changement mot de passe"
 
 #: View/Users/edit_profile.ctp:124
 msgid "Set Password"
-msgstr ""
+msgstr "Définir mot de passe"
 
 #: View/Users/edit_profile.ctp:128
 msgid "Facebook"
@@ -244,7 +244,7 @@ msgstr ""
 
 #: View/Users/edit_profile.ctp:132
 msgid "Connect Facebook"
-msgstr ""
+msgstr "Connectez Facebook"
 
 #: View/Users/edit_profile.ctp:136
 msgid "Promotion Email"
@@ -252,23 +252,23 @@ msgstr ""
 
 #: View/Users/edit_profile.ctp:137
 msgid "Receive promotion emails"
-msgstr ""
+msgstr "Recevoir les emails de promotion"
 
 #: View/Users/edit_profile.ctp:141
 msgid "SAVE"
-msgstr ""
+msgstr "SAUVER"
 
 #: View/Users/edit_profile.ctp:142
 msgid "CANCEL"
-msgstr ""
+msgstr "ANNULER"
 
 #: View/Users/edit_profile.ctp:144
 msgid "To remove your Keep account please"
-msgstr ""
+msgstr "Pour supprimer votre compte Conserver se il vous plaît"
 
 #: View/Users/edit_profile.ctp:144
 msgid "click here"
-msgstr ""
+msgstr "cliquez ici"
 
 #: View/Users/edit_profile.ctp:153 View/Users/index.ctp:25
 msgid "my program"
@@ -292,56 +292,56 @@ msgstr ""
 
 #: View/Users/login.ctp:30 View/Users/signup.ctp:73
 msgid "Your email is required."
-msgstr ""
+msgstr "Votre e-mail est nécessaire."
 
 #: View/Users/login.ctp:31 View/Users/signup.ctp:74
 msgid "Please type a valid email."
-msgstr ""
+msgstr "Se il vous plaît taper une adresse email valide."
 
 #: View/Users/login.ctp:35 View/Users/signup.ctp:78
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: View/Users/login.ctp:37 View/Users/signup.ctp:80
 msgid "Please input the password"
-msgstr ""
+msgstr "Veuillez saisir le mot de passe"
 
 #: View/Users/login.ctp:43
 msgid "SIGN IN"
-msgstr ""
+msgstr "SE CONNECTER"
 
 #: View/Users/login.ctp:51
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Ne pas avoir un compte?"
 
 #: View/Users/login.ctp:51
 msgid "Sign Up now!"
-msgstr ""
+msgstr "Inscrivez-vous dès maintenant!"
 
 #: View/Users/signup.ctp:58
 msgid "Sign Up"
-msgstr ""
+msgstr "Signer"
 
 #: View/Users/signup.ctp:59
 msgid "Nice To Meet You"
-msgstr ""
+msgstr "Ravi De Vous Rencontrer"
 
 #: View/Users/signup.ctp:60
 msgid "Sign up with Facebook"
-msgstr ""
+msgstr "Inscrivez-vous avec Facebook"
 
 #: View/Users/signup.ctp:65
 msgid "First and Last Name"
-msgstr ""
+msgstr "Prénom et Nom"
 
 #: View/Users/signup.ctp:67
 msgid "Please input the name"
-msgstr ""
+msgstr "Veuillez saisir le nom"
 
 #: View/Users/signup.ctp:88
 msgid "NEXT"
-msgstr ""
+msgstr "Suivant"
 
 #: View/Users/signup.ctp:93
 msgid "Already Registerred? Log In now!"
-msgstr ""
+msgstr "Déjà Registerred? Connectez-vous maintenant!"

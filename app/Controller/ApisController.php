@@ -352,4 +352,19 @@ class ApisController extends AppController {
             '_serialize' => array('message')
         ));
     }
+
+    public function getMenuHeaderFile()
+    {
+        $lang = $this->Session->read('Config.language');
+        $file = new File('MenuHeaderEng.json');
+        if($lang == "fra")
+            $file = new File('MenuHeaderFra.json');
+        $json = $file->read(true, 'r');
+        $json2array = json_decode($json);
+        $this->set(array(
+            'data' => $json2array,
+            'lang' => $lang,
+            '_serialize' => array('data','lang')
+        ));
+    }
 }

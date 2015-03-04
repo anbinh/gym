@@ -1,0 +1,49 @@
+{
+    "language": [
+        {
+            "text": "English",
+            "value": "eng"
+        },
+        {
+            "text": "Français",
+            "value": "fra"
+        }
+    ],
+	"user":[
+		{
+            "text": "Profile page",
+            "href": "/Users"
+        },
+        {
+            "text": "Sign-out",
+            "href": "/Users/logout"
+        }
+	],
+	"menu":[
+		{
+			"text": "Search programs",
+			"href": "#"
+		}, {
+			"text": "Search exercises",
+			"href": "#"
+		},{
+			"text": "Create a program",
+			"href": "#"
+		},{
+			"text": "Get the App",
+			"href": "#"
+		},{
+			"text": "Profile",
+			"href": "#"
+		},{
+			"text": "Lexic",
+			"href": "#"
+		},{
+			"text": "About",
+			"href": "#"
+		},{
+			"text": "Privacy Terms",
+			"href": "#"
+		}
+	]
+}

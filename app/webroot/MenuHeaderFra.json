@@ -1,0 +1,49 @@
+{
+    "language": [
+        {
+            "text": "English",
+            "value": "eng"
+        },
+        {
+            "text": "Français",
+            "value": "fra"
+        }
+    ],
+	"user":[
+		{
+            "text": "Mon profil",
+            "href": "/Users"
+        },
+        {
+            "text": "Déconnexion",
+            "href": "/Users/logout"
+        }
+	],
+	"menu":[
+		{
+			"text": "Recherche de programmes",
+			"href": "#"
+		}, {
+			"text": "Recherche d'exercices",
+			"href": "#"
+		},{
+			"text": "Créer un programme",
+			"href": "#"
+		},{
+			"text": "Application mobile",
+			"href": "#"
+		},{
+			"text": "Mon profil",
+			"href": "#"
+		},{
+			"text": "Lexique",
+			"href": "#"
+		},{
+			"text": "Informations",
+			"href": "#"
+		},{
+			"text": "Conditions d'utilisation",
+			"href": "#"
+		}
+	]
+}

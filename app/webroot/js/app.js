@@ -3,11 +3,16 @@
 'use strict';
 var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap'])
 app.controller('headerController', function($scope,$http){
-    $scope.main_logo = "";
-    $scope.programs = 'PROGRAMS';
-    $scope.exercises = 'EXERCIES';
-    $scope.isProgramSelect = true;
-    $scope.ddLoginSelectOptions = [
+    $scope.ddSelectSelected = {}; // Must be an object
+    $scope.ddMenuSelected = {};
+    $http.get('/apis/getMenuHeaderFile.json')
+        .then(function(res){
+            console.log(res);
+            $scope.ddLoginSelectOptions = res.data.data.user;
+            $scope.ddSelectOptions = res.data.data.language;
+            $scope.ddMenuOptions = res.data.data.menu;
+        });
+    /*$scope.ddLoginSelectOptions = [
         {
             text: 'Profile page',
             href: '/Users'
@@ -27,7 +32,7 @@ app.controller('headerController', function($scope,$http){
             value: 'fra'
         }
     ];
-    $scope.ddSelectSelected = {}; // Must be an object
+
     $scope.ddMenuOptions = [{
         text: 'Search programs',
         href: '#'
@@ -53,8 +58,8 @@ app.controller('headerController', function($scope,$http){
         text: 'Privacy Terms',
         href: '#'
     }
-    ];
-    $scope.ddMenuSelected = {};
+    ];*/
+
 
     $scope.toggleLanguageClick = function($value)
     {
