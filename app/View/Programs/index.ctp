@@ -1,5 +1,6 @@
 <div ng-controller="ProgramListController">
 <ul class="list-inline filter_objective_program">
+    <li><img src="/img/images/icon_search.png"/></li>
     <li>OBJECTIVE</li>
     <li>
         <select class="input_select input_location" ng-model="selectedObjectiveItem" ng-change="changedValue(selectedObjectiveItem)">
