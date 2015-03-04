@@ -90,9 +90,18 @@ class UsersController extends AppController {
                 if($user)
                 {
                     $data['User']['password'] = $user['User']['password'];
-                    $data['User']['favorite_exercises'] = $user['User']['favorite_exercises'];
-                    $data['User']['role'] = $user['User']['role'];
-                    $data['User']['assigned_programs'] = $user['User']['assigned_programs'];
+                    if(!isset($user['User']['favorite_exercises']))
+                    {
+                        $data['User']['favorite_exercises'] = array();
+                        $data['User']['role'] = array();
+                        $data['User']['assigned_programs'] = array();
+                    }
+                    else
+                    {
+                        $data['User']['favorite_exercises'] = $user['User']['favorite_exercises'];
+                        $data['User']['role'] = $user['User']['role'];
+                        $data['User']['assigned_programs'] = $user['User']['assigned_programs'];
+                    }
                     if(!$_FILES)
                         $data['User']['picture'] = $user['User']['picture'];
                 }
@@ -115,7 +124,7 @@ class UsersController extends AppController {
             $this->setAuthentication($data['User']);
             pr($data);
         }
-        //$this->redirect('/Users/index');
-        $this->render(FALSE);
+        $this->redirect('/Users/index');
+        //$this->render(FALSE);
     }
 }
