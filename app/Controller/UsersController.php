@@ -67,7 +67,7 @@ class UsersController extends AppController {
     public function save_profile() {
         if ($this->data) {
             $data=$this->data;
-            pr($data);
+
             $data['User']['birthday'] = $data['User']['day'] . "-" . $data['User']['month'] . "-" . $data['User']['year'];
             if($_FILES){
                 if($_FILES['picture']['name']){
@@ -99,7 +99,7 @@ class UsersController extends AppController {
             }
             else
             {
-                $data['User']['password'] = md5($data['User']['password']);
+                //$data['User']['password'] = md5($data['User']['password']);
                 $data['User']['favorite_exercises'] = array();
                 $data['User']['role'] = array();
                 $data['User']['assigned_programs'] = array();
@@ -113,9 +113,9 @@ class UsersController extends AppController {
             if($data['User']['id'] == 0)
                 $data['User']['id'] = $this->User->getLastInsertId();
             $this->setAuthentication($data['User']);
-
+            pr($data);
         }
-        $this->redirect('/Users/index');
-        //$this->render(FALSE);
+        //$this->redirect('/Users/index');
+        $this->render(FALSE);
     }
 }
