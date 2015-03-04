@@ -519,22 +519,39 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
 });
 
 app.controller('ProgramListController', function($scope,$http,$filter,$modal,$window){
+    $scope.programs_list_backup = [];
+    $scope.programs_list = [];
     // get list exercise
     $http.get('/Apis/getListProgram.json')
         .then(function(res){
             console.log(res);
-            /*$scope.exercises_like = res.data.exercises_like;
-            $scope.exercises_list = angular.copy(res.data.exercises_list);
-            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);*/
+            $scope.programs_list = res.data.programs_list;
+            $scope.programs_list_backup = angular.copy(res.data.programs_list);
         });
     // get list part body for select
     $http.get('/Apis/getListObjective.json')
         .then(function(res){
             console.log(res);
-            /*$scope.body_part_items = res.data.body_list;*/
+            $scope.objective_items = res.data.objective_list;
         });
+
+    $scope.changedValue=function(item){        
+        if(item.length > 0)
+        {
+            var temp = angular.copy($scope.programs_list_backup);
+            $scope.programs_list = angular.copy($filter('programOptionFilter')(temp,item));
+        }
+        else
+        {
+            $scope.programs_list = angular.copy($scope.programs_list_backup);
+        }
+    }
 }
 );
+
+app.controller('ItemProgramController', function($scope,$http,$filter,$modal,$window){
+
+});
 
 app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
     $scope.selectedIndex = 0;
@@ -717,6 +734,21 @@ app.filter('exerciseOptionBodyPartFilter', function() {
                         offset++;
                     }
                 }
+            }
+        }
+        return input;
+    }
+});
+
+app.filter('programOptionFilter', function() {
+    return function(input , item) {
+        var i=0, len=input.length;
+        var option = "";
+        var offset = 0;        
+        for (i; i<len; i++) {
+            if (input[i - offset].Program["objective"] != item ) {
+                input.splice( i - offset, 1 );
+                offset++ ;
             }
         }
         return input;

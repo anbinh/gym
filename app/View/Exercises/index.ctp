@@ -19,7 +19,7 @@
                 <?php echo __('Cardio')?>
             </span>
         </md-button>
-        <select ng-model="selectedBodyPartItem" ng-change="changedValue(selectedBodyPartItem)">
+        <select class="input_select input_location" ng-model="selectedBodyPartItem" ng-change="changedValue(selectedBodyPartItem)">
             <option value=""><?php echo __('Part')?></option>
             <option ng-repeat="item in body_part_items" value="{{item.id}}">{{item.name}}</option>
         </select>
