@@ -52,27 +52,7 @@
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                                 <div class="program_text_name"> SHAPE MODELING</div>
                             </div>                            
-                        </div>
-                       <!--  <div class="program_box tile_1">
-                            <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png" class="img-responsive"></div>
-                            <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                            <div class="program_text_name"> SHAPE MODELING</div>
-                        </div>
-                        <div class="program_box tile_2">
-                            <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                            <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div>
-                        <div class="program_box tile_3">
-                            <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                            <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/burn.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div> 
-                        <div class="program_box tile_1">
-                            <div><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png" class="img-responsive"></div>
-                            <div style="text-align:center; padding-top:30px;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                            <div class="program_text_name"> SHAPE MODELING</div>
-                        </div> -->
+                        </div>                       
                     </div>
                 </div>
             </div>

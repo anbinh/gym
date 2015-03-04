@@ -503,8 +503,8 @@ input[type=date]{
 */
 .user_favorite_exercise_img{
    /* background-size: 240px 230px;
-    background-repeat: no-repeat;
-    background-size: contain;*/
+    background-repeat: no-repeat;*/
+    background-size: contain;
     height: 230px !important;
     width: 230px !important;
     background-position: center center;
