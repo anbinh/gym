@@ -5,7 +5,7 @@ var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap'])
 app.controller('headerController', function($scope,$http){
     $scope.ddSelectSelected = {}; // Must be an object
     $scope.ddMenuSelected = {};
-    $http.get('/apis/getMenuHeaderFile.json')
+    $http.get('/Apis/getMenuHeaderFile.json')
         .then(function(res){
             console.log(res);
             $scope.ddLoginSelectOptions = res.data.data.user;
