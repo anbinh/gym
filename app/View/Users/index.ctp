@@ -25,28 +25,28 @@
                     <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_click" ng-class="isProgramShow ? 'arrow_down' : 'arrow_right'" ng-click="toggleMyProgram()"></div><p><?php echo __('my program')?></p>
                         <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="#"> <?php echo __('edit')?></a></div>
                     <div ng-show="isProgramShow" class="list_tile" class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="exercise_box">
                             <div class="user_favorite_exercise_img tile_1 exercise_box_highlight" >
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                           
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                                 <div class="program_text_name"> SHAPE MODELING</div>
                             </div>                            
                         </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="exercise_box">
                             <div class="user_favorite_exercise_img tile_2 none_border"  >    
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                          
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
                                 <div class="program_text_name"> LOOSING WEIGHT </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="exercise_box">
                             <div class="user_favorite_exercise_img tile_3 none_border"  >     
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                         
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
                                 <div class="program_text_name"> LOOSING WEIGHT </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="exercise_box">
                             <div class="user_favorite_exercise_img tile_1 none_border"  >       
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                     
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
@@ -82,7 +82,7 @@
                 <div layout="row" class="my_program_text" layout-align="start center"><div class="arrow_click" ng-class="isExerciseShow ? 'arrow_down' : 'arrow_right'" ng-click="toggleExercise()"></div><p><?php echo __('favorite exercise')?></p></div>
                 <div ng-show="isExerciseShow" class="list_tile" class="row">
                     <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
-                        <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                        <div class="exercise_box">
                             <div class="user_favorite_exercise_img" flex >
                                 <div class="img_star_container">
                                     <img class="img_star"

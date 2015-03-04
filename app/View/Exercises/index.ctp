@@ -30,7 +30,7 @@
                 <div flex>
                     <div class="list_tile" class="row">
                         <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
-                            <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+                            <div class="exercise_box">
                                 <div class="user_favorite_exercise_img" flex >
                                     <div class="img_star_container">
                                         <img class="img_star"

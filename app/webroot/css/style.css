@@ -251,8 +251,8 @@ margin: 0 30px 25px 30px;
 }
 
 #content{
-    width: 1230px;
-    margin: auto;
+   /* width: 1230px;*/
+    margin: 0 55px 0 55px;
 }
 
 .right_banner{
@@ -391,10 +391,11 @@ margin: 0 30px 25px 30px;
 .btn_sign_in{
     background: #A4C408;
     font-size: .875rem;
-    padding: 1em 5.9em !important;    
+    padding: 1em !important;    
     text-decoration: none;
     color: white;    
     border-radius:0 !important;
+    width: 218px;    
 }
 .frm_register{
     margin-bottom: 25px;
@@ -501,14 +502,15 @@ input[type=date]{
 /* TRI ---- User Index
 */
 .user_favorite_exercise_img{
-    background-size: 240px 230px;
+   /* background-size: 240px 230px;
     background-repeat: no-repeat;
-    background-size: contain;
-    min-height: 230px;
-    min-width: 230px;
+    background-size: contain;*/
+    height: 230px !important;
+    width: 230px !important;
     background-position: center center;
-    margin:2px; 
+    /*margin:2px; */
     border:1px solid #ccc;
+    position: relative;
 }
 /*.user_favorite_exercise{
     min-height: 240px;
@@ -528,7 +530,7 @@ input[type=date]{
     margin: 0 auto;
     bottom: 10px;
     position: absolute;
-    width: 93%;
+    width: 230px;
     text-align: center;
     color: #000000 !important;
 }
@@ -580,17 +582,14 @@ input[type=date]{
     .program_box{
         width: 33%;
     }
-    .user_favorite_exercise_img{
+    /*.user_favorite_exercise_img{
         width: 230px !important;
         height: 230px !important;
-    }
+    }*/
     .img_program{
         height: auto;
         margin-top:25px;
-    }
-    .exercise_box {    
-        margin-bottom: 6px;
-    }
+    }   
 }
 
 /* Ipad Doc */
@@ -605,9 +604,9 @@ input[type=date]{
         width: 50%;
     }
     .user_favorite_exercise_img{
-        width: 225px !important;
-        height: 225px !important;
-        margin:1px !important;
+        /*width: 225px !important;
+        height: 225px !important;*/
+        /*margin:1px !important;*/
     }      
     .input_textbox{
         width: 210px !important;
@@ -646,12 +645,15 @@ input[type=date]{
         display: none !important;
     }
     .user_favorite_exercise_img{
-        width: 230px;
+        /*width: 230px;
         height: 230px;
         float:left;
-        position: relative;
+        position: relative;*/
     }
     .hidden_username{
+        display: none;
+    }
+    .hidden_language{
         display: none;
     }
     .list_tile {
@@ -668,9 +670,9 @@ input[type=date]{
         width: 50%;
     }
     .user_favorite_exercise_img{
-        background-size: cover;        
+       /* background-size: cover;        
         width: 229px !important;
-        height: 229px !important;
+        height: 229px !important;*/
     }    
     .username{
         font-weight:bold; padding-left:10px;
@@ -688,11 +690,11 @@ input[type=date]{
     .ProgramIndexLeftContent{
         width: 100% !important;
     }
-    .exercise_box{
+    /*.exercise_box{
         width:50% !important;
         float: left;
         margin-bottom: 4px;
-    }
+    }*/
     .img_program{
         height: auto;
         margin-top:25px;
@@ -831,8 +833,8 @@ input[type=date]{
         width:240px !important;      
     }
     .user_favorite_exercise_img{
-        width: 230px !important;
-        height: 230px !important;
+       /* width: 230px !important;
+        height: 230px !important;*/
     }
     .titre_right{
         font-size: 14px;
@@ -920,7 +922,8 @@ input[type=date]{
 }
 
 .exercise_box{
-    padding: 0px !important;
+    padding: 2px !important;
+    float:left;
 }
 
 .musculation{
@@ -1238,3 +1241,17 @@ input:invalid {
 .create_program p{
     padding-top: 17px;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 2px;
+}
+::-webkit-scrollbar-button {
+    background: #ccc
+}
+::-webkit-scrollbar-track-piece {
+    background: #888
+}
+::-webkit-scrollbar-thumb {
+    background: #eee
+}​
