@@ -49,7 +49,7 @@
                 <input type="hidden" name="data[User][fb_id]" id="fb_id" ng-value="fb_id">
                 <input type="hidden" name="data[User][password]" id="password" ng-value="password">
                 <div layout-gt-md="row" layout-md="column" layout-gt-sm="column" layout-sm="column">
-                    <div flex-gt-md="33" flex-lg="33" flex-gt-lg="33" flex-md="95" flex-gt-sm="95" flex-sm="100" class="picture_box">
+                    <div class="picture_box">
                         <div id="AccountImage" class="add_picture_box" ng-style="{'background-image':'url('+imgURL+')'}">
                             <input id="upload" type="file" name="picture" ng-model="formData.picture" onchange='fileSelected()'/>
                             <div id="btn_add_picture" ng-class='getClassBtnAddPicture(isHasPicture)' style="padding-top: 110px;">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                    <div flex-gt-md="67" flex-lg="67" flex-gt-lg="67" flex-md="95" flex-gt-sm="95" flex-sm="100">
+                    <div class="form_register">
                         <div class="input_row_register">
                             <label><?php echo __("User Name")?></label>
                             <input class="input_textbox" type="text" name="data[User][login]" ng-model="formData.login">

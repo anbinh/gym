@@ -1,7 +1,7 @@
  <div class="UserIndexLeftContent">                
     <div layout="row">            
         <div class="list_program_view" class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+            <div class="exercise_box">
                 <div class="box_program_vew">   
                     <div class="sequence_number_box">
                         <p>1 Etrement</p>
@@ -26,7 +26,7 @@
                     </div>                    
                 </div>                            
             </div>    
-            <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+            <div class="exercise_box">
                 <div class="box_program_vew">                           
                     <div class="sequence_number_box">
                         <p>2</p>
@@ -40,12 +40,12 @@
                     </div>
                 </div>                            
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+            <div class="exercise_box">
                 <div class="box_program_vew">                           
                    
                 </div>                            
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
+            <div class="exercise_box">
                 <div class="box_program_vew">                           
                    
                 </div>                            
