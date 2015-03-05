@@ -1216,9 +1216,9 @@ input:invalid {
 .box_program_vew{
     height: 225px;
     width: 225px;    
-    margin: 2px;
-    border: 1px solid #ccc;  
+    margin: 1px;
     background: white; 
+    position: relative;
 }
 .list_program_view{
     margin: auto;
@@ -1238,9 +1238,13 @@ input:invalid {
 .serie{
     padding-top:2px;
     padding-left: 10px;
+    overflow: auto;
+    position: absolute;
+    bottom: 4px;
 }
 .serie p{
     float:left;
+    margin: 0;
 }
 
 .sequence_number_box{
@@ -1255,6 +1259,12 @@ input:invalid {
 
 .create_program p{
     padding-top: 17px;
+}
+.description p{
+    font-size: 12px;
+    margin: 0;
+    line-height: 1.3;
+    padding: 2px 0 0 15px;
 }
 
 ::-webkit-scrollbar {
