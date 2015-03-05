@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-03-04 15:23+0100\n"
-"PO-Revision-Date: 2015-03-04 21:43+0700\n"
+"PO-Revision-Date: 2015-03-05 11:17+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -164,7 +164,7 @@ msgstr ""
 
 #: View/Exercises/login_modal.ctp:7 View/Users/login.ctp:10
 msgid "Login with Facebook"
-msgstr "Connectez-vous avec Facebook"
+msgstr "Connexion avec Facebook"
 
 #: View/Layouts/default.ctp:74
 msgid "program header"
