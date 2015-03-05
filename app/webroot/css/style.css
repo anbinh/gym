@@ -251,8 +251,9 @@ margin: 0 30px 25px 30px;
 }
 
 #content{
-   /* width: 1230px;*/
-    margin: 0 55px 0 55px;
+   /* width: 1230px;*/   
+    margin: 0 auto;
+    max-width: 1248px;
 }
 
 .right_banner{
@@ -998,8 +999,11 @@ input[type=date]{
 
 .picture_box{
     height: 250px;
+    margin-right: 100px;
 }
-
+.form_register{
+    
+}
 .arrow_down {
     width: 0; 
     height: 0; 
