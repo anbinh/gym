@@ -60,7 +60,9 @@
                     <div flex-gt-md="67" flex-lg="67" flex-gt-lg="67" flex-md="95" flex-gt-sm="95" flex-sm="100">
                         <div class="input_row_register">
                             <label><?php echo __("User Name")?></label>
-                            <input class="input_textbox" type="text" name="data[User][login]" ng-model="formData.login">
+                            <div>
+                                <input class="input_textbox" type="text" name="data[User][login]" ng-model="formData.login">
+                            </div>
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Email Address")?></label>
@@ -134,7 +136,9 @@
                         </div>
                         <div class="input_row_register">
                             <label><?php echo __("Promotion Email")?></label>
-                            <input id="cb" type="checkbox" name="data[User][receive_promote]" ng-model="formData.receive_promote"> <?php echo __("Receive promotion emails")?>
+                            <div class="right_input_edit_profile">
+                                <input id="cb" type="checkbox" name="data[User][receive_promote]" ng-model="formData.receive_promote"><?php echo __("Receive promotion emails")?>
+                            </div>
                         </div>
                         <hr>
                         <div class="input_row_save_cancel" layout="row">

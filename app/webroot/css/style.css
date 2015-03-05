@@ -410,9 +410,10 @@ margin: 0 30px 25px 30px;
 }
 
 .user_profile label{
-    width: 150px;
+    width: 30%;
     display:inline-block;
     font-weight: bold;
+    float: left;
 }
 .input_row_register{
     height: 45px;
@@ -558,6 +559,12 @@ input[type=date]{
 .foo_exercise p {
     font-size: 14px;
 }
+
+
+/* Large Screen */
+@media (min-width: 1042px) {
+
+}
 /* Desktop */
 @media (max-width: 1041px) {
     .toolbar-title {
@@ -576,6 +583,7 @@ input[type=date]{
         width: 450px !important;
         margin-top: 90px !important;
     }
+    
 }
 
 /* Ipad Ngang*/
@@ -730,6 +738,9 @@ input[type=date]{
 
 /* Iphone Doc*/
 @media (max-width: 400px) {
+    .btn-fb{
+        margin-left: 0px !important;
+    }
     .modal-dialog-custom{
         width: 300px !important;
     }
@@ -742,13 +753,8 @@ input[type=date]{
     .hidden_language{
         display: none;
     }
-    .btn-fb{
-        margin-left: 20px !important;
-        width: 200px !important;
-    }
     .btn-fb-modal{
-        margin-left: 30px !important;
-        width: 200px !important;
+        margin-left: -15px !important;
     }
     .input_textbox{
         width: 200px !important;
@@ -757,9 +763,12 @@ input[type=date]{
         width: 100%;
     }
     .user_profile label{
-        width: 90px;
-        
+        width: 110px;        
         font-size: 12px;
+    }
+    .right_input_edit_profile{
+        float: right;
+        width: 65%;
     }
     .user_profile input{
         font-size: 12px;   
@@ -774,11 +783,13 @@ input[type=date]{
     }
     .btn_change_save{        
         font-size: 12px !important;
-        padding: 0.5em 2em !important;            
+        padding: 0.5em 2em !important; 
+        width: 100px !important;           
     }
     .btn_change_cancel{        
         font-size: 12px !important;
         padding: 0.5em 2em !important;           
+        width: 100px !important;
     }
 
     .main_content_register{       
@@ -999,7 +1010,6 @@ input[type=date]{
 
 .picture_box{
     height: 250px;
-    margin-right: 100px;
 }
 .form_register{
     
@@ -1131,13 +1141,14 @@ input:invalid {
 }
 
 .btn-fb{
-    width: 216px;
+    width: 260px;
     border-radius: 0 !important;
     margin-left: 25px;
+    text-align: center !important;
 }
 
 .btn-fb-modal{
-    width: 216px;
+    width: 260px;
     border-radius: 0 !important;
     margin-left: 25px;
 }

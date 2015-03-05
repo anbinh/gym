@@ -47,7 +47,7 @@
                     <small class="error">{{ message }}</small>
                 </div>
             </form>
-            <h5 style="margin-left:15px; color: #615F5F; font-size:15px;">Forgot password</h5>
+            <h5 style="margin-left:15px; color: #615F5F; font-size:15px;"><?php echo __("Forgot password")?></h5>
             <h5 style="margin-left:15px; font-size:15px;"><span style="color: #615F5F;"><?php echo __("Don't have an account?")?></span> <br> <a style="color:black;" href="/Users/signup"><?php echo __("Sign Up now!")?></a></h5>
         </div>
     </div>
