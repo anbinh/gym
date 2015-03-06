@@ -669,21 +669,35 @@ app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
     }
 }
 );
-app.controller('RegistrationController', function(){
+app.controller('ChangepassController', function($http, $scope){
     var model = this;
 
     model.message = "";
 
-    model.user = {
-      username: "",
+    model.user = {    
       password: "",
       confirmPassword: ""
     };
 
-    model.submit = function(isValid) {
-      console.log("h");
+    model.submit = function(isValid) {      
       if (isValid) {
-        model.message = "Submitted " + model.user.username;
+       $http({
+            method  : 'POST',
+            url     : '/Apis/changePassword.json',
+            data    : {'password' : model.user.password},  // pass in data as strings
+            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+        })
+        .success(function(data) {
+            // $scope.showLoader = false;
+           
+            // if(data.message == "success")
+            //     $scope.isReset = false;
+            // else
+            //     $scope.message = $sce.trustAsHtml(data.message);
+
+             console.log(data);
+        })
+        model.message = "Submitted " + model.user.password;
       } else {
         model.message = "There are still invalid fields below";
       }

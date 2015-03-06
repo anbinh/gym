@@ -411,4 +411,30 @@ class ApisController extends AppController {
         }
         $email->send();
     }
+
+    public function changePassword(){
+        $data = $this->request->input('json_decode',true);
+        $user = $this->getAuthentication();
+
+        if($data && $user){
+            $password = $data['password'];        
+
+            $user['password'] = md5($password);
+
+            $save['User'] = $user;
+
+            $this->User->save($save);
+
+            $this->set(array(
+                'message' => 'success',
+                '_serialize' => array('message')
+            ));
+        }  
+        else{
+            $this->set(array(
+                'message' => 'fail',
+                '_serialize' => array('message')
+            )); 
+        }     
+    }
 }
