@@ -1266,7 +1266,18 @@ input:invalid {
     line-height: 1.3;
     padding: 2px 0 0 15px;
 }
-
+.row_change_pass{
+    margin: 10px 0 10px 0;
+}
+.row_change_pass label{
+    font-weight: normal;
+    width: 115px;
+}
+.row_change_pass input{
+    height: 35px;
+    width: 240px;
+    padding: 0 10px 0 10px;
+}
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;

@@ -127,4 +127,8 @@ class UsersController extends AppController {
         $this->redirect('/Users/index');
         //$this->render(FALSE);
     }
+
+    public function change_password(){
+
+    }
 }
