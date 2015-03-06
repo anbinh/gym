@@ -571,6 +571,30 @@ app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
 }
 ]);
 
+app.controller('ForgetPasswordController', ['$scope', '$http' , '$sce' , function($scope,$http,$sce){
+    $scope.message = "";
+    $scope.isReset = true;
+    $scope.showLoader = false;
+    $scope.reset = function(){
+        $scope.showLoader = true;
+        $http({
+            method  : 'POST',
+            url     : '/Apis/resetPassword.json',
+            data    : {'email' : $scope.email},  // pass in data as strings
+            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+        })
+            .success(function(data) {
+                $scope.showLoader = false;
+                console.log(data);
+                if(data.message == "success")
+                    $scope.isReset = false;
+                else
+                    $scope.message = $sce.trustAsHtml(data.message);
+            })
+    }
+}
+]);
+
 app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
     $scope.formData = {};
     $scope.message = '';

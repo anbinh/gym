@@ -1,5 +1,5 @@
 <?php
-App::uses('CakeEmail', 'Network/Email');
+
 class UsersController extends AppController {
 
 
@@ -129,14 +129,7 @@ class UsersController extends AppController {
         //$this->render(FALSE);
     }
 
-    public function resetPassword(){
-        $email = new CakeEmail('default');
-        //$email->from('no-reply@gym.miratil.com');
-        $email->template('email_template')->viewVars(['link' => 'xxxxxx.com']);        
-        $email->emailFormat('html');
-        $email->to('valentino.nguyen.92@gmail.com');
-        $email->subject('testMail');
-        pr($email->send());        
-        return;
+    public function forget_password(){
+
     }
 }

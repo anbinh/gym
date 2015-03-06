@@ -32,7 +32,7 @@ class AppController extends Controller {
 
         if($this->params['controller'] != 'Apis'){
             if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup')){
-                if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword')
+                if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword' && $this->params['action'] != 'forget_password')
                 {
                     $auth_user = $this->getAuthentication();
                     if($auth_user == null) {
