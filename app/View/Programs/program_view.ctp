@@ -72,9 +72,9 @@ md-tabs.md-default-theme md-tabs-ink-bar {
         <div layout="column" class="summary_program">
             <div layout="row" class="header_program">
                 <div style="padding-left:10px;">
-                    <div class="program_logo_topic tile_butcher">                           
-                        <div style="text-align:center;"><img class="img_program_view" src="/img/images/butcher.png"></div>
-                        <div class="program_view_text_name"> SHAPE MODELING</div>
+                    <div class="program_logo_topic" style="background-color: <?php echo $programs['Program']['color_code']?>">
+                        <div style="text-align:center;"><img class="img_program_view" src="/img/images/<?php echo $programs['Program']['photo']?>"></div>
+                        <div class="program_view_text_name"> <?php echo $programs['Program']['name']?></div>
                     </div> 
                 </div>
                 
@@ -99,7 +99,6 @@ md-tabs.md-default-theme md-tabs-ink-bar {
         <div ng-controller="ProgramController" class="program_tab" layout="column">
           <md-tabs md-selected="selectedIndex" flex>
             <!-- <md-tab label="Day 1">
-              <?php echo $this->Element('exercise_stretching');?>
             </md-tab>           
             <md-tab label="Day 2">
               2
