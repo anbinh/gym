@@ -7,10 +7,12 @@
                 <div class="row_change_pass">
                     <label>New password</label>
                     <input type="password" name="password" ng-model="registration.user.password" placeholder="new password">
+                    <div ng-messages="registrationForm.password.$error" ng-messages-include="messages.html"></div>
                 </div>
                 <div class="row_change_pass">
                     <label>Confirm password</label>
                     <input type="password" name="confirmPassword" ng-model="registration.user.confirmPassword" compare-to="registration.user.password" placeholder="confirm password">
+                    <div ng-messages="registrationForm.confirmPassword.$error" ng-messages-include="messages.html"></div>
                 </div>
                 <div style="padding-top:40px;">
                     <input type="submit" value="SAVE" class="btn btn_change_save">
