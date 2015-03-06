@@ -11,7 +11,7 @@
                         <fieldset style="float:left; border:0 !important;">
                             <div>
                                 <div style="max-width:15px; background:black; margin: 18px 11px 16px 0;">
-                                    <img src="/img/images/icon_user_white.png" class="img-responsive">
+                                    <img src="/img/images/email_icon.png" style="background-color: white;height: 36px;margin-top: -8px;display: block;max-width: 150%;">
                                 </div>
                             </div>
                         </fieldset>
