@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap'])
+var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages'])
 app.controller('headerController', function($scope,$http){
     $scope.ddSelectSelected = {}; // Must be an object
     $scope.ddMenuSelected = {};
@@ -645,7 +645,44 @@ app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
     }
 }
 );
+app.controller('RegistrationController', function(){
+    var model = this;
 
+    model.message = "";
+
+    model.user = {
+      username: "",
+      password: "",
+      confirmPassword: ""
+    };
+
+    model.submit = function(isValid) {
+      console.log("h");
+      if (isValid) {
+        model.message = "Submitted " + model.user.username;
+      } else {
+        model.message = "There are still invalid fields below";
+      }
+    };
+});
+app.directive('compareTo', function(){
+    return {
+          require: "ngModel",
+          scope: {
+            otherModelValue: "=compareTo"
+          },
+          link: function(scope, element, attributes, ngModel) {
+
+            ngModel.$validators.compareTo = function(modelValue) {
+              return modelValue == scope.otherModelValue;
+            };
+
+            scope.$watch("otherModelValue", function() {
+              ngModel.$validate();
+            });
+          }
+    };
+});
 // Filter part
 app.filter('checkExerciseIsLike', function() {
     return function(input, id) {
