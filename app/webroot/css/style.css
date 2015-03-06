@@ -1282,7 +1282,11 @@ input:invalid {
     width: 240px;
     padding: 0 10px 0 10px;
 }
-
+.row_delete_account input{
+    height: 35px;
+    width: 375px;
+    padding: 0 10px 0 10px;
+}
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;

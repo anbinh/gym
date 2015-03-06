@@ -21,19 +21,22 @@
     <div ng-controller="ChangepassController as changepass" layout="column" flex style="border-bottom:1px solid #ccc; padding:10px 0 45px 0;">           
             <div style="margin:auto;">
               <form name="changepassForm" novalidate ng-submit="changepass.submit(changepassForm.$valid)">
-                <h3>Change your password</h3>
+                <h3><?php echo __('Change your password');?></h3>
                 <div class="row_change_pass">
-                    <label>New password</label>
-                    <input type="password" name="password" ng-model="changepass.user.password" placeholder="new password">                    
+                    <label><?php echo __('New password');?></label>
+                    <input type="password" name="password" ng-model="changepass.user.password" placeholder="<?php echo __('New password');?>">                    
                 </div>
                 <div class="row_change_pass">
-                    <label>Confirm password</label>
-                    <input type="password" name="confirmPassword" ng-model="changepass.user.confirmPassword" compare-to="changepass.user.password" placeholder="confirm password">
+                    <label><?php echo __('Confirm password');?></label>
+                    <input type="password" name="confirmPassword" ng-model="changepass.user.confirmPassword" compare-to="changepass.user.password" placeholder="<?php echo __('Confirm password');?>">
                     <div ng-messages="changepassForm.confirmPassword.$error" ng-messages-include="/files/message_changepass.html"></div>
                 </div>
+                <div style="color:green;">
+                  {{changepass.message}}
+                </div>
                 <div style="padding-top:40px;">
-                    <input type="submit" value="SAVE" class="btn btn_change_save">
-                    <a href="javascript:void(0);" class="btn btn_change_cancel" ng-click="cancel()" tabindex="0">CANCEL</a>
+                    <input type="submit" value="<?php echo __('SAVE');?>" class="btn btn_change_save">
+                    <a href="javascript:void(0);" class="btn btn_change_cancel" ng-click="cancel()" tabindex="0"><?php echo __('CANCEL');?></a>
                 </div>
               </form>
             </div>        

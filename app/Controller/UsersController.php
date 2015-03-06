@@ -136,4 +136,8 @@ class UsersController extends AppController {
     public function change_password(){
 
     }
+
+    public function delete_account(){
+
+    }
 }

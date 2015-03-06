@@ -438,4 +438,21 @@ class ApisController extends AppController {
             )); 
         }     
     }
+
+    public function deleteAccount(){
+        $data = $this->request->input('json_decode', true);
+        $user = $this->getAuthentication();
+
+        if($data && $user){
+            $this->set(array(
+                'message' => 'success',
+                '_serialize' => array('message')
+            ));
+        }else{
+            $this->set(array(
+                'message' => 'fail',
+                '_serialize' => array('message')
+            ));
+        }
+    }
 }

@@ -672,8 +672,7 @@ app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
 app.controller('ChangepassController', function($http, $scope){
     var model = this;
 
-    model.message = "";
-
+    model.message = "";    
     model.user = {    
       password: "",
       confirmPassword: ""
@@ -690,16 +689,13 @@ app.controller('ChangepassController', function($http, $scope){
         .success(function(data) {
             // $scope.showLoader = false;
            
-            // if(data.message == "success")
-            //     $scope.isReset = false;
-            // else
-            //     $scope.message = $sce.trustAsHtml(data.message);
-
-             console.log(data);
-        })
-        model.message = "Submitted " + model.user.password;
+            if(data.message == "success")
+                model.message = "Change password successful!"
+            else
+                model.message = "Change password failed!"
+        })       
       } else {
-        model.message = "There are still invalid fields below";
+        
       }
     };
 });
@@ -719,6 +715,25 @@ app.directive('compareTo', function(){
               ngModel.$validate();
             });
           }
+    };
+});
+app.controller('DeleteaccountController', function($http, $scope){
+    var model = this;
+    model.email = "";
+    model.submit = function(isValid){
+        if(isValid){
+            // $http({
+            //     method  : 'POST',
+            //     url     : '/Apis/changePassword.json',
+            //     data    : {'password' : model.user.password},  // pass in data as strings
+            //     headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+            // })
+            // .success(function(data) {              
+            //      console.log(data);
+            // }) 
+        }else{
+
+        }
     };
 });
 // Filter part
