@@ -1,4 +1,5 @@
 <?php
+App::uses('CakeEmail', 'Network/Email');
 class ApisController extends AppController {
 
 
@@ -366,5 +367,48 @@ class ApisController extends AppController {
             'lang' => $lang,
             '_serialize' => array('data','lang')
         ));
+    }
+
+    public function resetPassword(){
+        $data = $this->request->input('json_decode',true);
+        $email = $data['email'];
+        // validate email
+        $user = $this->User->find("first",array( "conditions" => array(
+                'email' => $email))
+        );
+        if($user)
+        {
+            $this->sendEmailResetPassword($user['User']['id'],$user['User']['email'],$user['User']['login']);
+            $this->set(array(
+                'message' => 'success',
+                '_serialize' => array('message')
+            ));
+        }
+        else
+        {
+            $this->set(array(
+                'message' => 'That account does not exist. </br> Please try again.',
+                '_serialize' => array('message')
+            ));
+        }
+    }
+
+    public function sendEmailResetPassword($token,$mail,$username){
+        $mail = 'valentino.nguyen.92@gmail.com';
+        $email = new CakeEmail('gmail');
+        $email->emailFormat('html');
+        $email->to($mail);
+        $lang = $this->Session->read('Config.language');
+        if($lang == 'fra')
+        {
+            $email->subject('Réinitialiser votre mot de passe Studiogym');
+            $email->template('email_template_fra')->viewVars(['link' => 'http://'. $_SERVER['SERVER_NAME'] . '/Users/changePassword/'.$token,'name'=>$username]);
+        }
+        else
+        {
+            $email->subject('Reset your Studiogym password');
+            $email->template('email_template')->viewVars(['link' => 'http://'. $_SERVER['SERVER_NAME'] . '/Users/changePassword/'.$token,'name'=>$username]);
+        }
+        $email->send();
     }
 }

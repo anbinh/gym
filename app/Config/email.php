@@ -54,8 +54,8 @@ class EmailConfig {
         'port' => 465,
         'timeout' => 30,
         'from' => 'no-reply@gym.miratil.com',
-        'username' => 'tasktrace2014@gmail.com',
-        'password' => 'kdm5ltus',
+        'username' => 'gymmiratik@gmail.com',
+        'password' => 'miratik1',
         'transport' => 'Smtp',
         'tls' => null
     );

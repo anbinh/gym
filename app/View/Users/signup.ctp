@@ -1,57 +1,5 @@
 <div id="fb-root"></div>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-
-<style type="text/css">
-	.register_input_set {
-		padding: 0;
-		margin: 0;
-		border: 2px solid #e6e6e6;
-		border-radius: 3px;
-		width: 250px;
-		margin: auto;
-	}
-	.register_input_bottom_border {
-border-bottom: 2px solid #e6e6e6;
-overflow: hidden;
-}
-.register_input_set input {
-margin: 0;
-border: 0;
-border-radius: 0;
-width: 83%;
-border-color: #e6e6e6!important;
-padding: 15px 0 15px 0;
-}
-
-.arrow_box {
-	position: relative;
-	background: #ffffff;
-	border: 7px solid #f2f2f2;
-}
-.arrow_box:after, .arrow_box:before {
-	bottom: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
-
-.arrow_box:after {
-	border-color: rgba(255, 255, 255, 0);
-	border-bottom-color: #ffffff;
-	border-width: 16px;
-	margin-left: -16px;
-}
-.arrow_box:before {
-	border-color: rgba(242, 242, 242, 0);
-	border-bottom-color: #f2f2f2;
-	border-width: 26px;
-	margin-left: -26px;
-}
-</style>
 <div ng-controller="signupController">
 	<div layout="row" layout-align="center center">
 		<div class="main_content_register arrow_box">
