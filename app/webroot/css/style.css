@@ -1270,7 +1270,15 @@ input:invalid {
 .resetBox p{
     margin: 0 0 0px !important;
 }
-
+.row_change_pass label{
+    font-weight: normal;
+    width: 115px;
+}
+.row_change_pass input{
+    height: 35px;
+    width: 240px;
+    padding: 0 10px 0 10px;
+}
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;

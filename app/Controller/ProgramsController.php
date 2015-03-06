@@ -8,8 +8,9 @@ class ProgramsController  extends AppController {
     	//pr($programs);
     }
     public function program_view($id=null){
-        // $programs = $this->Program->findById($id);
+        $programs = $this->Program->findById($id);
         // pr($programs);
+        $this->set('programs', $programs);
     }
 }
 ?>

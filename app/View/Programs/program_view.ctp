@@ -98,7 +98,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
 
         <div ng-controller="ProgramController" class="program_tab" layout="column">
           <md-tabs md-selected="selectedIndex" flex>
-            <md-tab label="Day 1">
+            <!-- <md-tab label="Day 1">
               <?php echo $this->Element('exercise_stretching');?>
             </md-tab>           
             <md-tab label="Day 2">
@@ -109,7 +109,12 @@ md-tabs.md-default-theme md-tabs-ink-bar {
             </md-tab>
             <md-tab label="Day 4">
               3
-            </md-tab>
+            </md-tab> -->
+            <?php foreach($programs['Program']['content'] as $content):?>
+                <md-tab label="Day <?php echo $content['day_number'];?>">
+                  <?php echo $this->Element('exercise_stretching', array('content'=>$content));?>
+                </md-tab>              
+            <?php endforeach;?>
           </md-tabs>              
         </div>
         <div>
