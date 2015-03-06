@@ -394,7 +394,7 @@ class ApisController extends AppController {
     }
 
     public function sendEmailResetPassword($token,$mail,$username){
-        $mail = 'valentino.nguyen.92@gmail.com';
+        //$mail = 'valentino.nguyen.92@gmail.com';
         $email = new CakeEmail('gmail');
         $email->emailFormat('html');
         $email->to($mail);
