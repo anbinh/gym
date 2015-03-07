@@ -119,7 +119,7 @@
                         </div>
                         <div class="input_row_register_fb">
                             <label><?php echo __("Your Password")?></label>
-                            <a href="#" class="btn btn_change_pass">
+                            <a href="javascript:void(0);" class="btn btn_change_pass" ng-click="changePassword()">
                                 <?php if(isset($profile['id']))
                                         echo __("Change Password");
                                      else
