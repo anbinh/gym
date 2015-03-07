@@ -721,17 +721,27 @@ app.directive('compareTo', function(){
 app.controller('DeleteaccountController', function($http, $scope){
     var model = this;
     model.email = "";
+    model.message = "";
+    $scope.showLoader = false;
     model.submit = function(isValid){
+        $scope.showLoader = true;
         if(isValid){
-            // $http({
-            //     method  : 'POST',
-            //     url     : '/Apis/changePassword.json',
-            //     data    : {'password' : model.user.password},  // pass in data as strings
-            //     headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
-            // })
-            // .success(function(data) {              
-            //      console.log(data);
-            // }) 
+            $http({
+                method  : 'POST',
+                url     : '/Apis/deleteAccount.json',
+                data    : {'email' : model.email},  
+                headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+            })
+            .success(function(data) {         
+                $scope.showLoader = false;
+                if(data.message == "email_does_not_match"){
+                    model.message = "Your email does not match!";   
+                }
+                else{
+                    model.message = "Delete account successful!";
+                }
+                 
+            }) 
         }else{
 
         }

@@ -26,11 +26,15 @@
                     <p><?php echo __('To confirm your account deletion please type &lt&ltDELETE&gt&gt below.');?></p>                                      
                     <input type="email" placeholder="<?php echo __("Email")?>" ng-model="deleteaccount.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
                     <div ng-messages="deleteaccountForm.email.$error" ng-messages-include="/files/message_changepass.html"></div>
+                    <div style="color:green;">
+                      {{deleteaccount.message}}
+                       <img ng-show="showLoader" src="/img/loader.gif"/>
+                    </div>
                 </div>               
                 <div style="padding-top:40px;">
                     <input type="submit" value="<?php echo __('SAVE');?>" class="btn btn_change_save">
                     <a href="javascript:void(0);" class="btn btn_change_cancel" ng-click="cancel()" tabindex="0"><?php echo __('CANCEL');?></a>
-                </div>
+                </div>                
               </form>
             </div>        
     </div>

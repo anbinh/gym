@@ -441,13 +441,25 @@ class ApisController extends AppController {
 
     public function deleteAccount(){
         $data = $this->request->input('json_decode', true);
+        $email = $data['email'];
+
         $user = $this->getAuthentication();
 
         if($data && $user){
-            $this->set(array(
-                'message' => 'success',
-                '_serialize' => array('message')
-            ));
+            $checkEmail = $this->User->find("first", array('conditions'=>array('email'=>$email)));
+
+            if(count($checkEmail)==0 || $user["email"]!=$email){
+                $this->set(array(
+                    'message' => "email_does_not_match",
+                    '_serialize' => array('message')
+                ));
+            }else{
+                $this->User->delete($checkEmail['User']['id']);
+                $this->set(array(
+                    'message' => 'success',
+                    '_serialize' => array('message')
+                ));
+            }             
         }else{
             $this->set(array(
                 'message' => 'fail',

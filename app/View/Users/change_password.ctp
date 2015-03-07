@@ -31,7 +31,7 @@
                     <input type="password" name="confirmPassword" ng-model="changepass.user.confirmPassword" compare-to="changepass.user.password" placeholder="<?php echo __('Confirm password');?>">
                     <div ng-messages="changepassForm.confirmPassword.$error" ng-messages-include="/files/message_changepass.html"></div>
                 </div>
-                <div style="color:green; text-align:center;">
+                <div style="color:green;">
                   {{changepass.message}}
                    <img ng-show="showLoader" src="/img/loader.gif"/>
                 </div>
