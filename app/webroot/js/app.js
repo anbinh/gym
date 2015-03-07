@@ -671,6 +671,7 @@ app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
 );
 app.controller('ChangepassController', function($http, $scope){
     var model = this;
+    $scope.showLoader = false;
 
     model.message = "";    
     model.user = {    
@@ -678,7 +679,8 @@ app.controller('ChangepassController', function($http, $scope){
       confirmPassword: ""
     };
 
-    model.submit = function(isValid) {      
+    model.submit = function(isValid) {   
+        $scope.showLoader = true;       
       if (isValid) {
        $http({
             method  : 'POST',
@@ -687,8 +689,7 @@ app.controller('ChangepassController', function($http, $scope){
             headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
         })
         .success(function(data) {
-            // $scope.showLoader = false;
-           
+            $scope.showLoader = false;           
             if(data.message == "success")
                 model.message = "Change password successful!"
             else

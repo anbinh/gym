@@ -932,6 +932,15 @@ input[type=date]{
     .list_tile {
         margin-left: 20px;
     }
+    .row_delete_account input{
+        width: 250px !important;
+    }
+    .deleteaccountForm{
+        margin: 10px;
+    }
+    .changepassForm{
+        margin: 10px;
+    }
 }
 
 .exercise_box{
@@ -1275,7 +1284,7 @@ input:invalid {
 }
 .row_change_pass label{
     font-weight: normal;
-    width: 115px;
+    width: 165px;
 }
 .row_change_pass input{
     height: 35px;

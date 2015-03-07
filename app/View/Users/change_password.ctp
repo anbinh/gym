@@ -20,7 +20,7 @@
 <div layout="row" layout-align="center start">
     <div ng-controller="ChangepassController as changepass" layout="column" flex style="border-bottom:1px solid #ccc; padding:10px 0 45px 0;">           
             <div style="margin:auto;">
-              <form name="changepassForm" novalidate ng-submit="changepass.submit(changepassForm.$valid)">
+              <form class="changepassForm" name="changepassForm" novalidate ng-submit="changepass.submit(changepassForm.$valid)">
                 <h3><?php echo __('Change your password');?></h3>
                 <div class="row_change_pass">
                     <label><?php echo __('New password');?></label>
@@ -31,14 +31,15 @@
                     <input type="password" name="confirmPassword" ng-model="changepass.user.confirmPassword" compare-to="changepass.user.password" placeholder="<?php echo __('Confirm password');?>">
                     <div ng-messages="changepassForm.confirmPassword.$error" ng-messages-include="/files/message_changepass.html"></div>
                 </div>
-                <div style="color:green;">
+                <div style="color:green; text-align:center;">
                   {{changepass.message}}
+                   <img ng-show="showLoader" src="/img/loader.gif"/>
                 </div>
                 <div style="padding-top:40px;">
                     <input type="submit" value="<?php echo __('SAVE');?>" class="btn btn_change_save">
                     <a href="javascript:void(0);" class="btn btn_change_cancel" ng-click="cancel()" tabindex="0"><?php echo __('CANCEL');?></a>
                 </div>
-              </form>
+              </form>                      
             </div>        
     </div>
     <div style="width:300px;margin-top: 60px" layout="column" class="menu-right">

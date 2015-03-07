@@ -20,16 +20,16 @@
 <div layout="row" layout-align="center start">
     <div ng-controller="DeleteaccountController as deleteaccount" layout="column" flex style="border-bottom:1px solid #ccc; padding:10px 0 45px 0;">           
             <div style="margin:auto;">
-              <form name="deleteaccountForm" novalidate ng-submit="deleteaccount.submit(deleteaccountForm.$valid)">
+              <form class="deleteaccountForm" name="deleteaccountForm" novalidate ng-submit="deleteaccount.submit(deleteaccountForm.$valid)">
                 <h3><?php echo __('Delete your account');?></h3>
                 <div class="row_delete_account">
                     <p><?php echo __('To confirm your account deletion please type &lt&ltDELETE&gt&gt below.');?></p>                                      
-                    <input type="email" required placeholder="<?php echo __("Email")?>" ng-model="deleteaccount.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
+                    <input type="email" placeholder="<?php echo __("Email")?>" ng-model="deleteaccount.email" name="email" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
                     <div ng-messages="deleteaccountForm.email.$error" ng-messages-include="/files/message_changepass.html"></div>
                 </div>               
                 <div style="padding-top:40px;">
-                    <input type="submit" value="SAVE" class="btn btn_change_save">
-                    <a href="javascript:void(0);" class="btn btn_change_cancel" ng-click="cancel()" tabindex="0">CANCEL</a>
+                    <input type="submit" value="<?php echo __('SAVE');?>" class="btn btn_change_save">
+                    <a href="javascript:void(0);" class="btn btn_change_cancel" ng-click="cancel()" tabindex="0"><?php echo __('CANCEL');?></a>
                 </div>
               </form>
             </div>        

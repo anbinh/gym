@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-03-06 18:26+0100\n"
+"POT-Creation-Date: 2015-03-07 02:08+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -275,6 +275,16 @@ msgstr ""
 msgid "Confirm password"
 msgstr ""
 
+#: View/Users/change_password.ctp:38
+#: View/Users/edit_profile.ctp:145
+msgid "SAVE"
+msgstr ""
+
+#: View/Users/change_password.ctp:39
+#: View/Users/edit_profile.ctp:146
+msgid "CANCEL"
+msgstr ""
+
 #: View/Users/delete_account.ctp:24
 msgid "Delete your account"
 msgstr ""
@@ -353,14 +363,6 @@ msgstr ""
 
 #: View/Users/edit_profile.ctp:140
 msgid "Receive promotion emails"
-msgstr ""
-
-#: View/Users/edit_profile.ctp:145
-msgid "SAVE"
-msgstr ""
-
-#: View/Users/edit_profile.ctp:146
-msgid "CANCEL"
 msgstr ""
 
 #: View/Users/edit_profile.ctp:148

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-03-06 18:26+0100\n"
-"PO-Revision-Date: 2015-03-07 00:33+0700\n"
+"PO-Revision-Date: 2015-03-07 08:15+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -186,7 +186,7 @@ msgstr "ou"
 #: View/Users/forget_password.ctp:20 View/Users/login.ctp:28
 #: View/Users/signup.ctp:19
 msgid "Email"
-msgstr ""
+msgstr "Courriel"
 
 #: View/Exercises/login_modal.ctp:27 View/Users/forget_password.ctp:22
 #: View/Users/login.ctp:30 View/Users/signup.ctp:21
@@ -250,11 +250,11 @@ msgstr "Confirmer le mot de passe"
 
 #: View/Users/delete_account.ctp:24
 msgid "Delete your account"
-msgstr ""
+msgstr "Supprimer le compte"
 
 #: View/Users/delete_account.ctp:26
 msgid "To confirm your account deletion please type &lt&ltDELETE&gt&gt below."
-msgstr ""
+msgstr "Pour supprimer le compte cliquer &lt&ltconfirmer&gt&gt ci-dessous."
 
 #: View/Users/edit_profile.ctp:29;56
 msgid "Edit Picture"
