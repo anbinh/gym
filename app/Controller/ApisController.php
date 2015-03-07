@@ -455,6 +455,7 @@ class ApisController extends AppController {
                 ));
             }else{
                 $this->User->delete($checkEmail['User']['id']);
+                $this->removeAuthentication();
                 $this->set(array(
                     'message' => 'success',
                     '_serialize' => array('message')

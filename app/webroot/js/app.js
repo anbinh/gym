@@ -669,7 +669,7 @@ app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
     }
 }
 );
-app.controller('ChangepassController', function($http, $scope){
+app.controller('ChangepassController', function($http, $scope, $timeout){
     var model = this;
     $scope.showLoader = false;
 
@@ -694,6 +694,10 @@ app.controller('ChangepassController', function($http, $scope){
                 model.message = "Change password successful!"
             else
                 model.message = "Change password failed!"
+
+            $timeout(function(){
+                model.message = "";
+            }, 3000);
         })       
       } else {
         
@@ -718,33 +722,69 @@ app.directive('compareTo', function(){
           }
     };
 });
-app.controller('DeleteaccountController', function($http, $scope){
+app.controller('DeleteaccountController', function($http, $scope, $mdDialog, $timeout){
     var model = this;
     model.email = "";
     model.message = "";
     $scope.showLoader = false;
     model.submit = function(isValid){
-        $scope.showLoader = true;
-        if(isValid){
-            $http({
-                method  : 'POST',
-                url     : '/Apis/deleteAccount.json',
-                data    : {'email' : model.email},  
-                headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
-            })
-            .success(function(data) {         
-                $scope.showLoader = false;
-                if(data.message == "email_does_not_match"){
-                    model.message = "Your email does not match!";   
-                }
-                else{
-                    model.message = "Delete account successful!";
-                }
-                 
-            }) 
+         if(isValid && model.email!=""){
+             var confirm = $mdDialog.confirm()
+              .title('Would you like to delete your account?')
+              .content('')
+              .ariaLabel('Lucky day')
+              .ok('OK')
+              .cancel('Cancel')
+              .targetEvent();
+            $mdDialog.show(confirm).then(function() {  
+                $scope.showLoader = true;        
+                $http({
+                    method  : 'POST',
+                    url     : '/Apis/deleteAccount.json',
+                    data    : {'email' : model.email},  
+                    headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {         
+                    $scope.showLoader = false;
+                    if(data.message == "email_does_not_match"){
+                        model.message = "Your email does not match!";   
+                        $timeout(function(){
+                            model.message = "";
+                        }, 3000);
+                    }
+                    else{
+                        model.message = "Delete account successful!";
+                        window.location='/Users/login';
+                    }
+                     
+                }) 
+            }, function() {          
+                // do code here when click on cancel button
+            });
         }else{
 
         }
+        // $scope.showLoader = true;
+        // if(isValid){
+        //     $http({
+        //         method  : 'POST',
+        //         url     : '/Apis/deleteAccount.json',
+        //         data    : {'email' : model.email},  
+        //         headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+        //     })
+        //     .success(function(data) {         
+        //         $scope.showLoader = false;
+        //         if(data.message == "email_does_not_match"){
+        //             model.message = "Your email does not match!";   
+        //         }
+        //         else{
+        //             model.message = "Delete account successful!";
+        //         }
+                 
+        //     }) 
+        // }else{
+
+        // }
     };
 });
 // Filter part

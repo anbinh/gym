@@ -16,6 +16,12 @@
       color: red;
       font-size: 15px;
     }
+    md-dialog{
+      width: 400px;
+    }
+    md-dialog md-content h2{
+      font-size: 20px;
+    }
 </style>
 <div layout="row" layout-align="center start">
     <div ng-controller="DeleteaccountController as deleteaccount" layout="column" flex style="border-bottom:1px solid #ccc; padding:10px 0 45px 0;">           
