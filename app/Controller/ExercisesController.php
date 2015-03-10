@@ -19,10 +19,18 @@ class ExercisesController  extends AppController {
         $this->layout = false;
     }    
 
-    public function detail($id){
-        $exercise_item = $this->Exercise->find('first', array('conditions'=>array('id'=>$id)));
-        //pr($exercise_item);
-        return $this->render('exercise_item');
+    public function detail($id = null){
+        if($id)
+        {
+            $exercise_item = $this->Exercise->find('first', array('conditions'=>array('id'=>$id)));
+            //pr($exercise_item);
+            $this->set('exercise',$exercise_item);
+            //$this->render('exercise_item');
+        }
+        else{
+            //$this->redirect("/Users");
+            //$this->render('exercise_item');
+        }
     }
 }
 ?>

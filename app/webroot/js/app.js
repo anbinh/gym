@@ -1,7 +1,18 @@
 (function(){
 
 'use strict';
-var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages'])
+var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages']);
+
+app.config(["$locationProvider", function($locationProvider) {
+    $locationProvider.html5Mode(true);
+}]);
+
+
+app.controller('ExerciseDetailController', function($scope, $location) {
+    var id = $location.search().id;
+    console.log(id);
+});
+
 app.controller('headerController', function($scope,$http){
     $scope.ddSelectSelected = {}; // Must be an object
     $scope.ddMenuSelected = {};
@@ -12,54 +23,6 @@ app.controller('headerController', function($scope,$http){
             $scope.ddSelectOptions = res.data.data.language;
             $scope.ddMenuOptions = res.data.data.menu;
         });
-    /*$scope.ddLoginSelectOptions = [
-        {
-            text: 'Profile page',
-            href: '/Users'
-        },
-        {
-            text: 'Sign-out',
-            href: '/Users/logout'
-        }
-    ];
-    $scope.ddSelectOptions = [
-        {
-            text: 'ENG',
-            value: 'eng'
-        },
-        {
-            text: 'FRA',
-            value: 'fra'
-        }
-    ];
-
-    $scope.ddMenuOptions = [{
-        text: 'Search programs',
-        href: '#'
-    }, {
-        text: 'Search exercises',
-        href: '#'
-    },{
-        text: 'Create a program',
-        href: '#'
-    },{
-        text: 'Get the App',
-        href: '#'
-    },{
-        text: 'Profile',
-        href: '#'
-    },{
-        text: 'Lexic',
-        href: '#'
-    },{
-        text: 'About',
-        href: '#'
-    },{
-        text: 'Privacy Terms',
-        href: '#'
-    }
-    ];*/
-
 
     $scope.toggleLanguageClick = function($value)
     {
@@ -79,25 +42,7 @@ app.controller('headerController', function($scope,$http){
     $scope.loginClick = function(){
         window.location='/Users/login';
     };
-    /*$scope.click = function(param){
-        console.log('param is', param);
-        window.location = "/" + param;
-    };*/
 });
-
-/*app.directive('header', function(){
-    var curr = curr_page;
-    return {
-        restrict: 'E',
-        replace: true,
-        transclude: true,
-        scope: {
-            active: '=',
-            click: '&'
-        },
-        template: '<a hide-sm ng-click="active = $id; click({param: param});" ng-class="{bottomline: $id === active}" ng-transclude class="header_text"></a>'
-    }
-});*/
 
 app.controller('ListController', ['$scope', '$http', function($scope, $http){
     $scope.results=[];
@@ -538,6 +483,7 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
     else
         $scope.isSelected = false;
 });
+
 
 app.controller('ProgramListController', function($scope,$http,$filter,$modal,$window){
     $scope.programs_list_backup = [];

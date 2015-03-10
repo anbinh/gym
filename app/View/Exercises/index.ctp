@@ -38,7 +38,7 @@
                                              ng-click="toggleSelection()"
                                             >
                                     </div>
-                                    <a href="/Exercises/detail/{{exercise.Exercise.id}}">
+                                    <a href="/Exercises/detail?id={{exercise.Exercise.id}}">
                                         <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
                                         <p style="text-align:center;">{{exercise.Exercise.care}}</p>
                                     </a>
