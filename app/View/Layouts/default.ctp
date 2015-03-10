@@ -27,7 +27,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?php
 		echo $this->Html->css(array(
-            'style?7865876',
+            'style?3213421',
             'bower_components/angular-material/angular-material.min',
             'bower_components/angular-dropdown/angular-dropdowns',
             'bootstrap.min',
@@ -41,11 +41,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-animate/angular-animate.min',
             'bower_components/angular-aria/angular-aria.min',
             'bower_components/angular-material/angular-material.min',
-            'app?534543',
+            'app?654654',
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-1.11.2.min',
             'bootstrap.min',
-            'custom?1321',
+            'custom?98786',
             'bower_components/angular-ui/ui-bootstrap-tpls-0.12.1',
             'bower_components/angular/angular-messages',
             'UnityObject2.js'
@@ -62,7 +62,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <base href="/" />
+    <!--<base href="/" />-->
 </head>
 <body ng-app="App">
 	<div id="container">
@@ -96,6 +96,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                             dropdown-menu="ddLoginSelectOptions"
                             dropdown-model="ddLoginSelectSelected"
                             dropdown-item-label="text"
+                            dropdown-onchange="toggleLoginClick(selected)"
                             <?php endif;?>                        
                             >
                             <div id="loginBtn">

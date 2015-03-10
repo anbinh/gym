@@ -4,7 +4,7 @@
 var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages']);
 
 app.config(["$locationProvider", function($locationProvider) {
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 }]);
 
 
@@ -32,6 +32,10 @@ app.controller('headerController', function($scope,$http){
                 console.log(res);
                 window.location.reload();
             });
+    };
+    $scope.toggleLoginClick = function($value)
+    {
+        window.location = $value.value;
     };
     $scope.programClick = function(){
         window.location='/Programs/index';
@@ -198,11 +202,11 @@ app.controller('UserProfileController', function($scope,$http){
     }
     
     $scope.cancel = function() {
-        window.location='index';
+        window.location='/Users/index';
     };
 
     $scope.changePassword = function(){
-        window.location='change_password';
+        window.location='/Users/change_password';
     };
 
     $scope.editProgram = function() {
@@ -253,13 +257,13 @@ app.controller('signupController', function($scope,$http){
             .success(function(data) {
                 console.log(data);  
                 if(data.message == "success")
-                    window.location='edit_profile';
+                    window.location='/Users/edit_profile';
                 else
                     $scope.message = data.message;
             })
     };
     $scope.signIn = function() {
-        window.location='login';
+        window.location='/Users/login';
     }
 });
 
@@ -284,7 +288,7 @@ app.controller('LoginController', function($scope,$http,$location){
             })
     };
     $scope.signUp = function() {
-        window.location='signup';
+        window.location='/Users/signup';
     }
 });
 
@@ -634,7 +638,7 @@ app.controller('ChangepassController', function($http, $scope, $timeout){
     };
 
     $scope.cancel = function(){
-        window.location = 'edit_profile';
+        window.location = '/Users/edit_profile';
     }
 
     $scope.save = function() {
