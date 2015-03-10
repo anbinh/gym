@@ -1,3 +1,49 @@
+<script type="text/javascript">
+var config = {
+                width: 480, 
+                height: 350,
+                params: { enableDebugging:"0" }
+                
+            };
+var u = new UnityObject2(config);
+
+jQuery(function() {
+
+    var $missingScreen = jQuery("#unityPlayer").find(".missing");
+    var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+    $missingScreen.hide();
+    $brokenScreen.hide();
+    
+    u.observeProgress(function (progress) {
+        switch(progress.pluginStatus) {
+            case "broken":
+                $brokenScreen.find("a").click(function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    u.installPlugin();
+                    return false;
+                });
+                $brokenScreen.show();
+            break;
+            case "missing":
+                $missingScreen.find("a").click(function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    u.installPlugin();
+                    return false;
+                });
+                $missingScreen.show();
+            break;
+            case "installed":
+                $missingScreen.remove();
+            break;
+            case "first":
+            break;
+        }
+    });
+    u.initPlugin(jQuery("#unityPlayer")[0], "/Exercise_list/1109/1109 - WebPlayer/1109 - WebPlayer.unity3d");
+});
+</script>
 <div layout="row">
     <div class="titre_left" layout="column" layout-align="center start">
         <div layout="column" layout-align="center center" class="favorite_box">
@@ -12,7 +58,21 @@
 <div class="wrap_content right_banner" layout="row">
     <div flex>
         <div layout="row" layout-align="center start">
-            <img src="/img/images/calque_12.jpg" class="img-responsive"/>
+            <!-- <img src="/img/images/calque_12.jpg" class="img-responsive"/> -->
+            <div class="content">
+                <div id="unityPlayer">
+                    <div class="missing">
+                        <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+                            <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                        </a>
+                    </div>
+                    <div class="broken">
+                        <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
+                            <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div style="border:1px solid #ccc; margin: 10px;">
             <div class="region" layout="row" layout-align="start center">
