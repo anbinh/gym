@@ -29,22 +29,28 @@ class AppController extends Controller {
         }elseif($this->params['controller'] == 'Users' && ($this->params['action'] != 'index' || $this->params['action'] != '')){
             $this->set('curr_page', 'Users');
         }
-
         if($this->params['controller'] != 'Apis'){
-            if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup')){
-                if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword' && $this->params['action'] != 'forget_password')
-                {
-                    $auth_user = $this->getAuthentication();
-                    if($auth_user == null) {
-                        $is_register = $this->getCurrentRegister();
-                        if($is_register == null && $this->params['controller'] != 'Exercises')
-                            $this->redirect('/Users/login');
-                    }
-                    else {
-                        $this->set('auth_user',$auth_user);
-                    }
-                }
+            if($this->params['controller'] == 'Users' && $this->params['action'] == 'change_password' && count($this->params['pass']) > 0)
+            {
 
+            }
+            else
+            {
+                if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup')){
+                    if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword' && $this->params['action'] != 'forget_password')
+                    {
+                        $auth_user = $this->getAuthentication();
+                        if($auth_user == null) {
+                            $is_register = $this->getCurrentRegister();
+                            if($is_register == null && $this->params['controller'] != 'Exercises')
+                                $this->redirect('/Users/login');
+                        }
+                        else {
+                            $this->set('auth_user',$auth_user);
+                        }
+                    }
+
+                }
             }
         }
     }

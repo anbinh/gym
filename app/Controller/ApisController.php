@@ -386,10 +386,20 @@ class ApisController extends AppController {
         }
         else
         {
-            $this->set(array(
-                'message' => 'That account does not exist. </br> Please try again.',
-                '_serialize' => array('message')
-            ));
+            if($this->Session->read('Config.language') == 'fra')
+            {
+                $this->set(array(
+                    'message' => 'Aucun compte trouve. Reessayer',
+                    '_serialize' => array('message')
+                ));
+            }
+            else
+            {
+                $this->set(array(
+                    'message' => 'That account does not exist. </br> Please try again.',
+                    '_serialize' => array('message')
+                ));
+            }
         }
     }
 
@@ -403,12 +413,12 @@ class ApisController extends AppController {
         if($lang == 'fra')
         {
             $email->subject('Réinitialiser votre mot de passe Studiogym');
-            $email->template('email_template_fra')->viewVars(['link' => 'http://'. $_SERVER['SERVER_NAME'] . '/Users/changePassword/'.$token,'name'=>$username]);
+            $email->template('email_template_fra')->viewVars(['link' => 'http://'. $_SERVER['SERVER_NAME'] . '/Users/change_password/'.$token,'name'=>$username]);
         }
         else
         {
             $email->subject('Reset your Studiogym password');
-            $email->template('email_template')->viewVars(['link' => 'http://'. $_SERVER['SERVER_NAME'] . '/Users/changePassword/'.$token,'name'=>$username]);
+            $email->template('email_template')->viewVars(['link' => 'http://'. $_SERVER['SERVER_NAME'] . '/Users/change_password/'.$token,'name'=>$username]);
         }
         $email->send();
     }

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-03-07 16:39+0100\n"
+"POT-Creation-Date: 2015-03-07 18:03+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -277,6 +277,10 @@ msgstr ""
 
 #: View/Users/change_password.ctp:30;31
 msgid "Confirm password"
+msgstr ""
+
+#: View/Users/change_password.ctp:32
+msgid "Password does not match!"
 msgstr ""
 
 #: View/Users/change_password.ctp:39

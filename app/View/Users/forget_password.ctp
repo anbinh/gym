@@ -5,7 +5,7 @@
                 <div ng-show="isReset">
                     <h4 style="font-weight:bold; margin: 40px 30px;"><?php echo __("Forgot Password")?></h4>
                     <form class="frm_register" name="signup_form">
-                        <div>
+                        <div style="margin-bottom: 15px;">
                             <div class="error" ng-bind-html="message"></div>
                         </div>
                         <fieldset style="float:left; border:0 !important;">

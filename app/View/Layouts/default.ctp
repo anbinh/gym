@@ -46,7 +46,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bootstrap.min',
             'custom',
             'bower_components/angular-ui/ui-bootstrap-tpls-0.12.1',
-            'bower_components/angular/angular-messages'
+            'bower_components/angular/angular-messages',
+            'UnityObject2.js'
+
             /*'bower_components/angular-ui/ui-bootstrap-0.12.1'*/
         ));
 

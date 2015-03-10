@@ -109,7 +109,7 @@ class UsersController extends AppController {
             }
             else
             {
-                //$data['User']['password'] = md5($data['User']['password']);
+                $data['User']['password'] = md5($data['User']['password']);
                 $data['User']['favorite_exercises'] = array();
                 $data['User']['role'] = array();
                 $data['User']['assigned_programs'] = array();
@@ -133,8 +133,19 @@ class UsersController extends AppController {
 
     }
 
-    public function change_password(){
-
+    public function change_password($user_id = null){
+        if($user_id)
+        {
+            $user = $this->User->findById($user_id);
+            if($user)
+            {
+                $this->setAuthentication($user['User']);
+            }
+            else
+            {
+                $this->redirect('/Users/login');
+            }
+        }
     }
 
     public function delete_account(){

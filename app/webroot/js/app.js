@@ -130,6 +130,10 @@ app.controller('UserController', function($scope,$http) {
         .then(function(res){
             console.log(res);
             $scope.user = res.data.user;
+            if(res.data.user.picture.trim().length == 0)
+                $scope.user.picture = '/img/images/avarta.png';
+            if(res.data.user.language == "?")
+                $scope.user.language = "No Language Selected";
             $scope.exercises_list = angular.copy(res.data.exercises_like);
             $scope.exercises_like = angular.copy(res.data.exercises_like);
         });
@@ -237,7 +241,7 @@ app.controller('UserProfileController', function($scope,$http){
                 } else
                     $scope.formData.firstname = res.data.user.fullname;
                 $scope.formData.lastname = lastname;
-                $scope.formData.password = res.data.user.password;
+                $scope.password = res.data.user.password;
             });
     }
 
@@ -250,6 +254,10 @@ app.controller('UserProfileController', function($scope,$http){
     
     $scope.cancel = function() {
         window.location='index';
+    };
+
+    $scope.changePassword = function(){
+        window.location='change_password';
     };
 
     $scope.editProgram = function() {
@@ -679,30 +687,31 @@ app.controller('ChangepassController', function($http, $scope, $timeout){
       confirmPassword: ""
     };
 
-    model.submit = function(isValid) {   
-        $scope.showLoader = true;       
-      if (isValid) {
-       $http({
-            method  : 'POST',
-            url     : '/Apis/changePassword.json',
-            data    : {'password' : model.user.password},  // pass in data as strings
-            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
-        })
-        .success(function(data) {
-            $scope.showLoader = false;           
-            if(data.message == "success")
-                model.message = "Change password successful!"
-            else
-                model.message = "Change password failed!"
+    $scope.cancel = function(){
+        window.location = 'edit_profile';
+    }
 
-            $timeout(function(){
-                model.message = "";
-            }, 3000);
-        })       
-      } else {
-        
-      }
-    };
+    $scope.save = function() {
+        $scope.showLoader = true;
+        $http({
+                method  : 'POST',
+                url     : '/Apis/changePassword.json',
+                data    : {'password' : model.user.password},  // pass in data as strings
+                headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+            })
+            .success(function(data) {
+                $scope.showLoader = false;
+                if(data.message == "success")
+                    model.message = "Change password successful!"
+                else
+                    model.message = "Change password failed!"
+
+                $timeout(function(){
+                    model.message = "";
+                }, 3000);
+            })
+
+        };
 });
 app.directive('compareTo', function(){
     return {
