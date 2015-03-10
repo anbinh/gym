@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-03-06 18:26+0100\n"
-"PO-Revision-Date: 2015-03-07 08:15+0700\n"
+"POT-Creation-Date: 2015-03-07 16:39+0100\n"
+"PO-Revision-Date: 2015-03-07 22:40+0700\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -128,9 +128,13 @@ msgstr ""
 msgid "Edit Subdocument"
 msgstr ""
 
+#: View/Elements/message_changepass.ctp:6
+msgid "Password does not match!"
+msgstr "dau moa"
+
 #: View/Exercises/exercise_item.ctp:47 View/Exercises/index.ctp:55
 #: View/Programs/index.ctp:89 View/Programs/program_view.ctp:126
-#: View/Users/change_password.ctp:47 View/Users/delete_account.ctp:40
+#: View/Users/change_password.ctp:48 View/Users/delete_account.ctp:50
 #: View/Users/edit_profile.ctp:219 View/Users/forget_password.ctp:51
 #: View/Users/index.ctp:87
 msgid "mobile application"
@@ -138,7 +142,7 @@ msgstr "APPLICATION MOBILE"
 
 #: View/Exercises/exercise_item.ctp:51 View/Exercises/index.ctp:59
 #: View/Programs/index.ctp:93 View/Programs/program_view.ctp:130
-#: View/Users/change_password.ctp:51 View/Users/delete_account.ctp:44
+#: View/Users/change_password.ctp:52 View/Users/delete_account.ctp:54
 #: View/Users/edit_profile.ctp:223 View/Users/forget_password.ctp:55
 #: View/Users/index.ctp:91
 msgid "create a program"
@@ -146,7 +150,7 @@ msgstr "CRÉER UN PROGRAMME"
 
 #: View/Exercises/exercise_item.ctp:54 View/Exercises/index.ctp:62
 #: View/Programs/index.ctp:96 View/Programs/program_view.ctp:133
-#: View/Users/change_password.ctp:54 View/Users/delete_account.ctp:47
+#: View/Users/change_password.ctp:55 View/Users/delete_account.ctp:57
 #: View/Users/edit_profile.ctp:226 View/Users/forget_password.ctp:58
 #: View/Users/index.ctp:94
 msgid "advertising"
@@ -182,7 +186,7 @@ msgstr "Connexion avec Facebook"
 msgid "or"
 msgstr "ou"
 
-#: View/Exercises/login_modal.ctp:25 View/Users/delete_account.ctp:27
+#: View/Exercises/login_modal.ctp:25 View/Users/delete_account.ctp:33
 #: View/Users/forget_password.ctp:20 View/Users/login.ctp:28
 #: View/Users/signup.ctp:19
 msgid "Email"
@@ -248,11 +252,21 @@ msgstr "Nouveau mot de passe"
 msgid "Confirm password"
 msgstr "Confirmer le mot de passe"
 
-#: View/Users/delete_account.ctp:24
+#: View/Users/change_password.ctp:39 View/Users/delete_account.ctp:41
+#: View/Users/edit_profile.ctp:145
+msgid "SAVE"
+msgstr "SAUVER"
+
+#: View/Users/change_password.ctp:40 View/Users/delete_account.ctp:42
+#: View/Users/edit_profile.ctp:146
+msgid "CANCEL"
+msgstr "ANNULER"
+
+#: View/Users/delete_account.ctp:30
 msgid "Delete your account"
 msgstr "Supprimer le compte"
 
-#: View/Users/delete_account.ctp:26
+#: View/Users/delete_account.ctp:32
 msgid "To confirm your account deletion please type &lt&ltDELETE&gt&gt below."
 msgstr "Pour supprimer le compte cliquer &lt&ltconfirmer&gt&gt ci-dessous."
 
@@ -327,14 +341,6 @@ msgstr ""
 #: View/Users/edit_profile.ctp:140
 msgid "Receive promotion emails"
 msgstr "Recevoir les emails de promotion"
-
-#: View/Users/edit_profile.ctp:145
-msgid "SAVE"
-msgstr "SAUVER"
-
-#: View/Users/edit_profile.ctp:146
-msgid "CANCEL"
-msgstr "ANNULER"
 
 #: View/Users/edit_profile.ctp:148
 msgid "To remove your Keep account please"

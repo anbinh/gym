@@ -29,7 +29,7 @@
                 <div class="row_change_pass">
                     <label><?php echo __('Confirm password');?></label>
                     <input type="password" name="confirmPassword" ng-model="changepass.user.confirmPassword" compare-to="changepass.user.password" placeholder="<?php echo __('Confirm password');?>">
-                    <div ng-messages="changepassForm.confirmPassword.$error" ng-messages-include="/files/message_changepass.html"></div>
+                    <div ng-messages="changepassForm.confirmPassword.$error" ng-messages-include="/Elements/message_changepass.ctp"></div>
                 </div>
                 <div style="color:green;">
                   {{changepass.message}}
