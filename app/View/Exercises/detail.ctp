@@ -40,7 +40,7 @@ jQuery(function() {
             break;
         }
     });
-    u.initPlugin(jQuery("#unityPlayer")[0], "/Exercise_list/1109/1109 - WebPlayer/1109 - WebPlayer.unity3d");
+    u.initPlugin(jQuery("#unityPlayer")[0], "/Exercise_list/1109.unity3d");
 });
 </script>
 <div ng-controller="ExerciseDetailController">
