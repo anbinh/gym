@@ -478,4 +478,37 @@ class ApisController extends AppController {
             ));
         }
     }
+
+    public function getExerciseDetail($exercise_id)
+    {
+        $exercise = $this->Exercise->findById($exercise_id);
+        if($exercise)
+        {
+            $isVote = 0;
+            $user = $this->getAuthentication();
+            if($user)
+            {
+
+                $user = $this->User->findById($user['id']);
+                $key = array_search($exercise_id, $user['User']['favorite_exercises']);
+                if($key > 0)
+                    $isVote = 1;
+                $this->set(array(
+                    'message' => 'success',
+                    'exercise'=> $exercise,
+                    'isVote'=>$isVote,
+                    '_serialize' => array('message','exercise','isVote')
+                ));
+            }
+            else
+            {
+                $this->set(array(
+                    'message' => 'NoUserLogin',
+                    'exercise'=> $exercise,
+                    'isVote'=>$isVote,
+                    '_serialize' => array('message','exercise','isVote')
+                ));
+            }
+        }
+    }
 }

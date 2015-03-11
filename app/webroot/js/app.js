@@ -3,14 +3,53 @@
 'use strict';
 var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages']);
 
-app.config(["$locationProvider", function($locationProvider) {
-    //$locationProvider.html5Mode(true);
-}]);
+app.controller('ExerciseDetailController', function($scope,$http) {
+    var exercise_id = window.location.search;
+    exercise_id = exercise_id.substr(exercise_id.indexOf("=") + 1);
+    $scope.isSelected = false;
+    $http.get('/Apis/getExerciseDetail/' + exercise_id +'.json')
+        .then(function(res){
+            console.log(res);
+            if(res.data.isVote == 1)
+                $scope.isSelected = true;
+            if(res.data.message == "NoUserLogin")
+            {
+                $scope.id = 0;
+            }
+        });
+    $scope.getImage = function() {
+        if ( $scope.isSelected ) {
+            return "/img/images/star.png";
+        } else {
+            return "/img/images/star_blank.png";
+        }
+    };
 
+    $scope.toggleSelection = function() {
+        if($scope.id == 0)
+        {
+            window.location='/Users/login';
+        }
+        else
+        {
+            $scope.toggleStar();
+        }
+    };
 
-app.controller('ExerciseDetailController', function($scope, $location) {
-    var id = $location.search().id;
-    console.log(id);
+    $scope.toggleStar = function(){
+        $scope.isSelected = ! $scope.isSelected;
+        if ( $scope.isSelected ) {
+            $http.get('/Apis/likeExerciseByUser/' + exercise_id +'.json')
+                .then(function(res){
+                    console.log(res);
+                });
+        } else {
+            $http.get('/Apis/unlikeExerciseByUser/' + exercise_id +'.json')
+                .then(function(res){
+                    console.log(res);
+                });
+        }
+    };
 });
 
 app.controller('headerController', function($scope,$http){

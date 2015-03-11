@@ -1,3 +1,4 @@
+<script src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
 var config = {
                 width: 480, 
@@ -47,7 +48,10 @@ jQuery(function() {
     <div layout="row">
         <div class="titre_left" layout="column" layout-align="center start">
             <div layout="column" layout-align="center center" class="favorite_box">
-                <img src="/img/images/star.png"/>
+                <img class="img_star"
+                     ng-src="{{getImage()}}"
+                     ng-click="toggleSelection()"
+                    >
                 <p>Favorite</p>
             </div>
         </div>
@@ -60,7 +64,7 @@ jQuery(function() {
             <div layout="row" layout-align="center start">
                 <!-- <img src="/img/images/calque_12.jpg" class="img-responsive"/> -->
                 <div class="content">
-                    <div id="unityPlayer">
+                    <div id="unityPlayer" style="z-index: 0;">
                         <div class="missing">
                             <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
                                 <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
