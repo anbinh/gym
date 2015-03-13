@@ -12,5 +12,8 @@ class ProgramsController  extends AppController {
         // pr($programs);
         $this->set('programs', $programs);
     }
+    public function program_editor(){
+    	
+    }
 }
 ?>

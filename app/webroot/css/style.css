@@ -1296,6 +1296,72 @@ input:invalid {
     width: 375px;
     padding: 0 10px 0 10px;
 }
+.header_program_editor{
+    height: 70px;
+    border-bottom: 1px solid #D8E6DC;
+}
+.header_program_editor .list_button{
+    float: right;
+}
+.btn_program_editor{
+    width: 100px;
+    background: white;
+    border: 1px solid black !important;
+}
+.btn_public_program{    
+    background: #a4c408;
+    border-radius: 0 !important;
+    border: 1px solid #a4c408 !important;
+}
+.btn_draft_program{
+    border-radius: 0 !important;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.btn_cancel_program{
+    border-radius: 0 !important;
+}
+.main_content_program_editor{
+    padding-top: 10px;
+}
+.right_content_program_editor{
+    width: 300px;
+}
+.topic_box_program_editor{
+    background: #58585a;
+}
+.main_content_type_of_program{
+    padding-top: 10px;
+}
+.description_title_program_editor{
+    height: 40px;
+    width: 230px;
+}
+.short_text_program_editor{    
+    width: 230px;
+}
+.bar{
+    position: absolute; 
+    width:100%; 
+    height:50px; 
+    left:0; 
+    bottom:0px;      
+}
+.bar header{
+    height: 50px;
+    width: 100%;
+    background-color: #1a171b;   
+    /*background:  url('/img/images/bar_sprite.png');*/
+}
+.detail_footer_program_editor{
+    position: absolute; 
+    background:white; 
+    width:100%; 
+    /*height:230px;*/ 
+    left:0; 
+    bottom:0px;   
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;
