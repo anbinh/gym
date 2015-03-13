@@ -43,7 +43,21 @@
 <div class="bar" style="overflow:hidden;">  
   <div class="detail_footer_program_editor">
     <header layout="row" layout-align="center center">
-      <img src="/img/images/bar_sprite.png">
+      <div flex class="type_of_exercise_program_editor">        
+        <ul class="list-inline">
+            <li><img src="/img/images/icon_search_white.png"></li>
+            <li><?php echo __("Bodybuilding");?></li>
+            <li><?php echo __("Stretching");?></li>
+            <li><?php echo __("Cardio");?></li>
+            <li>
+                <select class="input_select input_location">
+                    <option><?php echo __("Part");?></option>
+                </select>
+            </li>
+        </ul>
+      </div>
+      <div flex style="text-align:center;"><img src="/img/images/bar_sprite.png"></div>
+      <div flex></div>      
     </header>
     <div>
       <div style="border:1px solid; width: 200px; height: 180px; position:absolute;"></div>

@@ -1362,6 +1362,13 @@ input:invalid {
     bottom:0px;   
 }
 
+.type_of_exercise_program_editor ul{
+    margin: auto;
+    color: white;
+}
+.type_of_exercise_program_editor ul li select{
+    color: black;
+}
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;
