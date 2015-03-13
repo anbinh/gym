@@ -5,14 +5,9 @@ class ExercisesController  extends AppController {
 
     }
 
-    public function test($id)
+    public function test()
     {
-        $conditions = array('body_building.bodypart' => $id);
-        $exercises_list = $this->Exercise->find('all',array('conditions'=>$conditions));
-        $this->set(array(
-            'exercises_list' => $exercises_list,
-            '_serialize' => array('exercises_list')
-        ));
+
     }
 
     public function login_modal() {

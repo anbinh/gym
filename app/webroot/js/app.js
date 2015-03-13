@@ -907,5 +907,64 @@ app.filter('programOptionFilter', function() {
     }
 });
 
+app.controller('TestController', function($scope,$http,$filter){
+        $scope.tests = [
+            {
+                id: '123',
+                mp4: '/Exercise_list/1109/1109_s.mp4',
+                jpg: '/img/images/6035.jpeg'
+            },
+            {
+                id: '124',
+                mp4: '/Exercise_list/1109/1119_s.mp4',
+                jpg: '/img/images/6035.jpeg'
+            }
+        ];
+
+        $scope.hoverIn = function(){
+            console.log('in');
+        };
+        $scope.hoverOut = function(){
+            console.log('out');
+        };
+    }
+);
+
+app.controller('TestRepeatController', function($scope){
+        $scope.hoverIn = function(e){
+            var videoElements = angular.element(e.srcElement);
+            videoElements[0].play();
+            console.log('in');
+        };
+        $scope.hoverOut = function(){
+            console.log('out');
+        };
+    }
+);
+
+app.directive('uiVideo', function () {
+    return {
+        template: [
+            '<div class="video">',
+            '<video class="img-responsive" preload="none"',
+            ' src="{{video.mp4}}"',
+            ' poster="{{video.jpg}}"',
+            ' width="240" height="120">',
+            '</video>',
+            '</div>'
+        ].join(''),
+        scope: {
+            video: '=video'
+        },
+        link: function (scope, element, attrs) {
+            $(element).find("video").on("ended", function () {
+                var v = this.src;
+                this.src='';
+                this.src=v;
+            });
+        }
+    };
+});
+
 
 }());
