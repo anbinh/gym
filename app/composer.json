@@ -1,0 +1,8 @@
+{
+    "require": {
+        "chronon/mobile_detect": "*"
+    },
+    "config": {
+        "vendor-dir": "Vendor"
+    }
+}

@@ -11,6 +11,11 @@ class AppController extends Controller {
     public $auth_user;
     public function beforeFilter() {
         parent::beforeFilter();
+        // check if the request is 'mobile', includes phones, tablets, etc.
+        if ($this->request->is('mobile')) {
+            $this->set('is_mobile', true);
+        }
+
         if($this->Session->check('Config.language')) { // Check for existing language session
             $this->language = $this->Session->read('Config.language'); // Read existing language
         } else {

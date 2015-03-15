@@ -472,6 +472,30 @@ app.controller('ExerciseController', function($scope,$http,$filter){
 
 });
 
+app.directive('uiVideo', function () {
+    return {
+        template: [
+            '<div class="video">',
+            '<video class="img-responsive" preload="none"',
+            ' src="{{video.Exercise.video_small}}"',
+            ' poster="{{video.Exercise.photo}}"',
+            ' width="208px" height="152px"',
+            '</video>',
+            '</div>'
+        ].join(''),
+        scope: {
+            video: '=video'
+        },
+        link: function (scope, element, attrs) {
+            $(element).find("video").on("ended", function () {
+             var v = this.src;
+             this.src='';
+             this.src=v;
+             });
+        }
+    };
+});
+
 app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$window){
     $scope.toggleSelection = function() {
         if(id == 0)
@@ -495,6 +519,17 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
         {
             $scope.toggleStar();
         }        
+    };
+
+    $scope.hoverIn = function(e){
+        var videoElements = angular.element(e.srcElement);
+        videoElements[0].play();
+        console.log('in');
+    };
+    $scope.hoverOut = function(e){
+        /*var videoElements = angular.element(e.srcElement);
+        videoElements[0].pause();*/
+        console.log('out');
     };
 
     $scope.toggleStar = function(){
@@ -942,29 +977,7 @@ app.controller('TestRepeatController', function($scope){
     }
 );
 
-app.directive('uiVideo', function () {
-    return {
-        template: [
-            '<div class="video">',
-            '<video class="img-responsive" preload="none"',
-            ' src="{{video.mp4}}"',
-            ' poster="{{video.jpg}}"',
-            ' width="240" height="120">',
-            '</video>',
-            '</div>'
-        ].join(''),
-        scope: {
-            video: '=video'
-        },
-        link: function (scope, element, attrs) {
-            $(element).find("video").on("ended", function () {
-                var v = this.src;
-                this.src='';
-                this.src=v;
-            });
-        }
-    };
-});
+
 
 
 }());

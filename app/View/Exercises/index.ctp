@@ -39,7 +39,12 @@
                                             >
                                     </div>
                                     <a href="/Exercises/detail?id={{exercise.Exercise.id}}">
-                                        <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                        <div style="padding:0 10px;">
+                                            <ui-video
+                                                video="exercise"
+                                                ng-mouseover="hoverIn($event)"
+                                                ng-mouseleave="hoverOut($event)" >
+                                            </ui-video></div>
                                         <p style="text-align:center;">{{exercise.Exercise.care}}</p>
                                     </a>
                                 </div>
