@@ -45,6 +45,7 @@ class AppController extends Controller {
                     if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword' && $this->params['action'] != 'forget_password')
                     {
                         $auth_user = $this->getAuthentication();
+                        pr($auth_user);
                         if($auth_user == null) {
                             $is_register = $this->getCurrentRegister();
                             if($is_register == null && $this->params['controller'] != 'Exercises')
