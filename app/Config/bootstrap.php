@@ -102,6 +102,7 @@ Configure::write('Dispatcher.filters', array(
  * Configures default file logging options
  */
 App::uses('CakeLog', 'Log');
+App::import('Vendor', array('file' => 'autoload'));
 CakeLog::config('debug', array(
 	'engine' => 'File',
 	'types' => array('notice', 'info', 'debug'),
@@ -114,6 +115,7 @@ CakeLog::config('error', array(
 ));
 
 CakePlugin::load('Mongodb');
+CakePlugin::load('Composer', array('bootstrap' => true));
 
 Configure::write('defaultLanguage', 'eng');
 Configure::write('availableLanguages', array('eng' => 'English','fra' => 'French'));

@@ -14,9 +14,10 @@ class ExercisesController  extends AppController {
         $this->layout = false;
     }    
 
-    public function detail($id = null){
-        if($id)
+    public function detail(){
+        if($this->params['url']['id'])
         {
+            $id = $this->params['url']['id'];
             $exercise_item = $this->Exercise->find('first', array('conditions'=>array('id'=>$id)));
             //pr($exercise_item);
             $this->set('exercise',$exercise_item);

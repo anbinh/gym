@@ -11,6 +11,11 @@ class AppController extends Controller {
     public $auth_user;
     public function beforeFilter() {
         parent::beforeFilter();
+        // check if the request is 'mobile', includes phones, tablets, etc.
+        if ($this->request->is('mobile')) {
+            $this->set('is_mobile', true);
+        }
+
         if($this->Session->check('Config.language')) { // Check for existing language session
             $this->language = $this->Session->read('Config.language'); // Read existing language
         } else {
@@ -29,6 +34,7 @@ class AppController extends Controller {
         }elseif($this->params['controller'] == 'Users' && ($this->params['action'] != 'index' || $this->params['action'] != '')){
             $this->set('curr_page', 'Users');
         }
+        
         if($this->params['controller'] != 'Apis'){
             if($this->params['controller'] == 'Users' && $this->params['action'] == 'change_password' && count($this->params['pass']) > 0)
             {
@@ -40,6 +46,7 @@ class AppController extends Controller {
                     if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword' && $this->params['action'] != 'forget_password')
                     {
                         $auth_user = $this->getAuthentication();
+                        //pr($auth_user);
                         if($auth_user == null) {
                             $is_register = $this->getCurrentRegister();
                             if($is_register == null && $this->params['controller'] != 'Exercises')
