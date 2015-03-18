@@ -634,6 +634,15 @@ input[type=date]{
     .btn_sign_in{
        
     }
+    .type_of_exercise_program_editor_hidden{
+        display: block !important;
+    }
+    .type_of_exercise_program_editor{
+        display: none !important;
+    }
+    .show_only_program_editor{
+        margin-right: 10px !important;
+    }
 }
 
 /* Iphone Ngang 5 6*/
@@ -668,6 +677,15 @@ input[type=date]{
     }
     .list_tile {
         margin-left: 40px;
+    }
+    .type_of_exercise_program_editor_hidden{
+        display: block !important;
+    }
+    .type_of_exercise_program_editor{
+        display: none !important;
+    }
+    .show_only_program_editor{
+        margin-right: 10px !important;
     }
 }
 
@@ -734,7 +752,16 @@ input[type=date]{
 
     .btn-fb-modal{
         margin-left: 8px !important;
-    }    
+    } 
+    .type_of_exercise_program_editor_hidden{
+        display: block !important;
+    }
+    .type_of_exercise_program_editor{
+        display: none !important;
+    }   
+    .show_only_program_editor{
+        margin-right: 10px !important;
+    }
 }
 
 /* Iphone Doc*/
@@ -940,6 +967,15 @@ input[type=date]{
     }
     .changepassForm{
         margin: 10px;
+    }
+    .type_of_exercise_program_editor_hidden{
+        display: block !important;
+    }
+    .type_of_exercise_program_editor{
+        display: none !important;
+    }
+    .show_only_program_editor{
+        margin-right: 10px !important;
     }
 }
 
@@ -1341,7 +1377,7 @@ input:invalid {
     width: 230px;
 }
 .bar{
-    position: absolute; 
+    position: fixed; 
     width:100%; 
     height:50px; 
     left:0; 
@@ -1378,8 +1414,25 @@ input:invalid {
     background:white; 
     border:1px solid; 
     width: 180px; 
-    height: 160px; 
+    height: 133px; 
     float: left;    
+}
+.dropbox_program_editor p{
+    line-height: 1.3;
+}
+.zone_hand_drag{
+    position: relative;
+}
+.text_exercise{
+    text-align: center;
+    padding-top: 10px;
+}
+.type_of_exercise_program_editor_hidden{
+    margin-left: 10px;
+    display: none;
+}
+.toggle_bar{
+    text-align: center;    
 }
 ::-webkit-scrollbar {
     width: 8px;

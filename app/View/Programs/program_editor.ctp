@@ -56,17 +56,41 @@
             </li>
         </ul>
       </div>
-      <div flex style="text-align:center;"><img src="/img/images/bar_sprite.png"></div>
+      <div flex class="type_of_exercise_program_editor_hidden">
+        <select class="input_select input_location">
+          <option><?php echo __("Choosing");?></option>
+          <option><?php echo __("Bodybuilding");?></option>
+          <option><?php echo __("Stretching");?></option>
+          <option><?php echo __("Cardio");?></option>
+        </select>
+        <select class="input_select input_location">
+            <option><?php echo __("Part");?></option>
+        </select>
+      </div>
+      <div class="toggle_bar"><img src="/img/images/bar_sprite.png"></div>
       <div flex class="show_only_program_editor">
-        <ul class="list-inline" style="float:right; margin-right:50px;">
-            <li><?php echo __('Show only');?></li>
+        <ul class="list-inline" style="float:right;">
+            <li class="text_show_only_program_editor"><?php echo __('Show only');?></li>
             <li><img src="/img/images/star_show_only.png"></li>
         </ul>
       </div>      
     </header>
-    <div style="height:170px; overflow-y:scroll; padding: 5px 10px 0 10px">
-      <div class="dropbox_program_editor"></div>
-      <div class="dropbox_program_editor"></div>
+    <div ng-controller="ExerciseController" style="height:140px; overflow-y:scroll; padding: 5px 10px 0 10px">
+        <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
+          <div class="dropbox_program_editor" >
+            <div class="zone_hand_drag">
+                <img style="position:absolute; left:7px; top:5px;" src="/img/images/star.png">
+                <img style="position:absolute; right:7px; top:5px;" src="/img/images/square.png">
+                <img style="position:absolute; right:3px; top:11px;" src="/img/images/hand_drag.png">        
+            </div>
+            <div style="text-align:center; padding-top:10px;">
+              <img src="/img/images/favourite_exercise.png">
+            </div> 
+            <div class="text_exercise">
+              <p>Cum autem commodis intervallata temporibus...</p>
+            </div>                       
+          </div> 
+        </div>  
     </div>
   </div>
 </div>
@@ -80,7 +104,7 @@ $(document).ready(function(){
           }).removeClass('actived');          
       }else{
           $(".bar").removeAttr("style");
-          $(".detail_footer_program_editor").animate({height: '230px'}).addClass('actived');
+          $(".detail_footer_program_editor").animate({height: '200px'}).addClass('actived');
       }
         
     });
