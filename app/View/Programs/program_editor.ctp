@@ -40,7 +40,7 @@
     </div>
   </div>
 </div> 
-<div class="bar" style="overflow:hidden;">  
+<div class="bar" >  
   <div class="detail_footer_program_editor">
     <header layout="row" layout-align="center center">
       <div flex class="type_of_exercise_program_editor">        
@@ -57,10 +57,16 @@
         </ul>
       </div>
       <div flex style="text-align:center;"><img src="/img/images/bar_sprite.png"></div>
-      <div flex></div>      
+      <div flex class="show_only_program_editor">
+        <ul class="list-inline" style="float:right; margin-right:50px;">
+            <li><?php echo __('Show only');?></li>
+            <li><img src="/img/images/star_show_only.png"></li>
+        </ul>
+      </div>      
     </header>
-    <div>
-      <div style="border:1px solid; width: 200px; height: 180px; position:absolute;"></div>
+    <div style="height:170px; overflow-y:scroll; padding: 5px 10px 0 10px">
+      <div class="dropbox_program_editor"></div>
+      <div class="dropbox_program_editor"></div>
     </div>
   </div>
 </div>
@@ -78,5 +84,10 @@ $(document).ready(function(){
       }
         
     });
+    if(!$(".detail_footer_program_editor").hasClass('actived')){
+          $(".detail_footer_program_editor").animate({height: '50px'}, 300, function(){
+            $(".bar").attr("style","overflow:hidden;");  
+          });          
+      }
 });
 </script>
