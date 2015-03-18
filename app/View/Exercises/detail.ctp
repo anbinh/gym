@@ -1,5 +1,5 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-<?php if(!isset($is_mobile)) {?>
+<?php if(!isset($is_mobile) && count($exercise['Exercise']['stretching']) == 0) {?>
     <script type="text/javascript">
     var config = {
                     width: 480,
@@ -64,8 +64,10 @@
     <div class="wrap_content right_banner" layout="row">
         <div flex>
             <div layout="row" layout-align="center start">
-                <!-- <img src="/img/images/calque_12.jpg" class="img-responsive"/> -->
-                <?php if(!isset($is_mobile)) {?>
+                <?php if(count($exercise['Exercise']['stretching']) > 0) {?>
+                    <img src="/img/images/calque_12.jpg" class="img-responsive"/>
+                <?php }else{
+                if(!isset($is_mobile)) { ?>
                     <div class="content">
                         <div id="unityPlayer" style="z-index: 0;">
                             <div class="missing">
@@ -82,7 +84,7 @@
                     </div>
                 <?php } else { ?>
                     <video class="img-responsive" loop="loop" autoplay="autoplay" src="<?php echo $exercise['Exercise']['video']; ?>" poster="/Exercise_list/img/6035.jpeg"></video>
-                <?php }?>
+                <?php }}?>
             </div>
             <div style="border:1px solid #ccc; margin: 10px;">
                 <div class="region" layout="row" layout-align="start center">
