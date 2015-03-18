@@ -70,45 +70,34 @@ md-tabs.md-default-theme md-tabs-ink-bar {
 <div layout="row" layout-align="center start">
     <div flex class="ProgramIndexLeftContent">
         <div layout="column" class="summary_program">
-            <div layout="row" class="header_program">
-                <div style="padding-left:10px;">
+            <div layout="row" class="header_program" layout-wrap>
+                <div flex="20"  style="padding-left:10px;">
                     <div class="program_logo_topic" style="background-color: <?php echo $programs['Program']['color_code']?>">
                         <div style="text-align:center;"><img class="img_program_view" src="/img/images/<?php echo $programs['Program']['photo']?>"></div>
                         <div class="program_view_text_name"> <?php echo $programs['Program']['name']?></div>
-                    </div> 
-                </div>
-                
-                    <div flex layout="row" layout-align="start center" class="title_program">
-                        Intentse work on the buttocks and thighs                    
                     </div>
-                    <div layout="row" layout-align="end center">
-                        <input type="button" class="btn btn_save_program" value="Save">
-                    </div>                
-                
+                </div>
+                <div flex layout-align="end end" style="text-align: end">
+                    <input type="button" class="btn btn_save_program" value="Save">
+                </div>
             </div>
-            <div layout="row" style="height:120px;">
-                <div style="padding:8px 0 0 190px;" flex>                    
-                    <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>                                        
-                    <div class="sharing_program_social_fb"><img src="/img/images/facebook_icon.png"/> </div>                        
-                    <div class="sharing_program_social_twitter"><img src="/img/images/twitter_icon.png"/></div>                    
+            <div layout="row">
+                <div flex id="program_header_content">
+                    <div class="title_program">
+                        Intentse work on the buttocks and thighs
+                    </div>
+                    <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
+                    <div class="sharing_program_social_fb"><img src="/img/images/facebook_icon.png"/> </div>
+                    <div class="sharing_program_social_twitter"><img src="/img/images/twitter_icon.png"/></div>
                     <div class="sharing_program_link"><span><a href="#">Share</a></span></div>
                 </div>
             </div>
+
+
         </div>
 
         <div ng-controller="ProgramController" class="program_tab" layout="column">
           <md-tabs md-selected="selectedIndex" flex>
-            <!-- <md-tab label="Day 1">
-            </md-tab>           
-            <md-tab label="Day 2">
-              2
-            </md-tab>            
-            <md-tab label="Day 3">
-              3
-            </md-tab>
-            <md-tab label="Day 4">
-              3
-            </md-tab> -->
             <?php foreach($programs['Program']['content'] as $content):?>
                 <md-tab label="Day <?php echo $content['day_number'];?>">
                   <?php echo $this->Element('exercise_stretching', array('content'=>$content));?>

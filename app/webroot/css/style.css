@@ -584,7 +584,15 @@ input[type=date]{
         width: 450px !important;
         margin-top: 90px !important;
     }
-    
+
+    #program_header_content{
+        height:120px !important;
+        padding:8px 0px 0px 10px !important;
+        margin-top: 170px;
+    }
+    .title_program{
+        padding-bottom: 10px !important;
+    }
 }
 
 /* Ipad Ngang*/
@@ -599,7 +607,7 @@ input[type=date]{
     .img_program{
         height: auto;
         margin-top:25px;
-    }   
+    }
 }
 
 /* Ipad Doc */
@@ -1121,7 +1129,13 @@ input:invalid {
 }
 .title_program{
     font-weight:bold; padding-left:10px;
-    font-size: 19px;   
+    font-size: 19px;
+    margin-top: -45px;
+    padding-bottom: 25px;
+}
+#program_header_content{
+    height:120px;
+    padding:8px 0 0 190px;
 }
 .btn_save_program{
     background: #a4c408;
