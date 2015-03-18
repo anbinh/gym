@@ -1355,7 +1355,7 @@ input:invalid {
 }
 .detail_footer_program_editor{
     position: absolute; 
-    background:white; 
+    background: #939393; 
     width:100%; 
     /*height:230px;*/ 
     left:0; 
@@ -1368,6 +1368,18 @@ input:invalid {
 }
 .type_of_exercise_program_editor ul li select{
     color: black;
+}
+.show_only_program_editor ul{
+    margin: auto;
+    color: white;   
+}
+.dropbox_program_editor{
+    margin:2px 2px 0 2px; 
+    background:white; 
+    border:1px solid; 
+    width: 180px; 
+    height: 160px; 
+    float: left;    
 }
 ::-webkit-scrollbar {
     width: 8px;
