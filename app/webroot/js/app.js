@@ -330,6 +330,155 @@ app.controller('LoginController', function($scope,$http,$location){
         window.location='/Users/signup';
     }
 });
+app.controller('ExerciseProgramEditorController', function($scope,$http,$filter){
+    $scope.exercises_list_backup = [];
+    $scope.exercises_beforefilter_backup = [];
+    $scope.exercises_list = [];
+
+    // get list exercise
+    $http.get('/Apis/getListExercise.json')
+        .then(function(res){
+            $scope.exercises_like = res.data.exercises_like;
+            $scope.exercises_list = angular.copy(res.data.exercises_list);
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
+        });
+
+    $scope.showAllExercise = true; 
+    $scope.isStretchingSelected = false;
+    $scope.isCardioSelected = false;   
+    $scope.isMuscleSelected = false;
+
+    $scope.chooseFavouriteExerciseClick = function(){
+        if($scope.showAllExercise){                        
+            $scope.showAllExercise = false;
+        }
+        else{            
+            $scope.showAllExercise = true;
+        }            
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected));    
+    }
+    $scope.stretchingClick = function(){
+        if($scope.isStretchingSelected)
+        {               
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;  
+            $scope.isMuscleSelected = false;          
+        }
+        else
+        {
+            $scope.isStretchingSelected = true;
+            $scope.isCardioSelected = false;
+            $scope.isMuscleSelected = false;  
+        }    
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected));    
+    };
+    $scope.cardioClick = function() {
+        if($scope.isCardioSelected)
+        {                        
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+            $scope.isMuscleSelected = false;  
+           // $scope.exercises_list = angular.copy($scope.exercises_list_backup);
+        }
+        else
+        {            
+            //var temp = angular.copy($scope.exercises_list_backup);
+            //$scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,3));            
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = true;
+            $scope.isMuscleSelected = false;  
+        }    
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected));    
+    };
+
+    $scope.muscleClick = function() {
+        if($scope.isMuscleSelected)
+        {                        
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+            $scope.isMuscleSelected = false;          
+        }
+        else
+        {            
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+            $scope.isMuscleSelected = true;
+        }    
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected));    
+    };
+
+    $scope.getImageShowOnly = function(){
+        if($scope.showAllExercise){
+            return "/img/images/star_show_only.png";
+        }
+        else{
+            return "/img/images/star.png";
+        }
+    }
+});
+app.filter('filterExerciseProgramEditor', function(){
+    return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected) {
+       var results = [];       
+        if(showAllExercise){            
+            results = exercises_list_backup.slice();            
+        }
+        else{
+            results = exercises_like.slice();            
+        }
+        if(isMuscleSelected){
+            results = exerciseOptionFilter(results, 1).slice();             
+        }
+        if(isStretchingSelected){
+            results = exerciseOptionFilter(results, 2).slice();            
+        }
+        if(isCardioSelected){
+            results = exerciseOptionFilter(results, 3).slice();            
+        }        
+       //console.log(results);
+        return results;
+    }
+});
+function exerciseOptionFilter(input , mode){
+    var i=0, len=input.length;
+    var option = "";
+    var offset = 0;
+    switch (mode)
+    {
+        case 1:
+            option = "body_building";
+            break;
+        case 2:
+            option = "stretching";
+            break;
+        case 3:
+            option = "cardio";
+            break;
+        default :
+            return input;
+    }
+    for (i; i<len; i++) {
+        if (input[i - offset].Exercise[option].length == 0 || input[i - offset].Exercise[option] == null) {
+            input.splice( i - offset, 1 );
+            offset++ ;
+        }
+    }
+    return input;
+}
+app.controller('ItemExerciseProgramEditorController', function($scope,$http,$filter,$modal,$window){    
+    
+    $scope.getImage = function() {
+        if ( $scope.isSelected ) {
+            return "/img/images/star.png";
+        } else {
+            return "/img/images/star_blank.png";
+        }
+    };
+
+    if ( $filter('checkExerciseIsLike')($scope.exercises_like, $scope.exercise.Exercise.id))
+        $scope.isSelected = true;
+    else
+        $scope.isSelected = false;
+});
 
 app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.exercises_list_backup = [];
@@ -467,32 +616,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             }
             return;
         }
-    }
-
-    $scope.showAllExercise = true;    
-    $scope.toggleChooseFavouriteExercise = function(){
-        // $scope.exercises_like = res.data.exercises_like;       
-        if($scope.showAllExercise){            
-            $scope.exercises_list = angular.copy($scope.exercises_like);           
-            $scope.showAllExercise = false;
-        }
-        else{
-            $scope.exercises_list = angular.copy($scope.exercises_list_backup);            
-            $scope.showAllExercise = true;
-        }       
-        
-        //$scope.exercises_list_backup = angular.copy(res.data.exercises_list);
-    }
-
-    $scope.getImageShowOnly = function(){
-        if($scope.showAllExercise){
-            return "/img/images/star_show_only.png";
-        }
-        else{
-            return "/img/images/star.png";
-        }
-    }
-
+    }    
 
 });
 

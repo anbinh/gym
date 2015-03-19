@@ -45,12 +45,12 @@
   </div>
 </div> 
 <div class="bar" >  
-  <div ng-controller="ExerciseController" class="detail_footer_program_editor">
+  <div ng-controller="ExerciseProgramEditorController" class="detail_footer_program_editor">
     <header layout="row" layout-align="center center">
       <div flex class="type_of_exercise_program_editor">        
         <ul class="list-inline">
             <li><img src="/img/images/icon_search_white.png"></li>
-            <li><?php echo __("Bodybuilding");?></li>
+            <li ng-click="muscleClick()"><?php echo __("Bodybuilding");?></li>
             <li ng-click="stretchingClick()"><?php echo __("Stretching");?></li>
             <li ng-click="cardioClick()"><?php echo __("Cardio");?></li>
             <li>
@@ -73,14 +73,14 @@
       </div>      
       <div flex class="show_only_program_editor">
         <div class="toggle_bar"><img src="/img/images/bar_sprite.png"></div>
-        <ul ng-click="toggleChooseFavouriteExercise();" class="list-inline show_favourite_exercise" style="float:right;">           
+        <ul ng-click="chooseFavouriteExerciseClick();" class="list-inline show_favourite_exercise" style="float:right;">           
             <li class="text_show_only_program_editor"><?php echo __('Show only');?></li>
             <li><img ng-src="{{getImageShowOnly();}}"></li>
         </ul>
       </div>      
     </header>
     <div style="height:140px; overflow-y:scroll; padding: 5px 10px 0 10px">
-        <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
+        <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseProgramEditorController">
           <div class="dropbox_program_editor" >
             <div class="zone_hand_drag">
                 <img style="position:absolute; left:7px; top:5px;" ng-src="{{getImage()}}">
