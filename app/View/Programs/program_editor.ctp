@@ -1,7 +1,7 @@
 <div layout="row" layout-align="center start">
     <div flex>
-        <div layout="row" class="header_program_editor" layout-align="start center">
-          <div flex style="padding-left: 10px;">
+        <div layout="row" layout-sm="column" class="header_program_editor" layout-align="start center">
+          <div flex style="padding-top:10px;">
             <img src="/img/images/object_dynamique.png">
             <span style="margin-left:25px;"><?php echo __("CREAT A PROGRAM");?></span>
           </div>         
@@ -28,7 +28,11 @@
         </select>
       </div>
       <div class="main_content_type_of_program">
-        <div class="user_favorite_exercise_img none_border topic_box_program_editor">          
+        <div layout="row" layout-align="center center" class="user_favorite_exercise_img none_border topic_box_program_editor"> 
+          <div style="text-align:center;">
+            <img src="/img/images/add_picture_program.png">            
+            <p style="color:white;margin-top:10px;"><?php echo __("ADD PICTURE");?></p>
+          </div>                    
         </div>   
         <div style="padding:10px 0 10px 0">
             <input class="description_title_program_editor" placeholder="Descriptive title"> 
@@ -41,14 +45,14 @@
   </div>
 </div> 
 <div class="bar" >  
-  <div class="detail_footer_program_editor">
+  <div ng-controller="ExerciseController" class="detail_footer_program_editor">
     <header layout="row" layout-align="center center">
       <div flex class="type_of_exercise_program_editor">        
         <ul class="list-inline">
             <li><img src="/img/images/icon_search_white.png"></li>
             <li><?php echo __("Bodybuilding");?></li>
-            <li><?php echo __("Stretching");?></li>
-            <li><?php echo __("Cardio");?></li>
+            <li ng-click="stretchingClick()"><?php echo __("Stretching");?></li>
+            <li ng-click="cardioClick()"><?php echo __("Cardio");?></li>
             <li>
                 <select class="input_select input_location">
                     <option><?php echo __("Part");?></option>
@@ -66,21 +70,20 @@
         <select class="input_select input_location">
             <option><?php echo __("Part");?></option>
         </select>
-      </div>
-      <div class="toggle_bar_large_screen"><img src="/img/images/bar_sprite.png"></div>
+      </div>      
       <div flex class="show_only_program_editor">
-        <ul class="list-inline" style="float:right;">
-            <li class="toggle_bar_small_screen"><img src="/img/images/bar_sprite.png"></li>
+        <div class="toggle_bar"><img src="/img/images/bar_sprite.png"></div>
+        <ul ng-click="toggleChooseFavouriteExercise();" class="list-inline show_favourite_exercise" style="float:right;">           
             <li class="text_show_only_program_editor"><?php echo __('Show only');?></li>
-            <li><img src="/img/images/star_show_only.png"></li>
+            <li><img ng-src="{{getImageShowOnly();}}"></li>
         </ul>
       </div>      
     </header>
-    <div ng-controller="ExerciseController" style="height:140px; overflow-y:scroll; padding: 5px 10px 0 10px">
+    <div style="height:140px; overflow-y:scroll; padding: 5px 10px 0 10px">
         <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
           <div class="dropbox_program_editor" >
             <div class="zone_hand_drag">
-                <img style="position:absolute; left:7px; top:5px;" src="/img/images/star.png">
+                <img style="position:absolute; left:7px; top:5px;" ng-src="{{getImage()}}">
                 <img style="position:absolute; right:7px; top:5px;" src="/img/images/square.png">
                 <img style="position:absolute; right:3px; top:11px;" src="/img/images/hand_drag.png">        
             </div>
@@ -98,14 +101,16 @@
 
 <script> 
 $(document).ready(function(){
-    $(".bar").click(function(){
+    $(".toggle_bar").click(function(){
       if($(".detail_footer_program_editor").hasClass('actived')){
           $(".detail_footer_program_editor").animate({height: '50px'}, 300, function(){
-            $(".bar").attr("style","overflow:hidden;");  
-          }).removeClass('actived');          
+            $(".bar").attr("style","overflow:hidden;");            
+          }).removeClass('actived');                    
+          $(".toggle_bar").html("<img src='/img/images/bar_sprite.png'/>");
       }else{
           $(".bar").removeAttr("style");
           $(".detail_footer_program_editor").animate({height: '200px'}).addClass('actived');
+          $(".toggle_bar").html("<img src='/img/images/bar_sprite_down.png'/>");
       }
         
     });

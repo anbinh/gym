@@ -695,6 +695,9 @@ input[type=date]{
     .show_only_program_editor{
         margin-right: 10px !important;
     }
+    .header_program_editor{
+        height: 100px !important;
+    }
 }
 
 /* Iphone Ngang 4*/
@@ -769,6 +772,9 @@ input[type=date]{
     }   
     .show_only_program_editor{
         margin-right: 10px !important;
+    }
+    .header_program_editor{
+        height: 100px !important;
     }
 }
 
@@ -984,12 +990,9 @@ input[type=date]{
     }
     .show_only_program_editor{
         margin-right: 10px !important;
-    }
-    .toggle_bar_large_screen{
-        display: none;
-    }
-    .toggle_bar_small_screen{
-        display: block !important;
+    }   
+    .header_program_editor{
+        height: 100px !important;
     }
 }
 
@@ -1451,12 +1454,17 @@ input:invalid {
     margin-left: 10px;
     display: none;
 }
-.toggle_bar_large_screen{
-    text-align: center;    
+.toggle_bar{
+    /*text-align: center;  */
+    float: left;  
 }
-.toggle_bar_small_screen{
-    display: none;
+.show_favourite_exercise:hover{
+    cursor: pointer;
 }
+.type_of_exercise_program_editor ul li:hover{
+    cursor: pointer;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;

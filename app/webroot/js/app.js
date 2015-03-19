@@ -469,6 +469,30 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         }
     }
 
+    $scope.showAllExercise = true;    
+    $scope.toggleChooseFavouriteExercise = function(){
+        // $scope.exercises_like = res.data.exercises_like;       
+        if($scope.showAllExercise){            
+            $scope.exercises_list = angular.copy($scope.exercises_like);           
+            $scope.showAllExercise = false;
+        }
+        else{
+            $scope.exercises_list = angular.copy($scope.exercises_list_backup);            
+            $scope.showAllExercise = true;
+        }       
+        
+        //$scope.exercises_list_backup = angular.copy(res.data.exercises_list);
+    }
+
+    $scope.getImageShowOnly = function(){
+        if($scope.showAllExercise){
+            return "/img/images/star_show_only.png";
+        }
+        else{
+            return "/img/images/star.png";
+        }
+    }
+
 
 });
 
