@@ -67,9 +67,10 @@
             <option><?php echo __("Part");?></option>
         </select>
       </div>
-      <div class="toggle_bar"><img src="/img/images/bar_sprite.png"></div>
+      <div class="toggle_bar_large_screen"><img src="/img/images/bar_sprite.png"></div>
       <div flex class="show_only_program_editor">
         <ul class="list-inline" style="float:right;">
+            <li class="toggle_bar_small_screen"><img src="/img/images/bar_sprite.png"></li>
             <li class="text_show_only_program_editor"><?php echo __('Show only');?></li>
             <li><img src="/img/images/star_show_only.png"></li>
         </ul>

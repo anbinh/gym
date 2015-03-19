@@ -985,6 +985,12 @@ input[type=date]{
     .show_only_program_editor{
         margin-right: 10px !important;
     }
+    .toggle_bar_large_screen{
+        display: none;
+    }
+    .toggle_bar_small_screen{
+        display: block !important;
+    }
 }
 
 .exercise_box{
@@ -1445,8 +1451,11 @@ input:invalid {
     margin-left: 10px;
     display: none;
 }
-.toggle_bar{
+.toggle_bar_large_screen{
     text-align: center;    
+}
+.toggle_bar_small_screen{
+    display: none;
 }
 ::-webkit-scrollbar {
     width: 8px;

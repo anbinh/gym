@@ -213,20 +213,7 @@
             </div>
         </div>
 	</div>	
-	<div style="width:300px;" class="advertisement" layout="column">		
-		<div class="mobile_app" layout="row" layout-align="start center">					
-			<img src="/img/images/apple.png"/>	
-			<p><strong><?php echo __('mobile application')?></strong></p>
-		</div>								
-		<div class="create_program" layout="row" layout-align="start center">
-			<img src="/img/images/object_dynamique.png"/>
-			<p><strong><?php echo __('create a program')?><strong></p>
-		</div>
-		<div class="advertising">
-			<p><strong><?php echo __('advertising')?></strong></p>
-			<img src="/img/images/Ad_example.jpg"/>
-		</div>
-	</div>
+	<?php echo $this->element('right_advs');?>    
 </div>
 <script type="text/javascript">
     FB.init({
