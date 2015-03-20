@@ -178,7 +178,9 @@ margin: 0 30px 25px 30px;
 .bottomline{
     border-bottom: 5px solid black;
 }
-
+.bottomline_filter_program_editor{
+    border-bottom: 4px solid white;
+}
 .header_text{
     margin-left: 5px;
     text-decoration: none;
@@ -1457,6 +1459,9 @@ input:invalid {
 .toggle_bar{
     /*text-align: center;  */
     float: left;  
+}
+.toggle_bar:hover{
+    cursor: pointer;
 }
 .show_favourite_exercise:hover{
     cursor: pointer;

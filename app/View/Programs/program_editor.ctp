@@ -50,25 +50,27 @@
       <div flex class="type_of_exercise_program_editor">        
         <ul class="list-inline">
             <li><img src="/img/images/icon_search_white.png"></li>
-            <li ng-click="muscleClick()"><?php echo __("Bodybuilding");?></li>
-            <li ng-click="stretchingClick()"><?php echo __("Stretching");?></li>
-            <li ng-click="cardioClick()"><?php echo __("Cardio");?></li>
+            <li ng-click="muscleClick()" ng-class="{bottomline_filter_program_editor: isMuscleSelected}"><?php echo __("Bodybuilding");?></li>
+            <li ng-click="stretchingClick()" ng-class="{bottomline_filter_program_editor: isStretchingSelected}"><?php echo __("Stretching");?></li>
+            <li ng-click="cardioClick()" ng-class="{bottomline_filter_program_editor: isCardioSelected}"><?php echo __("Cardio");?></li>
             <li>
-                <select class="input_select input_location">
-                    <option><?php echo __("Part");?></option>
+                <select class="input_select input_location" ng-model="selectedBodyPartItem" ng-change="changedValue(selectedBodyPartItem)">
+                    <option value=""><?php echo __("Part");?></option>
+                    <option ng-repeat="item in body_part_items" value="{{item.id}}">{{item.name}}</option>
                 </select>
             </li>
         </ul>
       </div>
       <div flex class="type_of_exercise_program_editor_hidden">
-        <select class="input_select input_location">
-          <option><?php echo __("Choosing");?></option>
-          <option><?php echo __("Bodybuilding");?></option>
-          <option><?php echo __("Stretching");?></option>
-          <option><?php echo __("Cardio");?></option>
+        <select class="input_select input_location" ng-model="selectedExercise" ng-change="changeValueExercise(selectedExercise)">
+          <option value=""><?php echo __("Choosing");?></option>
+          <option value="1"><?php echo __("Bodybuilding");?></option>
+          <option value="2"><?php echo __("Stretching");?></option>
+          <option value="3"><?php echo __("Cardio");?></option>
         </select>
-        <select class="input_select input_location">
-            <option><?php echo __("Part");?></option>
+        <select class="input_select input_location" ng-model="selectedBodyPartItem" ng-change="changedValue(selectedBodyPartItem)">
+            <option value=""><?php echo __("Part");?></option>            
+            <option ng-repeat="item in body_part_items" value="{{item.id}}">{{item.name}}</option>
         </select>
       </div>      
       <div flex class="show_only_program_editor">
