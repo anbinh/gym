@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages']);
+var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop']);
 
 app.controller('ExerciseDetailController', function($scope,$http) {
     var exercise_id = window.location.search;
@@ -57,7 +57,7 @@ app.controller('headerController', function($scope,$http){
     $scope.ddMenuSelected = {};
     $http.get('/Apis/getMenuHeaderFile.json')
         .then(function(res){
-            console.log(res);
+            // console.log(res);
             $scope.ddLoginSelectOptions = res.data.data.user;
             $scope.ddSelectOptions = res.data.data.language;
             $scope.ddMenuOptions = res.data.data.menu;
@@ -456,6 +456,37 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
             return "/img/images/star.png";
         }
     }
+    // drag 
+    $scope.startCallback = function(event, ui){
+        var $draggable = $(event.target);
+        ui.helper.width($draggable.width());
+        ui.helper.height($draggable.height());
+        $draggable.css('opacity', '0');
+    };
+    $scope.revertCard = function(valid){
+        if(!valid){
+            var that = this;
+            setTimeout(function(){
+                $(that).css('opacity', 'inherit');
+            }, 500);
+        }
+
+        return !valid;
+    };
+
+    // drop
+    $scope.dropCallback = function (event, ui) {
+        var $lane = $(event.target);
+        var $card = ui.draggable;
+       
+        if ($card.scope().card.lane != $lane.scope().lane.id) {
+            $card.scope().card.lane = $lane.scope().lane.id;
+        }
+        else {
+            $card.css('opacity', 'inherit');
+            return false;
+        }          
+    };
 });
 app.filter('filterExerciseProgramEditor', function(){
     return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
@@ -549,7 +580,8 @@ app.controller('ItemExerciseProgramEditorController', function($scope,$http,$fil
             return "/img/images/star_blank.png";
         }
     };
-
+    $scope.position = 'relative';  
+    
     if ( $filter('checkExerciseIsLike')($scope.exercises_like, $scope.exercise.Exercise.id))
         $scope.isSelected = true;
     else

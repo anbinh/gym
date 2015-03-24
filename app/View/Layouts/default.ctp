@@ -24,10 +24,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		<?php echo "Studio Gym" ?>
-	</title>
+	</title>        
 	<?php
 		echo $this->Html->css(array(
-            'style?3213421',
+            'style',
             'bower_components/angular-material/angular-material.min',
             'bower_components/angular-dropdown/angular-dropdowns',
             'bootstrap.min',
@@ -35,21 +35,25 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bootstrap-social'
         ));
 
-		echo $this->Html->script(array('bower_components/hammerjs/hammer.min',
+		echo $this->Html->script(array(
+            'jquery.min',
+            'bower_components/hammerjs/hammer.min',
             'bower_components/angular/angular.min',
             'bower_components/angular-route/angular-route.min',
             'bower_components/angular-animate/angular-animate.min',
             'bower_components/angular-aria/angular-aria.min',
             'bower_components/angular-material/angular-material.min',
-            'app?654654',
+            'app',
             'bower_components/angular-dropdown/angular-dropdowns',
-            'jquery-1.11.2.min',
+            'jquery-ui.min',
+            'bower_components/angular/angular-dragdrop.min',
+            
             'bootstrap.min',
-            'custom?98786',
+            'custom',
             'bower_components/angular-ui/ui-bootstrap-tpls-0.12.1',
             'bower_components/angular/angular-messages',
-            'UnityObject2.js'
-
+            'UnityObject2.js',            
+                        
             /*'bower_components/angular-ui/ui-bootstrap-0.12.1'*/
         ));
 
