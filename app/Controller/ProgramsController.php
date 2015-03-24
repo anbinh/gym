@@ -13,7 +13,8 @@ class ProgramsController  extends AppController {
         $this->set('programs', $programs);
     }
     public function program_editor(){
-    	
+    	//$list_exercise = $this->Exercise->find('all');
+
     }
 }
 ?>
