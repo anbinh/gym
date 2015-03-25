@@ -1,4 +1,4 @@
-<div style="width:300px;margin-top: 60px" layout="column" class="menu-right">
+<div style="width:300px;margin-top: 8px" layout="column" class="menu-right">
     <div class="mobile_app" layout="row" layout-align="start center">
         <img src="/img/images/apple.png"/>
         <p><strong><?php echo __('mobile application')?></strong></p>

@@ -10,7 +10,7 @@ $(document).ready(function(){
 					//ishover = true;	
 					//alert('1');
 				}, function() {				
-					$(this).removeClass('active');
+					$(this).removeClass('active');					
 					//alert('1');
 				}	
 			);
@@ -19,8 +19,9 @@ $(document).ready(function(){
 			// console.log('2');
 			// if(!ishover){
 			// 	$(this).parent().find('ul').removeClass('active');			
-			// }			
-			//$(this).find('ul').removeClass('active');			
+			// }		
+			
+			$(this).find('ul').removeClass('active');
 		}
 	);
 });

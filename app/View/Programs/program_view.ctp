@@ -77,7 +77,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
                         <div class="program_view_text_name"> <?php echo $programs['Program']['name']?></div>
                     </div>
                 </div>
-                <div flex layout-align="end end" style="text-align: end">
+                <div flex layout-align="end end" style="text-align: end; margin-right:15px;">
                     <input type="button" class="btn btn_save_program" value="Save">
                 </div>
             </div>
@@ -86,7 +86,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
                     <div class="title_program">
                         Intentse work on the buttocks and thighs
                     </div>
-                    <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
+                    <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
                     <div class="sharing_program_social_fb"><img src="/img/images/facebook_icon.png"/> </div>
                     <div class="sharing_program_social_twitter"><img src="/img/images/twitter_icon.png"/></div>
                     <div class="sharing_program_link"><span><a href="#">Share</a></span></div>
@@ -99,7 +99,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
         <div ng-controller="ProgramController" class="program_tab" layout="column">
           <md-tabs md-selected="selectedIndex" flex>
             <?php foreach($programs['Program']['content'] as $content):?>
-                <md-tab label="Day <?php echo $content['day_number'];?>">
+                <md-tab label="<?php echo __("Day").' '.$content['day_number'];?>">
                   <?php echo $this->Element('exercise_stretching', array('content'=>$content));?>
                 </md-tab>              
             <?php endforeach;?>
@@ -108,6 +108,8 @@ md-tabs.md-default-theme md-tabs-ink-bar {
         <div>
           
         </div>
-    </div>    
-    <?php echo $this->element('right_advs');?>    
+    </div>   
+    <div style="margin-top:52px;"> 
+      <?php echo $this->element('right_advs');?>    
+    </div>
 </div>

@@ -3,7 +3,7 @@
     <li><img src="/img/images/icon_search.png"/></li>
     <li>OBJECTIVE</li>
     <li>
-        <select class="input_select input_location" ng-model="selectedObjectiveItem" ng-change="changedValue(selectedObjectiveItem)">
+        <select class="input_select input_location select_custom" ng-model="selectedObjectiveItem" ng-change="changedValue(selectedObjectiveItem)">
             <option value=""><?php echo __('Choose')?></option>
             <option ng-repeat="item in objective_items" value="{{item.id}}">{{item.name}}</option>
         </select>
