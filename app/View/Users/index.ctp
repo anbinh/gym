@@ -81,5 +81,7 @@
             </div>
         </div>
     </div>
-    <?php echo $this->element('right_advs');?>    
+    <div style="margin-top:52px;">
+        <?php echo $this->element('right_advs');?>        
+    </div>    
 </div>

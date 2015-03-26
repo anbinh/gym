@@ -1,5 +1,5 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-<?php if(!isset($is_mobile) && count($exercise['Exercise']['stretching']) == 0) {?>
+<?php if(!isset($is_mobile) && count($exercise['Exercise']['category_id']) == 2) {?>
     <script type="text/javascript">
     var config = {
                     width: 480,
@@ -47,7 +47,7 @@
     </script>
 <?php } ?>
 <div ng-controller="ExerciseDetailController">
-    <div layout="row">
+    <div layout="row" style="border-bottom: 1px solid #ccc;">
         <div class="titre_left" layout="column" layout-align="center start">
             <div layout="column" layout-align="center center" class="favorite_box">
                 <img class="img_star"
@@ -58,14 +58,14 @@
             </div>
         </div>
         <div class="titre_right" layout="column" layout-align="center start">
-            <span>Extension horizontale à l’épaule - haltères en position incliné</span>
+            <span><?php echo $exercise['Exercise']['name'];?></span>
         </div>
     </div>
     <div class="wrap_content right_banner" layout="row">
         <div flex>
             <div layout="row" layout-align="center start">
-                <?php if(count($exercise['Exercise']['stretching']) > 0) {?>
-                    <img src="/img/images/calque_12.jpg" class="img-responsive"/>
+                <?php if(count($exercise['Exercise']['category_id']) == 2) {?>
+                    <img src="<?php echo $exercise['Exercise']['photo'];?>" class="img-responsive"/>
                 <?php }else{
                 if(!isset($is_mobile)) { ?>
                     <div class="content">
@@ -88,28 +88,48 @@
             </div>
             <div style="border:1px solid #ccc; margin: 10px;">
                 <div class="region" layout="row" layout-align="start center">
-                    <p style="color:black; margin-right: 20px;"><strong>RÉGION</strong></p>
-                    <p>Jambes  I   Quadriceps, fessiers, ischio jambiers</p>
+                    <p style="color:black; margin-right: 20px; margin-top:15px;"><?php echo __('PART');?></p>
+                    <p style="margin-top:15px;">
+                        <?php foreach($exercise['Exercise']['muscle'] as $key=>$muscle):?>
+                            <?php echo $muscle['name'];
+                                if($key != count($exercise['Exercise']['muscle'])-1){
+                                    echo ", ";
+                                }
+                            ?>
+                        <?php endforeach;?>
+                    </p>
                 </div>
                 <div layout="row">
                     <div class="position" flex>
-                        <p><strong>POSITION</strong></p>
+                        <p>POSITION</p>
                         <ul>
-                            <li> Placer le dos  contre le mur. </li>
-                            <li> Placer les pieds à la large</li>
+                            <?php                                 
+                                $postures = split("\.", $exercise['Exercise']['posture']);                             
+                                foreach($postures as $posture){
+                                    if($posture != ''){
+                                        echo "<li>".$posture.".</li>";    
+                                    }                                    
+                                }
+                            ?>                          
                         </ul>
                     </div>
                     <div class="execution" flex>
-                        <p><strong>EXECUTION</strong></p>
+                        <p><?php echo __('EXECUTION');?></p>
                         <ul>
-                            <li> Maintenir la position. </li>
-                            <li> Maximiser l'appuie au niveau des tal</li>
+                            <?php                                 
+                                $executions = split("\.", $exercise['Exercise']['execution']);                             
+                                foreach($executions as $execution){
+                                    if($execution != ''){
+                                        echo "<li>".$execution.".</li>";    
+                                    }                                    
+                                }
+                            ?>  
                         </ul>
                     </div>
                 </div>
                 <div class="foo_exercise" layout="column">
-                    <div><strong>MISE EN GARDE</strong></div>
-                    <div><p>Ne jamais courber le bas du dos. Toujours garder les abdominaux</p></div>
+                    <div><?php echo __('WARNING');?></div>
+                    <div><p><?php echo $exercise['Exercise']['care'];?></p></div>
                 </div>
             </div>
         </div>

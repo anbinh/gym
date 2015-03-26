@@ -222,7 +222,7 @@ margin: 0 30px 25px 30px;
 }
 
 .wrap_content{
-    padding: 10px;
+    /*padding: 10px;*/
 }
 .mobile_app{
     height: 60px;
@@ -275,7 +275,7 @@ margin: 0 30px 25px 30px;
 }
 .region p{
     font-size:14px;
-    color: #ccc;
+    color: grey;
 }
 .position{
     padding-left: 30px;
@@ -287,9 +287,10 @@ margin: 0 30px 25px 30px;
 }
 .position ul li{
     font-size: 14px;
+    color: grey;
 }
 .position p{
-    font-size: 14px;
+    font-size: 14px;    
 }
 .execution{
     padding-left: 30px;
@@ -300,6 +301,7 @@ margin: 0 30px 25px 30px;
 }
 .execution ul li{
     font-size: 14px;
+    color: grey;
 }
 .execution p{
     font-size: 14px;
@@ -526,6 +528,10 @@ input[type=date]{
     border:1px solid #ccc;
     position: relative;
 }
+.user_favorite_exercise_img p{
+    color: grey;
+    line-height: 1.34;
+}
 /*.user_favorite_exercise{
     min-height: 240px;
 }*/
@@ -570,6 +576,8 @@ input[type=date]{
 }
 .foo_exercise p {
     font-size: 14px;
+    color: grey;
+    line-height: 1.446;
 }
 
 
@@ -671,6 +679,9 @@ input[type=date]{
     .exercise_box_editor{
         padding: 1px !important;   
     }
+    .logout_menu .wrap-dd-menu{
+        padding: 10px;
+    }
 }
 
 /* Iphone Ngang 5 6*/
@@ -726,6 +737,12 @@ input[type=date]{
         top: 102% !important;  
         left: -34px !important;
         width: 94px;
+    }
+    .program_menu{
+        display: none;
+    }
+    .exercise_menu{
+        display: none;
     }
 }
 
@@ -1046,8 +1063,7 @@ input[type=date]{
 }
 
 .exercise_filter{
-    text-transform: none !important;
-    font-weight: bold !important;
+    text-transform: none !important;    
 }
 
 .check_favorite{
@@ -1137,7 +1153,7 @@ input:invalid {
 }
 
 .input_select{
-    height: 34px;
+    height: 40px;
 }
 
 .input_location{
