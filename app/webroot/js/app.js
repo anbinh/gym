@@ -1088,7 +1088,6 @@ app.filter('checkExerciseIsLike', function() {
         return false;
     }
 });
-
 app.filter('exerciseOptionFilter', function() {
     return function(input , mode) {
         var i=0, len=input.length;
@@ -1097,75 +1096,87 @@ app.filter('exerciseOptionFilter', function() {
         switch (mode)
         {
             case 1:
-                option = "body_building";
+                option = "1";
                 break;
             case 2:
-                option = "stretching";
+                option = "2";
                 break;
             case 3:
-                option = "cardio";
+                option = "3";
                 break;
             default :
                 return input;
         }
-        for (i; i<len; i++) {
-            if (input[i - offset].Exercise[option].length == 0 || input[i - offset].Exercise[option] == null) {
-                input.splice( i - offset, 1 );
-                offset++ ;
-            }
-        }
+           
+        input = input.filter(function(element){
+            return element.Exercise.category_id == option;
+        });
+        
         return input;
     }
 });
 
-app.filter('exerciseOptionBodyPartFilter', function() {
-    return function(input , mode , body_part_id) {
-        var i=0, len=input.length;
-        var option = "";
-        var offset = 0;
-        switch (mode)
-        {
-            case 1:
-                option = "body_building";
-                break;
-            case 2:
-                option = "stretching";
-                break;
-            case 3:
-                option = "cardio";
-                break;
-            default :
-                break;
-        }
 
-        if(option == "")
+app.filter('exerciseOptionBodyPartFilter', function() {
+    return function(input , option , body_part_id) {
+        // var i=0, len=input.length;
+        // var option = "";
+        // var offset = 0;
+        // switch (mode)
+        // {
+        //     case 1:
+        //         option = "1";
+        //         break;
+        //     case 2:
+        //         option = "2";
+        //         break;
+        //     case 3:
+        //         option = "3";
+        //         break;
+        //     default :
+        //         break;
+        // }
+
+        if(option != 4)
         {
-            for (i; i<len; i++) {
-                console.log(i);
-                if (input[i - offset].Exercise["body_building"].length > 0)
-                {
-                    if(input[i - offset].Exercise["body_building"][0]['bodypart'] == body_part_id)
-                    {
-                        continue;
-                    }
-                }
-                if (input[i - offset].Exercise["stretching"].length > 0)
-                {
-                    if(input[i - offset].Exercise["stretching"][0]['bodypart'] == body_part_id)
-                    {
-                        continue;
-                    }
-                }
-                if (input[i - offset].Exercise["cardio"].length > 0)
-                {
-                    if(input[i - offset].Exercise["cardio"][0]['bodypart'] == body_part_id)
-                    {
-                        continue;
-                    }
-                }
-                input.splice( i - offset, 1 );
-                offset++ ;
-            }
+            // filter by category_id
+            input = input.filter(function(element){
+                return element.Exercise.category_id == option;
+            });
+            // filter by bodypart_id
+            input = input.filter(function(element){
+                return function(){
+                    element.indexOf(function(){
+
+                    });
+                };
+            });
+            // for (i; i<len; i++) {
+            //     console.log(i);
+            //     if (input[i - offset].Exercise["body_building"].length > 0)
+            //     {
+            //         if(input[i - offset].Exercise["body_building"][0]['bodypart'] == body_part_id)
+            //         {
+            //             continue;
+            //         }
+            //     }
+            //     if (input[i - offset].Exercise["stretching"].length > 0)
+            //     {
+            //         if(input[i - offset].Exercise["stretching"][0]['bodypart'] == body_part_id)
+            //         {
+            //             continue;
+            //         }
+            //     }
+            //     if (input[i - offset].Exercise["cardio"].length > 0)
+            //     {
+            //         if(input[i - offset].Exercise["cardio"][0]['bodypart'] == body_part_id)
+            //         {
+            //             continue;
+            //         }
+            //     }
+            //     input.splice( i - offset, 1 );
+            //     offset++ ;
+            // }
         }
         else
         {
