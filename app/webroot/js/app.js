@@ -491,7 +491,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 app.filter('filterExerciseProgramEditor', function(){
     return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
        var results = [];       
-        if(showAllExercise){            
+        if(showAllExercise || showAllExercise == ""){            
             results = exercises_list_backup.slice();            
         }
         else{
@@ -506,69 +506,54 @@ app.filter('filterExerciseProgramEditor', function(){
         if(isCardioSelected){
             results = exerciseOptionFilter(results, 3).slice();            
         }  
-        if(body_part_id.length > 0){
+        if(body_part_id != ""){
             results = exercisePartFilter(results, body_part_id);
         }
        //console.log(results);
         return results;
     }
 });
-function exercisePartFilter(input, body_part_id){
-    var offset = 0, i = 0, len = input.length;    
-    for (i; i<len; i++) {        
-        if (input[i - offset].Exercise["body_building"].length > 0)
-        {
-            if(input[i - offset].Exercise["body_building"][0]['bodypart'] == body_part_id)
-            {
-                 console.log("body"+i);
-                continue;
-            }
+function exercisePartFilter(input, body_part_id){        
+    // filter by bodypart_id
+    input = input.filter(function(element){
+
+        var j, flag = false;                
+        for(j = 0; j < element.Exercise.muscle.length; j++){                    
+            if(element.Exercise.muscle[j].bodypart_id == body_part_id){
+                flag = true;                        
+                break;
+            }                    
         }
-        if (input[i - offset].Exercise["stretching"].length > 0)
-        {
-            if(input[i - offset].Exercise["stretching"][0]['bodypart'] == body_part_id)
-            {
-                console.log("stretching"+i);
-                continue;
-            }
+
+        if(flag){
+            return true;
         }
-        if (input[i - offset].Exercise["cardio"].length > 0)
-        {
-            if(input[i - offset].Exercise["cardio"][0]['bodypart'] == body_part_id)
-            {
-                console.log("cardio"+i);
-                continue;
-            }
-        }
-        input.splice( i - offset, 1 );
-        offset++ ;
-    }
+        return false;            
+    });
+
     return input;
 }
-function exerciseOptionFilter(input , mode){
-    var i=0, len=input.length;
-    var option = "";
-    var offset = 0;
+function exerciseOptionFilter(input , mode){    
+    var option = "";    
     switch (mode)
     {
         case 1:
-            option = "body_building";
+            option = "1";
             break;
         case 2:
-            option = "stretching";
+            option = "2";
             break;
         case 3:
-            option = "cardio";
+            option = "3";
             break;
         default :
             return input;
     }
-    for (i; i<len; i++) {
-        if (input[i - offset].Exercise[option].length == 0 || input[i - offset].Exercise[option] == null) {
-            input.splice( i - offset, 1 );
-            offset++ ;
-        }
-    }
+       
+    input = input.filter(function(element){
+        return element.Exercise.category_id == option;
+    });
+    
     return input;
 }
 app.controller('ItemExerciseProgramEditorController', function($scope,$http,$filter,$modal,$window){    
@@ -618,114 +603,71 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         $scope.exercises_like.push( exercise );
     };
 
+    $scope.isStretchingSelected = false;
+    $scope.isCardioSelected = false;   
+    $scope.isMuscleSelected = false;
+    $scope.showAllExercise = "";
+    $scope.body_part_id = "";
     // filter action click
-    $scope.muscleClick = function() {
-        if($scope.isMuscleSelected)
-        {
-            $scope.isMuscleSelected = false;
-            $scope.isStretchingSelected = false;
-            $scope.isCardioSelected = false;
-            $scope.exercises_list = angular.copy($scope.exercises_list_backup);
-        }
-        else
-        {
-            var temp = angular.copy($scope.exercises_list_backup);
-            $scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,1));
-            $scope.isMuscleSelected = true;
-            $scope.isStretchingSelected = false;
-            $scope.isCardioSelected = false;
-        }
-        $scope.exercises_beforefilter_backup = angular.copy($scope.exercises_list);
-        $scope.selectedBodyPartItem = "";
-    }
-    $scope.stretchingClick = function() {
+    $scope.stretchingClick = function(){
         if($scope.isStretchingSelected)
-        {
-            $scope.isMuscleSelected = false;
+        {               
             $scope.isStretchingSelected = false;
-            $scope.isCardioSelected = false;
-            $scope.exercises_list = angular.copy($scope.exercises_list_backup);
+            $scope.isCardioSelected = false;  
+            $scope.isMuscleSelected = false;          
         }
         else
         {
-            var temp = angular.copy($scope.exercises_list_backup);
-            $scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,2));
-            $scope.isMuscleSelected = false;
             $scope.isStretchingSelected = true;
             $scope.isCardioSelected = false;
-        }
-        $scope.exercises_beforefilter_backup = angular.copy($scope.exercises_list);
-        $scope.selectedBodyPartItem = "";
-    }
+            $scope.isMuscleSelected = false;  
+        }    
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+    };
     $scope.cardioClick = function() {
         if($scope.isCardioSelected)
-        {
-            $scope.isMuscleSelected = false;
+        {                        
             $scope.isStretchingSelected = false;
             $scope.isCardioSelected = false;
-            $scope.exercises_list = angular.copy($scope.exercises_list_backup);
+            $scope.isMuscleSelected = false;  
         }
         else
-        {
-            var temp = angular.copy($scope.exercises_list_backup);
-            $scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,3));
-            $scope.isMuscleSelected = false;
+        {                            
             $scope.isStretchingSelected = false;
             $scope.isCardioSelected = true;
+            $scope.isMuscleSelected = false;  
+        }    
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+    };
+
+    $scope.muscleClick = function() {
+        if($scope.isMuscleSelected)
+        {                        
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+            $scope.isMuscleSelected = false;          
         }
-        $scope.exercises_beforefilter_backup = angular.copy($scope.exercises_list);
-        $scope.selectedBodyPartItem = "";
-    }
-    $scope.isMuscleSelected = false;
-    $scope.isStretchingSelected = false;
-    $scope.isCardioSelected = false;
+        else
+        {            
+            $scope.isStretchingSelected = false;
+            $scope.isCardioSelected = false;
+            $scope.isMuscleSelected = true;
+        }    
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+    };   
 
     // select body part change
     $scope.changedValue=function(item){
         if(item.length > 0)
-        {
-            var temp = angular.copy($scope.exercises_beforefilter_backup);
-            if($scope.isMuscleSelected)
-            {
-                $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,1,item));
-                return;
-            }
-            if($scope.isStretchingSelected)
-            {
-                $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,2,item));
-                return;
-            }
-            if($scope.isCardioSelected)
-            {
-                $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,3,item));
-                return;
-            }
-            temp = angular.copy($scope.exercises_list_backup);
-            $scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,4,item));
-            return;
+        {                  
+            $scope.body_part_id = item;
         }
         else
-        {
-            var mode = 0;
-            if($scope.isMuscleSelected)
-                mode = 1;
-            if($scope.isStretchingSelected)
-                mode = 2;
-            if($scope.isCardioSelected)
-                mode = 3;
-            if(mode != 0)
-            {
-                var temp = angular.copy($scope.exercises_list_backup);
-                $scope.exercises_list = angular.copy($filter('exerciseOptionFilter')(temp,mode));
-            }
-            else
-            {
-                $scope.exercises_list = angular.copy($scope.exercises_list_backup);
-            }
-            return;
+        {      
+           $scope.body_part_id = "";
         }
-    }    
-
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+    }        
 });
 
 app.directive('uiVideo', function () {
@@ -1088,111 +1030,66 @@ app.filter('checkExerciseIsLike', function() {
         return false;
     }
 });
-app.filter('exerciseOptionFilter', function() {
-    return function(input , mode) {
-        var i=0, len=input.length;
-        var option = "";
-        var offset = 0;
-        switch (mode)
-        {
-            case 1:
-                option = "1";
-                break;
-            case 2:
-                option = "2";
-                break;
-            case 3:
-                option = "3";
-                break;
-            default :
-                return input;
-        }
+// app.filter('exerciseOptionFilter', function() {
+//     return function(input , mode) {
+//         var i=0, len=input.length;
+//         var option = "";
+//         var offset = 0;
+//         switch (mode)
+//         {
+//             case 1:
+//                 option = "1";
+//                 break;
+//             case 2:
+//                 option = "2";
+//                 break;
+//             case 3:
+//                 option = "3";
+//                 break;
+//             default :
+//                 return input;
+//         }
            
-        input = input.filter(function(element){
-            return element.Exercise.category_id == option;
-        });
+//         input = input.filter(function(element){
+//             return element.Exercise.category_id == option;
+//         });
         
-        return input;
-    }
-});
+//         return input;
+//     }
+// });
 
 
-app.filter('exerciseOptionBodyPartFilter', function() {
-    return function(input , option , body_part_id) {
-        // var i=0, len=input.length;
-        // var option = "";
-        // var offset = 0;
-        // switch (mode)
-        // {
-        //     case 1:
-        //         option = "1";
-        //         break;
-        //     case 2:
-        //         option = "2";
-        //         break;
-        //     case 3:
-        //         option = "3";
-        //         break;
-        //     default :
-        //         break;
-        // }
+// app.filter('exerciseOptionBodyPartFilter', function() {
+//     return function(input , option , body_part_id) {        
+        
+//         // filter by category_id
+//         if(option != 4)
+//         {            
+//             input = input.filter(function(element){
+//                 return element.Exercise.category_id == option;
+//             });                      
+//         }
+        
+//         // filter by bodypart_id
+//         input = input.filter(function(element){
 
-        if(option != 4)
-        {
-            // filter by category_id
-            input = input.filter(function(element){
-                return element.Exercise.category_id == option;
-            });
-            // filter by bodypart_id
-            input = input.filter(function(element){
-                return function(){
-                    element.indexOf(function(){
+//             var j, flag = false;                
+//             for(j = 0; j < element.Exercise.muscle.length; j++){                    
+//                 if(element.Exercise.muscle[j].bodypart_id == body_part_id){
+//                     flag = true;                        
+//                     break;
+//                 }                    
+//             }
 
-                    });
-                };
-            });
-            // for (i; i<len; i++) {
-            //     console.log(i);
-            //     if (input[i - offset].Exercise["body_building"].length > 0)
-            //     {
-            //         if(input[i - offset].Exercise["body_building"][0]['bodypart'] == body_part_id)
-            //         {
-            //             continue;
-            //         }
-            //     }
-            //     if (input[i - offset].Exercise["stretching"].length > 0)
-            //     {
-            //         if(input[i - offset].Exercise["stretching"][0]['bodypart'] == body_part_id)
-            //         {
-            //             continue;
-            //         }
-            //     }
-            //     if (input[i - offset].Exercise["cardio"].length > 0)
-            //     {
-            //         if(input[i - offset].Exercise["cardio"][0]['bodypart'] == body_part_id)
-            //         {
-            //             continue;
-            //         }
-            //     }
-            //     input.splice( i - offset, 1 );
-            //     offset++ ;
-            // }
-        }
-        else
-        {
-            for (i; i<len; i++) {
-                console.log(i);
-                if (input[i - offset].Exercise[option].length > 0) {
-                    if (input[i - offset].Exercise[option][0]['bodypart'] != body_part_id) {
-                        input.splice(i - offset, 1);
-                        offset++;
-                    }
-                }
-            }
-        }
-        return input;
-    }
-});
+//             if(flag){
+//                 return true;
+//             }
+//             return false;            
+//         });
+
+//         return input;
+//     }
+// });
 
 app.filter('programOptionFilter', function() {
     return function(input , item) {

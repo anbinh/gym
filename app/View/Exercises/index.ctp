@@ -22,7 +22,7 @@
                 <?php echo __('Cardio')?>
             </span>
         </md-button>
-        <select style="margin:12px;" class="input_select input_location select_custom" ng-model="selectedBodyPartItem" ng-change="changedValue(selectedBodyPartItem)">
+        <select style="margin:12px; padding-right:60px;" class="input_select input_location select_custom" ng-model="selectedBodyPartItem" ng-change="changedValue(selectedBodyPartItem)">
             <option value=""><?php echo __('Part')?></option>
             <option ng-repeat="item in body_part_items" value="{{item.id}}">{{item.name}}</option>
         </select>
@@ -42,14 +42,14 @@
                                             >
                                     </div>
                                     <a href="/Exercises/detail?id={{exercise.Exercise.id}}">
-                                        <div style="padding:0 10px;">
+                                        <div style="padding:0 25px;">
                                             <ui-video
                                                 video="exercise"
                                                 ng-mouseover="hoverIn($event)"
                                                 ng-mouseleave="hoverOut($event)" >
                                             </ui-video></div>
-                                        <p style="text-align:center;">{{exercise.Exercise.name}}</p>                                    
-                                    </a>
+                                        <p style="padding: 0 10px;">{{exercise.Exercise.name}}</p>                                    
+                                    </a>                                                                                                   
                                 </div>
                             </div>
                         </div>
