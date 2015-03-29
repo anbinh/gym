@@ -1525,6 +1525,36 @@ input:invalid {
     padding-right: 20px;
     background-color: #D9E5DD;
 }
+.select_custom option{
+    background: white;
+}
+.list_body_part{
+    font-size: 11pt;
+    color: #ccc;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 221px;
+    margin: 0;
+}
+.list_body_part > li{
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    border-right: 2px solid #ccc;
+}
+.list_body_part > li:last-child{
+    border-right: 0px !important;
+}
+.exercise_name{
+    padding: 0 10px;
+    margin-bottom: 5px;
+    height: 30px;
+    font-size: 11pt;
+    overflow: hidden;
+    text-align: justify;
+}
+#loadmore{
+    /*display: none;*/
+}
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;

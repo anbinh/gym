@@ -577,13 +577,15 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.exercises_list_backup = [];
     $scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
+    $scope.exercises_list_for_loadmore = [];
     // get list exercise
     $http.get('/Apis/getListExercise.json')
         .then(function(res){
             console.log(res);
             $scope.exercises_like = res.data.exercises_like;
-            $scope.exercises_list = angular.copy(res.data.exercises_list);
+            //$scope.exercises_list = angular.copy(res.data.exercises_list);
             $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
+            $scope.print_out_view(angular.copy(res.data.exercises_list));
         });
     // get list part body for select
     $http.get('/Apis/getListBodyPart.json')
@@ -608,6 +610,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.isMuscleSelected = false;
     $scope.showAllExercise = "";
     $scope.body_part_id = "";
+
     // filter action click
     $scope.stretchingClick = function(){
         if($scope.isStretchingSelected)
@@ -622,7 +625,8 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isCardioSelected = false;
             $scope.isMuscleSelected = false;  
         }    
-        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+        //$scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));            
+        $scope.print_out_view(null);
     };
     $scope.cardioClick = function() {
         if($scope.isCardioSelected)
@@ -637,7 +641,8 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isCardioSelected = true;
             $scope.isMuscleSelected = false;  
         }    
-        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+        //$scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+         $scope.print_out_view(null);
     };
 
     $scope.muscleClick = function() {
@@ -653,7 +658,8 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isCardioSelected = false;
             $scope.isMuscleSelected = true;
         }    
-        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+       // $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+         $scope.print_out_view(null);
     };   
 
     // select body part change
@@ -666,8 +672,57 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         {      
            $scope.body_part_id = "";
         }
-        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
-    }        
+        //$scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+         $scope.print_out_view(null);
+    }   
+
+    // print out on the view
+    $scope.print_out_view = function(input){
+        if(input == null){
+            $scope.exercises_list_for_loadmore = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+        }        
+        else{
+            $scope.exercises_list_for_loadmore = input;
+        }
+        $scope.current_ofset = 49;
+        $scope.list_loadmore = [];
+        $scope.exercises_list = $scope.exercises_list_for_loadmore.slice(0, 50);   
+        console.log($scope.exercises_list_for_loadmore.length)   ;
+    }
+    // load more exercises
+    $scope.current_ofset = 49;
+    $scope.list_loadmore = [];
+
+    $scope.loadmore_exercises = function(){                
+        var size = 0;
+        if($scope.current_ofset != -1){
+            if($scope.exercises_list_for_loadmore.length - 1 >= $scope.current_ofset + 50){
+                size = 50;            
+                //console.log('du');
+            }
+            else{
+                size = $scope.exercises_list_for_loadmore.length - 1 - $scope.current_ofset;            
+              //  console.log('thieu');
+            }      
+           
+            $scope.list_loadmore = $scope.exercises_list_for_loadmore.slice($scope.current_ofset, $scope.current_ofset + size);            
+
+            // append list_exercises
+            var list_exercises = angular.element(document.querySelector( '#list_exercises' ));
+            var temp = angular.element(document.querySelector( '#loadmore' ));           
+            list_exercises.append(temp.html()); 
+               
+
+            if(size == 50){
+                $scope.current_ofset = $scope.current_ofset + size;            
+            }
+            else{
+                console.log($scope.current_ofset);
+                $scope.current_ofset = -1;
+                console.log(size);
+            }          
+        }       
+    }     
 });
 
 app.directive('uiVideo', function () {

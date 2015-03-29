@@ -32,8 +32,8 @@
             <div layout="row">
                 <div flex>
                     <div class="list_tile" class="row">
-                        <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
-                            <div class="exercise_box">
+                        <div id="list_exercises" >
+                            <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController" class="exercise_box">
                                 <div class="user_favorite_exercise_img" flex >
                                     <div class="img_star_container">
                                         <img class="img_star"
@@ -42,14 +42,41 @@
                                             >
                                     </div>
                                     <a href="/Exercises/detail?id={{exercise.Exercise.id}}">
-                                        <div style="padding:0 25px;">
+                                        <div style="padding:0 30px;">
                                             <ui-video
                                                 video="exercise"
                                                 ng-mouseover="hoverIn($event)"
                                                 ng-mouseleave="hoverOut($event)" >
                                             </ui-video></div>
-                                        <p style="padding: 0 10px;">{{exercise.Exercise.name}}</p>                                    
-                                    </a>                                                                                                   
+                                        <p class="exercise_name">{{exercise.Exercise.name}}</p>                                    
+                                    </a>   
+                                    <ul class="list-inline list_body_part">
+                                       <li ng-repeat="body_part in exercise.Exercise.muscle">{{body_part.name}}</li>
+                                    </ul>                                                                                                
+                                </div>
+                            </div>
+                        </div>
+                        <div id="loadmore" >
+                            <div ng-repeat="exercise in list_loadmore" ng-controller="ItemExerciseController" class="exercise_box">
+                                <div class="user_favorite_exercise_img" flex >
+                                    <div class="img_star_container">
+                                        <img class="img_star"
+                                             ng-src="{{getImage()}}"
+                                             ng-click="toggleSelection()"
+                                            >
+                                    </div>
+                                    <a href="/Exercises/detail?id={{exercise.Exercise.id}}">
+                                        <div style="padding:0 30px;">
+                                            <ui-video
+                                                video="exercise"
+                                                ng-mouseover="hoverIn($event)"
+                                                ng-mouseleave="hoverOut($event)" >
+                                            </ui-video></div>
+                                        <p class="exercise_name">{{exercise.Exercise.name}}</p>                                    
+                                    </a>   
+                                    <ul class="list-inline list_body_part">
+                                       <li ng-repeat="body_part in exercise.Exercise.muscle">{{body_part.name}}</li>
+                                    </ul>                                                                                                
                                 </div>
                             </div>
                         </div>
@@ -59,5 +86,11 @@
         </div>
         <!-- advertisement zone -->
         <?php echo $this->element('right_advs');?>        
+    </div>    
+    <div layout="row" layout-align="center center">
+        <div>
+            <input ng-click="loadmore_exercises()" type="button" class="btn btn-primary" value="load more">            
+        </div>       
+        <div style="width:300px;"></div> 
     </div>
 </div>
