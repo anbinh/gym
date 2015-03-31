@@ -49,7 +49,7 @@ class AppController extends Controller {
                         //pr($auth_user);
                         if($auth_user == null) {
                             $is_register = $this->getCurrentRegister();
-                            if($is_register == null && $this->params['controller'] != 'Exercises')
+                            if($is_register == null && $this->params['controller'] != 'Exercises' && $this->params['controller'] != 'Programs')
                                 $this->redirect('/Users/login');
                         }
                         else {
@@ -95,5 +95,16 @@ class AppController extends Controller {
             $randomString .= $characters[rand(0, strlen($characters) - 1)];
         }
         return $randomString;
+    }
+
+    function setCookieAuthenticate($email,$encriptPass)
+    {
+        $this->Cookie->write('GYM.email', $email, false);
+        $this->Cookie->write('GYM.password', $encriptPass, false);
+    }
+
+    function clearCookieAuthenticate()
+    {
+        $this->Cookie->destroy();
     }
 }

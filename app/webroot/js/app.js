@@ -321,7 +321,7 @@ app.controller('LoginController', function($scope,$http,$location){
             .success(function(data) {
                 console.log(data);
                 if(data.message == 'success')
-                    window.location='/Users/index';
+                    window.location='/Programs/index';
                 else
                     $scope.message = data.message;
             })
@@ -793,13 +793,14 @@ app.directive('onFinishRender', function ($timeout) {
 //         restrict: "A"
 //     });
 // });
+/*' poster="{{video.Exercise.photo}}"',*/
 app.directive('uiVideo', function () {
     return {
         template: [
             '<div class="video">',
             '<video class="img-responsive" preload="none"',
-            ' src="{{video.Exercise.video_small}}"',
-            ' poster="{{video.Exercise.photo}}"',
+            ' src="{{video.Exercise.video_small}}"',   
+            ' poster="{{video.Exercise.photo}}"',         
             ' width="208px" height="152px"',
             '</video>',
             '</div>'
@@ -843,15 +844,12 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
     };
 
     $scope.hoverIn = function(item){
-         var videoElements = angular.element(item.target.currentSrc);
-         videoElements[0].play();
-       // var src = item.attributes['src'].value;
-        console.log(item.target.currentSrc);
+         var videoElements = angular.element(item.target);
+         videoElements[0].play();       
     };
     $scope.hoverOut = function(e){
-        /*var videoElements = angular.element(e.srcElement);
-        videoElements[0].pause();*/
-        console.log('out');
+        /*var videoElements = angular.element(e.target);
+        videoElements[0].pause();*/        
     };
 
     $scope.toggleStar = function(){

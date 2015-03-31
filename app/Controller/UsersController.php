@@ -29,15 +29,31 @@ class UsersController extends AppController {
     }
 
     public function login() {
-        $this->removeAuthentication();
+        $this->removeAuthentication(); 
+         
+        if ($this->Cookie->check('GYM.email')) {      
+            $username = $this->Cookie->read('GYM.email');          
+            // Select the username from the cookie
+            $password = $this->Cookie->read('GYM.password');            
+            // Select the password from the cookie
+            $user = $this->User->find("first",array( "conditions" => array(
+                    'email' => $username,'password'=>$password))
+            );
+            if ($user) {
+                $this->setAuthentication($user['User']);
+                $this->redirect('/Programs/index');
+            } else {
+                
+            }
+        }
     }
 
     public function logout(){
-
         $auth = $this->getAuthentication();
         if($auth){
             $this->removeAuthentication();
         }
+        $this->clearCookieAuthenticate();
         $this->redirect('/Users/login');
     }
 
