@@ -490,12 +490,14 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 });
 app.filter('filterExerciseProgramEditor', function(){
     return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
-       var results = [];       
-        if(showAllExercise || showAllExercise == ""){            
-            results = exercises_list_backup.slice();            
+       var results = [];            
+        if(showAllExercise){            
+            results = exercises_list_backup.slice();  
+           // console.log('1');
         }
         else{
             results = exercises_like.slice();            
+           // console.log('2');
         }
         if(isMuscleSelected){
             results = exerciseOptionFilter(results, 1).slice();             
@@ -608,7 +610,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.isStretchingSelected = false;
     $scope.isCardioSelected = false;   
     $scope.isMuscleSelected = false;
-    $scope.showAllExercise = "";
+    $scope.showAllExercise = true;
     $scope.body_part_id = "";
 
     // filter action click
@@ -678,40 +680,54 @@ app.controller('ExerciseController', function($scope,$http,$filter){
 
     // print out on the view
     $scope.print_out_view = function(input){
+        console.log('print out');
         if(input == null){
             $scope.exercises_list_for_loadmore = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
         }        
         else{
-            $scope.exercises_list_for_loadmore = input;
+            $scope.exercises_list_for_loadmore = angular.copy(input);
         }
-        $scope.current_ofset = 49;
+        // reset current_offset and list_loadmore
+        $scope.current_ofset = 50;
         $scope.list_loadmore = [];
-        $scope.exercises_list = $scope.exercises_list_for_loadmore.slice(0, 50);   
-        console.log($scope.exercises_list_for_loadmore.length)   ;
+        $('#list_exercises .loadmore').remove();
+
+        if($scope.exercises_list_for_loadmore.length > 50){
+            $scope.exercises_list = angular.copy($scope.exercises_list_for_loadmore.slice(0, 50));           
+        }
+        else{
+            $scope.exercises_list = angular.copy($scope.exercises_list_for_loadmore);
+        }        
+        console.log($scope.exercises_list.length);
+
+    }
+    // copy from loadmore to list_exercise
+    $scope.copy_to_main_list = function(){
+        alert('done');        
+        $scope.list_loadmore = [];
     }
     // load more exercises
-    $scope.current_ofset = 49;
-    $scope.list_loadmore = [];
-
+    $scope.current_ofset = 50;
+    $scope.list_loadmore = [];    
     $scope.loadmore_exercises = function(){                
-        var size = 0;
+        var size = 0;        
         if($scope.current_ofset != -1){
-            if($scope.exercises_list_for_loadmore.length - 1 >= $scope.current_ofset + 50){
+            if($scope.exercises_list_for_loadmore.length >= $scope.current_ofset + 50){
                 size = 50;            
                 //console.log('du');
             }
             else{
-                size = $scope.exercises_list_for_loadmore.length - 1 - $scope.current_ofset;            
+                size = $scope.exercises_list_for_loadmore.length - $scope.current_ofset;            
               //  console.log('thieu');
             }      
            
             $scope.list_loadmore = $scope.exercises_list_for_loadmore.slice($scope.current_ofset, $scope.current_ofset + size);            
 
-            // append list_exercises
-            var list_exercises = angular.element(document.querySelector( '#list_exercises' ));
-            var temp = angular.element(document.querySelector( '#loadmore' ));           
-            list_exercises.append(temp.html()); 
-               
+            // // append list_exercises
+            // var list_exercises = angular.element(document.querySelector( '#list_exercises' ));
+            // var temp = angular.element(document.querySelector( '#loadmore' ));           
+            // list_exercises.append(temp.html()); 
+
 
             if(size == 50){
                 $scope.current_ofset = $scope.current_ofset + size;            
@@ -722,9 +738,61 @@ app.controller('ExerciseController', function($scope,$http,$filter){
                 console.log(size);
             }          
         }       
-    }     
+    }  
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+        // append list_exercises
+        var list_exercises = angular.element(document.querySelector( '#list_exercises' ));
+        var temp = angular.element(document.querySelector( '#loadmore' ));           
+        list_exercises.append(temp.html()); 
+    });   
+});
+app.directive('onFinishRender', function ($timeout) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                $timeout(function () {
+                    scope.$emit('ngRepeatFinished');
+                });
+            }
+        }
+    }
 });
 
+// app.directive("repeatComplete", function( $rootScope ) {
+//     var uuid = 0;
+//     function compile( tElement, tAttributes ) {
+//         var id = ++uuid;
+//         tElement.attr( "repeat-complete-id", id );
+//         tElement.removeAttr( "repeat-complete" );
+//         var completeExpression = tAttributes.repeatComplete;
+//         var parent = tElement.parent();
+//         var parentScope = ( parent.scope() || $rootScope );
+//         var unbindWatcher = parentScope.$watch(
+//             function() {
+
+//                 var lastItem = parent.children( "*[ repeat-complete-id = '" + id + "' ]:last" );
+
+//                 if ( ! lastItem.length ) {
+//                     return;
+//                 }
+//                 var itemScope = lastItem.scope();
+//                 if ( itemScope.$last ) {
+
+//                     unbindWatcher();
+//                     itemScope.$eval( completeExpression );
+//                 }
+
+//             }
+//         );
+
+//     }
+//     return({
+//         compile: compile,
+//         priority: 1001,
+//         restrict: "A"
+//     });
+// });
 app.directive('uiVideo', function () {
     return {
         template: [
@@ -774,10 +842,11 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
         }        
     };
 
-    $scope.hoverIn = function(e){
-        var videoElements = angular.element(e.srcElement);
-        videoElements[0].play();
-        console.log('in');
+    $scope.hoverIn = function(item){
+         var videoElements = angular.element(item.target.currentSrc);
+         videoElements[0].play();
+       // var src = item.attributes['src'].value;
+        console.log(item.target.currentSrc);
     };
     $scope.hoverOut = function(e){
         /*var videoElements = angular.element(e.srcElement);

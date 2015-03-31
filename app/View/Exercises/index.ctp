@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div id="loadmore" >
-                            <div ng-repeat="exercise in list_loadmore" ng-controller="ItemExerciseController" class="exercise_box">
+                            <div ng-repeat="exercise in list_loadmore" on-finish-render="ngRepeatFinished" ng-controller="ItemExerciseController" class="exercise_box loadmore">
                                 <div class="user_favorite_exercise_img" flex >
                                     <div class="img_star_container">
                                         <img class="img_star"

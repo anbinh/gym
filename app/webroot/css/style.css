@@ -1553,7 +1553,7 @@ input:invalid {
     text-align: justify;
 }
 #loadmore{
-    /*display: none;*/
+    display: none;
 }
 ::-webkit-scrollbar {
     width: 8px;
