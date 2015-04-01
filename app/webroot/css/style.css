@@ -290,7 +290,8 @@ margin: 0 30px 25px 30px;
     color: grey;
 }
 .position p{
-    font-size: 14px;    
+    font-size: 14px;  
+    padding-top: 13px;  
 }
 .execution{
     padding-left: 30px;
@@ -305,6 +306,7 @@ margin: 0 30px 25px 30px;
 }
 .execution p{
     font-size: 14px;
+    padding-top: 13px;
 }
 .info_user{
     padding-top:10px; border-bottom: 1px solid #ccc;
@@ -350,7 +352,7 @@ margin: 0 30px 25px 30px;
 .list_tile{
     overflow: auto;
     padding-top: 4px;
-    padding-left: 4px;
+    padding-left: 1px;
 }
 .tile_packabs{
     background-color:#d8e6dc; 
@@ -606,7 +608,7 @@ input[type=date]{
 
     #program_header_content{
         height:120px !important;
-        padding:8px 0px 0px 10px !important;
+        padding:8px 12px 0px 10px !important;
         margin-top: 170px;
     }
     .title_program{
@@ -674,13 +676,13 @@ input[type=date]{
         margin-right: 10px !important;
     }
     .exercise_box{
-        padding: 4px !important;
+        padding: 3px !important;
     }
     .exercise_box_editor{
         padding: 1px !important;   
     }
     .logout_menu .wrap-dd-menu{
-        padding: 10px;
+        padding: 20px 10px 20px 10px;
     }
 }
 
@@ -1529,12 +1531,12 @@ input:invalid {
     background: white;
 }
 .list_body_part{
-    font-size: 11pt;
+    font-size: 10pt;
     color: #ccc;
     text-align: center;
     line-height: 1.2;
     max-width: 221px;
-    margin: 0;
+    margin: 0 !important;
 }
 .list_body_part > li{
     padding-left: 2px !important;
@@ -1548,9 +1550,9 @@ input:invalid {
     padding: 0 10px;
     margin-bottom: 5px;
     height: 30px;
-    font-size: 11pt;
+    font-size: 10pt;
     overflow: hidden;
-    text-align: justify;
+    text-align: center;
 }
 #loadmore{
     display: none;
