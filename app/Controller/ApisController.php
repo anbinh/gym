@@ -148,6 +148,7 @@ class ApisController extends AppController {
         if($user)
         {
             $this->setAuthentication($user['User']);
+            $this->setCookieAuthenticate($data['email'],md5($data['password']));
             $this->set(array(
                 'message' => 'success',
                 'id' => $user['User']['id'],

@@ -1,5 +1,5 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-<?php if(!isset($is_mobile) && count($exercise['Exercise']['category_id']) == 2) {?>
+<?php if(!isset($is_mobile) && $exercise['Exercise']['category_id'] != 2) {?>
     <script type="text/javascript">
     var config = {
                     width: 480,
@@ -64,7 +64,7 @@
     <div class="wrap_content right_banner" layout="row">
         <div flex>
             <div layout="row" layout-align="center start">
-                <?php if(count($exercise['Exercise']['category_id']) == 2) {?>
+                <?php if($exercise['Exercise']['category_id'] == 2) {?>
                     <img src="<?php echo $exercise['Exercise']['photo'];?>" class="img-responsive"/>
                 <?php }else{
                 if(!isset($is_mobile)) { ?>
