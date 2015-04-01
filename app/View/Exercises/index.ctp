@@ -3,7 +3,7 @@
     var  id = '<?php echo isset($auth_user['id']) ? $auth_user['id'] : "0"  ?>';
 </script>
 <div ng-controller="ExerciseController">
-    <div layout="row" layout="center start" style="height:60px; padding-left:40px;">
+    <div layout="row" layout="center start" style="height:60px; padding-left:23px;">
         <div style="padding-top:20px;">
             <img src="/img/images/icon_search.png">
         </div>
