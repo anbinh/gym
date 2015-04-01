@@ -332,12 +332,15 @@ class ApisController extends AppController {
     }
 
     public function getListObjective(){
+        $lang = $this->Session->read('Config.language');
         $objective_list = $this->Objective->find('all');
         $list = array();
         foreach($objective_list as $item)
         {
             $temp['id'] = $item['Objective']['objective_id'];
             $temp['name'] = $item['Objective']['description'];
+            if($lang == "fra")
+                $temp['name'] = $item['Objective']['description_fr'];
             array_push($list,$temp);
         }
         $this->set(array(

@@ -17,9 +17,9 @@
                                 <p>Cum autem commodis intervallata  temporibus convivia longa et n copie</p>
                             </div>
                             <div class="serie">
-                                <p style="color:#c7c8c9; margin-right:10px; font-size:11pt;">Serie</p> 
+                                <p style="color:#c7c8c9; margin-right:10px; font-size:11pt;"><?php echo __('Serie')?></p> 
                                 <p style="font-size:18px; font-weight:bold; line-height: 1.45; border-right:1px solid; padding-right:5px; margin-right:5px;"> <?php echo $item['exercise_item'][0]['series'];?></p>
-                                <p style="color:#bcbdbe; margin-right:10px;">Répétition</p> 
+                                <p style="color:#bcbdbe; margin-right:10px;"><?php echo __('Repetition')?></p> 
                                 <p style="font-size:18px; font-weight:bold; line-height: 1.45;"> <?php echo $item['exercise_item'][0]['repeatation_from'];?> à <?php echo $item['exercise_item'][0]['repeatation_to'];?></p>
                             </div>
                         </div>                            
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="serie">
-                                <p style="color:#c7c8c9; margin-right:10px; font-size:11pt;">Serie</p> 
+                                <p style="color:#c7c8c9; margin-right:10px; font-size:11pt;"><?php echo __('Serie')?></p> 
                                 <p> <?php echo $item['text'];?></p>
                             </div>                    
                         </div>                            
@@ -62,11 +62,11 @@
                                 <div style="position:relative; padding-top:3px;">
                                     <div class="small_box" style="width:90px; float:left;"></div>                            
                                     <div>
-                                        <p style="color:#c7c8c9; margin:0px; line-height:1; font-size:11pt;">Serie</p> 
+                                        <p style="color:#c7c8c9; margin:0px; line-height:1; font-size:11pt;"><?php echo __('Serie')?></p> 
                                         <p style="font-size:18px; font-weight:bold; line-height: 1.2; margin:0;"> 10</p>
                                     </div>
                                     <div style="padding-top:5px;">
-                                        <p style="color:#bcbdbe; margin:0px; line-height:1; font-size:11pt;">Répétition</p> 
+                                        <p style="color:#bcbdbe; margin:0px; line-height:1; font-size:11pt;"><?php echo __('Repetition')?></p> 
                                         <p style="font-size:18px; font-weight:bold; line-height: 1.2; margin:0;"> 15 à 20</p>
                                     </div>
                                 </div>      
@@ -76,11 +76,11 @@
                                 <div style="position:relative;padding-left:14px; padding-top:3px;">
                                     <div class="small_box" style="width:90px; float:left;"></div>                            
                                     <div>
-                                        <p style="color:#c7c8c9; margin:0px; line-height:1; font-size:11pt;">Serie</p> 
+                                        <p style="color:#c7c8c9; margin:0px; line-height:1; font-size:11pt;"><?php echo __('Serie')?></p> 
                                         <p style="font-size:18px; font-weight:bold; line-height: 1.2; margin:0;"> 10</p>
                                     </div>
                                     <div style="padding-top:5px;">
-                                        <p style="color:#bcbdbe; margin:0px; line-height:1; font-size:11pt;">Répétition</p> 
+                                        <p style="color:#bcbdbe; margin:0px; line-height:1; font-size:11pt;"><?php echo __('Repetition')?></p> 
                                         <p style="font-size:18px; font-weight:bold; line-height: 1.2; margin:0;"> 15 à 20</p>
                                     </div>
                                 </div>   
@@ -104,7 +104,7 @@
                                 <p>Cum autem commodis intervallata  temporibus convivia longa et n copie</p>
                             </div>
                             <div class="serie">
-                                <p style="color:#c7c8c9; margin-right:10px; font-size:11pt;">Serie</p> 
+                                <p style="color:#c7c8c9; margin-right:10px; font-size:11pt;"><?php echo __('Serie')?></p> 
                                 <p> Tenir 8 secondes</p>
                             </div>
                         </div>                            
