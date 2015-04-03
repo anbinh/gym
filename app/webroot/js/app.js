@@ -476,16 +476,17 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 
     // drop
     $scope.dropCallback = function (event, ui) {
-        var $lane = $(event.target);
-        var $card = ui.draggable;
+        // var $lane = $(event.target);
+        // var $card = ui.draggable;
        
-        if ($card.scope().card.lane != $lane.scope().lane.id) {
-            $card.scope().card.lane = $lane.scope().lane.id;
-        }
-        else {
-            $card.css('opacity', 'inherit');
-            return false;
-        }          
+        // if ($card.scope().card.lane != $lane.scope().lane.id) {
+        //     $card.scope().card.lane = $lane.scope().lane.id;
+        // }
+        // else {
+        //     $card.css('opacity', 'inherit');
+        //     return false;
+        // }          
+        ui.draggable.appendTo('.program_tab_editor');
     };
 });
 app.filter('filterExerciseProgramEditor', function(){
