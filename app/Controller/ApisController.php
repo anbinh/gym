@@ -236,12 +236,17 @@ class ApisController extends AppController {
     }
 
     public function getListBodyPart(){
+        $lang = $this->Session->read('Config.language');
         $body_list = $this->BodyPart->find('all');
         $list = array();
         foreach($body_list as $item)
         {
             $temp['id'] = $item['BodyPart']['body_part_id'];
             $temp['name'] = $item['BodyPart']['description'];
+            if($lang == "fr")
+            {
+                $temp['name'] = $item['BodyPart']['description_fr'];
+            }
             array_push($list,$temp);
         }
         $this->set(array(

@@ -90,13 +90,28 @@
                 <div class="region" layout="row" layout-align="start center">
                     <p style="color:black; margin-right: 20px; margin-top:15px;"><?php echo __('Body Part');?></p>
                     <p style="margin-top:15px;">
-                        <?php foreach($exercise['Exercise']['muscle'] as $key=>$muscle):?>
-                            <?php echo $muscle['name'];
-                                if($key != count($exercise['Exercise']['muscle'])-1){
-                                    echo ", ";
-                                }
-                            ?>
-                        <?php endforeach;?>
+                        <?php 
+                        $muscle_text = '';
+                        $bodypart_text = '';      
+                        $body_field = 'body_path_text'; 
+                        if($language == 'fr')     
+                             $body_field = 'body_path_text_fr';            
+                        foreach($exercise['Exercise']['muscle'] as $key=>$muscle):
+                            $pos = strrpos($bodypart_text, $muscle[$body_field]);
+                            if($pos === false)
+                            {
+                                $bodypart_text = $bodypart_text . $muscle[$body_field];
+                                $bodypart_text .= ", ";
+                            }
+                                
+                            $muscle_text = $muscle_text .$muscle['name'];
+                            if($key != count($exercise['Exercise']['muscle'])-1){
+                                $muscle_text .= ", ";
+                            }                           
+                        endforeach;     
+                        $bodypart_text = substr($bodypart_text,0,-2);              
+                        echo $bodypart_text." | ".$muscle_text;
+                        ?>
                     </p>
                 </div>
                 <div layout="row">

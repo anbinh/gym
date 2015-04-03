@@ -40,11 +40,8 @@ class ExercisesController  extends AppController {
             $exercise_item = $this->Exercise->find('first', array('conditions'=>array('id'=>$id)));
             //pr($exercise_item);
             $this->set('exercise',$exercise_item);
-            //$this->render('exercise_item');
         }
         else{
-            //$this->redirect("/Users");
-            //$this->render('exercise_item');
         }
     }
 }
