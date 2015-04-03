@@ -236,12 +236,17 @@ class ApisController extends AppController {
     }
 
     public function getListBodyPart(){
+        $lang = $this->Session->read('Config.language');
         $body_list = $this->BodyPart->find('all');
         $list = array();
         foreach($body_list as $item)
         {
             $temp['id'] = $item['BodyPart']['body_part_id'];
             $temp['name'] = $item['BodyPart']['description'];
+            if($lang == "fr")
+            {
+                $temp['name'] = $item['BodyPart']['description_fr'];
+            }
             array_push($list,$temp);
         }
         $this->set(array(
@@ -381,12 +386,15 @@ class ApisController extends AppController {
     }
 
     public function getListObjective(){
+        $lang = $this->Session->read('Config.language');
         $objective_list = $this->Objective->find('all');
         $list = array();
         foreach($objective_list as $item)
         {
             $temp['id'] = $item['Objective']['objective_id'];
             $temp['name'] = $item['Objective']['description'];
+            if($lang == "fra")
+                $temp['name'] = $item['Objective']['description_fr'];
             array_push($list,$temp);
         }
         $this->set(array(

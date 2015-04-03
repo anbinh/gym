@@ -1,7 +1,7 @@
 <div ng-controller="ProgramListController">
 <ul class="list-inline filter_objective_program">
     <li><img src="/img/images/icon_search.png"/></li>
-    <li>OBJECTIVE</li>
+    <li><?php echo __('OBJECTIVE')?></li>
     <li>
         <select class="input_select input_location select_custom" ng-model="selectedObjectiveItem" ng-change="changedValue(selectedObjectiveItem)">
             <option value=""><?php echo __('Choose')?></option>

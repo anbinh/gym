@@ -849,8 +849,10 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
          videoElements[0].play();       
     };
     $scope.hoverOut = function(e){
-        /*var videoElements = angular.element(e.target);
-        videoElements[0].pause();*/        
+        var videoElements = angular.element(e.target);
+        videoElements[0].pause();        
+        videoElements[0].currentTime = 0;
+        videoElements[0].load();
     };
 
     $scope.toggleStar = function(){

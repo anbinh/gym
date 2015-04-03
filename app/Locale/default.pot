@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-03-07 18:03+0100\n"
+"POT-Creation-Date: 2015-04-01 18:36+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -128,64 +128,64 @@ msgstr ""
 msgid "Edit Subdocument"
 msgstr ""
 
-#: View/Elements/message_changepass.ctp:6
-msgid "Password does not match!"
+#: View/Elements/exercise_stretching.ctp:20;49;65;79;107
+msgid "Serie"
 msgstr ""
 
-#: View/Exercises/exercise_item.ctp:47
-#: View/Exercises/index.ctp:55
-#: View/Programs/index.ctp:89
-#: View/Programs/program_view.ctp:126
-#: View/Users/change_password.ctp:48
-#: View/Users/delete_account.ctp:50
-#: View/Users/edit_profile.ctp:219
-#: View/Users/forget_password.ctp:51
-#: View/Users/index.ctp:87
+#: View/Elements/exercise_stretching.ctp:22;69;83
+msgid "Repetition"
+msgstr ""
+
+#: View/Elements/right_advs.ctp:4
 msgid "mobile application"
 msgstr ""
 
-#: View/Exercises/exercise_item.ctp:51
-#: View/Exercises/index.ctp:59
-#: View/Programs/index.ctp:93
-#: View/Programs/program_view.ctp:130
-#: View/Users/change_password.ctp:52
-#: View/Users/delete_account.ctp:54
-#: View/Users/edit_profile.ctp:223
-#: View/Users/forget_password.ctp:55
-#: View/Users/index.ctp:91
+#: View/Elements/right_advs.ctp:8
 msgid "create a program"
 msgstr ""
 
-#: View/Exercises/exercise_item.ctp:54
-#: View/Exercises/index.ctp:62
-#: View/Programs/index.ctp:96
-#: View/Programs/program_view.ctp:133
-#: View/Users/change_password.ctp:55
-#: View/Users/delete_account.ctp:57
-#: View/Users/edit_profile.ctp:226
-#: View/Users/forget_password.ctp:58
-#: View/Users/index.ctp:94
+#: View/Elements/right_advs.ctp:11
 msgid "advertising"
 msgstr ""
 
-#: View/Exercises/index.ctp:9
-msgid "Musculation"
+#: View/Exercises/detail.ctp:91
+msgid "Body Part"
 msgstr ""
 
-#: View/Exercises/index.ctp:14
+#: View/Exercises/detail.ctp:104
+msgid "Position"
+msgstr ""
+
+#: View/Exercises/detail.ctp:117
+msgid "Execution"
+msgstr ""
+
+#: View/Exercises/detail.ctp:131
+msgid "Care"
+msgstr ""
+
+#: View/Exercises/index.ctp:12
+#: View/Programs/program_editor.ctp:54;68
+msgid "Bodybuilding"
+msgstr ""
+
+#: View/Exercises/index.ctp:17
+#: View/Programs/program_editor.ctp:55;69
 msgid "Stretching"
 msgstr ""
 
-#: View/Exercises/index.ctp:19
+#: View/Exercises/index.ctp:22
+#: View/Programs/program_editor.ctp:56;70
 msgid "Cardio"
 msgstr ""
 
-#: View/Exercises/index.ctp:23
+#: View/Exercises/index.ctp:26
+#: View/Programs/program_editor.ctp:59;73
 msgid "Part"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:3
-#: View/Layouts/default.ctp:100
+#: View/Layouts/default.ctp:109
 #: View/Users/login.ctp:6
 msgid "Login"
 msgstr ""
@@ -255,16 +255,42 @@ msgstr ""
 msgid "Sign Up now!"
 msgstr ""
 
-#: View/Layouts/default.ctp:75
+#: View/Layouts/default.ctp:83
 msgid "program header"
 msgstr ""
 
-#: View/Layouts/default.ctp:76
+#: View/Layouts/default.ctp:84
 msgid "exercise header"
 msgstr ""
 
+#: View/Programs/index.ctp:4
+#: View/Programs/program_editor.ctp:26
+msgid "OBJECTIVE"
+msgstr ""
+
 #: View/Programs/index.ctp:7
+#: View/Programs/program_editor.ctp:28
 msgid "Choose"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:7
+msgid "CREAT A PROGRAM"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:35
+msgid "ADD PICTURE"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:67
+msgid "Choosing"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:80
+msgid "Show only"
+msgstr ""
+
+#: View/Programs/program_view.ctp:102
+msgid "Day"
 msgstr ""
 
 #: View/Users/change_password.ctp:24

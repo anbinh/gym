@@ -1,0 +1,491 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# valentino <valentino.nguyen.92@gmail.com>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-01 18:36+0200\n"
+"PO-Revision-Date: 2015-04-01 23:38+0700\n"
+"Last-Translator: valentino <valentino.nguyen.92@gmail.com>\n"
+"Language-Team: miratik\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+#: Controller/UsersController.php:14;26
+msgid "Invalid user"
+msgstr ""
+
+#: Plugin/Mongodb/Model/Datasource/MongodbSource.php:589
+msgid "Invalid schema object"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/GeosController.php:78
+msgid "Geo saved."
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/GeosController.php:93
+msgid "Invalid Geo"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/GeosController.php:96
+msgid "Geo deleted"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/GeosController.php:98
+msgid "Geo deleted Fail"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:53
+msgid "Post saved."
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:68;91
+msgid "Invalid Post"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:72
+msgid "The Post has been saved."
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:94
+msgid "Post deleted"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:96
+msgid "Post deleted Fail"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:109
+msgid "Post deleteAll success"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:112
+msgid "Post deleteAll Fail"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:128
+msgid "Post updateAll success"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/PostsController.php:131
+msgid "Post updateAll Fail"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:45
+msgid "Subdocument saved."
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:60;82
+msgid "Invalid Subdocument"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:64
+msgid "The Subdocument has been saved."
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:85
+msgid "Subdocument deleted"
+msgstr ""
+
+#: Plugin/Mongodb/samples/Controller/SubdocumentsController.php:87
+msgid "Subdocument deleted Fail"
+msgstr ""
+
+#: Plugin/Mongodb/samples/View/Geos/add.ctp:4
+msgid "Add Geo"
+msgstr ""
+
+#: Plugin/Mongodb/samples/View/Geos/add.ctp:16;25
+msgid "List Geos"
+msgstr ""
+
+#: Plugin/Mongodb/samples/View/Posts/add.ctp:4
+msgid "Add Post"
+msgstr ""
+
+#: Plugin/Mongodb/samples/View/Posts/add.ctp:15
+#: Plugin/Mongodb/samples/View/Posts/edit.ctp:16
+msgid "List Posts"
+msgstr ""
+
+#: Plugin/Mongodb/samples/View/Posts/edit.ctp:4
+msgid "Edit Post"
+msgstr ""
+
+#: Plugin/Mongodb/samples/View/Subdocuments/add.ctp:4
+msgid "Add Subdocument"
+msgstr ""
+
+#: Plugin/Mongodb/samples/View/Subdocuments/add.ctp:20;29
+#: Plugin/Mongodb/samples/View/Subdocuments/edit.ctp:19
+msgid "List Subdocuments"
+msgstr ""
+
+#: Plugin/Mongodb/samples/View/Subdocuments/edit.ctp:4
+msgid "Edit Subdocument"
+msgstr ""
+
+#: View/Elements/exercise_stretching.ctp:20;49;65;79;107
+msgid "Serie"
+msgstr "Série"
+
+#: View/Elements/exercise_stretching.ctp:22;69;83
+msgid "Repetition"
+msgstr "Répétition"
+
+#: View/Elements/right_advs.ctp:4
+msgid "mobile application"
+msgstr "APPLICATION MOBILE"
+
+#: View/Elements/right_advs.ctp:8
+msgid "create a program"
+msgstr "CRÉER UN PROGRAMME"
+
+#: View/Elements/right_advs.ctp:11
+msgid "advertising"
+msgstr "PUBLICITÉ"
+
+#: View/Exercises/detail.ctp:91
+msgid "Body Part"
+msgstr "Région"
+
+#: View/Exercises/detail.ctp:104
+msgid "Position"
+msgstr ""
+
+#: View/Exercises/detail.ctp:117
+msgid "Execution"
+msgstr "Exécution"
+
+#: View/Exercises/detail.ctp:131
+msgid "Care"
+msgstr "Mise en garde"
+
+#: View/Exercises/index.ctp:12
+#: View/Programs/program_editor.ctp:54;68
+msgid "Bodybuilding"
+msgstr ""
+
+#: View/Exercises/index.ctp:17
+#: View/Programs/program_editor.ctp:55;69
+msgid "Stretching"
+msgstr ""
+
+#: View/Exercises/index.ctp:22
+#: View/Programs/program_editor.ctp:56;70
+msgid "Cardio"
+msgstr ""
+
+#: View/Exercises/index.ctp:26
+#: View/Programs/program_editor.ctp:59;73
+msgid "Part"
+msgstr ""
+
+#: View/Exercises/login_modal.ctp:3
+#: View/Layouts/default.ctp:109
+#: View/Users/login.ctp:6
+msgid "Login"
+msgstr "S'identifier"
+
+#: View/Exercises/login_modal.ctp:7
+#: View/Users/login.ctp:10
+msgid "Login with Facebook"
+msgstr "Connexion avec Facebook"
+
+#: View/Exercises/login_modal.ctp:9
+#: View/Users/login.ctp:12
+#: View/Users/signup.ctp:9
+msgid "or"
+msgstr "ou"
+
+#: View/Exercises/login_modal.ctp:25
+#: View/Users/delete_account.ctp:33
+#: View/Users/forget_password.ctp:20
+#: View/Users/login.ctp:28
+#: View/Users/signup.ctp:19
+msgid "Email"
+msgstr "Courriel"
+
+#: View/Exercises/login_modal.ctp:27
+#: View/Users/forget_password.ctp:22
+#: View/Users/login.ctp:30
+#: View/Users/signup.ctp:21
+msgid "Your email is required."
+msgstr "Votre e-mail est nécessaire."
+
+#: View/Exercises/login_modal.ctp:28
+#: View/Users/forget_password.ctp:23
+#: View/Users/login.ctp:31
+#: View/Users/signup.ctp:22
+msgid "Please type a valid email."
+msgstr "Se il vous plaît taper une adresse email valide."
+
+#: View/Exercises/login_modal.ctp:32
+#: View/Users/login.ctp:35
+#: View/Users/signup.ctp:26
+msgid "Password"
+msgstr "Mot de passe"
+
+#: View/Exercises/login_modal.ctp:34
+#: View/Users/login.ctp:37
+#: View/Users/signup.ctp:28
+msgid "Please input the password"
+msgstr "Veuillez saisir le mot de passe"
+
+#: View/Exercises/login_modal.ctp:40
+#: View/Users/login.ctp:43
+msgid "SIGN IN"
+msgstr "SE CONNECTER"
+
+#: View/Exercises/login_modal.ctp:47
+#: View/Users/login.ctp:50
+msgid "Forgot password"
+msgstr "Mot de passe oublié"
+
+#: View/Exercises/login_modal.ctp:48
+#: View/Users/login.ctp:51
+msgid "Don't have an account?"
+msgstr "Ne pas avoir un compte?"
+
+#: View/Exercises/login_modal.ctp:48
+#: View/Users/login.ctp:51
+msgid "Sign Up now!"
+msgstr "Inscrivez-vous dès maintenant!"
+
+#: View/Layouts/default.ctp:83
+msgid "program header"
+msgstr "PROGRAMME"
+
+#: View/Layouts/default.ctp:84
+msgid "exercise header"
+msgstr "EXERCICE"
+
+#: View/Programs/index.ctp:4
+#: View/Programs/program_editor.ctp:26
+msgid "OBJECTIVE"
+msgstr "OBJECTIF"
+
+#: View/Programs/index.ctp:7
+#: View/Programs/program_editor.ctp:28
+msgid "Choose"
+msgstr "Choisir"
+
+#: View/Programs/program_editor.ctp:7
+msgid "CREAT A PROGRAM"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:35
+msgid "ADD PICTURE"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:67
+msgid "Choosing"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:80
+msgid "Show only"
+msgstr ""
+
+#: View/Programs/program_view.ctp:102
+msgid "Day"
+msgstr "Jour"
+
+#: View/Users/change_password.ctp:24
+msgid "Change your password"
+msgstr "Modifier votre mot de passe"
+
+#: View/Users/change_password.ctp:26;27
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: View/Users/change_password.ctp:30;31
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+#: View/Users/change_password.ctp:32
+msgid "Password does not match!"
+msgstr "Mot de passe ne correspond pas!"
+
+#: View/Users/change_password.ctp:39
+#: View/Users/delete_account.ctp:41
+#: View/Users/edit_profile.ctp:145
+msgid "SAVE"
+msgstr "SAUVER"
+
+#: View/Users/change_password.ctp:40
+#: View/Users/delete_account.ctp:42
+#: View/Users/edit_profile.ctp:146
+msgid "CANCEL"
+msgstr "ANNULER"
+
+#: View/Users/delete_account.ctp:30
+msgid "Delete your account"
+msgstr "Supprimer le compte"
+
+#: View/Users/delete_account.ctp:32
+msgid "To confirm your account deletion please type &lt&ltDELETE&gt&gt below."
+msgstr "Pour supprimer le compte cliquer &lt&ltconfirmer&gt&gt ci-dessous."
+
+#: View/Users/edit_profile.ctp:29;56
+msgid "Edit Picture"
+msgstr "Modifier l'image"
+
+#: View/Users/edit_profile.ctp:62
+msgid "User Name"
+msgstr "Nom d'utilisateur"
+
+#: View/Users/edit_profile.ctp:68
+msgid "Email Address"
+msgstr "Adresse e-mail"
+
+#: View/Users/edit_profile.ctp:72
+msgid "First Name"
+msgstr "Prénom"
+
+#: View/Users/edit_profile.ctp:76
+msgid "Last Name"
+msgstr "Nom De Famille"
+
+#: View/Users/edit_profile.ctp:80
+msgid "Gender"
+msgstr "Sexe"
+
+#: View/Users/edit_profile.ctp:81
+msgid "Men"
+msgstr "Hommes"
+
+#: View/Users/edit_profile.ctp:82
+msgid "Women"
+msgstr "Femmes"
+
+#: View/Users/edit_profile.ctp:85
+msgid "Language"
+msgstr "Langue"
+
+#: View/Users/edit_profile.ctp:95
+msgid "Location"
+msgstr "Emplacement"
+
+#: View/Users/edit_profile.ctp:99
+msgid "Birthday"
+msgstr "Aniversaire"
+
+#: View/Users/edit_profile.ctp:121
+msgid "Your Password"
+msgstr "Votre mot de passe"
+
+#: View/Users/edit_profile.ctp:124
+msgid "Change Password"
+msgstr "Changement mot de passe"
+
+#: View/Users/edit_profile.ctp:126
+msgid "Set Password"
+msgstr "Définir mot de passe"
+
+#: View/Users/edit_profile.ctp:130
+msgid "Facebook"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:134
+msgid "Connect Facebook"
+msgstr "Connectez Facebook"
+
+#: View/Users/edit_profile.ctp:138
+msgid "Promotion Email"
+msgstr ""
+
+#: View/Users/edit_profile.ctp:140
+msgid "Receive promotion emails"
+msgstr "Recevoir les emails de promotion"
+
+#: View/Users/edit_profile.ctp:148
+msgid "To remove your Keep account please"
+msgstr "Pour supprimer votre compte Conserver se il vous plaît"
+
+#: View/Users/edit_profile.ctp:148
+msgid "click here"
+msgstr "cliquez ici"
+
+#: View/Users/edit_profile.ctp:157
+#: View/Users/index.ctp:25
+msgid "my program"
+msgstr "MON PROGRAMME"
+
+#: View/Users/edit_profile.ctp:158
+#: View/Users/index.ctp:18;26
+msgid "edit"
+msgstr "Éditer"
+
+#: View/Users/edit_profile.ctp:194
+#: View/Users/index.ctp:62
+msgid "favorite exercise"
+msgstr "EXERCICE FAVORI"
+
+#: View/Users/forget_password.ctp:6
+msgid "Forgot Password"
+msgstr "Mot de passe oublié"
+
+#: View/Users/forget_password.ctp:29
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: View/Users/forget_password.ctp:35
+msgid "Sent!"
+msgstr "Envoyé"
+
+#: View/Users/forget_password.ctp:36
+msgid "We've sent password reset"
+msgstr "Nous avons envoyé réinitialisation de"
+
+#: View/Users/forget_password.ctp:37
+msgid "instruction to your email address."
+msgstr "mot de passe à votre adresse courriel."
+
+#: View/Users/forget_password.ctp:39
+msgid "If you don't receive instructions"
+msgstr "Si vous ne recevez pas d'instructions"
+
+#: View/Users/forget_password.ctp:40
+msgid "within a minute or two, check your"
+msgstr "d'ici une minute ou deux, ve1rifiez vos"
+
+#: View/Users/forget_password.ctp:41
+msgid "email's spam and junk filters, or try"
+msgstr "pourriels et les filtres de messagerie, ou essayez"
+
+#: View/Users/forget_password.ctp:42
+msgid "resending your request."
+msgstr "renvoyer votre demande"
+
+#: View/Users/signup.ctp:6
+msgid "Sign Up"
+msgstr "Signer"
+
+#: View/Users/signup.ctp:7
+msgid "Nice To Meet You"
+msgstr "Ravi De Vous Rencontrer"
+
+#: View/Users/signup.ctp:8
+msgid "Sign up with Facebook"
+msgstr "Inscrivez-vous avec Facebook"
+
+#: View/Users/signup.ctp:13
+msgid "First and Last Name"
+msgstr "Prénom et Nom"
+
+#: View/Users/signup.ctp:15
+msgid "Please input the name"
+msgstr "Veuillez saisir le nom"
+
+#: View/Users/signup.ctp:36
+msgid "NEXT"
+msgstr "Suivant"
+
+#: View/Users/signup.ctp:41
+msgid "Already Registerred? Log In now!"
+msgstr "Déjà Registerred? Connectez-vous maintenant!"

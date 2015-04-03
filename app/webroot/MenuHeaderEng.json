@@ -22,28 +22,28 @@
 	"menu":[
 		{
 			"text": "Search programs",
-			"href": "#"
+			"href": "/Programs/index"
 		}, {
 			"text": "Search exercises",
-			"href": "#"
+			"href": "/Exercises/index"
 		},{
 			"text": "Create a program",
-			"href": "#"
+			"href": "/Programs/program_editor"
 		},{
 			"text": "Get the App",
-			"href": "#"
+			"href": "/GetApps/index"
 		},{
 			"text": "Profile",
-			"href": "#"
+			"href": "/Users"
 		},{
 			"text": "Lexic",
-			"href": "#"
+			"href": "/Lexics/index"
 		},{
 			"text": "About",
-			"href": "#"
+			"href": "/Abouts/index"
 		},{
 			"text": "Privacy Terms",
-			"href": "#"
+			"href": "/Privacies/index"
 		}
 	]
 }

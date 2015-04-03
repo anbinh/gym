@@ -88,20 +88,35 @@
             </div>
             <div style="border:1px solid #ccc; margin: 10px;">
                 <div class="region" layout="row" layout-align="start center">
-                    <p style="color:black; margin-right: 20px; margin-top:15px;"><?php echo __('PART');?></p>
+                    <p style="color:black; margin-right: 20px; margin-top:15px;"><?php echo __('Body Part');?></p>
                     <p style="margin-top:15px;">
-                        <?php foreach($exercise['Exercise']['muscle'] as $key=>$muscle):?>
-                            <?php echo $muscle['name'];
-                                if($key != count($exercise['Exercise']['muscle'])-1){
-                                    echo ", ";
-                                }
-                            ?>
-                        <?php endforeach;?>
+                        <?php 
+                        $muscle_text = '';
+                        $bodypart_text = '';      
+                        $body_field = 'body_path_text'; 
+                        if($language == 'fr')     
+                             $body_field = 'body_path_text_fr';            
+                        foreach($exercise['Exercise']['muscle'] as $key=>$muscle):
+                            $pos = strrpos($bodypart_text, $muscle[$body_field]);
+                            if($pos === false)
+                            {
+                                $bodypart_text = $bodypart_text . $muscle[$body_field];
+                                $bodypart_text .= ", ";
+                            }
+                                
+                            $muscle_text = $muscle_text .$muscle['name'];
+                            if($key != count($exercise['Exercise']['muscle'])-1){
+                                $muscle_text .= ", ";
+                            }                           
+                        endforeach;     
+                        $bodypart_text = substr($bodypart_text,0,-2);              
+                        echo $bodypart_text." | ".$muscle_text;
+                        ?>
                     </p>
                 </div>
                 <div layout="row">
                     <div class="position" flex>
-                        <p>POSITION</p>
+                        <p><?php echo __('Position');?></p>
                         <ul>
                             <?php                                 
                                 $postures = split("\.", $exercise['Exercise']['posture']);                             
@@ -114,7 +129,7 @@
                         </ul>
                     </div>
                     <div class="execution" flex>
-                        <p><?php echo __('EXECUTION');?></p>
+                        <p><?php echo __('Execution');?></p>
                         <ul>
                             <?php                                 
                                 $executions = split("\.", $exercise['Exercise']['execution']);                             
@@ -128,7 +143,7 @@
                     </div>
                 </div>
                 <div class="foo_exercise" layout="column">
-                    <div><?php echo __('WARNING');?></div>
+                    <div><?php echo __('Care');?></div>
                     <div><p><?php echo $exercise['Exercise']['care'];?></p></div>
                 </div>
             </div>
