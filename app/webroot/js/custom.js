@@ -3,6 +3,7 @@ $(document).ready(function(){
 		function() {		
 			//ishover = false;
 		    $(this).find('ul').addClass('active');
+		    $(this).find('ul').addClass('show-drop-list');
 		  // alert($(this).parent().html());
 		}, function() {				
 			$('ul').hover(
@@ -10,7 +11,8 @@ $(document).ready(function(){
 					//ishover = true;	
 					//alert('1');
 				}, function() {				
-					$(this).removeClass('active');					
+					$(this).removeClass('active');		
+					$(this).removeClass('show-drop-list');			
 					//alert('1');
 				}	
 			);
@@ -22,6 +24,7 @@ $(document).ready(function(){
 			// }		
 			
 			$(this).find('ul').removeClass('active');
+			$(this).find('ul').removeClass('show-drop-list');
 		}
 	);
 });

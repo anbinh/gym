@@ -1557,6 +1557,11 @@ input:invalid {
 #loadmore{
     display: none;
 }
+.show-drop-list{display:block;-webkit-transform-origin:top;-moz-transform-origin:top;transform-origin:top;-moz-animation:flipInX .3s 1;-webkit-animation:flipInX .3s 1;animation:flipInX .3s 1}
+@-webkit-keyframes flipInX{0%{opacity:0;-webkit-transform:perspective(1200px) rotateX(20deg);-moz-transform:perspective(1200px) rotateX(20deg);transform:perspective(1200px) rotateX(20deg)}100%{opacity:1;-webkit-transform:perspective(1200px) rotateX(0deg);-moz-transform:perspective(1200px) rotateX(0deg);transform:perspective(1200px) rotateX(0deg)}}
+@-moz-keyframes flipInX{0%{opacity:0;-webkit-transform:perspective(1200px) rotateX(20deg);-moz-transform:perspective(1200px) rotateX(20deg);transform:perspective(1200px) rotateX(20deg)}100%{opacity:1;-webkit-transform:perspective(1200px) rotateX(0deg);-moz-transform:perspective(1200px) rotateX(0deg);transform:perspective(1200px) rotateX(0deg)}}
+@keyframes flipInX{0%{opacity:0;-webkit-transform:perspective(1200px) rotateX(20deg);-moz-transform:perspective(1200px) rotateX(20deg);transform:perspective(1200px) rotateX(20deg)}100%{opacity:1;-webkit-transform:perspective(1200px) rotateX(0deg);-moz-transform:perspective(1200px) rotateX(0deg);transform:perspective(1200px) rotateX(0deg)}}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;

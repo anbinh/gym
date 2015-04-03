@@ -921,6 +921,23 @@ app.controller('ItemProgramController', function($scope,$http,$filter,$modal,$wi
 
 app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
     $scope.selectedIndex = 0;
+    $scope.isSaved = false;
+
+    $scope.save_program = function(program_id){
+        $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
+        .then(function(res){
+            //console.log(res);
+            $scope.isSaved = true;            
+        });
+    }
+    //if($filter('checkProgramIsSave')($scope.exercise.Exercise.id))
+    $scope.checkSaved = function(){
+        $http.get('/Apis/checkSavedProgram/' + program_id +'.json')
+        .then(function(res){
+            console.log(res);
+            //$scope.isSaved = res;
+        });
+    }
 }
 ]);
 
@@ -1140,6 +1157,12 @@ app.controller('DeleteaccountController', function($http, $scope, $mdDialog, $ti
 
         // }
     };
+});
+// check program is saved before
+app.filter('checkProgramIsSave', function(){
+    return function(program_id){
+        return true;
+    }
 });
 // Filter part
 app.filter('checkExerciseIsLike', function() {

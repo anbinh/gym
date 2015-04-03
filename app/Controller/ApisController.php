@@ -323,6 +323,55 @@ class ApisController extends AppController {
         }
     }
 
+    public function saveProgramUserProfile($program_id){
+        $user = $this->getAuthentication();
+        if($user)
+        {
+            $user_id = $user['id'];
+            // add new object Id
+            $this->User->mongoNoSetOperator = '$addToSet';
+            $susp = array(
+                "id" => $user_id,
+                "assigned_programs" => new MongoId($program_id)
+            );
+            $result = $this->User->save($susp);
+            $this->set(array(
+                'message' => $result,
+                '_serialize' => array('message')
+            ));
+        }
+        else{
+            $this->set(array(
+                'message' => "UnAuthentication",
+                '_serialize' => array('message')
+            ));
+        }
+    }
+
+    public function checkSavedProgram($program_id){
+        $user = $this->getAuthentication();
+        if($user)
+        {
+            $user_id = $user['id'];
+            
+            $search = array(
+                '_id' => array('$in' => $user['User']['assigned_programs'])
+            );
+            $program_saved = $this->Program->find('all', array('conditions'=>$search));
+            
+            
+            $this->set(array(
+                'message' => $program_saved,
+                '_serialize' => array('message')
+            ));
+        }
+        else{
+            $this->set(array(
+                'message' => "UnAuthentication",
+                '_serialize' => array('message')
+            ));
+        }
+    }
     public function getListProgram(){
         $programs_list = $this->Program->find('all');
         $this->set(array(
