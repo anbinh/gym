@@ -352,21 +352,19 @@ class ApisController extends AppController {
             ));
         }
     }
-
-    public function checkSavedProgram($program_id){
+    
+    public function getListProgramOfUser(){
         $user = $this->getAuthentication();
-        if($user)
-        {
+        if($user){
             $user_id = $user['id'];
             
             $search = array(
-                '_id' => array('$in' => $user['User']['assigned_programs'])
+                '_id' => array('$in' => $user['assigned_programs'])
             );
-            $program_saved = $this->Program->find('all', array('conditions'=>$search));
-            
-            
+            $list_programs_of_user = $this->Program->find('all', array('conditions'=>$search));
+
             $this->set(array(
-                'message' => $program_saved,
+                'message' => $list_programs_of_user,
                 '_serialize' => array('message')
             ));
         }

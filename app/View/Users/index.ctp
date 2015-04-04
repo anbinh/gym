@@ -25,14 +25,14 @@
                     <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_click" ng-class="isProgramShow ? 'arrow_down' : 'arrow_right'" ng-click="toggleMyProgram()"></div><p><?php echo __('my program')?></p>
                         <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="#"> <?php echo __('edit')?></a></div>
                     <div ng-show="isProgramShow" class="list_tile" class="row">
-                        <div class="exercise_box">
-                            <div class="user_favorite_exercise_img tile_1 exercise_box_highlight" >
+                        <div ng-repeat="item in list_program_saved" class="exercise_box">
+                            <div class="user_favorite_exercise_img exercise_box_highlight" style="background-color:{{item.Program.color_code}};">
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                           
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                                <div class="program_text_name"> SHAPE MODELING</div>
+                                <div style="text-align:center;"><img class="img_program" src="/img/images/{{item.Program.photo}}"></div>
+                                <div class="program_text_name">{{item.Program.name}}</div>
                             </div>                            
                         </div>
-                        <div class="exercise_box">
+                     <!--    <div class="exercise_box">
                             <div class="user_favorite_exercise_img tile_2 none_border"  >    
                                 <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                          
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
@@ -52,7 +52,7 @@
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
                                 <div class="program_text_name"> SHAPE MODELING</div>
                             </div>                            
-                        </div>                       
+                        </div>  -->                      
                     </div>
                 </div>
             </div>

@@ -114,16 +114,23 @@ app.controller('UserController', function($scope,$http) {
     $scope.user = [];
     $scope.exercises_list = [];
     $scope.exercises_like = [];
+    $scope.list_program_saved = [];
+
     $http.get('/apis/getUserProfileAndExerciseById/' + id +'.json')
-        .then(function(res){
-            console.log(res);
+        .then(function(res){        
             $scope.user = res.data.user;
             if(res.data.user.picture.trim().length == 0)
                 $scope.user.picture = '/img/images/avarta.png';
             if(res.data.user.language == "?")
                 $scope.user.language = "No Language Selected";
             $scope.exercises_list = angular.copy(res.data.exercises_like);
-            $scope.exercises_like = angular.copy(res.data.exercises_like);
+            $scope.exercises_like = angular.copy(res.data.exercises_like);           
+        });
+
+    // get list of programs had saved before by this User
+    $http.get('/Apis/getListProgramOfUser.json')
+        .then(function(res){            
+            $scope.list_program_saved = angular.copy(res.data.message);
         });
     $scope.edit = function() {
         window.location='/Users/edit_profile';
@@ -918,28 +925,22 @@ app.controller('ProgramListController', function($scope,$http,$filter,$modal,$wi
 );
 
 app.controller('ItemProgramController', function($scope,$http,$filter,$modal,$window){
+    // console.log($scope.user);
+    // get list of programs had saved by this User
 
 });
 
 app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
-    $scope.selectedIndex = 0;
-    $scope.isSaved = false;
+    $scope.selectedIndex = 0;    
 
     $scope.save_program = function(program_id){
         $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
-        .then(function(res){
-            //console.log(res);
-            $scope.isSaved = true;            
-        });
-    }
-    //if($filter('checkProgramIsSave')($scope.exercise.Exercise.id))
-    $scope.checkSaved = function(){
-        $http.get('/Apis/checkSavedProgram/' + program_id +'.json')
-        .then(function(res){
-            console.log(res);
-            //$scope.isSaved = res;
-        });
-    }
+        .success(function(res){
+                                             
+        }).finally(function() {           
+           $('.btn_save_program').attr('disabled', 'disabled');
+        });        
+    }   
 }
 ]);
 
@@ -1159,12 +1160,6 @@ app.controller('DeleteaccountController', function($http, $scope, $mdDialog, $ti
 
         // }
     };
-});
-// check program is saved before
-app.filter('checkProgramIsSave', function(){
-    return function(program_id){
-        return true;
-    }
 });
 // Filter part
 app.filter('checkExerciseIsLike', function() {

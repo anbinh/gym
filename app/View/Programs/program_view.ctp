@@ -78,7 +78,11 @@ md-tabs.md-default-theme md-tabs-ink-bar {
                     </div>
                 </div>
                 <div flex layout-align="end end" style="text-align: end; margin-right:15px;">                    
-                    <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
+                    <?php if($isSaved):?>
+                      <input disabled type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
+                    <?php else:?>
+                      <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
+                    <?php endif;?>
                 </div>
             </div>
             <div layout="row">
