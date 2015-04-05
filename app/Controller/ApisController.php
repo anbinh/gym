@@ -357,14 +357,39 @@ class ApisController extends AppController {
         $user = $this->getAuthentication();
         if($user){
             $user_id = $user['id'];
-            
+            $user = $this->User->findById($user_id);
+
             $search = array(
-                '_id' => array('$in' => $user['assigned_programs'])
+                '_id' => array('$in' => $user['User']['assigned_programs'])
             );
             $list_programs_of_user = $this->Program->find('all', array('conditions'=>$search));
 
             $this->set(array(
                 'message' => $list_programs_of_user,
+                '_serialize' => array('message')
+            ));
+        }
+        else{
+            $this->set(array(
+                'message' => "UnAuthentication",
+                '_serialize' => array('message')
+            ));
+        }
+    }
+
+    public function deleteAssignedProgram($assigned_programs=null){
+        $user = $this->getAuthentication();
+        if($user){
+            $user_id = $user['id'];
+           
+            $this->User->mongoNoSetOperator = '$pull';
+            $susp = array(
+                "id" => $user_id,
+                "assigned_programs" => new MongoId($assigned_programs)
+            );
+            $result = $this->User->save($susp);
+            $this->set(array(
+                'message' => $result,
                 '_serialize' => array('message')
             ));
         }

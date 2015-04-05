@@ -84,7 +84,7 @@
       </header>
       <div style="height:140px; overflow-y:scroll; padding: 5px 10px 0 10px">
           <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseProgramEditorController">
-            <div class="dropbox_program_editor card" data-drag="true" data-jqyoui-options="{revert: revertCard, helper: 'clone', appendTo: 'body', zIndex: 350}" jqyoui-draggable="{animate:true, placeholder:true, onStart:'startCallback'}">
+            <div class="dropbox_program_editor card" data-drag="true" data-jqyoui-options="{revert: revertCard, helper: 'clone', appendTo: 'body', zIndex: 350}" jqyoui-draggable="{index: 0, animate:true, placeholder:true, onStart:'startCallback'}">
               <div class="zone_hand_drag">
                   <img style="position:absolute; left:7px; top:5px;" ng-src="{{getImage()}}">
                   <img style="position:absolute; right:7px; top:5px;" src="/img/images/square.png">

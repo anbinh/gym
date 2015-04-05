@@ -8,8 +8,7 @@ class ProgramsController  extends AppController {
     	//pr($programs);
     }
     public function program_view($id=null){
-        $programs = $this->Program->findById($id);
-        // pr($programs);
+        $programs = $this->Program->findById($id);         
         $this->set('isSaved', $this->check_program_is_saved($id));
         $this->set('programs', $programs);
     }
@@ -18,7 +17,10 @@ class ProgramsController  extends AppController {
         $user = $this->getAuthentication();
         if($user)
         {
-            if(in_array($program_id, $user['assigned_programs'])){
+            $user_id = $user['id'];
+            $user = $this->User->findById($user_id);
+
+            if(in_array($program_id, $user['User']['assigned_programs'])){
                 return true;
             }
             return false;            

@@ -26,33 +26,12 @@
                         <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="#"> <?php echo __('edit')?></a></div>
                     <div ng-show="isProgramShow" class="list_tile" class="row">
                         <div ng-repeat="item in list_program_saved" class="exercise_box">
-                            <div class="user_favorite_exercise_img exercise_box_highlight" style="background-color:{{item.Program.color_code}};">
-                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                           
+                            <div class="user_favorite_exercise_img" ng-class="{exercise_box_highlight: $first}" style="background-color:{{item.Program.color_code}};">
+                                <div ng-show="isEdit" style="position:absolute; right:0;"><img ng-click="delete_program(item.Program.id, $index);" class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                           
                                 <div style="text-align:center;"><img class="img_program" src="/img/images/{{item.Program.photo}}"></div>
                                 <div class="program_text_name">{{item.Program.name}}</div>
                             </div>                            
-                        </div>
-                     <!--    <div class="exercise_box">
-                            <div class="user_favorite_exercise_img tile_2 none_border"  >    
-                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                          
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
-                                <div class="program_text_name"> LOOSING WEIGHT </div>
-                            </div>
-                        </div>
-                        <div class="exercise_box">
-                            <div class="user_favorite_exercise_img tile_3 none_border"  >     
-                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                         
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
-                                <div class="program_text_name"> LOOSING WEIGHT </div>
-                            </div>
-                        </div>
-                        <div class="exercise_box">
-                            <div class="user_favorite_exercise_img tile_1 none_border"  >       
-                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                     
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                                <div class="program_text_name"> SHAPE MODELING</div>
-                            </div>                            
-                        </div>  -->                      
+                        </div>                
                     </div>
                 </div>
             </div>
@@ -71,9 +50,12 @@
                                         >
                                 </div>
                                 <a href="/Exercises/detail/{{exercise.Exercise.id}}">
-                                    <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
-                                    <p style="text-align:center;">{{exercise.Exercise.care}}</p>
+                                    <div style="padding:0 30px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
+                                    <p style="text-align:center;">{{exercise.Exercise.name}}</p>
                                 </a>
+                                <ul class="list-inline list_body_part">
+                                   <li ng-repeat="body_part in exercise.Exercise.muscle">{{body_part.name}}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>

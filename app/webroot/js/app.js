@@ -124,12 +124,14 @@ app.controller('UserController', function($scope,$http) {
             if(res.data.user.language == "?")
                 $scope.user.language = "No Language Selected";
             $scope.exercises_list = angular.copy(res.data.exercises_like);
-            $scope.exercises_like = angular.copy(res.data.exercises_like);           
+            $scope.exercises_like = angular.copy(res.data.exercises_like); 
+            console.log(res.data);            
         });
 
     // get list of programs had saved before by this User
     $http.get('/Apis/getListProgramOfUser.json')
-        .then(function(res){            
+        .then(function(res){  
+             console.log(res.data.message);
             $scope.list_program_saved = angular.copy(res.data.message);
         });
     $scope.edit = function() {
@@ -161,6 +163,13 @@ app.controller('UserController', function($scope,$http) {
     };
     $scope.toggleExercise = function(){
         $scope.isExerciseShow = !$scope.isExerciseShow;
+    };
+    $scope.delete_program = function(program_id, index){
+        $scope.list_program_saved.splice(index, 1);
+        $http.get('/Apis/deleteAssignedProgram/'+program_id+'.json')
+        .then(function(res){               
+            
+        });
     };
     $scope.isExerciseShow = true;
     $scope.isProgramShow = true;
@@ -483,17 +492,16 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 
     // drop
     $scope.dropCallback = function (event, ui) {
-        // var $lane = $(event.target);
-        // var $card = ui.draggable;
-       
-        // if ($card.scope().card.lane != $lane.scope().lane.id) {
-        //     $card.scope().card.lane = $lane.scope().lane.id;
-        // }
-        // else {
-        //     $card.css('opacity', 'inherit');
-        //     return false;
-        // }          
-        ui.draggable.appendTo('.program_tab_editor');
+        var $lane = $(event.target);
+        var $card = ui.draggable;
+       console.log($card.scope());
+        if ($card.scope().card.lane != $lane.scope().lane.id) {
+            $card.scope().card.lane = $lane.scope().lane.id;
+        }
+        else {
+            $card.css('opacity', 'inherit');
+            return false;
+        }                  
     };
 });
 app.filter('filterExerciseProgramEditor', function(){
@@ -588,12 +596,11 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
     $scope.exercises_list_for_loadmore = [];
-    // get list exercise
+    // get list exercise    
     $http.get('/Apis/getListExercise.json')
-        .then(function(res){
-            console.log(res);
+        .then(function(res){            
             $scope.exercises_like = res.data.exercises_like;
-            //$scope.exercises_list = angular.copy(res.data.exercises_list);
+            $scope.exercises_list = angular.copy(res.data.exercises_list);
             $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
             $scope.print_out_view(angular.copy(res.data.exercises_list));
         });
@@ -934,11 +941,12 @@ app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
     $scope.selectedIndex = 0;    
 
     $scope.save_program = function(program_id){
+        $('.btn_save_program').attr('disabled', 'disabled');  
         $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
         .success(function(res){
-                                             
+
         }).finally(function() {           
-           $('.btn_save_program').attr('disabled', 'disabled');
+           // $('.btn_save_program').attr('disabled', 'disabled');
         });        
     }   
 }
