@@ -1,3 +1,4 @@
+<script src="http://connect.facebook.net/en_US/all.js"></script>
 <style type="text/css">
  .tabsdemoDynamicTabs .sample {
   height: 500px; }

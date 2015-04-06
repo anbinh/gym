@@ -592,4 +592,23 @@ class ApisController extends AppController {
             }
         }
     }
+
+    public function GetIsAuthenticate()
+    {
+        $user = $this->getAuthentication();
+        if($user)
+        {
+            $this->set(array(
+                    'message' => true,
+                    '_serialize' => array('message')
+                ));
+        }
+        else
+        {
+            $this->set(array(
+                    'message' => false,
+                    '_serialize' => array('message')
+                ));
+        }
+    }
 }

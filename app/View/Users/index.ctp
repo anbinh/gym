@@ -49,9 +49,14 @@
                                          ng-click="toggleSelection()"
                                         >
                                 </div>
-                                <a href="/Exercises/detail/{{exercise.Exercise.id}}">
-                                    <div style="padding:0 30px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
-                                    <p style="text-align:center;">{{exercise.Exercise.name}}</p>
+                                <a href="/Exercises/detail/?id={{exercise.Exercise.id}}">
+                                    <div style="padding:0 30px;">
+                                        <ui-video
+                                            video="exercise"
+                                            ng-mouseover="hoverIn($event)"
+                                            ng-mouseleave="hoverOut($event)" >
+                                        </ui-video></div>
+                                    <p class="exercise_name">{{exercise.Exercise.name}}</p>
                                 </a>
                                 <ul class="list-inline list_body_part">
                                    <li ng-repeat="body_part in exercise.Exercise.muscle">{{body_part.name}}</li>

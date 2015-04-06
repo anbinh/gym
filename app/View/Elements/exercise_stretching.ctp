@@ -92,13 +92,17 @@
                     </div>
                 <?php endif;?>
                 <?php if($item['mode']==5):?>
-                    <div class="exercise_box exercise_box_editor">
+                    <div class="exercise_box exercise_box_editor" ng-controller="VideoController">
                         <div class="box_program_vew">                           
                             <div class="sequence_number_box">
                                <p><?php echo $i;?></p>
                             </div>
                             <div class="row no_margin" style="padding: 0 40px 0 40px;"> 
-                                <img src="/img/images/6035.jpeg" class="img-responsive">
+                                <!-- <img src="/img/images/6035.jpeg" class="img-responsive"> -->
+                                <video 
+                                ng-mouseover="hoverIn($event)"
+                                ng-mouseleave="hoverOut($event)"
+                                class="img-responsive" preload="none" src="/Exercise_list/1110/1110_s.mp4" poster="/Exercise_list/img/6035.jpeg" width="208px" height="152px" <="" video=""></video>
                             </div>
                             <div class="description">
                                 <p>Cum autem commodis intervallata  temporibus convivia longa et n copie</p>
