@@ -36,7 +36,9 @@ class ProgramsController  extends AppController {
             );
             $exercises_list = $this->Exercise->find('all',array('conditions'=>$search));
             $exercises_list = Set::combine($exercises_list, '{n}.Exercise.id', '{n}.Exercise');
+
             //pr($exercises_list);
+            $this->set('exercises_list',$exercises_list);
         }
         else
         {
