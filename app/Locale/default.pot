@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-04-01 18:36+0200\n"
+"POT-Creation-Date: 2015-04-07 18:48+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -128,12 +128,20 @@ msgstr ""
 msgid "Edit Subdocument"
 msgstr ""
 
-#: View/Elements/exercise_stretching.ctp:20;49;65;79;107
+#: View/Elements/exercise_stretching.ctp:23;52;68;82;114
 msgid "Serie"
 msgstr ""
 
-#: View/Elements/exercise_stretching.ctp:22;69;83
+#: View/Elements/exercise_stretching.ctp:25;72;86
 msgid "Repetition"
+msgstr ""
+
+#: View/Elements/exercise_stretching.ctp:115
+msgid "Hold"
+msgstr ""
+
+#: View/Elements/exercise_stretching.ctp:115
+msgid "Seconds"
 msgstr ""
 
 #: View/Elements/right_advs.ctp:4
@@ -152,15 +160,15 @@ msgstr ""
 msgid "Body Part"
 msgstr ""
 
-#: View/Exercises/detail.ctp:104
+#: View/Exercises/detail.ctp:119
 msgid "Position"
 msgstr ""
 
-#: View/Exercises/detail.ctp:117
+#: View/Exercises/detail.ctp:132
 msgid "Execution"
 msgstr ""
 
-#: View/Exercises/detail.ctp:131
+#: View/Exercises/detail.ctp:146
 msgid "Care"
 msgstr ""
 
@@ -186,22 +194,26 @@ msgstr ""
 
 #: View/Exercises/login_modal.ctp:3
 #: View/Layouts/default.ctp:109
+#: View/Programs/login_modal.ctp:3
 #: View/Users/login.ctp:6
 msgid "Login"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:7
+#: View/Programs/login_modal.ctp:7
 #: View/Users/login.ctp:10
 msgid "Login with Facebook"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:9
+#: View/Programs/login_modal.ctp:9
 #: View/Users/login.ctp:12
 #: View/Users/signup.ctp:9
 msgid "or"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:25
+#: View/Programs/login_modal.ctp:25
 #: View/Users/delete_account.ctp:33
 #: View/Users/forget_password.ctp:20
 #: View/Users/login.ctp:28
@@ -210,6 +222,7 @@ msgid "Email"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:27
+#: View/Programs/login_modal.ctp:27
 #: View/Users/forget_password.ctp:22
 #: View/Users/login.ctp:30
 #: View/Users/signup.ctp:21
@@ -217,6 +230,7 @@ msgid "Your email is required."
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:28
+#: View/Programs/login_modal.ctp:28
 #: View/Users/forget_password.ctp:23
 #: View/Users/login.ctp:31
 #: View/Users/signup.ctp:22
@@ -224,33 +238,39 @@ msgid "Please type a valid email."
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:32
+#: View/Programs/login_modal.ctp:32
 #: View/Users/login.ctp:35
 #: View/Users/signup.ctp:26
 msgid "Password"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:34
+#: View/Programs/login_modal.ctp:34
 #: View/Users/login.ctp:37
 #: View/Users/signup.ctp:28
 msgid "Please input the password"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:40
+#: View/Programs/login_modal.ctp:40
 #: View/Users/login.ctp:43
 msgid "SIGN IN"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:47
+#: View/Programs/login_modal.ctp:47
 #: View/Users/login.ctp:50
 msgid "Forgot password"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:48
+#: View/Programs/login_modal.ctp:48
 #: View/Users/login.ctp:51
 msgid "Don't have an account?"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:48
+#: View/Programs/login_modal.ctp:48
 #: View/Users/login.ctp:51
 msgid "Sign Up now!"
 msgstr ""
@@ -289,7 +309,11 @@ msgstr ""
 msgid "Show only"
 msgstr ""
 
-#: View/Programs/program_view.ctp:102
+#: View/Programs/program_view.ctp:83;85
+msgid "Save"
+msgstr ""
+
+#: View/Programs/program_view.ctp:105
 msgid "Day"
 msgstr ""
 
@@ -420,7 +444,7 @@ msgid "edit"
 msgstr ""
 
 #: View/Users/edit_profile.ctp:194
-#: View/Users/index.ctp:62
+#: View/Users/index.ctp:41
 msgid "favorite exercise"
 msgstr ""
 

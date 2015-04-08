@@ -942,20 +942,53 @@ app.controller('ItemProgramController', function($scope,$http,$filter,$modal,$wi
 
 });
 
-app.controller('ProgramController', ['$scope', '$http', function($scope, $http){
-    $scope.selectedIndex = 0;    
+app.controller('ProgramController', function($scope, $http, $modal,$window){
+    $scope.selectedIndex = 0;   
+    $scope.isAuthenticate = false;
+    $http.get('/Apis/GetIsAuthenticate.json')
+        .then(function(res){
+            console.log(res);
+            $scope.isAuthenticate = res.data.message;
+        });
+
 
     $scope.save_program = function(program_id){
+        if($scope.isAuthenticate == false)
+        {
+            var modalInstance = $modal.open({
+              templateUrl:'/Programs/login_modal.ctp',
+              controller: 'LoginModalInstanceCtrl',
+              backdropClass: 'backdropClass_custom'                    
+            });            
+            modalInstance.result.then(function (Id) {
+                console.log(Id);
+                $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
+                    .then(function(res){
+                        console.log(res);
+                        $window.location.reload();
+                    });
+            }, function () {
+            });      
+        }
+        else
+        {
+            $scope.saveProgramHandler(program_id);
+        }
+    }   
+
+    $scope.saveProgramHandler = function(program_id)
+    {
         $('.btn_save_program').attr('disabled', 'disabled');  
         $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
         .success(function(res){
 
         }).finally(function() {           
            // $('.btn_save_program').attr('disabled', 'disabled');
-        });        
-    }   
-}
-]);
+        });     
+    }
+
+    
+});
 
 app.controller('ForgetPasswordController', ['$scope', '$http' , '$sce' , function($scope,$http,$sce){
     $scope.message = "";
@@ -1312,6 +1345,9 @@ app.filter('checkExerciseIsLike', function() {
 
 
 // app.filter('exerciseOptionBodyPartFilter', function() {
+
+
+
 //     return function(input , option , body_part_id) {        
         
 //         // filter by category_id
@@ -1358,25 +1394,16 @@ app.filter('programOptionFilter', function() {
     }
 });
 
-app.controller('TestController', function($scope,$http,$filter){
-        $scope.tests = [
-            {
-                id: '123',
-                mp4: '/Exercise_list/1109/1109_s.mp4',
-                jpg: '/img/images/6035.jpeg'
-            },
-            {
-                id: '124',
-                mp4: '/Exercise_list/1109/1119_s.mp4',
-                jpg: '/img/images/6035.jpeg'
-            }
-        ];
-
-        $scope.hoverIn = function(){
-            console.log('in');
+app.controller('VideoController', function($scope,$http,$filter){        
+        $scope.hoverIn = function(item){
+         var videoElements = angular.element(item.target);
+         videoElements[0].play();       
         };
-        $scope.hoverOut = function(){
-            console.log('out');
+        $scope.hoverOut = function(e){
+            var videoElements = angular.element(e.target);
+            videoElements[0].pause();        
+            videoElements[0].currentTime = 0;
+            videoElements[0].load();
         };
     }
 );
