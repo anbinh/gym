@@ -363,7 +363,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
         .then(function(res){
             $scope.exercises_like = res.data.exercises_like;
             $scope.exercises_list = angular.copy(res.data.exercises_list);
-            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);            
         });
 
     $scope.showAllExercise = true; 
@@ -490,18 +490,23 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
         return !valid;
     };
 
+    $scope.lanes = [
+      {id:'lane1'},
+      {id:'lane2'},
+      {id:'lane3'}
+    ];
     // drop
     $scope.dropCallback = function (event, ui) {
         var $lane = $(event.target);
-        var $card = ui.draggable;
-       console.log($card.scope());
-        if ($card.scope().card.lane != $lane.scope().lane.id) {
-            $card.scope().card.lane = $lane.scope().lane.id;
-        }
-        else {
-            $card.css('opacity', 'inherit');
-            return false;
-        }                  
+        var $exercise = ui.draggable;      
+        console.log($exercise.scope().exercise.Exercise.id);
+        // if ($card.scope().card.lane != $lane.scope().lane.id) {
+        //     $card.scope().card.lane = $lane.scope().lane.id;
+        // }
+        // else {
+        //     $card.css('opacity', 'inherit');
+        //     return false;
+        // }                  
     };
 });
 app.filter('filterExerciseProgramEditor', function(){
@@ -906,14 +911,14 @@ app.controller('ProgramListController', function($scope,$http,$filter,$modal,$wi
     // get list exercise
     $http.get('/Apis/getListProgram.json')
         .then(function(res){
-            console.log(res);
+          //  console.log(res);
             $scope.programs_list = res.data.programs_list;
             $scope.programs_list_backup = angular.copy(res.data.programs_list);
         });
     // get list part body for select
     $http.get('/Apis/getListObjective.json')
         .then(function(res){
-            console.log(res);
+         //   console.log(res);
             $scope.objective_items = res.data.objective_list;
         });
 
@@ -1104,6 +1109,102 @@ app.directive('compareTo', function(){
           }
     };
 });
+
+app.directive('draggable', function() {
+  return function(scope, element) {
+    // this gives us the native JS object
+    var el = element[0];
+    
+    el.draggable = true;
+    
+    el.addEventListener(
+      'dragstart',
+      function(e) {
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('Text', this.id);
+        this.classList.add('drag');
+        return false;
+      },
+      false
+    );
+    
+    el.addEventListener(
+      'dragend',
+      function(e) {
+        this.classList.remove('drag');
+        return false;
+      },
+      false
+    );
+  }
+});
+app.directive('droppable', function() {
+  return {
+    scope: {
+      drop: '&',
+      bin: '='
+    },
+    link: function(scope, element) {
+      // again we need the native object
+      var el = element[0];
+      
+      el.addEventListener(
+        'dragover',
+        function(e) {
+          e.dataTransfer.dropEffect = 'move';
+          // allows us to drop
+          if (e.preventDefault) e.preventDefault();
+          this.classList.add('over');
+          return false;
+        },
+        false
+      );
+      
+      el.addEventListener(
+        'dragenter',
+        function(e) {
+          this.classList.add('over');
+          return false;
+        },
+        false
+      );
+      
+      el.addEventListener(
+        'dragleave',
+        function(e) {
+          this.classList.remove('over');
+          return false;
+        },
+        false
+      );
+      
+      el.addEventListener(
+        'drop',
+        function(e) {
+          // Stops some browsers from redirecting.
+          if (e.stopPropagation) e.stopPropagation();
+          
+          this.classList.remove('over');
+          
+          var binId = this.id;
+          var item = document.getElementById(e.dataTransfer.getData('Text'));
+          this.appendChild(item);
+          // call the passed drop function
+          scope.$apply(function(scope) {
+            var fn = scope.drop();
+            if ('undefined' !== typeof fn) {            
+              fn(item.id, binId);
+            }
+          });
+          
+          return false;
+        },
+        false
+      );
+    }
+  }
+});
+
 app.controller('DeleteaccountController', function($http, $scope, $mdDialog, $timeout){
     var model = this;
     model.email = "";
