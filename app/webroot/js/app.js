@@ -607,9 +607,16 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
     $scope.exercises_list_for_loadmore = [];
+    $scope.isMoblie = false;
+    // detect is mobile device
+    $http.get('/Apis/GetIsOnMobile.json')
+        .then(function(res){            
+            $scope.isMoblie = res.data.message;            
+        });
     // get list exercise    
     $http.get('/Apis/getListExercise.json')
-        .then(function(res){            
+        .then(function(res){    
+            console.log(res);        
             $scope.exercises_like = res.data.exercises_like;
             $scope.exercises_list = angular.copy(res.data.exercises_list);
             $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
@@ -618,7 +625,6 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     // get list part body for select
     $http.get('/Apis/getListBodyPart.json')
         .then(function(res){
-            console.log(res);
             $scope.body_part_items = res.data.body_list;
         });
 
@@ -809,7 +815,7 @@ app.directive('uiVideo', function () {
     };
 });
 
-app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$window){
+app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$window,state){
     $scope.toggleSelection = function() {
         if(id == 0)
         {
@@ -845,6 +851,33 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
         videoElements[0].load();
     };
 
+    $scope.OnMobileImgClick = function(e){
+        if($scope.isAnimate)
+        {
+            var url = "/Exercises/detail?id=" + $scope.exercise.Exercise.id;
+            window.location = url;
+        }
+        else
+        {
+            state.update($scope.exercise.Exercise.id);
+            $scope.isAnimate = true;
+        }        
+    };
+
+    $scope.getExerciseImage = function()
+    {
+        if ( $scope.isAnimate ) {
+            return $scope.exercise.Exercise.photo_animate;
+        } else {
+            return $scope.exercise.Exercise.photo;
+        }
+    }
+
+    $scope.$on('state.update', function (newState) {
+        if($scope.exercise.Exercise.id != newState)
+             $scope.isAnimate = false;
+    });
+
     $scope.toggleStar = function(){
         $scope.isSelected = ! $scope.isSelected;
         if ( $scope.isSelected ) {
@@ -869,10 +902,30 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
         }
     };
 
+    $scope.isAnimate = false;
+
     if ( $filter('checkExerciseIsLike')($scope.exercises_like, $scope.exercise.Exercise.id))
         $scope.isSelected = true;
     else
         $scope.isSelected = false;
+});
+
+app.factory('state', function($rootScope) {
+    var state;
+
+    var broadcast = function (state) {
+      $rootScope.$broadcast('state.update', state);
+    };
+
+    var update = function (newState) {
+      state = newState;
+      broadcast(state);
+    };
+    
+    return {
+      update: update,
+      state: state,
+    };
 });
 
 

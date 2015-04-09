@@ -611,4 +611,22 @@ class ApisController extends AppController {
                 ));
         }
     }
+
+    public function GetIsOnMobile()
+    {        
+        if($this->request->is('mobile'))
+        {
+            $this->set(array(
+                    'message' => true,
+                    '_serialize' => array('message')
+                ));
+        }
+        else
+        {
+            $this->set(array(
+                    'message' => false,
+                    '_serialize' => array('message')
+                ));
+        }
+    }
 }
