@@ -64,8 +64,11 @@ class ProgramsController  extends AppController {
         }
     }
     public function program_editor(){
-    	//$list_exercise = $this->Exercise->find('all');
-
+    	$user = $this->getAuthentication();
+        if(!$user)
+        {
+             $this->redirect('/Users/login');
+        }        
     }
 }
 ?>

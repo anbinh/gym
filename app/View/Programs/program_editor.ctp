@@ -94,10 +94,10 @@
                   <img style="position:absolute; right:3px; top:11px;" src="/img/images/hand_drag.png">        
               </div>
               <div style="text-align:center; padding-top:10px;">
-                <img src="/img/images/favourite_exercise.png">
+                <img src="/img/images/{{exercise.Exercise.photo}}">
               </div> 
               <div class="text_exercise">
-                <p>Cum autem commodis intervallata temporibus...</p>
+                <p>{{exercise.Exercise.name}}</p>
               </div>                       
             </div> 
           </div>  
