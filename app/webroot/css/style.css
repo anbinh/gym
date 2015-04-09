@@ -352,7 +352,7 @@ margin: 0 30px 25px 30px;
 .list_tile{
     overflow: auto;
     padding-top: 4px;
-    padding-left: 1px;
+    /*padding-left: 1px;*/
 }
 .tile_packabs{
     background-color:#d8e6dc; 
