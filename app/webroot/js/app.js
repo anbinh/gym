@@ -19,9 +19,9 @@ app.controller('ExerciseDetailController', function($scope,$http) {
         });
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
 
@@ -142,9 +142,9 @@ app.controller('UserController', function($scope,$http) {
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
     // like star handler
@@ -269,9 +269,9 @@ app.controller('UserProfileController', function($scope,$http){
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
     // like star handler
@@ -474,7 +474,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
             return "/img/images/star_show_only.png";
         }
         else{
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         }
     }
     // drag 
@@ -589,9 +589,9 @@ app.controller('ItemExerciseProgramEditorController', function($scope,$http,$fil
     
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
     $scope.position = 'relative';  
@@ -723,7 +723,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         $http.get('/Apis/getListExerciseLoadMore/' + $scope.current_ofset +'.json')
             .then(function(res){                            
                 var i = 0;
-                for(i = 0;i<50;i++)
+                for(i = 0;i<24;i++)
                 {                    
                     $scope.exercises_list_backup.push( angular.copy(res.data.exercises_list_more[i]) );    
                 }
@@ -859,9 +859,9 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
 
