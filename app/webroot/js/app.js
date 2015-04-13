@@ -142,7 +142,7 @@ app.controller('UserController', function($scope,$http) {
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/Star.png";
+            return "/img/images/star.png";
         } else {
             return "/img/images/Star_none.png";
         }
@@ -269,7 +269,7 @@ app.controller('UserProfileController', function($scope,$http){
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/Star.png";
+            return "/img/images/star.png";
         } else {
             return "/img/images/Star_none.png";
         }
@@ -475,7 +475,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
             return "/img/images/star_show_only.png";
         }
         else{
-            return "/img/images/Star.png";
+            return "/img/images/star.png";
         }
     }
     // drag 
@@ -590,7 +590,7 @@ app.controller('ItemExerciseProgramEditorController', function($scope,$http,$fil
     
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/Star.png";
+            return "/img/images/star.png";
         } else {
             return "/img/images/Star_none.png";
         }
@@ -860,7 +860,7 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/Star.png";
+            return "/img/images/star.png";
         } else {
             return "/img/images/Star_none.png";
         }
