@@ -209,11 +209,23 @@ class ApisController extends AppController {
         $exercises_list = $this->Exercise->find('all',array('conditions'=>$search));*/
         
         // find all exercise this user like
-        $exercises_list = $this->Exercise->find('all');
+        $exercises_list = $this->Exercise->find('all',array('limit'=>24,'page'=>1));
         $this->set(array(
             'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,
             '_serialize' => array('exercises_list','exercises_like')
+        ));
+    }
+
+    public function getListExerciseLoadMore($offset){        
+        $exercises_list_more = $this->Exercise->find('all',array('limit'=>24,'page'=>$offset));
+        $isOver = false;
+        if(sizeof($exercises_list_more) < 24)
+            $isOver =  true;
+        $this->set(array(
+            'exercises_list_more' => $exercises_list_more,
+            'isOver' => $isOver,
+            '_serialize' => array('exercises_list_more','isOver')
         ));
     }
 

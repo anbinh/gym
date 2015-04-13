@@ -11,10 +11,17 @@
                                 <p><?php echo $i;?></p>
                             </div>
                             <div class="row no_margin" style="padding: 0 40px 0 40px;"> 
-                                <video 
-                                ng-mouseover="hoverIn($event)"
-                                ng-mouseleave="hoverOut($event)"
-                                class="img-responsive" preload="none" src="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['video_small'];?>" poster="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>" width="208px" height="152px" <="" video=""></video>
+                                <?php if(!isset($is_mobile)) { ?>
+                                    <video 
+                                    ng-mouseover="hoverIn($event)"
+                                    ng-mouseleave="hoverOut($event)"
+                                    class="img-responsive" preload="none" src="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['video_small'];?>" poster="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>" width="208px" height="152px" <="" video=""></video>
+                                <?php } else { ?>
+                                    <img class="img-responsive"
+                                                     ng-src="{{getExerciseImage('<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>','<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo_animate'];?>')}}"
+                                                     ng-click="OnMobileImgClick($event,'<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['id'];?>')"
+                                                >
+                                <?php }?>
                             </div>
                             <div class="description">
                                 <p><?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['name'];?></p>
@@ -101,11 +108,17 @@
                                <p><?php echo $i;?></p>
                             </div>
                             <div class="row no_margin" style="padding: 0 40px 0 40px;"> 
-                                <!-- <img src="/img/images/6035.jpeg" class="img-responsive"> -->
-                                <video 
-                                ng-mouseover="hoverIn($event)"
-                                ng-mouseleave="hoverOut($event)"
-                                class="img-responsive" preload="none" src="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['video_small'];?>" poster="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>" width="208px" height="152px" <="" video=""></video>
+                                <?php if(!isset($is_mobile)) { ?>
+                                    <video 
+                                    ng-mouseover="hoverIn($event)"
+                                    ng-mouseleave="hoverOut($event)"
+                                    class="img-responsive" preload="none" src="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['video_small'];?>" poster="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>" width="208px" height="152px" <="" video=""></video>
+                                <?php } else { ?>
+                                    <img class="img-responsive"
+                                                     ng-src="{{getExerciseImage('<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>','<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo_animate'];?>')}}"
+                                                     ng-click="OnMobileImgClick($event,'<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['id'];?>')"
+                                                >
+                                <?php }?>
                             </div>
                             <div class="description">
                                 <p><?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['name'];?></p>

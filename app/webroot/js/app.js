@@ -19,9 +19,9 @@ app.controller('ExerciseDetailController', function($scope,$http) {
         });
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
 
@@ -142,9 +142,9 @@ app.controller('UserController', function($scope,$http) {
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
     // like star handler
@@ -269,9 +269,9 @@ app.controller('UserProfileController', function($scope,$http){
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
     // like star handler
@@ -475,7 +475,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
             return "/img/images/star_show_only.png";
         }
         else{
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         }
     }
     // drag 
@@ -590,9 +590,9 @@ app.controller('ItemExerciseProgramEditorController', function($scope,$http,$fil
     
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
     $scope.position = 'relative';  
@@ -609,6 +609,8 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.exercises_list = [];
     $scope.exercises_list_for_loadmore = [];
     $scope.isMoblie = false;
+    $scope.isOver = true;
+    $scope.showLoader = false;
     // detect is mobile device
     $http.get('/Apis/GetIsOnMobile.json')
         .then(function(res){            
@@ -621,7 +623,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.exercises_like = res.data.exercises_like;
             $scope.exercises_list = angular.copy(res.data.exercises_list);
             $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
-            $scope.print_out_view(angular.copy(res.data.exercises_list));
+            //$scope.print_out_view(angular.copy(res.data.exercises_list));
         });
     // get list part body for select
     $http.get('/Apis/getListBodyPart.json')
@@ -661,7 +663,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isMuscleSelected = false;  
         }    
         //$scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));            
-        $scope.print_out_view(null);
+        $scope.print_out_view();
     };
     $scope.cardioClick = function() {
         if($scope.isCardioSelected)
@@ -677,7 +679,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isMuscleSelected = false;  
         }    
         //$scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
-         $scope.print_out_view(null);
+         $scope.print_out_view();
     };
 
     $scope.muscleClick = function() {
@@ -694,7 +696,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isMuscleSelected = true;
         }    
        // $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
-         $scope.print_out_view(null);
+         $scope.print_out_view();
     };   
 
     // select body part change
@@ -706,70 +708,31 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         else
         {      
            $scope.body_part_id = "";
-        }
-        //$scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
-         $scope.print_out_view(null);
+        }       
+        $scope.print_out_view();
     }   
 
     // print out on the view
-    $scope.print_out_view = function(input){        
-        if(input == null){
-            $scope.exercises_list_for_loadmore = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
-        }        
-        else{
-            $scope.exercises_list_for_loadmore = angular.copy(input);
-        }
-        // reset current_offset and list_loadmore
-        $scope.current_ofset = 50;
-        $scope.list_loadmore = [];
-        $('#list_exercises .loadmore').remove();
-
-        if($scope.exercises_list_for_loadmore.length > 50){
-            $scope.exercises_list = angular.copy($scope.exercises_list_for_loadmore.slice(0, 50));           
-        }
-        else{
-            $scope.exercises_list = angular.copy($scope.exercises_list_for_loadmore);
-        }        
-        console.log($scope.exercises_list_for_loadmore.length);
-
-    }
-    // copy from loadmore to list_exercise
-    $scope.copy_to_main_list = function(){
-        alert('done');        
-        $scope.list_loadmore = [];
+    $scope.print_out_view = function(){        
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
     }
     // load more exercises
-    $scope.current_ofset = 50;
-    $scope.list_loadmore = [];    
-    $scope.loadmore_exercises = function(){                
-        var size = 0;        
-        if($scope.current_ofset != -1){
-            if($scope.exercises_list_for_loadmore.length >= $scope.current_ofset + 50){
-                size = 50;            
-                //console.log('du');
-            }
-            else{
-                size = $scope.exercises_list_for_loadmore.length - $scope.current_ofset;            
-              //  console.log('thieu');
-            }      
-           
-            $scope.list_loadmore = $scope.exercises_list_for_loadmore.slice($scope.current_ofset, $scope.current_ofset + size);            
-
-            // // append list_exercises
-            // var list_exercises = angular.element(document.querySelector( '#list_exercises' ));
-            // var temp = angular.element(document.querySelector( '#loadmore' ));           
-            // list_exercises.append(temp.html()); 
-
-
-            if(size == 50){
-                $scope.current_ofset = $scope.current_ofset + size;            
-            }
-            else{
-                console.log($scope.current_ofset);
-                $scope.current_ofset = -1;
-                console.log(size);
-            }          
-        }       
+    $scope.current_ofset = 0;    
+    $scope.loadmore_exercises = function(){       
+        $scope.showLoader = true; 
+        $scope.current_ofset = $scope.current_ofset + 1;
+        $http.get('/Apis/getListExerciseLoadMore/' + $scope.current_ofset +'.json')
+            .then(function(res){                            
+                var i = 0;
+                for(i = 0;i<24;i++)
+                {                    
+                    $scope.exercises_list_backup.push( angular.copy(res.data.exercises_list_more[i]) );    
+                }
+                if(res.data.isOver == true)
+                    $scope.isOver = false;
+                $scope.print_out_view();    
+                $scope.showLoader = false;        
+        });          
     }  
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
         // append list_exercises
@@ -897,9 +860,9 @@ app.controller('ItemExerciseController', function($scope,$http,$filter,$modal,$w
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/star.png";
+            return "/img/images/Star.png";
         } else {
-            return "/img/images/star_blank.png";
+            return "/img/images/Star_none.png";
         }
     };
 
@@ -1419,7 +1382,9 @@ app.filter('programOptionFilter', function() {
     }
 });
 
-app.controller('VideoController', function($scope,$http,$filter){        
+app.controller('VideoController', function($scope,$http,$filter,state){     
+        $scope.isAnimate = false;
+        $scope.exercise_id = '';   
         $scope.hoverIn = function(item){
          var videoElements = angular.element(item.target);
          videoElements[0].play();       
@@ -1430,6 +1395,34 @@ app.controller('VideoController', function($scope,$http,$filter){
             videoElements[0].currentTime = 0;
             videoElements[0].load();
         };
+
+        $scope.OnMobileImgClick = function(e,id){
+            $scope.exercise_id = id;
+            if($scope.isAnimate)
+            {
+                var url = "/Exercises/detail?id=" + id;
+                window.location = url;
+            }
+            else
+            {
+                state.update(id);
+                $scope.isAnimate = true;
+            }        
+        };
+
+        $scope.getExerciseImage = function(static_img,animate)
+        {
+            if ( $scope.isAnimate ) {
+                return animate;
+            } else {
+                return static_img;
+            }
+        }
+
+        $scope.$on('state.update', function (newState) {
+            if($scope.exercise_id != newState)
+                 $scope.isAnimate = false;
+        });
     }
 );
 
