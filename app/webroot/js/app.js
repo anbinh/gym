@@ -19,7 +19,7 @@ app.controller('ExerciseDetailController', function($scope,$http) {
         });
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
-            return "/img/images/Star.png";
+            return "/img/images/star.png";
         } else {
             return "/img/images/Star_none.png";
         }
