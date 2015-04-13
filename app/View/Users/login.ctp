@@ -55,7 +55,7 @@
 
 <script type="text/javascript">
     FB.init({
-        appId: '577637839045306',
+        appId: '577637839045306' ,
         //appId: '609280322537059', // gym.miratik.com account test
         status: true,
         cookie: true,
