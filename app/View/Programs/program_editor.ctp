@@ -17,12 +17,13 @@
   </div>
 
   <div layout="row" class="main_content_program_editor">
-    <div id="drop1" droppable style="border:1px solid; width:300px; height:150px;" flex class="program_tab_editor1">
-      
+    <div data-drop="true" ng-model='list4' jqyoui-droppable="{multiple:true}" id="drop1" droppable style="border:1px solid; width:300px; height:150px;" flex class="program_tab_editor1">
+        <div ng-model="list4">
+          {{list4.Exercise.name}}
+        </div>
+    
     </div>
-    <div id="drop2" droppable style="border:1px solid; width:300px; height:150px;" flex class="program_tab_editor">
-      
-    </div>
+
     <div layout="row" layout-align="center start" class="right_content_program_editor">
       <div>
         <div class="type_of_program">      
@@ -87,14 +88,14 @@
       </header>
       <div style="height:140px; overflow-y:scroll; padding: 5px 10px 0 10px">
           <div  ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseProgramEditorController">
-            <div draggable class="dropbox_program_editor" id="item{{$index}}">
+            <div data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="exercises_list" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}" class="dropbox_program_editor">
               <div class="zone_hand_drag">
                   <img style="position:absolute; left:7px; top:5px;" ng-src="{{getImage()}}">
                   <img style="position:absolute; right:7px; top:5px;" src="/img/images/square.png">
                   <img style="position:absolute; right:3px; top:11px;" src="/img/images/hand_drag.png">        
               </div>
               <div style="text-align:center; padding-top:10px;">
-                <img src="/img/images/{{exercise.Exercise.photo}}">
+                <img src="df{{exercise.Exercise.photo}}" class="img-responsive">
               </div> 
               <div class="text_exercise">
                 <p>{{exercise.Exercise.name}}</p>

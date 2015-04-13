@@ -353,6 +353,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
     $scope.body_part_id = "";
     $scope.exercise_type = ""; // select type of exercise when using on Iphone portrait device
 
+    $scope.list4 = null;
     // get list body part
     $http.get('/Apis/getListBodyPart.json')
         .then(function(res){   
