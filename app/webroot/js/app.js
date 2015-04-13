@@ -1026,7 +1026,7 @@ app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
     };
 
     FB.init({
-        appId: '607706552694436',
+        appId: '577637839045306',
         //appId: '609280322537059', // gym.miratik.com account test
         status: true,
         cookie: true,
