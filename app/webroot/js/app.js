@@ -716,7 +716,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         $http.get('/Apis/getListExerciseLoadMore/' + $scope.current_ofset +'.json')
             .then(function(res){                            
                 var i = 0;
-                for(i = 0;i<24;i++)
+                for(i = 0;i<23;i++)
                 {                    
                     $scope.exercises_list_backup.push( angular.copy(res.data.exercises_list_more[i]) );    
                 }
