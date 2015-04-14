@@ -7,7 +7,7 @@
               <span style="margin-left:25px;"><?php echo __("CREAT A PROGRAM");?></span>
             </div>         
             <div flex class="list_button">
-              <input type="button" class="btn btn_program_editor btn_public_program" value="Publish">
+              <input ng-click="test_function()" type="button" class="btn btn_program_editor btn_public_program" value="Publish">
               <input type="button" class="btn btn_program_editor btn_draft_program" value="Save draft">
               <input type="button" class="btn btn_program_editor btn_cancel_program" value="Cancel">
             </div>
@@ -17,13 +17,22 @@
   </div>
 
   <div layout="row" class="main_content_program_editor">
-    <div data-drop="true" ng-model='list4' jqyoui-droppable="{multiple:true}" id="drop1" droppable style="border:1px solid; width:300px; height:150px;" flex class="program_tab_editor1">
+    <!-- <div data-drop="true" ng-model='list4' jqyoui-droppable="{multiple:true}" droppable style="border:1px solid; width:300px; height:150px;" flex class="program_tab_editor1">
         <div ng-model="list4">
           {{list4.Exercise.name}}
         </div>
     
+    </div> -->
+     <div class="program_tab" flex>       
+        <md-tabs md-selected="selectedIndex" flex>
+          <?php for($i = 0; $i < 3; $i++):?>
+            <md-tab label="<?php echo __("Day").' '.$i;?>">
+              <?php echo $this->Element('program_editor');?>
+            </md-tab> 
+          <?php endfor;?>
+        </md-tabs>
     </div>
-
+    
     <div layout="row" layout-align="center start" class="right_content_program_editor">
       <div>
         <div class="type_of_program">      

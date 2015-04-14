@@ -351,9 +351,9 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
     $scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
     $scope.body_part_id = "";
-    $scope.exercise_type = ""; // select type of exercise when using on Iphone portrait device
+    $scope.exercise_type = ""; // select type of exercise when using on Iphone portrait device   
 
-    $scope.list4 = null;
+    //$scope.list4 = null;
     // get list body part
     $http.get('/Apis/getListBodyPart.json')
         .then(function(res){   
@@ -371,7 +371,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
     $scope.isStretchingSelected = false;
     $scope.isCardioSelected = false;   
     $scope.isMuscleSelected = false;
-    
+       
     $scope.chooseFavouriteExerciseClick = function(){
         if($scope.showAllExercise){                        
             $scope.showAllExercise = false;
@@ -504,15 +504,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
     // drop
     $scope.dropCallback = function (event, ui) {
         var $lane = $(event.target);
-        var $exercise = ui.draggable;      
-        console.log($exercise.scope().exercise.Exercise.id);
-        // if ($card.scope().card.lane != $lane.scope().lane.id) {
-        //     $card.scope().card.lane = $lane.scope().lane.id;
-        // }
-        // else {
-        //     $card.css('opacity', 'inherit');
-        //     return false;
-        // }                  
+        var $exercise = ui.draggable;                                  
     };
 });
 app.filter('filterExerciseProgramEditor', function(){
