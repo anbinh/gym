@@ -359,31 +359,45 @@ app.directive( 'test', function ( $compile ) {
     }
   };
 });
-app.directive( 'program_mode_0', function ( $compile ) {
+app.directive( 'program0', function ( $compile ) {
   return {
     restrict: 'E',
     scope: { text: '@' },
     template: '<div class="box_program_vew">  <div ng-click="click_icon_option()" style="cursor:pointer; width:30px; height:30px; float:right; text-align:center;"><img  src="/img/images/icon_option.png"></div>         <ul ng-show="showOptionChooseTypeExercise" class="option_program_editor"><li ng-click="create_exercise(1, 1)">REGULAR</li><li ng-click="create_exercise(2, 1)">STRETCHING</li><li ng-click="create_exercise(3, 1)">SUPER-SET</li><li ng-click="create_exercise(4, 1)">WITH NOTE</li><li ng-click="create_exercise(5, 1)">ONLY TEXT</li></ul></div>',
-   // template: '<p ng-click="add()">{{text}}</p>',
+    //template: '<p ng-click="add()">{{text}}</p>',
     controller: function ( $scope, $element ) {
         $scope.showOptionChooseTypeExercise = false;
         $scope.create_exercise = function(type_of_exercise, tab_index){
             // hide option dropdown list
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-
+            console.log(tab_index);
             // $scope.tabs[tab_index] = [];
             // $scope.tabs[tab_index]['exercise_list'] = [];
             // $scope.tabs[tab_index]['exercise_list']['mode'] = type_of_exercise;
             // $scope.tabs[tab_index]['exercise_list'] = [];
-            // var exercise_template = '<div class="exercise_box exercise_box_editor ng-scope" ng-controller="VideoController"><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="tabs.'+tab_index+'.exercise_list" class="box_program_vew"><div class="sequence_number_box"><p>1</p></div><div class="row no_margin" style="padding: 0 40px 0 40px;"><video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{test.Exercise.video}}" poster="{{test.Exercise.photo}}" width="208px" height="152px" <="" video=""></video></div><div class="description"><p>{{tabs.'+tab_index+'.exercise_list.Exercise.name}}</p></div><div class="serie"><p class="serie_text">Serie</p> <p class="serie_number"> </p><p class="repeat_text">Repetition</p> <p class="repeat_number"> </p></div></div></div>';            
+            //var exercise_template = '<div class="exercise_box exercise_box_editor ng-scope" ng-controller="VideoController"><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="tabs.'+tab_index+'.exercise_list" class="box_program_vew"><div class="sequence_number_box"><p>1</p></div><div class="row no_margin" style="padding: 0 40px 0 40px;"><video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{test.Exercise.video}}" poster="{{test.Exercise.photo}}" width="208px" height="152px" <="" video=""></video></div><div class="description"><p>{{tabs.'+tab_index+'.exercise_list.Exercise.name}}</p></div><div class="serie"><p class="serie_text">Serie</p> <p class="serie_number"> </p><p class="repeat_text">Repetition</p> <p class="repeat_number"> </p></div></div></div>';            
             // var el = $compile(exercise_template)( $scope );
             // $element.parent().append( el );
-            var el = $compile( "<program_mode_0></program_mode_0>" )( $scope );
+            var exercise_template = "<program1></program1>";
+            var el = $compile( exercise_template )( $scope );
             $element.parent().append( el );
         }
          $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
         };
+    }
+  };
+});
+
+app.directive( 'program1', function ( $compile ) {
+  return {
+    restrict: 'E',
+    scope: { text: '@' },
+    template : '<div class="box_program_vew"><div class="sequence_number_box"><p>2</p></div><div class="row no_margin" style="padding: 0 10px 0 10px;"><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="test1" class="col-xs-6 no_padding"><div class="small_box"><img class="img-responsive" src="{{test1.Exercise.photo}}"></div></div><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="test2" class="col-xs-6 no_padding"><div class="small_box"><img class="img-responsive" src="{{test2.Exercise.photo}}"></div></div><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="test3" class="col-xs-6 no_padding"><div class="small_box"><img class="img-responsive" src="{{test3.Exercise.photo}}"></div></div><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="test4" class="col-xs-6 no_padding"><div class="small_box"><img class="img-responsive" src="{{test4.Exercise.photo}}"></div></div></div><div class="serie"><p class="serie_text">Serie</p> <p> exercise text</p></div></div>',
+    //template: '<div class="box_program_vew"><div class="sequence_number_box"><p>2</p></div><div class="row no_margin" style="padding: 0 10px 0 10px;"> <div class="col-xs-6 no_padding"><div class="small_box"></div></div><div class="col-xs-6 no_padding"><div class="small_box"></div></div><div class="col-xs-6 no_padding"><div class="small_box"></div></div><div class="col-xs-6 no_padding"><div class="small_box"></div></div></div><div class="serie"><p style="color:#c7c8c9; margin-right:10px; font-size:11pt;">Serie</p> <p> exercise text</p></div></div>',
+    //template: '<p ng-click="add()">{{text}}</p>',
+    controller: function ( $scope, $element ) {
+        
     }
   };
 });

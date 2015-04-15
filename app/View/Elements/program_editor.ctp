@@ -15,7 +15,7 @@
                         <li ng-click="create_exercise('5', '1')">ONLY TEXT</li>
                     </ul>                                                        
                 </div>   -->                          
-                <program_mode_0 text="1"></program_mode_0>
+                <program0 text="1"></program0>
             </div>
 
             
