@@ -218,9 +218,9 @@ class ApisController extends AppController {
     }
 
     public function getListExerciseLoadMore($offset){        
-        $exercises_list_more = $this->Exercise->find('all',array('limit'=>23,'page'=>$offset));
+        $exercises_list_more = $this->Exercise->find('all',array('limit'=>24,'page'=>$offset));
         $isOver = false;
-        if(sizeof($exercises_list_more) < 23)
+        if(sizeof($exercises_list_more) < 24)
             $isOver =  true;
         $this->set(array(
             'exercises_list_more' => $exercises_list_more,
