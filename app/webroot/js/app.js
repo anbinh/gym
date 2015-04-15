@@ -509,7 +509,6 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 });
 app.filter('filterExerciseProgramEditor', function(){
     return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
-        console.log(showAllExercise);
        var results = [];            
         if(showAllExercise){            
             results = exercises_list_backup.slice();  
@@ -717,7 +716,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             .then(function(res){     
                 console.log(res);                       
                 var i = 0;
-                for(i = 0;i<24;i++)
+                for(i = 0;i<res.data.exercises_list_more.length;i++)
                 {                    
                     $scope.exercises_list_backup.push( angular.copy(res.data.exercises_list_more[i]) );    
                 }
