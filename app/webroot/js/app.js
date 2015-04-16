@@ -362,7 +362,6 @@ app.directive( 'test', function ( $compile ) {
 app.directive( 'creator', function ( $compile ) {
   return {
     restrict: 'E',
-    scope: { modelCreator: '@' },
     template : "<div class=\"exercise_box exercise_box_editor\" >\
                  <div class=\"box_program_vew\">\
                     <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
@@ -378,7 +377,7 @@ app.directive( 'creator', function ( $compile ) {
                 </div>\
             </div>",
     controller: function ( $scope, $element ) {
-        $scope.showOptionChooseTypeExercise = false;
+        $scope.showOptionChooseTypeExercise = false;        
         $scope.create_exercise = function(type_of_exercise, tab_index){
             // hide option dropdown list
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;    
@@ -391,7 +390,7 @@ app.directive( 'creator', function ( $compile ) {
             var exercise_template = "";
             switch(type_of_exercise){
                 case "1":
-                    exercise_template = "<regular modelCreator='1'></regular>";
+                    exercise_template = "<regular text='10000' tabs='tabs'></regular>";
                     break;
                 case "2":
                     exercise_template = "<stretching></stretching>";
@@ -420,8 +419,11 @@ app.directive( 'regular', function ( $compile ) {
   return {
     // model = tabs.day_1.exercise 
     restrict: 'E',
-    scope: { modelCreator: '@' },
-    template : "<div ng-model=\"modelCreator\"  data-drop=\"true\" jqyoui-droppable=\"{multiple:true}\" class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
+    scope: { 
+        text: '@' ,
+        tabs: '='
+    },
+    template : "<div ng-model=\"ngModel\"  data-drop=\"true\" jqyoui-droppable=\"{multiple:true}\" class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
                     <div class=\"box_program_vew\">\
                         <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
                             <img  src=\"/img/images/icon_option.png\">\
@@ -450,11 +452,13 @@ app.directive( 'regular', function ( $compile ) {
                         </div>\
                     </div>\
                 </div>",
-    controller: function ( $scope, $element ) {  
-        $scope.$parent.tabs["day_1"] = [];
-        $scope.$parent.tabs["day_1"]['exercise_list'] = [];
-        $scope.$parent.tabs["day_1"]['exercise_list']['mode'] = [];
-        $scope.$parent.tabs["day_1"]['exercise_list']['mode'] = '1';   
+    link: function ( $scope ) {  
+        $scope.$watch('text', function() {
+            console.log($scope.text);
+        });
+        $scope.$watch('tabs', function() {
+            console.log($scope.tabs);
+        });
 
         $scope.showOptionChooseTypeExercise = false;
         $scope.click_icon_option = function(){
@@ -752,7 +756,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 
     }
 
-    $scope.tabs = [];    
+    $scope.tabs = [];        
     $scope.create_tab = function(){
        
     }
@@ -790,6 +794,19 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
       {id:'lane2'},
       {id:'lane3'}
     ];
+    $scope.tabs = [{
+        "id": "allItems",
+        "name": "All Items",
+        "order": 0
+      }, {
+        "id": "CaseItem",
+        "name": "Case Item",
+        "model": "PredefinedModel"
+      }, {
+        "id": "Application",
+        "name": "Application",
+        "model": "Bank"
+      }];
     // drop
     $scope.dropCallback = function (event, ui) {
         var $lane = $(event.target);
