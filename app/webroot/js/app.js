@@ -359,45 +359,271 @@ app.directive( 'test', function ( $compile ) {
     }
   };
 });
-app.directive( 'program0', function ( $compile ) {
+app.directive( 'creator', function ( $compile ) {
   return {
     restrict: 'E',
-    scope: { text: '@' },
-    template: '<div class="box_program_vew">  <div ng-click="click_icon_option()" style="cursor:pointer; width:30px; height:30px; float:right; text-align:center;"><img  src="/img/images/icon_option.png"></div>         <ul ng-show="showOptionChooseTypeExercise" class="option_program_editor"><li ng-click="create_exercise(1, 1)">REGULAR</li><li ng-click="create_exercise(2, 1)">STRETCHING</li><li ng-click="create_exercise(3, 1)">SUPER-SET</li><li ng-click="create_exercise(4, 1)">WITH NOTE</li><li ng-click="create_exercise(5, 1)">ONLY TEXT</li></ul></div>',
-    //template: '<p ng-click="add()">{{text}}</p>',
+    scope: { modelCreator: '@' },
+    template : "<div class=\"exercise_box exercise_box_editor\" >\
+                 <div class=\"box_program_vew\">\
+                    <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
+                        <img  src=\"/img/images/icon_option.png\">\
+                    </div>\
+                    <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
+                        <li ng-click=\"create_exercise('1', '1')\">REGULAR</li>\
+                        <li ng-click=\"create_exercise('2', '1')\">STRETCHING</li>\
+                        <li ng-click=\"create_exercise('3', '1')\">SUPER-SET</li>\
+                        <li ng-click=\"create_exercise('4', '1')\">WITH NOTE</li>\
+                        <li ng-click=\"create_exercise('5', '1')\">ONLY TEXT</li>\
+                    </ul>\
+                </div>\
+            </div>",
     controller: function ( $scope, $element ) {
         $scope.showOptionChooseTypeExercise = false;
         $scope.create_exercise = function(type_of_exercise, tab_index){
             // hide option dropdown list
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-            console.log(tab_index);
-            // $scope.tabs[tab_index] = [];
-            // $scope.tabs[tab_index]['exercise_list'] = [];
-            // $scope.tabs[tab_index]['exercise_list']['mode'] = type_of_exercise;
-            // $scope.tabs[tab_index]['exercise_list'] = [];
-            //var exercise_template = '<div class="exercise_box exercise_box_editor ng-scope" ng-controller="VideoController"><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="tabs.'+tab_index+'.exercise_list" class="box_program_vew"><div class="sequence_number_box"><p>1</p></div><div class="row no_margin" style="padding: 0 40px 0 40px;"><video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{test.Exercise.video}}" poster="{{test.Exercise.photo}}" width="208px" height="152px" <="" video=""></video></div><div class="description"><p>{{tabs.'+tab_index+'.exercise_list.Exercise.name}}</p></div><div class="serie"><p class="serie_text">Serie</p> <p class="serie_number"> </p><p class="repeat_text">Repetition</p> <p class="repeat_number"> </p></div></div></div>';            
-            // var el = $compile(exercise_template)( $scope );
-            // $element.parent().append( el );
-            var exercise_template = "<program1></program1>";
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;    
+
+            $scope.$parent.tabs["day_1"] = [];
+            $scope.$parent.tabs["day_1"]['exercise_list'] = [];
+            $scope.$parent.tabs["day_1"]['exercise_list']['mode'] = [];
+            $scope.$parent.tabs["day_1"]['exercise_list']['mode'] = type_of_exercise;            
+            
+            var exercise_template = "";
+            switch(type_of_exercise){
+                case "1":
+                    exercise_template = "<regular modelCreator='1'></regular>";
+                    break;
+                case "2":
+                    exercise_template = "<stretching></stretching>";
+                    break;
+                case "3":
+                    exercise_template = "<superset></superset>";
+                    break;
+                case "4":
+                    exercise_template = "<withnote></withnote>";
+                    break;
+                case "5":
+                    exercise_template = "<textonly></textonly>";
+                    break;
+            }
+            
             var el = $compile( exercise_template )( $scope );
-            $element.parent().append( el );
+            $element.parent().prepend( el );
         }
-         $scope.click_icon_option = function(){
+        $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
         };
     }
   };
 });
+app.directive( 'regular', function ( $compile ) {
+  return {
+    // model = tabs.day_1.exercise 
+    restrict: 'E',
+    scope: { modelCreator: '@' },
+    template : "<div ng-model=\"modelCreator\"  data-drop=\"true\" jqyoui-droppable=\"{multiple:true}\" class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
+                    <div class=\"box_program_vew\">\
+                        <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
+                            <img  src=\"/img/images/icon_option.png\">\
+                        </div>\
+                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
+                            <li ng-click=\"create_exercise('1', '1')\">REGULAR</li>\
+                            <li ng-click=\"create_exercise('2', '1')\">STRETCHING</li>\
+                            <li ng-click=\"create_exercise('3', '1')\">SUPER-SET</li>\
+                            <li ng-click=\"create_exercise('4', '1')\">WITH NOTE</li>\
+                            <li ng-click=\"create_exercise('5', '1')\">ONLY TEXT</li>\
+                        </ul>\
+                        <div class=\"sequence_number_box\">\
+                            <p>1</p>\
+                        </div>\
+                        <div class=\"row no_margin\" style=\"padding: 0 40px 0 40px;\">\
+                            <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{ngModel.Exercise.video}}\" poster=\"{{ngModel.Exercise.photo}}\" width=\"208px\" height=\"152px\" <=\"\" video=\"\"></video>\
+                        </div>\
+                        <div class=\"description\">\
+                            <p>{{ngModel.Exercise.name}}</p>\
+                        </div>\
+                        <div class=\"serie\">\
+                            <p class=\"serial_text\">Serie</p>\
+                            <p class=\"serial_number\"> 10</p>\
+                            <p class=\"repeat_text\">Repetition</p>\
+                            <p class=\"repeat_number\"> 15 à 20</p>\
+                        </div>\
+                    </div>\
+                </div>",
+    controller: function ( $scope, $element ) {  
+        $scope.$parent.tabs["day_1"] = [];
+        $scope.$parent.tabs["day_1"]['exercise_list'] = [];
+        $scope.$parent.tabs["day_1"]['exercise_list']['mode'] = [];
+        $scope.$parent.tabs["day_1"]['exercise_list']['mode'] = '1';   
 
-app.directive( 'program1', function ( $compile ) {
+        $scope.showOptionChooseTypeExercise = false;
+        $scope.click_icon_option = function(){
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
+        };
+    }
+  };
+});
+app.directive( 'stretching', function ( $compile ) {
   return {
     restrict: 'E',
     scope: { text: '@' },
-    template : '<div class="box_program_vew"><div class="sequence_number_box"><p>2</p></div><div class="row no_margin" style="padding: 0 10px 0 10px;"><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="test1" class="col-xs-6 no_padding"><div class="small_box"><img class="img-responsive" src="{{test1.Exercise.photo}}"></div></div><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="test2" class="col-xs-6 no_padding"><div class="small_box"><img class="img-responsive" src="{{test2.Exercise.photo}}"></div></div><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="test3" class="col-xs-6 no_padding"><div class="small_box"><img class="img-responsive" src="{{test3.Exercise.photo}}"></div></div><div data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="test4" class="col-xs-6 no_padding"><div class="small_box"><img class="img-responsive" src="{{test4.Exercise.photo}}"></div></div></div><div class="serie"><p class="serie_text">Serie</p> <p> exercise text</p></div></div>',
-    //template: '<div class="box_program_vew"><div class="sequence_number_box"><p>2</p></div><div class="row no_margin" style="padding: 0 10px 0 10px;"> <div class="col-xs-6 no_padding"><div class="small_box"></div></div><div class="col-xs-6 no_padding"><div class="small_box"></div></div><div class="col-xs-6 no_padding"><div class="small_box"></div></div><div class="col-xs-6 no_padding"><div class="small_box"></div></div></div><div class="serie"><p style="color:#c7c8c9; margin-right:10px; font-size:11pt;">Serie</p> <p> exercise text</p></div></div>',
-    //template: '<p ng-click="add()">{{text}}</p>',
+    template : "<div class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
+                    <div class=\"box_program_vew\">\
+                        <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
+                            <img  src=\"/img/images/icon_option.png\">\
+                        </div>\
+                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
+                            <li ng-click=\"create_exercise('1', '1')\">REGULAR</li>\
+                            <li ng-click=\"create_exercise('2', '1')\">STRETCHING</li>\
+                            <li ng-click=\"create_exercise('3', '1')\">SUPER-SET</li>\
+                            <li ng-click=\"create_exercise('4', '1')\">WITH NOTE</li>\
+                            <li ng-click=\"create_exercise('5', '1')\">ONLY TEXT</li>\
+                        </ul>\
+                        <div class=\"sequence_number_box\">\
+                            <p>1</p>\
+                        </div>\
+                        <div class=\"row no_margin\" style=\"padding: 0 40px 0 40px;\">\
+                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"/Exercise_list/0301/0301.mp4\" poster=\"/Exercise_list/0301/0301_s.gif\" width=\"208px\" height=\"152px\" <=\"\" video=\"\"></video>\
+                        </div>\
+                        <div class=\"description\">\
+                            <p>Glissement d'un talon couché, l'autre jambe frléchie</p>\
+                        </div>\
+                        <div class=\"serie\">\
+                            <p style=\"color:#c7c8c9; margin-right:10px; font-size:11pt;\">Serie</p>\
+                            <p style=\"font-size:18px; font-weight:bold; line-height: 1.45; border-right:1px solid; padding-right:5px; margin-right:5px;\"> 10</p>\
+                            <p style=\"color:#bcbdbe; margin-right:10px;\">Repetition</p>\
+                            <p style=\"font-size:18px; font-weight:bold; line-height: 1.45;\"> 15 à 20</p>\
+                        </div>\
+                    </div>\
+                </div>",
     controller: function ( $scope, $element ) {
-        
+        $scope.showOptionChooseTypeExercise = false;
+        $scope.click_icon_option = function(){
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
+        };
+    }
+  };
+});
+app.directive( 'superset', function ( $compile ) {
+  return {
+    restrict: 'E',
+    scope: { text: '@' },
+    template : "<div class=\"exercise_box exercise_box_editor\">\
+                    <div class=\"box_program_vew\">\
+                        <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
+                            <img  src=\"/img/images/icon_option.png\">\
+                        </div>\
+                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
+                            <li ng-click=\"create_exercise('1', '1')\">REGULAR</li>\
+                            <li ng-click=\"create_exercise('2', '1')\">STRETCHING</li>\
+                            <li ng-click=\"create_exercise('3', '1')\">SUPER-SET</li>\
+                            <li ng-click=\"create_exercise('4', '1')\">WITH NOTE</li>\
+                            <li ng-click=\"create_exercise('5', '1')\">ONLY TEXT</li>\
+                        </ul>\
+                        <div class=\"sequence_number_box\" style=\"float:left;\">\
+                            <p>3</p>\
+                        </div>\
+                        <div>\
+                            <div style=\"position:relative; padding-top:3px;\">\
+                                <div class=\"small_box\" style=\"width:90px; float:left;\"></div>\
+                                <div>\
+                                    <p style=\"color:#c7c8c9; margin:0px; line-height:1; font-size:11pt;\">Serie</p>\
+                                    <p style=\"font-size:18px; font-weight:bold; line-height: 1.2; margin:0;\"> 10</p>\
+                                </div>\
+                                <div style=\"padding-top:5px;\">\
+                                    <p style=\"color:#bcbdbe; margin:0px; line-height:1; font-size:11pt;\">Repetition</p>\
+                                    <p style=\"font-size:18px; font-weight:bold; line-height: 1.2; margin:0;\"> 15 à 20</p>\
+                                </div>\
+                            </div>\
+                            <div class=\"description\">\
+                                <p>Abaissement en diagonale d'une jambe couché, l'autre jambe tendue</p>\
+                            </div>\
+                            <div style=\"position:relative;padding-left:14px; padding-top:3px;\">\
+                                <div class=\"small_box\" style=\"width:90px; float:left;\"></div>\
+                                <div>\
+                                    <p style=\"color:#c7c8c9; margin:0px; line-height:1; font-size:11pt;\">Serie</p>\
+                                    <p style=\"font-size:18px; font-weight:bold; line-height: 1.2; margin:0;\"> 10</p>\
+                                </div>\
+                                <div style=\"padding-top:5px;\">\
+                                    <p style=\"color:#bcbdbe; margin:0px; line-height:1; font-size:11pt;\">Repetition</p>\
+                                    <p style=\"font-size:18px; font-weight:bold; line-height: 1.2; margin:0;\"> 15 à 20</p>\
+                                </div>\
+                            </div>\
+                            <div class=\"description\">\
+                                <p>Abaissement en diagonale d'une jambe couché, l'autre jambe tendue</p>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>",
+    controller: function ( $scope, $element ) {
+        $scope.showOptionChooseTypeExercise = false;
+        $scope.click_icon_option = function(){
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
+        };
+    }
+  };
+});
+app.directive( 'withnote', function ( $compile ) {
+  return {
+    restrict: 'E',
+    scope: { text: '@' },
+    template : "<div class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
+                    <div class=\"box_program_vew\">\
+                        <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
+                            <img  src=\"/img/images/icon_option.png\">\
+                        </div>\
+                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
+                            <li ng-click=\"create_exercise('1', '1')\">REGULAR</li>\
+                            <li ng-click=\"create_exercise('2', '1')\">STRETCHING</li>\
+                            <li ng-click=\"create_exercise('3', '1')\">SUPER-SET</li>\
+                            <li ng-click=\"create_exercise('4', '1')\">WITH NOTE</li>\
+                            <li ng-click=\"create_exercise('5', '1')\">ONLY TEXT</li>\
+                        </ul>\
+                        <div class=\"sequence_number_box\">\
+                            <p>1</p>\
+                        </div>\
+                        <div class=\"row no_margin\" style=\"padding: 0 40px 0 40px;\">\
+                            <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"/Exercise_list/0301/0301.mp4\" poster=\"/Exercise_list/0301/0301_s.gif\" width=\"208px\" height=\"152px\" <=\"\" video=\"\"></video>\
+                        </div>\
+                        <div class=\"description\">\
+                            <p>{{test.Exercise.Name}}</p>\
+                        </div>\
+                        <div class=\"serie\">\
+                            <p>test</p>\
+                        </div>\
+                    </div>\
+                </div>",
+    controller: function ( $scope, $element ) {
+        $scope.showOptionChooseTypeExercise = false;
+        $scope.click_icon_option = function(){
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
+        };
+    }
+  };
+});
+app.directive( 'textonly', function ( $compile ) {
+  return {
+    restrict: 'E',
+    scope: { text: '@' },
+    template : "<div class=\"exercise_box exercise_box_editor\" >\
+                 <div class=\"box_program_vew\">\
+                    <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
+                        <img  src=\"/img/images/icon_option.png\">\
+                    </div>\
+                    <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
+                        <li ng-click=\"create_exercise('1', '1')\">REGULAR</li>\
+                        <li ng-click=\"create_exercise('2', '1')\">STRETCHING</li>\
+                        <li ng-click=\"create_exercise('3', '1')\">SUPER-SET</li>\
+                        <li ng-click=\"create_exercise('4', '1')\">WITH NOTE</li>\
+                        <li ng-click=\"create_exercise('5', '1')\">ONLY TEXT</li>\
+                    </ul>\
+                </div>\
+            </div>",
+    controller: function ( $scope, $element ) {
+        $scope.showOptionChooseTypeExercise = false;
+        $scope.click_icon_option = function(){
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
+        };
     }
   };
 });
