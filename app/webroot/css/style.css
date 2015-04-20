@@ -1559,6 +1559,11 @@ input:invalid {
     display: none;
 }
 /*program tab*/
+.md-header-items-container{
+    max-width: 331px;
+    margin: 0 !important;
+}
+
 .tabsdemoDynamicTabs .sample {
   height: 500px; }
 .tabsdemoDynamicTabs .remove-tab {
@@ -1616,13 +1621,12 @@ md-tabs.md-default-theme md-tabs-ink-bar {
     font-weight: bold;
 }
 .program_tab md-tab{
-    border: 1px solid #d8e6dc;    
+    border-right: 1px solid #d8e6dc;    
 }
 .program_tab md-tabs.md-default-theme .md-header{
     background: white;
 }
-.program_tab .md-header{
-  width: 80%;
+.program_tab .md-header{  
   margin-left: 10px;
 }
 .serie_text{

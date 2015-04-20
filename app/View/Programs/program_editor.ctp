@@ -24,12 +24,11 @@
     
     </div> -->
      <div class="program_tab" flex>       
-        <md-tabs md-selected="selectedIndex" flex>
-          <?php for($i = 0; $i < 3; $i++):?>
-            <md-tab label="<?php echo __("Day").' '.$i;?>">
-              <?php echo $this->Element('program_editor');?>
-            </md-tab> 
-          <?php endfor;?>
+        <md-tabs md-selected="selectedIndex" flex>          
+          <md-tab ng-repeat="tab in tabs track by $index"
+                  label="Day {{tab.day_number}}">
+            <?php echo $this->Element('program_editor');?>
+          </md-tab>          
         </md-tabs>
     </div>
     

@@ -378,34 +378,34 @@ app.directive( 'creator', function ( $compile ) {
             </div>",
     controller: function ( $scope, $element ) {
         $scope.showOptionChooseTypeExercise = false;        
-        $scope.create_exercise = function(type_of_exercise, tab_index){
+        $scope.create_exercise = function(type_of_exercise, day_number){
             // hide option dropdown list
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;    
 
-            $scope.$parent.tabs["day_1"] = [];
-            $scope.$parent.tabs["day_1"]['exercise_list'] = [];
-            $scope.$parent.tabs["day_1"]['exercise_list']['mode'] = [];
-            $scope.$parent.tabs["day_1"]['exercise_list']['mode'] = type_of_exercise;            
-            
+            var index = day_number - 1;
+       
             var exercise_template = "";
+                    
             switch(type_of_exercise){
-                case "1":
-                    exercise_template = "<regular text='10000' tabs='tabs'></regular>";
+                case "1":                    
+                    //var index_last_exercise_list = $scope.$parent.tabs[index]["exercise_list"].length - 1;
+
+                    exercise_template = "<regular type='"+type_of_exercise+"' day='"+day_number+"'></regular>";
                     break;
                 case "2":
-                    exercise_template = "<stretching></stretching>";
+                    exercise_template = "<stretching type='"+type_of_exercise+"' day='"+day_number+"'></stretching>";
                     break;
                 case "3":
-                    exercise_template = "<superset></superset>";
+                    exercise_template = "<superset type='"+type_of_exercise+"' day='"+day_number+"'></superset>";
                     break;
                 case "4":
-                    exercise_template = "<withnote></withnote>";
+                    exercise_template = "<withnote type='"+type_of_exercise+"' day='"+day_number+"'></withnote>";
                     break;
                 case "5":
-                    exercise_template = "<textonly></textonly>";
+                    exercise_template = "<textonly type='"+type_of_exercise+"' day='"+day_number+"'></textonly>";
                     break;
-            }
-            
+            }            
+
             var el = $compile( exercise_template )( $scope );
             $element.parent().prepend( el );
         }
@@ -420,10 +420,10 @@ app.directive( 'regular', function ( $compile ) {
     // model = tabs.day_1.exercise 
     restrict: 'E',
     scope: { 
-        text: '@' ,
-        tabs: '='
+        type: '@',
+        day: '@'            
     },
-    template : "<div ng-model=\"ngModel\"  data-drop=\"true\" jqyoui-droppable=\"{multiple:true}\" class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
+    template : "<div ng-model=\"model_temp\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback()'}\" class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
                     <div class=\"box_program_vew\">\
                         <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
                             <img  src=\"/img/images/icon_option.png\">\
@@ -439,10 +439,10 @@ app.directive( 'regular', function ( $compile ) {
                             <p>1</p>\
                         </div>\
                         <div class=\"row no_margin\" style=\"padding: 0 40px 0 40px;\">\
-                            <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{ngModel.Exercise.video}}\" poster=\"{{ngModel.Exercise.photo}}\" width=\"208px\" height=\"152px\" <=\"\" video=\"\"></video>\
+                            <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp.Exercise.video}}\" poster=\"{{model_temp.Exercise.photo}}\" width=\"208px\" height=\"152px\" <=\"\" video=\"\"></video>\
                         </div>\
                         <div class=\"description\">\
-                            <p>{{ngModel.Exercise.name}}</p>\
+                            <p>{{model_temp.Exercise.name}}</p>\
                         </div>\
                         <div class=\"serie\">\
                             <p class=\"serial_text\">Serie</p>\
@@ -452,14 +452,21 @@ app.directive( 'regular', function ( $compile ) {
                         </div>\
                     </div>\
                 </div>",
-    link: function ( $scope ) {  
-        $scope.$watch('text', function() {
-            console.log($scope.text);
-        });
-        $scope.$watch('tabs', function() {
-            console.log($scope.tabs);
-        });
+    link: function ( $scope ) {            
+        var day = $scope.day;
+        var exercise_list_item = {
+            'mode':$scope.type,
+            'order':$scope.type,
+            'exercise_item':[],
+            'text':''
+        };
+        $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item);      
 
+        $scope.dropCallback = function(event, ui){            
+            var exercise = $(event.target).scope().model_temp;
+            exercise_list_item.exercise_item[0] = {'exercise_id':exercise.Exercise.id};                        
+        };     
+       
         $scope.showOptionChooseTypeExercise = false;
         $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
@@ -470,37 +477,69 @@ app.directive( 'regular', function ( $compile ) {
 app.directive( 'stretching', function ( $compile ) {
   return {
     restrict: 'E',
-    scope: { text: '@' },
-    template : "<div class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
+    scope: { 
+        type: '@',
+        day: '@'            
+    },
+    template: "<div class=\"exercise_box exercise_box_editor\">\
                     <div class=\"box_program_vew\">\
-                        <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
-                            <img  src=\"/img/images/icon_option.png\">\
-                        </div>\
-                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"create_exercise('1', '1')\">REGULAR</li>\
-                            <li ng-click=\"create_exercise('2', '1')\">STRETCHING</li>\
-                            <li ng-click=\"create_exercise('3', '1')\">SUPER-SET</li>\
-                            <li ng-click=\"create_exercise('4', '1')\">WITH NOTE</li>\
-                            <li ng-click=\"create_exercise('5', '1')\">ONLY TEXT</li>\
-                        </ul>\
                         <div class=\"sequence_number_box\">\
-                            <p>1</p>\
+                            <p>2</p>\
                         </div>\
-                        <div class=\"row no_margin\" style=\"padding: 0 40px 0 40px;\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"/Exercise_list/0301/0301.mp4\" poster=\"/Exercise_list/0301/0301_s.gif\" width=\"208px\" height=\"152px\" <=\"\" video=\"\"></video>\
-                        </div>\
-                        <div class=\"description\">\
-                            <p>Glissement d'un talon couché, l'autre jambe frléchie</p>\
+                        <div class=\"row no_margin\" style=\"padding: 0 10px 0 10px;\">\
+                            <div class=\"col-xs-6 no_padding\">\
+                                <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback1()'}\" class=\"small_box\">\
+                                    <img class=\"img-responsive\" src=\"{{model_temp1.Exercise.photo}}\" >\
+                                </div>\
+                            </div>\
+                            <div class=\"col-xs-6 no_padding\">\
+                                <div ng-model=\"model_temp2\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback2()'}\" class=\"small_box\">\
+                                    <img class=\"img-responsive\" src=\"{{model_temp2.Exercise.photo}}\" >\
+                                </div>\
+                            </div>\
+                            <div class=\"col-xs-6 no_padding\">\
+                                <div ng-model=\"model_temp3\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback3()'}\" class=\"small_box\">\
+                                    <img class=\"img-responsive\" src=\"{{model_temp3.Exercise.photo}}\" >\
+                                </div>\
+                            </div>\
+                            <div class=\"col-xs-6 no_padding\">\
+                                <div ng-model=\"model_temp4\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback4()'}\" class=\"small_box\">\
+                                    <img class=\"img-responsive\" src=\"{{model_temp4.Exercise.photo}}\" >\
+                                </div>\
+                            </div>\
                         </div>\
                         <div class=\"serie\">\
                             <p style=\"color:#c7c8c9; margin-right:10px; font-size:11pt;\">Serie</p>\
-                            <p style=\"font-size:18px; font-weight:bold; line-height: 1.45; border-right:1px solid; padding-right:5px; margin-right:5px;\"> 10</p>\
-                            <p style=\"color:#bcbdbe; margin-right:10px;\">Repetition</p>\
-                            <p style=\"font-size:18px; font-weight:bold; line-height: 1.45;\"> 15 à 20</p>\
+                            <p> exercise text</p>\
                         </div>\
                     </div>\
                 </div>",
-    controller: function ( $scope, $element ) {
+    controller: function ( $scope, $element ) {           
+        var day = $scope.day;
+        var exercise_list_item = {
+            'mode':$scope.type,
+            'order':$scope.type,
+            'exercise_item':[],
+            'text':''
+        };     
+        $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item); 
+        $scope.dropCallback1 = function(event, ui){  
+            var exercise = $(event.target).scope().model_temp1;
+            exercise_list_item.exercise_item[0] = {'exercise_id':exercise.Exercise.id};
+        };     
+        $scope.dropCallback2 = function(event, ui){  
+            var exercise = $(event.target).scope().model_temp2;
+            exercise_list_item.exercise_item[1] = {'exercise_id':exercise.Exercise.id};            
+        };     
+        $scope.dropCallback3 = function(event, ui){  
+            var exercise = $(event.target).scope().model_temp3;
+            exercise_list_item.exercise_item[2] = {'exercise_id':exercise.Exercise.id};            
+        };     
+        $scope.dropCallback4 = function(event, ui){  
+            var exercise = $(event.target).scope().model_temp4;
+            exercise_list_item.exercise_item[3] = {'exercise_id':exercise.Exercise.id};            
+        };     
+
         $scope.showOptionChooseTypeExercise = false;
         $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
@@ -511,7 +550,10 @@ app.directive( 'stretching', function ( $compile ) {
 app.directive( 'superset', function ( $compile ) {
   return {
     restrict: 'E',
-    scope: { text: '@' },
+    scope: { 
+        type: '=',
+        day: '='            
+    },
     template : "<div class=\"exercise_box exercise_box_editor\">\
                     <div class=\"box_program_vew\">\
                         <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
@@ -528,8 +570,10 @@ app.directive( 'superset', function ( $compile ) {
                             <p>3</p>\
                         </div>\
                         <div>\
-                            <div style=\"position:relative; padding-top:3px;\">\
-                                <div class=\"small_box\" style=\"width:90px; float:left;\"></div>\
+                            <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback1()'}\" style=\"position:relative; padding-top:3px;\">\
+                                <div class=\"small_box\" style=\"width:90px; float:left;\">\
+                                    <img class=\"img-responsive\" src=\"{{model_temp1.Exercise.photo}}\" >\
+                                </div>\
                                 <div>\
                                     <p style=\"color:#c7c8c9; margin:0px; line-height:1; font-size:11pt;\">Serie</p>\
                                     <p style=\"font-size:18px; font-weight:bold; line-height: 1.2; margin:0;\"> 10</p>\
@@ -542,8 +586,10 @@ app.directive( 'superset', function ( $compile ) {
                             <div class=\"description\">\
                                 <p>Abaissement en diagonale d'une jambe couché, l'autre jambe tendue</p>\
                             </div>\
-                            <div style=\"position:relative;padding-left:14px; padding-top:3px;\">\
-                                <div class=\"small_box\" style=\"width:90px; float:left;\"></div>\
+                            <div ng-model=\"model_temp2\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback2()'}\" style=\"position:relative;padding-left:14px; padding-top:3px;\">\
+                                <div class=\"small_box\" style=\"width:90px; float:left;\">\
+                                    <img class=\"img-responsive\" src=\"{{model_temp2.Exercise.photo}}\" >\
+                                </div>\
                                 <div>\
                                     <p style=\"color:#c7c8c9; margin:0px; line-height:1; font-size:11pt;\">Serie</p>\
                                     <p style=\"font-size:18px; font-weight:bold; line-height: 1.2; margin:0;\"> 10</p>\
@@ -560,6 +606,23 @@ app.directive( 'superset', function ( $compile ) {
                     </div>\
                 </div>",
     controller: function ( $scope, $element ) {
+        var day = $scope.day;
+        var exercise_list_item = {
+            'mode':$scope.type,
+            'order':$scope.type,
+            'exercise_item':[],
+            'text':''
+        };     
+        $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item);
+
+        $scope.dropCallback1 = function(event, ui){               
+            var exercise = $(event.target).scope().model_temp1;
+            exercise_list_item.exercise_item[0] = {'exercise_id':exercise.Exercise.id};
+        };     
+        $scope.dropCallback2 = function(event, ui){  
+            var exercise = $(event.target).scope().model_temp2;
+            exercise_list_item.exercise_item[1] = {'exercise_id':exercise.Exercise.id};           
+        };  
         $scope.showOptionChooseTypeExercise = false;
         $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
@@ -570,8 +633,11 @@ app.directive( 'superset', function ( $compile ) {
 app.directive( 'withnote', function ( $compile ) {
   return {
     restrict: 'E',
-    scope: { text: '@' },
-    template : "<div class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
+    scope: { 
+        type: '=',
+        day: '='            
+    },
+    template : "<div ng-model=\"model_temp\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback()'}\" class=\"exercise_box exercise_box_editor\" ng-controller=\"VideoController\">\
                     <div class=\"box_program_vew\">\
                         <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
                             <img  src=\"/img/images/icon_option.png\">\
@@ -587,10 +653,10 @@ app.directive( 'withnote', function ( $compile ) {
                             <p>1</p>\
                         </div>\
                         <div class=\"row no_margin\" style=\"padding: 0 40px 0 40px;\">\
-                            <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"/Exercise_list/0301/0301.mp4\" poster=\"/Exercise_list/0301/0301_s.gif\" width=\"208px\" height=\"152px\" <=\"\" video=\"\"></video>\
+                            <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp.Exercise.video}}\" poster=\"{{model_temp.Exercise.photo}}\" width=\"208px\" height=\"152px\" <=\"\" video=\"\"></video>\
                         </div>\
                         <div class=\"description\">\
-                            <p>{{test.Exercise.Name}}</p>\
+                            <p>{{model_temp.Exercise.name}}</p>\
                         </div>\
                         <div class=\"serie\">\
                             <p>test</p>\
@@ -598,6 +664,20 @@ app.directive( 'withnote', function ( $compile ) {
                     </div>\
                 </div>",
     controller: function ( $scope, $element ) {
+        var day = $scope.day;
+        var exercise_list_item = {
+            'mode':$scope.type,
+            'order':$scope.type,
+            'exercise_item':[],
+            'text':''
+        };     
+        $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item);
+
+        $scope.dropCallback = function(event, ui){               
+            var exercise = $(event.target).scope().model_temp;
+            exercise_list_item.exercise_item[0] = {'exercise_id':exercise.Exercise.id};
+        };
+
         $scope.showOptionChooseTypeExercise = false;
         $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
@@ -608,8 +688,11 @@ app.directive( 'withnote', function ( $compile ) {
 app.directive( 'textonly', function ( $compile ) {
   return {
     restrict: 'E',
-    scope: { text: '@' },
-    template : "<div class=\"exercise_box exercise_box_editor\" >\
+    scope: { 
+        type: '@',
+        day: '@'            
+    },
+    template : "<div ng-model=\"model_temp\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback()'}\" class=\"exercise_box exercise_box_editor\" >\
                  <div class=\"box_program_vew\">\
                     <div ng-click=\"click_icon_option()\" style=\"cursor:pointer; width:30px; height:30px; float:right; text-align:center;\">\
                         <img  src=\"/img/images/icon_option.png\">\
@@ -638,6 +721,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
     $scope.body_part_id = "";
     $scope.exercise_type = ""; // select type of exercise when using on Iphone portrait device   
     $scope.showOptionChooseTypeExercise = false;
+    $scope.testdrop = '';
     //$scope.list4 = null;
     // get list body part
     $http.get('/Apis/getListBodyPart.json')
@@ -756,9 +840,16 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 
     }
 
-    $scope.tabs = [];        
-    $scope.create_tab = function(){
-       
+    $scope.tabs = [];   
+    $scope.tabs.push({'day_number':'+'});
+    var program_item = {
+        'day_number': "1",
+        'exercise_list': []
+    };     
+    $scope.tabs.unshift(program_item);
+    $scope.selectedIndex = 0;    
+    $scope.create_day_program = function(){
+      
     }
     
     $scope.getImageShowOnly = function(){
@@ -789,24 +880,20 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
         return !valid;
     };
 
-    $scope.lanes = [
-      {id:'lane1'},
-      {id:'lane2'},
-      {id:'lane3'}
-    ];
-    $scope.tabs = [{
-        "id": "allItems",
-        "name": "All Items",
-        "order": 0
-      }, {
-        "id": "CaseItem",
-        "name": "Case Item",
-        "model": "PredefinedModel"
-      }, {
-        "id": "Application",
-        "name": "Application",
-        "model": "Bank"
-      }];
+   
+    // $scope.tabs = [{
+    //     "id": "allItems",
+    //     "name": "All Items",
+    //     "order": 0
+    //   }, {
+    //     "id": "CaseItem",
+    //     "name": "Case Item",
+    //     "model": "PredefinedModel"
+    //   }, {
+    //     "id": "Application",
+    //     "name": "Application",
+    //     "model": "Bank"
+    //   }];
     // drop
     $scope.dropCallback = function (event, ui) {
         var $lane = $(event.target);
