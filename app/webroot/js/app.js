@@ -224,6 +224,12 @@ app.controller('UserProfileController', function($scope,$http){
                 $scope.picture = res.data.user.picture;
                 $scope.password = res.data.user.password;
             });
+        // get list of programs had saved before by this User
+        $http.get('/Apis/getListProgramOfUser.json')
+            .then(function(res){  
+                 console.log(res.data.message);
+                $scope.list_program_saved = angular.copy(res.data.message);
+            });
     }
     else
     {
@@ -290,6 +296,14 @@ app.controller('UserProfileController', function($scope,$http){
     };
     $scope.toggleExercise = function(){
         $scope.isExerciseShow = !$scope.isExerciseShow;
+    };
+
+    $scope.delete_program = function(program_id, index){
+        $scope.list_program_saved.splice(index, 1);
+        $http.get('/Apis/deleteAssignedProgram/'+program_id+'.json')
+        .then(function(res){               
+            
+        });
     };
     $scope.isExerciseShow = true;
     $scope.isProgramShow = true;
@@ -1486,13 +1500,15 @@ app.controller('ChangepassController', function($http, $scope, $timeout){
             .success(function(data) {
                 $scope.showLoader = false;
                 if(data.message == "success")
-                    model.message = "Change password successful!"
+                {
+                    model.message = "Change password successful!";            
+                }                    
                 else
-                    model.message = "Change password failed!"
+                    model.message = "Change password failed!";
 
                 $timeout(function(){
-                    model.message = "";
-                }, 3000);
+                    window.location = '/Users/edit_profile';
+                }, 1000);
             })
 
         };

@@ -15,6 +15,7 @@ class ProgramsController  extends AppController {
     public function program_view($id=null){
         if($id != null)
         {
+            //pr($this->Exercise->findById('551e9f9670711fb269285cd2'));
             $programs = $this->Program->findById($id);                    
             $this->set('isSaved', $this->check_program_is_saved($id));
             $this->set('programs', $programs);
@@ -29,15 +30,12 @@ class ProgramsController  extends AppController {
                 } 
             } 
             //(string)$item2['exercise_id']->{'$id'}
-            $exercise_list = array_unique($exercise_list);
-            //pr($exercise_list);
+            $exercise_list = array_values(array_unique($exercise_list));            
             $search = array(
                 '_id' => array('$in' => $exercise_list)
             );
             $exercises_list = $this->Exercise->find('all',array('conditions'=>$search));
             $exercises_list = Set::combine($exercises_list, '{n}.Exercise.id', '{n}.Exercise');
-
-            //pr($exercises_list);
             $this->set('exercises_list',$exercises_list);
         }
         else

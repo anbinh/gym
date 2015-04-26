@@ -155,36 +155,11 @@
             <div flex style="padding-bottom: 10px; border-bottom: 1px solid #ccc;">
                 <div class="my_program">
                     <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_click" ng-class="isProgramShow ? 'arrow_down' : 'arrow_right'" ng-click="toggleMyProgram()"></div><p><?php echo __('my program')?></p>
-                        <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="#"> <?php echo __('edit')?></a></div>
+                        <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="javascript:void(0);"> <?php echo __('edit')?></a></div>
                     <div ng-show="isProgramShow" class="list_tile" class="row">
-                        <div class="exercise_box">
-                            <div class="user_favorite_exercise_img tile_1 exercise_box_highlight" >
-                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                                <span class="program_text_name"> SHAPE MODELING</span>
-                            </div>
-                        </div>
-                        <div class="exercise_box">
-                            <div class="user_favorite_exercise_img tile_2"  >
-                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
-                                <div class="program_text_name"> LOOSING WEIGHT </div>
-                            </div>
-                        </div>
-                        <div class="exercise_box">
-                            <div class="user_favorite_exercise_img tile_3"  >
-                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
-                                <div class="program_text_name"> LOOSING WEIGHT </div>
-                            </div>
-                        </div>
-                        <div class="exercise_box">
-                            <div class="user_favorite_exercise_img tile_1"  >
-                                <div ng-show="isEdit"><img class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                                <div class="program_text_name"> SHAPE MODELING</div>
-                            </div>
-                        </div>
+                        <div ng-repeat="item in list_program_saved" class="exercise_box">
+                            <?php echo $this->element('program_box_template');?>                       
+                        </div>                
                     </div>
                 </div>
             </div>
@@ -195,18 +170,7 @@
                 <div ng-show="isExerciseShow" class="list_tile" class="row">
                     <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
                         <div class="exercise_box">
-                            <div class="user_favorite_exercise_img" flex >
-                                <div class="img_star_container">
-                                    <img class="img_star"
-                                         ng-src="{{getImage()}}"
-                                         ng-click="toggleSelection()"
-                                        >
-                                </div>
-                                <a href="/Exercises/detail/{{exercise.Exercise.id}}">
-                                    <div style="padding:0 10px;"><img src="/img/images/6035.jpeg" class="img-responsive"></div>
-                                    <p style="text-align:center;">{{exercise.Exercise.care}}</p>
-                                </a>
-                            </div>
+                            <?php echo $this->element('exercise_box_template');?>
                         </div>
                     </div>
                 </div>

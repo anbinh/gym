@@ -23,14 +23,10 @@
             <div flex style="padding-bottom: 10px; border-bottom: 1px solid #ccc;">
                 <div class="my_program">
                     <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_click" ng-class="isProgramShow ? 'arrow_down' : 'arrow_right'" ng-click="toggleMyProgram()"></div><p><?php echo __('my program')?></p>
-                        <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="#"> <?php echo __('edit')?></a></div>
+                        <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="javascript:void(0);"> <?php echo __('edit')?></a></div>
                     <div ng-show="isProgramShow" class="list_tile" class="row">
                         <div ng-repeat="item in list_program_saved" class="exercise_box">
-                            <div class="user_favorite_exercise_img" ng-class="{exercise_box_highlight: $first}" style="background-color:{{item.Program.color_code}};">
-                                <div ng-show="isEdit" style="position:absolute; right:0;"><img ng-click="delete_program(item.Program.id, $index);" class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png"></div>                           
-                                <div style="text-align:center;"><img class="img_program" src="/img/images/{{item.Program.photo}}"></div>
-                                <div class="program_text_name">{{item.Program.name}}</div>
-                            </div>                            
+                            <?php echo $this->element('program_box_template');?>                       
                         </div>                
                     </div>
                 </div>
@@ -42,26 +38,7 @@
                 <div ng-show="isExerciseShow" class="list_tile" class="row">
                     <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController">
                         <div class="exercise_box">
-                            <div class="user_favorite_exercise_img" flex >
-                                <div class="img_star_container">
-                                    <img class="img_star"
-                                         ng-src="{{getImage()}}"
-                                         ng-click="toggleSelection()"
-                                        >
-                                </div>
-                                <a href="/Exercises/detail/?id={{exercise.Exercise.id}}">
-                                    <div style="padding:0 30px;">
-                                        <ui-video
-                                            video="exercise"
-                                            ng-mouseover="hoverIn($event)"
-                                            ng-mouseleave="hoverOut($event)" >
-                                        </ui-video></div>
-                                    <p class="exercise_name">{{exercise.Exercise.name}}</p>
-                                </a>
-                                <ul class="list-inline list_body_part">
-                                   <li ng-repeat="body_part in exercise.Exercise.muscle">{{body_part.name}}</li>
-                                </ul>
-                            </div>
+                            <?php echo $this->element('exercise_box_template');?>
                         </div>
                     </div>
                 </div>                

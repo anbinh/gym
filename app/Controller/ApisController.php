@@ -441,6 +441,8 @@ class ApisController extends AppController {
     public function toggleLanguage($language)
     {
         $this->Session->write('Config.language',$language);
+        // set cookie language
+        $this->setCookieLanguage($language);
         $this->set(array(
             'message' => "success",
             '_serialize' => array('message')
