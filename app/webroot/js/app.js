@@ -1115,7 +1115,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
     }
     // load more exercises
-    $scope.current_ofset = 0;    
+    $scope.current_ofset = 1;    
     $scope.loadmore_exercises = function(){       
         $scope.showLoader = true; 
         $scope.current_ofset = $scope.current_ofset + 1;
