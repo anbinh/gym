@@ -229,6 +229,10 @@ margin: 0 30px 25px 30px;
     border: 1px solid #ccc;
     border-bottom: 0;
 }
+.mobile_app a{
+    color: black;
+    text-decoration: none;
+}
 .mobile_app img{
     padding-left: 20px;
     padding-right: 12px;
@@ -239,6 +243,10 @@ margin: 0 30px 25px 30px;
 .create_program{
     height: 60px;   
     border: 1px solid #ccc;
+}
+.create_program a{
+    color: black;
+    text-decoration: none;   
 }
 .create_program p{
     font-size: 14px;
@@ -572,7 +580,9 @@ input[type=date]{
     float: left;
 
 }
-
+.hover_dotted:hover{
+    outline: 3px dotted;
+}
 .foo_exercise{
     margin: 15px auto auto 30px;
 }
@@ -1254,9 +1264,11 @@ input:invalid {
     margin-top: 10px;
 }
 .none_border{
-    border: 0 !important;
+    border: 0;
 }
-
+.border_dotted{
+    border: 2px dotted;
+}
 .btn-fb{
     width: 260px;
     border-radius: 0 !important;
@@ -1382,7 +1394,7 @@ input:invalid {
     font-size: 12px;
     margin: 0;
     line-height: 1.3;
-    padding: 2px 0 0 15px;
+    padding: 2px 0 0 20px;
 }
 .resetBox p{
     margin: 0 0 0px !important;
@@ -1675,7 +1687,16 @@ ul.option_program_editor li:hover{
 @-webkit-keyframes flipInX{0%{opacity:0;-webkit-transform:perspective(1200px) rotateX(20deg);-moz-transform:perspective(1200px) rotateX(20deg);transform:perspective(1200px) rotateX(20deg)}100%{opacity:1;-webkit-transform:perspective(1200px) rotateX(0deg);-moz-transform:perspective(1200px) rotateX(0deg);transform:perspective(1200px) rotateX(0deg)}}
 @-moz-keyframes flipInX{0%{opacity:0;-webkit-transform:perspective(1200px) rotateX(20deg);-moz-transform:perspective(1200px) rotateX(20deg);transform:perspective(1200px) rotateX(20deg)}100%{opacity:1;-webkit-transform:perspective(1200px) rotateX(0deg);-moz-transform:perspective(1200px) rotateX(0deg);transform:perspective(1200px) rotateX(0deg)}}
 @keyframes flipInX{0%{opacity:0;-webkit-transform:perspective(1200px) rotateX(20deg);-moz-transform:perspective(1200px) rotateX(20deg);transform:perspective(1200px) rotateX(20deg)}100%{opacity:1;-webkit-transform:perspective(1200px) rotateX(0deg);-moz-transform:perspective(1200px) rotateX(0deg);transform:perspective(1200px) rotateX(0deg)}}
-
+.legal_bar{
+    height: 60px;
+    background: #d8e6dc;
+}
+.btn_aptitude{
+    border: 1px solid black !important;
+    color: black;
+    border-radius: 3px;
+    margin: 0 20px;
+}
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;

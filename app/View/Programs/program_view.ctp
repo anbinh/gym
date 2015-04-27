@@ -13,7 +13,7 @@
                 </div>
                 <div flex layout-align="end end" style="text-align: end; margin-right:15px;">                    
                     <?php if($isSaved):?>
-                      <input disabled type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
+                      <input disabled type="button" class="btn btn_save_program" value="<?php echo __('Remove from profile');?>">
                     <?php else:?>
                       <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
                     <?php endif;?>

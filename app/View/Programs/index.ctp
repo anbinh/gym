@@ -1,4 +1,19 @@
 <div ng-controller="ProgramListController">
+<div class="legal_bar" layout="row" layout-align="start center">
+    <div style="float:left; margin-top:-3px;padding-left:20px;">
+        <img src="/img/images/close_legal_bar.png">
+    </div>
+    <div style="float:left;">
+        <a class="btn btn_aptitude" href="#">Aptitude test</a>
+    </div>
+    <div style="float:left;">
+        <p style="margin:0; max-width:638px; line-height:1.2;">If you have any doubt as to your capacity to participate in a physical training program 
+        or if you feel any discomfort, stop exercising and consult a physician immediately. </p>
+    </div>    
+    <div style="float:left; margin-left:20px;border-bottom:1px solid;">
+        <a style="color:black; text-decoration: none;" href="#"><?php echo __('Term of use');?></a>
+    </div>
+</div>
 <ul class="list-inline filter_objective_program">
     <li><img src="/img/images/icon_search.png"/></li>
     <li><?php echo __('OBJECTIVE')?></li>
@@ -17,7 +32,7 @@
                 <div class="list_tile" class="row">
                     <div ng-repeat="program in programs_list" ng-controller="ItemProgramController">
                         <div class="exercise_box">
-                            <div class="user_favorite_exercise_img none_border" ng-style="{'background-color': program.Program.color_code}">
+                            <div class="user_favorite_exercise_img none_border hover_dotted" ng-style="{'background-color': program.Program.color_code}">
                                 <a href="/Programs/program_view/{{program.Program.id}}">
                                 <div style="text-align:center;"><img class="img_program" ng-src="/img/images/{{program.Program.photo}}"></div>
                                 <div class="program_text_name"> {{program.Program.name}}</div>

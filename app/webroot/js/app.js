@@ -1319,7 +1319,7 @@ app.controller('ProgramListController', function($scope,$http,$filter,$modal,$wi
         {
             $scope.programs_list = angular.copy($scope.programs_list_backup);
         }
-    }
+    }    
 }
 );
 
@@ -1365,7 +1365,9 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
 
     $scope.saveProgramHandler = function(program_id)
     {
-        $('.btn_save_program').attr('disabled', 'disabled');  
+        $('.btn_save_program').val('Remove from profile');
+        $('.btn_save_program').attr('disabled', 'disabled'); 
+
         $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
         .success(function(res){
 

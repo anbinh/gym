@@ -68,5 +68,8 @@ class ProgramsController  extends AppController {
              $this->redirect('/Users/login');
         }        
     }
+    public function blank_page(){
+        
+    }
 }
 ?>
