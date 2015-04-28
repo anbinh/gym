@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop']);
+var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop','dndLists']);
 
 app.controller('ExerciseDetailController', function($scope,$http) {
     var exercise_id = window.location.search;
@@ -309,6 +309,36 @@ app.controller('UserProfileController', function($scope,$http){
     $scope.isProgramShow = true;
     $scope.isEdit = false;
     $scope.isSelected = true;
+
+    $scope.dragoverCallback = function(event, index, external, type) {
+        $scope.logListEvent('dragged over', event, index, external, type);
+        return index > 0;
+    };
+
+    $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+        $scope.logListEvent('dropped at', event, index, external, type);
+        if (external) {
+            if (allowedType === 'itemType' && !item.label) return false;
+            if (allowedType === 'containerType' && !angular.isArray(item)) return false;
+        }
+        return item;
+    };
+
+    $scope.logEvent = function(message, event) {
+        console.log(message, '(triggered by the following', event.type, 'event)');
+        console.log(event);
+    };
+
+    $scope.logListEvent = function(action, event, index, external, type) {
+        var message = external ? 'External ' : '';
+        message += type + ' element is ' + action + ' position ' + index;
+        $scope.logEvent(message, event);
+    };        
+
+    $scope.$watch('items', function(model) {
+        $scope.modelAsJson = angular.toJson(model, true);
+    }, true);
+
 });
 
 app.controller('signupController', function($scope,$http){
@@ -1830,14 +1860,43 @@ app.controller('VideoController', function($scope,$http,$filter,state){
 );
 
 app.controller('TestRepeatController', function($scope){
-        $scope.hoverIn = function(e){
-            var videoElements = angular.element(e.srcElement);
-            videoElements[0].play();
-            console.log('in');
+        $scope.dragoverCallback = function(event, index, external, type) {
+            $scope.logListEvent('dragged over', event, index, external, type);
+            return index > 0;
         };
-        $scope.hoverOut = function(){
-            console.log('out');
+
+        $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+            $scope.logListEvent('dropped at', event, index, external, type);
+            if (external) {
+                if (allowedType === 'itemType' && !item.label) return false;
+                if (allowedType === 'containerType' && !angular.isArray(item)) return false;
+            }
+            return item;
         };
+
+        $scope.logEvent = function(message, event) {
+            console.log(message, '(triggered by the following', event.type, 'event)');
+            console.log(event);
+        };
+
+        $scope.logListEvent = function(action, event, index, external, type) {
+            var message = external ? 'External ' : '';
+            message += type + ' element is ' + action + ' position ' + index;
+            $scope.logEvent(message, event);
+        };
+
+        $scope.items = [];
+        var id = 0;
+        // Initialize model
+        for (var k = 0; k < 7; ++k) {
+            $scope.items.push({label: 'Item ' + id++});
+        }
+        
+        
+
+        $scope.$watch('model', function(model) {
+            $scope.modelAsJson = angular.toJson(model, true);
+        }, true);
     }
 );
 

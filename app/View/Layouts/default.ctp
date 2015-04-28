@@ -47,7 +47,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-ui.min',
             'bower_components/angular/angular-dragdrop.min',
-            
+            'bower_components/angular/angular-drag-and-drop-lists',
             'bootstrap.min',
             'custom',
             'bower_components/angular-ui/ui-bootstrap-tpls-0.12.1',
