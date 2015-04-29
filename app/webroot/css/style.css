@@ -1717,9 +1717,10 @@ ul.option_program_editor li:hover{
     border: 2px solid red;
 }
 
-.dndDraggingSource{
-    border: 2px solid red;
+.dragSelected{
+    display: none;
 }
+
 
 /* End --- Drag Drop css*/
 

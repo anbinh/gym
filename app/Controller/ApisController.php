@@ -374,10 +374,48 @@ class ApisController extends AppController {
             $search = array(
                 '_id' => array('$in' => $user['User']['assigned_programs'])
             );
-            $list_programs_of_user = $this->Program->find('all', array('conditions'=>$search));
-
+            $list_programs_of_user = $this->Program->find('all', array('conditions'=>$search));                        
+            $reorder_list = array();
+            foreach ($user['User']['assigned_programs'] as $key => $value) {
+                foreach ($list_programs_of_user as $key1 => $value1) {
+                    if($value1['Program']['id'] == $value)
+                        array_push($reorder_list, $value1);
+                }
+            }
             $this->set(array(
-                'message' => $list_programs_of_user,
+                'program_order'=> $user['User']['assigned_programs'],
+                'message' => $reorder_list,
+                '_serialize' => array('message','program_order')
+            ));
+        }
+        else{
+            $this->set(array(
+                'message' => "UnAuthentication",
+                '_serialize' => array('message')
+            ));
+        }
+    }
+
+    public function reorderProgram()
+    {
+        $data = $this->request->input('json_decode',true);
+        $user = $this->getAuthentication();
+        if($user && $user){
+            $user_id = $user['id'];
+            $user = $this->User->findById($user_id);
+
+            $array_id = array();
+            foreach ($data as $key => $value) {
+                array_push($array_id, new MongoId($value));
+            }
+            $susp = array(
+                "id" => $user_id,
+                "assigned_programs" => $array_id
+            );
+            $result = $this->User->save($susp);
+
+            $this->set(array(                
+                'message' => 'success',
                 '_serialize' => array('message')
             ));
         }
@@ -387,6 +425,7 @@ class ApisController extends AppController {
                 '_serialize' => array('message')
             ));
         }
+               
     }
 
     public function deleteAssignedProgram($assigned_programs=null){

@@ -58,26 +58,7 @@ class UsersController extends AppController {
     }
 
     public function edit_profile(){
-
-        $auth = $this->getAuthentication();
-        /*else {
-            $profile = $this->getCurrentRegister();
-            // register mode
-            if ($profile) {
-                $fullname = explode(" ", $profile['fullname']);
-                if (count($fullname) > 1) {
-                    $profile['firstname'] = $fullname[0];
-                    $profile['lastname'] = "";
-                    foreach($fullname as $key => $value)
-                    {
-                        if($key == 0)
-                            continue;
-                        $profile['lastname'] .= $value." ";
-                    }
-                } else
-                    $profile['firstname'] = $profile['fullname'];
-            }
-        }*/
+        $auth = $this->getAuthentication();        
         $this->set('profile',$auth);
     }
 

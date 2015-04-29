@@ -93,37 +93,26 @@
 </style>
 <div ng-controller="TestRepeatController" class="advancedDemo">
     <div class="row">        
-        <div dnd-list="items"
-            dnd-allowed-types="['itemType']"
-            dnd-horizontal-list="true"
-            dnd-external-sources="true"
-            dnd-dragover="dragoverCallback(event, index, external, type)"
-            dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
-            class="itemlist">
-            <!-- <li ng-repeat="item in items"
-                dnd-draggable="item"
-                dnd-type="'itemType'"
-                dnd-effect-allowed="copyMove"
-                dnd-dragstart="logEvent('Started to drag an item', event)"
-                dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
-                dnd-copied="logEvent('Item copied', event)">
-                {{item.label}}
-            </li> -->
-            <div 
-                ng-repeat="item in items"
-                dnd-draggable="item"
-                dnd-type="'itemType'"
-                dnd-effect-allowed="copyMove"
-                dnd-dragstart="logEvent('Started to drag an item', event)"
-                dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
-                dnd-copied="logEvent('Item copied', event)"
-            class="user_favorite_exercise_img dndPlaceholder" ng-class="{exercise_box_highlight: $first}" style="background-color:#d8e6dc;">
-                <div ng-show="isEdit" style="position:absolute; right:0;"><img ng-click="delete_program(132, $index);" class="delete_icon_program" style="float:right;" src="/img/images/delete_copy.png">
-                </div>                           
-                <div style="text-align:center;"><a href="/Programs/program_view/1414231"><img class="img_program" src="/img/images/eugenie.png"></a></div>
-                <div class="program_text_name">{{item.label}}</div>
-            </div>
-        </div>
-        <div class="clearfix"></div>                        
+        <div class="container-element box box-blue">
+            <h3>Container</h3>
+            <ul dnd-list="items"
+                dnd-allowed-types="['itemType']"
+                dnd-horizontal-list="true"
+                dnd-external-sources="true"
+                dnd-dragover="dragoverCallback(event, index, external, type)"
+                dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
+                class="itemlist">
+                <li ng-repeat="item in items"
+                    dnd-draggable="item"
+                    dnd-type="'itemType'"
+                    dnd-effect-allowed="copyMove"
+                    dnd-dragstart="logEvent('Started to drag an item', event)"
+                    dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
+                    dnd-copied="logEvent('Item copied', event)">
+                    {{item.label}}
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>                        
     </div>
 </div>

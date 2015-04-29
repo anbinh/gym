@@ -227,7 +227,7 @@ app.controller('UserProfileController', function($scope,$http){
         // get list of programs had saved before by this User
         $http.get('/Apis/getListProgramOfUser.json')
             .then(function(res){  
-                 console.log(res.data.message);
+                 console.log(res.data);
                 $scope.list_program_saved = angular.copy(res.data.message);
             });
     }
@@ -310,35 +310,46 @@ app.controller('UserProfileController', function($scope,$http){
     $scope.isEdit = false;
     $scope.isSelected = true;
 
-    $scope.dragoverCallback = function(event, index, external, type) {
-        $scope.logListEvent('dragged over', event, index, external, type);
-        return index > 0;
-    };
+    $scope.dragIndex = 0;    
+    $scope.dropIndex = 0;    
 
-    $scope.dropCallback = function(event, index, item, external, type, allowedType) {
-        $scope.logListEvent('dropped at', event, index, external, type);
-        if (external) {
-            if (allowedType === 'itemType' && !item.label) return false;
-            if (allowedType === 'containerType' && !angular.isArray(item)) return false;
-        }
+    $scope.dropCallback = function(event, index, item) {        
+        console.log('drop : ' + index);
+        $scope.dropIndex = index;   
         return item;
     };
 
-    $scope.logEvent = function(message, event) {
-        console.log(message, '(triggered by the following', event.type, 'event)');
-        console.log(event);
+    $scope.movedCallback = function(event, index, item) {      
+        $scope.list_program_saved.splice(index, 1);              
+        if($scope.dragIndex == $scope.dropIndex || $scope.dragIndex == $scope.dropIndex-1)      
+        {
+
+        }   
+        else
+        {
+            var array_order = [];
+            angular.forEach($scope.list_program_saved, function(value, key) {
+              this.push(value.Program.id);
+            }, array_order);
+            $http({
+                method  : 'POST',
+                url     : '/Apis/reorderProgram.json',            
+                data    : array_order,  // pass in data as strings
+                headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+            }).success(function(data) {
+                    console.log(data);
+                    if(data.message != "success")
+                    {
+                        window.location='/Users/edit_profile';
+                    }                  
+            });
+        }                           
     };
 
-    $scope.logListEvent = function(action, event, index, external, type) {
-        var message = external ? 'External ' : '';
-        message += type + ' element is ' + action + ' position ' + index;
-        $scope.logEvent(message, event);
-    };        
-
-    $scope.$watch('items', function(model) {
-        $scope.modelAsJson = angular.toJson(model, true);
-    }, true);
-
+    $scope.dragStartCallback = function(event, index, item) {      
+        console.log('drag : ' + index);     
+        $scope.dragIndex = index;     
+    };    
 });
 
 app.controller('signupController', function($scope,$http){
