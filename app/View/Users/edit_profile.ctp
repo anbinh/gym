@@ -156,10 +156,10 @@
                 <div class="my_program">
                     <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_click" ng-class="isProgramShow ? 'arrow_down' : 'arrow_right'" ng-click="toggleMyProgram()"></div><p><?php echo __('my program')?></p>
                         <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="javascript:void(0);"> <?php echo __('edit')?></a></div>
-                    <div ng-show="isProgramShow" class="list_tile" class="row">
-                        <div ng-repeat="item in list_program_saved" class="exercise_box">
-                            <?php echo $this->element('program_box_template');?>                       
-                        </div>                
+                    <div ng-show="isProgramShow" class="list_tile" class="row" 
+                        dnd-list="list_program_saved"   
+                        >                        
+                            <?php echo $this->element('program_box_template');?>
                     </div>
                 </div>
             </div>

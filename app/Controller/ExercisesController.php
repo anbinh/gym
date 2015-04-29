@@ -7,8 +7,7 @@ class ExercisesController  extends AppController {
 
     public function test()
     {
-        $temp = $this->Exercise->find('all', array('conditions'=>array('muscle[0][bodypart_id]' => 1)));
-        pr($temp);
+        
     }
 
     public function login_modal() {
