@@ -1689,8 +1689,9 @@ ul.option_program_editor li:hover{
 @-moz-keyframes flipInX{0%{opacity:0;-webkit-transform:perspective(1200px) rotateX(20deg);-moz-transform:perspective(1200px) rotateX(20deg);transform:perspective(1200px) rotateX(20deg)}100%{opacity:1;-webkit-transform:perspective(1200px) rotateX(0deg);-moz-transform:perspective(1200px) rotateX(0deg);transform:perspective(1200px) rotateX(0deg)}}
 @keyframes flipInX{0%{opacity:0;-webkit-transform:perspective(1200px) rotateX(20deg);-moz-transform:perspective(1200px) rotateX(20deg);transform:perspective(1200px) rotateX(20deg)}100%{opacity:1;-webkit-transform:perspective(1200px) rotateX(0deg);-moz-transform:perspective(1200px) rotateX(0deg);transform:perspective(1200px) rotateX(0deg)}}
 .legal_bar{
-    height: 60px;
+    min-height: 60px;
     background: #d8e6dc;
+    padding:10px 0 10px 0;
 }
 .btn_aptitude{
     border: 1px solid black !important;

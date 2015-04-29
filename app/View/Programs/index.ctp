@@ -6,11 +6,11 @@
     <div style="float:left;">
         <a class="btn btn_aptitude" href="#">Aptitude test</a>
     </div>
-    <div style="float:left;">
-        <p style="margin:0; max-width:638px; line-height:1.2;">If you have any doubt as to your capacity to participate in a physical training program 
+    <div class="col-xs-8">
+        <p style="margin:0; line-height:1.2;">If you have any doubt as to your capacity to participate in a physical training program 
         or if you feel any discomfort, stop exercising and consult a physician immediately. </p>
     </div>    
-    <div style="float:left; margin-left:20px;border-bottom:1px solid;">
+    <div style="float:left; border-bottom:1px solid;">
         <a style="color:black; text-decoration: none;" href="#"><?php echo __('Term of use');?></a>
     </div>
 </div>
