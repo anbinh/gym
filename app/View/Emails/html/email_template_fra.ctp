@@ -1,5 +1,5 @@
 <html>
-<?php echo $this->Html->image('logo_fr.png', array('alt' => 'Gym logo')); ?>
+<img src="http://gym.miratik.com/img/logo_fr.png" alt="Gym logo"/>
 <p>
     Bonjour, <br/><br/>
     Vous avez oublié votre mot de passe Studiogym? <br/>

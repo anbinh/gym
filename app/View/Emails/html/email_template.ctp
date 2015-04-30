@@ -1,5 +1,5 @@
 <html>
-<img src="/img/logo_eng.png" alt="Gym logo"/>
+<img src="http://gym.miratik.com/img/logo_eng.png" alt="Gym logo"/>
 <p>
     Hi, <br/><br/>
     Forgot your Studiogym password? <br/>
