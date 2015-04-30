@@ -139,6 +139,7 @@ app.controller('UserController', function($scope,$http) {
     };
     $scope.editProgram = function() {
         $scope.isEdit = true;
+        $scope.isSelected = true;
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
@@ -173,8 +174,49 @@ app.controller('UserController', function($scope,$http) {
     };
     $scope.isExerciseShow = true;
     $scope.isProgramShow = true;
+
     $scope.isEdit = false;
-    $scope.isSelected = true;
+    $scope.isSelected = false;
+
+    $scope.dragIndex = 0;    
+    $scope.dropIndex = 0;        
+    $scope.dropCallback = function(event, index, item) {        
+        console.log('drop : ' + index);
+        $scope.dropIndex = index;   
+        return item;
+    };
+
+    $scope.movedCallback = function(event, index, item) {      
+        $scope.list_program_saved.splice(index, 1);              
+        if($scope.dragIndex == $scope.dropIndex || $scope.dragIndex == $scope.dropIndex-1)      
+        {
+
+        }   
+        else
+        {
+            var array_order = [];
+            angular.forEach($scope.list_program_saved, function(value, key) {
+              this.push(value.Program.id);
+            }, array_order);
+            $http({
+                method  : 'POST',
+                url     : '/Apis/reorderProgram.json',            
+                data    : array_order,  // pass in data as strings
+                headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+            }).success(function(data) {
+                    console.log(data);
+                    if(data.message != "success")
+                    {
+                        window.location='/Users/edit_profile';
+                    }                  
+            });
+        }                           
+    };
+
+    $scope.dragStartCallback = function(event, index, item) {      
+        console.log('drag : ' + index);     
+        $scope.dragIndex = index;     
+    };
 });
 
 app.controller('UserProfileController', function($scope,$http){
@@ -272,6 +314,7 @@ app.controller('UserProfileController', function($scope,$http){
 
     $scope.editProgram = function() {
         $scope.isEdit = true;
+        $scope.isSelected = true;
     };
     $scope.getImage = function() {
         if ( $scope.isSelected ) {
@@ -308,11 +351,10 @@ app.controller('UserProfileController', function($scope,$http){
     $scope.isExerciseShow = true;
     $scope.isProgramShow = true;
     $scope.isEdit = false;
-    $scope.isSelected = true;
+    $scope.isSelected = false;
 
     $scope.dragIndex = 0;    
-    $scope.dropIndex = 0;    
-
+    $scope.dropIndex = 0;        
     $scope.dropCallback = function(event, index, item) {        
         console.log('drop : ' + index);
         $scope.dropIndex = index;   
