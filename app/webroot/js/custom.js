@@ -27,4 +27,8 @@ $(document).ready(function(){
 			$(this).find('ul').removeClass('show-drop-list');
 		}
 	);
+
+	$('.close_legal_bar').click(function(){
+		$('.legal_bar').hide();
+	});
 });

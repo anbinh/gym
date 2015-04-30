@@ -1691,13 +1691,21 @@ ul.option_program_editor li:hover{
 .legal_bar{
     min-height: 60px;
     background: #d8e6dc;
-    padding:10px 0 10px 0;
+    padding: 0 0 0 20px;
 }
 .btn_aptitude{
     border: 1px solid black !important;
     color: black;
     border-radius: 3px;
     margin: 0 20px;
+}
+.close_legal_bar{
+    float:left; 
+    margin-top:-3px; 
+    padding: 10px 0 10px 0;
+}
+.close_legal_bar:hover{
+    cursor: pointer;
 }
 ::-webkit-scrollbar {
     width: 8px;
