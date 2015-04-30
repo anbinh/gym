@@ -27,7 +27,7 @@
                     <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
                     <div class="sharing_program_social_fb"><img src="/img/images/facebook_icon.png"/> </div>
                     <div class="sharing_program_social_twitter"><img src="/img/images/twitter_icon.png"/></div>
-                    <div class="sharing_program_link"><span><a href="#">Share</a></span></div>
+                    <div class="sharing_program_link"><span><a href="https://www.facebook.com/sharer/sharer.php?u=gym.miratik.com" target="_blank">Share</a></span></div>
                 </div>
             </div>
         </div>

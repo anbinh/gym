@@ -1,19 +1,22 @@
 <div ng-controller="ProgramListController">
-<div class="legal_bar" layout="row" layout-align="start center">
-    <div style="float:left; margin-top:-3px;padding-left:20px;">
+
+<?php if(!$this->Session->check('is_SHOW_LEGAL_BAR')):?>
+<div class="legal_bar" layout="row" layout-sm="column" layout-align="start center">
+    <div class="close_legal_bar" ng-click="close_legal_bar('0')">
         <img src="/img/images/close_legal_bar.png">
     </div>
-    <div style="float:left;">
-        <a class="btn btn_aptitude" href="#">Aptitude test</a>
+    <div style="float:left; padding: 10px 0 10px 0;" ng-click="close_legal_bar('1')">
+        <a class="btn btn_aptitude" href="javascript:void(0);">Aptitude test</a>
     </div>
-    <div style="float:left;">
-        <p style="margin:0; max-width:638px; line-height:1.2;">If you have any doubt as to your capacity to participate in a physical training program 
+    <div class="col-xs-10 col-lg-6">
+        <p style="margin:0; line-height:1.2; padding: 10px 0 10px 0;">If you have any doubt as to your capacity to participate in a physical training program 
         or if you feel any discomfort, stop exercising and consult a physician immediately. </p>
     </div>    
-    <div style="float:left; margin-left:20px;border-bottom:1px solid;">
-        <a style="color:black; text-decoration: none;" href="#"><?php echo __('Term of use');?></a>
+    <div style="float:left; border-bottom:1px solid;" ng-click="close_legal_bar('2')">
+        <a style="color:black; text-decoration: none;" href="javascript:void(0);"><?php echo __('Term of use');?></a>
     </div>
 </div>
+<?php endif;?>
 <ul class="list-inline filter_objective_program">
     <li><img src="/img/images/icon_search.png"/></li>
     <li><?php echo __('OBJECTIVE')?></li>

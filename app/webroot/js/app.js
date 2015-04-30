@@ -1403,6 +1403,23 @@ app.controller('ProgramListController', function($scope,$http,$filter,$modal,$wi
             $scope.programs_list = angular.copy($scope.programs_list_backup);
         }
     }    
+    
+    $scope.close_legal_bar = function(option){
+        // set session close legal bar
+        $http.get('/Apis/setLegalBar.json')
+            .then(function(){                
+                switch(option){
+                    case '0':
+                        break;
+                    case '1':
+                        window.location='/Aptitudes';
+                        break;
+                    case '2':
+                        window.location='/Privacies';        
+                        break;                        
+                }
+            });        
+    }
 }
 );
 
