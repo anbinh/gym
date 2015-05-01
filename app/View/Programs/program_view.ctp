@@ -8,7 +8,7 @@
                 <div flex="20"  style="padding-left:10px;">
                     <div class="program_logo_topic" style="background-color: <?php echo $programs['Program']['color_code']?>">
                         <div style="text-align:center;"><img class="img_program_view" src="/img/images/<?php echo $programs['Program']['photo']?>"></div>
-                        <div class="program_view_text_name"> <?php echo $programs['Program']['name']?></div>
+                        <div class="program_view_text_name"> <?php echo ($language=='fra')?$programs['Program']['name_fr']:$programs['Program']['name'];?></div>
                     </div>
                 </div>
                 <div flex layout-align="end end" style="text-align: end; margin-right:15px;">                    
@@ -27,7 +27,7 @@
                     <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
                     <div class="sharing_program_social_fb"><img src="/img/images/facebook_icon.png"/> </div>
                     <div class="sharing_program_social_twitter"><img src="/img/images/twitter_icon.png"/></div>
-                    <div class="sharing_program_link"><span><a href="https://www.facebook.com/sharer/sharer.php?u=gym.miratik.com" target="_blank">Share</a></span></div>
+                    <div class="sharing_program_link"><span><a href="https://www.facebook.com/sharer/sharer.php?u=gym.miratik.com" target="_blank"><?php echo __('Share');?></a></span></div>
                 </div>
             </div>
         </div>

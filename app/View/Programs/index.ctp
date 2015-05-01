@@ -38,7 +38,7 @@
                             <div class="user_favorite_exercise_img none_border hover_dotted" ng-style="{'background-color': program.Program.color_code}">
                                 <a href="/Programs/program_view/{{program.Program.id}}">
                                 <div style="text-align:center;"><img class="img_program" ng-src="/img/images/{{program.Program.photo}}"></div>
-                                <div class="program_text_name"> {{program.Program.name}}</div>
+                                <div class="program_text_name"> <?php echo ($language=='fra')?'{{program.Program.name_fr}}':'{{program.Program.name}}';?></div>
                                 </a>                                               
                             </div>
                         </div>
