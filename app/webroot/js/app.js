@@ -1467,13 +1467,14 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
     $scope.saveProgramHandler = function(program_id)
     {
         // var content = "remove_program('"+program_id+"')";
-        // $('.btn_save_program').val('Remove from profile');
+         $('.btn_save_program').hide();
+         $('.btn_remove_from_profile').show();
         // $('.btn_save_program').attr('ng-click', content);
         // $('.btn_save_program').addClass('btn_remove_from_profile');        
 
         $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
         .success(function(res){
-            $window.location.reload();
+            //$window.location.reload();
         }).finally(function() {           
            // $('.btn_save_program').attr('disabled', 'disabled');
         });     
@@ -1504,14 +1505,12 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
 
     $scope.removeProgramHandler = function(program_id)
     {
-        var content = "save_program('"+program_id+"')";
-        // $('.btn_save_program').val('Save');
-        // $('.btn_save_program').attr('ng-click', content);
-        // $('.btn_save_program').removeClass('btn_remove_from_profile');        
+        $('.btn_save_program').show();
+        $('.btn_remove_from_profile').hide();       
 
         $http.get('/Apis/deleteAssignedProgram/' + program_id +'.json')
         .success(function(res){
-            $window.location.reload();
+           // $window.location.reload();
         }).finally(function() {           
            // $('.btn_save_program').attr('disabled', 'disabled');
         });     
