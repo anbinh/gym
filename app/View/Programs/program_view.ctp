@@ -10,14 +10,10 @@
                     </div>
                 </div>
                 <div flex layout-align="end end" style="text-align: end; margin-right:15px;">                    
-                    <?php if($isSaved):?>
-                        <a href="/Users">
-                            <input type="button" class="btn btn_save_program btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">
-                        </a>
-                    <?php else:?>
-                        <a href="javascript:void(0);">
-                            <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
-                        </a>
+                    <?php if($isSaved):?>                        
+                        <input ng-click="remove_program('<?php echo $programs['Program']['id']?>')" type="button" class="btn btn_save_program btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">                        
+                    <?php else:?>                        
+                        <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">                        
                     <?php endif;?>
                 </div>
             </div>
