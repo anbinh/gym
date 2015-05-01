@@ -1,6 +1,4 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-
-
 <div layout="row" layout-align="center start">
     <div ng-controller="ProgramController" flex class="ProgramIndexLeftContent">
         <div layout="column" class="summary_program">
@@ -13,9 +11,13 @@
                 </div>
                 <div flex layout-align="end end" style="text-align: end; margin-right:15px;">                    
                     <?php if($isSaved):?>
-                      <input disabled type="button" class="btn btn_save_program" value="<?php echo __('Remove from profile');?>">
+                        <a href="/Users">
+                            <input type="button" class="btn btn_save_program btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">
+                        </a>
                     <?php else:?>
-                      <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
+                        <a href="javascript:void(0);">
+                            <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
+                        </a>
                     <?php endif;?>
                 </div>
             </div>
@@ -25,9 +27,9 @@
                         Intentse work on the buttocks and thighs
                     </div>
                     <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
-                    <div class="sharing_program_social_fb"><img src="/img/images/facebook_icon.png"/> </div>
-                    <div class="sharing_program_social_twitter"><img src="/img/images/twitter_icon.png"/></div>
-                    <div class="sharing_program_link"><span><a href="https://www.facebook.com/sharer/sharer.php?u=gym.miratik.com" target="_blank">Share</a></span></div>
+                    <div class="sharing_program_social_fb"><a href="javascript:fbShare('http://gym.miratik.com/Programs/program_view/<?php echo $programs['Program']['id'];?>', 'Studio Gym', '', '/img/images/<?php echo $programs['Program']['photo']?>', 520, 350)"><img src="/img/images/facebook_icon.png"/> </a></div>
+                    <div class="sharing_program_social_twitter"><a class="twitter popup" href="http://twitter.com/share"><img src="/img/images/twitter_icon.png"/></a></div>
+                    <div class="sharing_program_link"><span>Share</span></div>
                 </div>
             </div>
         </div>
@@ -46,3 +48,26 @@
       <?php echo $this->element('right_advs');?>    
     </div>
 </div>
+<script>
+    function fbShare(url, title, descr, image, winWidth, winHeight) {
+        var winTop = (screen.height / 2) - (winHeight / 2);
+        var winLeft = (screen.width / 2) - (winWidth / 2);
+        window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+    }
+    $('.popup').click(function(event) {
+        var width  = 575,
+            height = 400,
+            left   = ($(window).width()  - width)  / 2,
+            top    = ($(window).height() - height) / 2,
+            url    = this.href,
+            opts   = 'status=1' +
+                     ',width='  + width  +
+                     ',height=' + height +
+                     ',top='    + top    +
+                     ',left='   + left;
+        
+        window.open(url, 'twitter', opts);
+     
+        return false;
+      });       
+</script>

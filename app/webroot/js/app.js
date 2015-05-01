@@ -1466,7 +1466,8 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
     $scope.saveProgramHandler = function(program_id)
     {
         $('.btn_save_program').val('Remove from profile');
-        $('.btn_save_program').attr('disabled', 'disabled'); 
+        $('.btn_save_program').addClass('btn_remove_from_profile');
+        $('.btn_save_program').parent().attr('href', '/Users');
 
         $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
         .success(function(res){
