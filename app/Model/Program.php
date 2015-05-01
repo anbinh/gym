@@ -10,7 +10,8 @@ class Program extends AppModel {
         'objective' => array('type'=>'String'),
         'content' => array('type'=>'Array'),
         'photo' => array('type'=>'String'),
-        'color_code' => array('type'=>'String')
+        'color_code' => array('type'=>'String'),
+        'name_fr' => array('type'=>'String')
     );
     public $hasMany = array(
         'Exercise' => array(

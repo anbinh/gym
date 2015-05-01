@@ -6,7 +6,7 @@
                 <div flex="20"  style="padding-left:10px;">
                     <div class="program_logo_topic" style="background-color: <?php echo $programs['Program']['color_code']?>">
                         <div style="text-align:center;"><img class="img_program_view" src="/img/images/<?php echo $programs['Program']['photo']?>"></div>
-                        <div class="program_view_text_name"> <?php echo $programs['Program']['name']?></div>
+                        <div class="program_view_text_name"> <?php echo ($language=='fra')?$programs['Program']['name_fr']:$programs['Program']['name'];?></div>
                     </div>
                 </div>
                 <div flex layout-align="end end" style="text-align: end; margin-right:15px;">                    

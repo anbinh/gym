@@ -9,6 +9,8 @@ class DATABASE_CONFIG {
         'datasource' => 'Mongodb.MongodbSource',
         'host' => 'localhost',
         'database' => 'gym',
+        'login' => 'miratik',
+        'password' => 'miratik',
         'port' => 27017,
         'prefix' => '',
         'persistent' => 'true',        
