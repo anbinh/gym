@@ -1440,6 +1440,7 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
 
 
     $scope.save_program = function(program_id){
+        
         if($scope.isAuthenticate == false)
         {
             var modalInstance = $modal.open({
@@ -1461,23 +1462,60 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
         {
             $scope.saveProgramHandler(program_id);
         }
-    }   
+    }       
 
     $scope.saveProgramHandler = function(program_id)
     {
-        $('.btn_save_program').val('Remove from profile');
-        $('.btn_save_program').addClass('btn_remove_from_profile');
-        $('.btn_save_program').parent().attr('href', '/Users');
+        // var content = "remove_program('"+program_id+"')";
+        // $('.btn_save_program').val('Remove from profile');
+        // $('.btn_save_program').attr('ng-click', content);
+        // $('.btn_save_program').addClass('btn_remove_from_profile');        
 
         $http.get('/Apis/saveProgramUserProfile/' + program_id +'.json')
         .success(function(res){
-
+            $window.location.reload();
         }).finally(function() {           
            // $('.btn_save_program').attr('disabled', 'disabled');
         });     
     }
 
-    
+    $scope.remove_program = function(program_id){            
+        if($scope.isAuthenticate == false)
+        {        
+            var modalInstance = $modal.open({
+              templateUrl:'/Programs/login_modal.ctp',
+              controller: 'LoginModalInstanceCtrl',
+              backdropClass: 'backdropClass_custom'                    
+            });            
+            modalInstance.result.then(function (Id) {
+                console.log(Id);
+                $http.get('/Apis/deleteAssignedProgram/' + program_id +'.json')
+                    .then(function(res){
+                        console.log(res);
+                        $window.location.reload();
+                    });
+            }, function () {
+            });      
+        }
+        else{
+             $scope.removeProgramHandler(program_id);
+        }
+    }
+
+    $scope.removeProgramHandler = function(program_id)
+    {
+        var content = "save_program('"+program_id+"')";
+        // $('.btn_save_program').val('Save');
+        // $('.btn_save_program').attr('ng-click', content);
+        // $('.btn_save_program').removeClass('btn_remove_from_profile');        
+
+        $http.get('/Apis/deleteAssignedProgram/' + program_id +'.json')
+        .success(function(res){
+            $window.location.reload();
+        }).finally(function() {           
+           // $('.btn_save_program').attr('disabled', 'disabled');
+        });     
+    }
 });
 
 app.controller('ForgetPasswordController', ['$scope', '$http' , '$sce' , function($scope,$http,$sce){
