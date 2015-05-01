@@ -67,6 +67,7 @@ class UsersController extends AppController {
             $data=$this->data;
 
             $data['User']['birthday'] = $data['User']['day'] . "-" . $data['User']['month'] . "-" . $data['User']['year'];
+            // save img file
             if($_FILES){
                 if($_FILES['picture']['name']){
                     $path = $_FILES['picture']['name'];
@@ -82,6 +83,7 @@ class UsersController extends AppController {
                 if($data['User']['picture'] == "")
                     unset($data['User']['picture']);
             }
+            // save data
             if($data['User']['id'] != 0)
             {
                 $user = $this->User->findById($data['User']['id']);
@@ -102,6 +104,16 @@ class UsersController extends AppController {
                     }
                     if(!$_FILES)
                         $data['User']['picture'] = $user['User']['picture'];
+
+                    // set default language                    
+                    if($data['User']['language'] == "French")
+                    {
+                        $this->setLang("fra");
+                    }
+                    else
+                    {
+                        $this->setLang("eng");
+                    }
                 }
             }
             else
@@ -120,7 +132,7 @@ class UsersController extends AppController {
             if($data['User']['id'] == 0)
                 $data['User']['id'] = $this->User->getLastInsertId();
             $this->setAuthentication($data['User']);
-            pr($data);
+            //pr($data);
         }
         $this->redirect('/Users/index');
         //$this->render(FALSE);
