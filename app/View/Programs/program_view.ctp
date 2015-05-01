@@ -11,9 +11,11 @@
                 </div>
                 <div flex layout-align="end end" style="text-align: end; margin-right:15px;">                    
                     <?php if($isSaved):?>                        
-                        <input ng-click="remove_program('<?php echo $programs['Program']['id']?>')" type="button" class="btn btn_save_program btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">                        
+                        <input ng-click="remove_program('<?php echo $programs['Program']['id']?>')" type="button" class="btn btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">                        
+                        <input style="display:none;" ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">                        
                     <?php else:?>                        
                         <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">                        
+                        <input style="display:none;" ng-click="remove_program('<?php echo $programs['Program']['id']?>')" type="button" class="btn btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">                        
                     <?php endif;?>
                 </div>
             </div>
