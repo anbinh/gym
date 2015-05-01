@@ -35,8 +35,8 @@
                 <div class="list_tile" class="row">
                     <div ng-repeat="program in programs_list" ng-controller="ItemProgramController">
                         <div class="exercise_box">
-                            <div class="user_favorite_exercise_img none_border hover_dotted" ng-style="{'background-color': program.Program.color_code}">
-                                <a href="/Programs/program_view/{{program.Program.id}}">
+                            <div class="user_favorite_exercise_img none_border" ng-style="{'background-color': program.Program.color_code}">
+                                <a href="/Programs/program_view/{{program.Program.id}}" style=" border: 0; outline: 0; outline-offset: -1px;">
                                 <div style="text-align:center;"><img class="img_program" ng-src="/img/images/{{program.Program.photo}}"></div>
                                 <div class="program_text_name"> <?php echo ($language=='fra')?'{{program.Program.name_fr}}':'{{program.Program.name}}';?></div>
                                 </a>                                               

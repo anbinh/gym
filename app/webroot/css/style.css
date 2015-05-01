@@ -538,6 +538,10 @@ input[type=date]{
     border:1px solid #ccc;
     position: relative;
 }
+a:focus div, a:active div{
+    border: 0;
+    outline : 0;
+}
 .user_favorite_exercise_img p{
     color: black;    
     line-height: 1.14;
@@ -580,9 +584,6 @@ input[type=date]{
     width: 25%;
     float: left;
 
-}
-.hover_dotted:hover{
-    outline: 3px dotted;
 }
 .foo_exercise{
     margin: 15px auto auto 30px;
