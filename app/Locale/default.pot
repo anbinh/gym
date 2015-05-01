@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-05-01 12:34+0200\n"
+"POT-Creation-Date: 2015-05-01 18:17+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -283,6 +283,14 @@ msgstr ""
 msgid "exercise header"
 msgstr ""
 
+#: View/Programs/index.ctp:9
+msgid "Aptitude test"
+msgstr ""
+
+#: View/Programs/index.ctp:12
+msgid "If you have any doubt as to your capacity to participate in a physical training program \n        or if you feel any discomfort, stop exercising and consult a physician immediately."
+msgstr ""
+
 #: View/Programs/index.ctp:16
 msgid "Term of use"
 msgstr ""
@@ -313,19 +321,15 @@ msgstr ""
 msgid "Show only"
 msgstr ""
 
-#: View/Programs/program_view.ctp:16
+#: View/Programs/program_view.ctp:14
 msgid "Remove from profile"
 msgstr ""
 
-#: View/Programs/program_view.ctp:18
+#: View/Programs/program_view.ctp:16
 msgid "Save"
 msgstr ""
 
-#: View/Programs/program_view.ctp:30
-msgid "Share"
-msgstr ""
-
-#: View/Programs/program_view.ctp:38
+#: View/Programs/program_view.ctp:36
 msgid "Day"
 msgstr ""
 

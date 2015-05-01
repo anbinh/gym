@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-01 12:34+0200\n"
-"PO-Revision-Date: 2015-05-01 17:36+0700\n"
+"POT-Creation-Date: 2015-05-01 18:17+0200\n"
+"PO-Revision-Date: 2015-05-01 23:23+0700\n"
 "Last-Translator: valentino <valentino.nguyen.92@gmail.com>\n"
 "Language-Team: miratik\n"
 "Language: en\n"
@@ -285,6 +285,17 @@ msgstr "PROGRAMME"
 msgid "exercise header"
 msgstr "EXERCICE"
 
+#: View/Programs/index.ctp:9
+msgid "Aptitude test"
+msgstr "Test d'aptitude"
+
+#: View/Programs/index.ctp:12
+msgid "If you have any doubt as to your capacity to participate in a physical training program \n        or if you feel any discomfort, stop exercising and consult a physician immediately."
+msgstr ""
+"Si vous avez le moindre doute quant à votre capacité à participer à un "
+"programme d'entraînement physique ou si vous ressentez une gêne, arrêtez "
+"l'exercice et consulter immédiatement un médecin."
+
 #: View/Programs/index.ctp:16
 msgid "Term of use"
 msgstr "Terme d'utilisation"
@@ -315,19 +326,15 @@ msgstr "Choisir"
 msgid "Show only"
 msgstr "Afficher uniquement"
 
-#: View/Programs/program_view.ctp:16
+#: View/Programs/program_view.ctp:14
 msgid "Remove from profile"
 msgstr "Retirer du profil"
 
-#: View/Programs/program_view.ctp:18
+#: View/Programs/program_view.ctp:16
 msgid "Save"
 msgstr "Sauver"
 
-#: View/Programs/program_view.ctp:30
-msgid "Share"
-msgstr "Partager"
-
-#: View/Programs/program_view.ctp:38
+#: View/Programs/program_view.ctp:36
 msgid "Day"
 msgstr "Jour"
 
@@ -525,3 +532,6 @@ msgstr "Suivant"
 #: View/Users/signup.ctp:41
 msgid "Already Registerred? Log In now!"
 msgstr "Déjà Registerred? Connectez-vous maintenant!"
+
+#~ msgid "Share"
+#~ msgstr "Partager"

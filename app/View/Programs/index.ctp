@@ -6,11 +6,11 @@
         <img src="/img/images/close_legal_bar.png">
     </div>
     <div style="float:left; padding: 10px 0 10px 0;" ng-click="close_legal_bar('1')">
-        <a class="btn btn_aptitude" href="javascript:void(0);">Aptitude test</a>
+        <a class="btn btn_aptitude" href="javascript:void(0);"><?php echo __('Aptitude test')?></a>
     </div>
     <div class="col-xs-10 col-lg-6">
-        <p style="margin:0; line-height:1.2; padding: 10px 0 10px 0;">If you have any doubt as to your capacity to participate in a physical training program 
-        or if you feel any discomfort, stop exercising and consult a physician immediately. </p>
+        <p style="margin:0; line-height:1.2; padding: 10px 0 10px 0;"><?php echo __('If you have any doubt as to your capacity to participate in a physical training program 
+        or if you feel any discomfort, stop exercising and consult a physician immediately.')?> </p>
     </div>    
     <div style="float:left; border-bottom:1px solid;" ng-click="close_legal_bar('2')">
         <a style="color:black; text-decoration: none;" href="javascript:void(0);"><?php echo __('Term of use');?></a>
