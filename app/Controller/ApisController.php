@@ -97,6 +97,14 @@ class ApisController extends AppController {
             if(count($user) > 0) // already have this user on db
             {
                 $this->setAuthentication($user['User']);
+                if($user['User']['language'] == "French")
+                {
+                    $this->setLang("fra");
+                }
+                else
+                {
+                    $this->setLang("eng");
+                }
             }
             else
             {
@@ -149,6 +157,14 @@ class ApisController extends AppController {
         {
             $this->setAuthentication($user['User']);
             $this->setCookieAuthenticate($data['email'],md5($data['password']));
+            if($user['User']['language'] == "French")
+            {
+                $this->setLang("fra");
+            }
+            else
+            {
+                $this->setLang("eng");
+            }
             $this->set(array(
                 'message' => 'success',
                 'id' => $user['User']['id'],

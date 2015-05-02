@@ -44,7 +44,7 @@ class AppController extends Controller {
             $this->set('curr_page', 'Users');
         }
 
-        if($this->params['controller'] != 'Apis'){
+        if($this->params['controller'] != 'Apis' && $this->params['controller'] != 'Aptitudes' && $this->params['controller'] != 'Privacies'){
             if($this->params['controller'] == 'Users' && $this->params['action'] == 'change_password' && count($this->params['pass']) > 0)
             {
 

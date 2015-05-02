@@ -40,7 +40,16 @@ class UsersController extends AppController {
                     'email' => $username,'password'=>$password))
             );
             if ($user) {
+
                 $this->setAuthentication($user['User']);
+                if($user['User']['language'] == "French")
+                {
+                    $this->setLang("fra");
+                }
+                else
+                {
+                    $this->setLang("eng");
+                }
                 $this->redirect('/Programs/index');
             } else {
                 
