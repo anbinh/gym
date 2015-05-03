@@ -14,7 +14,7 @@
                         <input ng-click="remove_program('<?php echo $programs['Program']['id']?>')" type="button" class="btn btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">                        
                         <input style="display:none;" ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">                        
                     <?php else:?>                        
-                        <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">                        
+                        <input ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">
                         <input style="display:none;" ng-click="remove_program('<?php echo $programs['Program']['id']?>')" type="button" class="btn btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">                        
                     <?php endif;?>
                 </div>
@@ -25,7 +25,7 @@
                         Intentse work on the buttocks and thighs
                     </div>
                     <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
-                    <div class="sharing_program_social_fb"><a href="javascript:fbShare('http://gym.miratik.com/Programs/program_view/<?php echo $programs['Program']['id'];?>', 'Studio Gym', '', '/img/images/<?php echo $programs['Program']['photo']?>', 520, 350)"><img src="/img/images/facebook_icon.png"/> </a></div>
+                    <div class="sharing_program_social_fb"><a href="javascript:fbShare1('gym.miratik.com/img/images/bunnybacon.png');"><img src="/img/images/facebook_icon.png"/> </a></div>
                     <div class="sharing_program_social_twitter"><a class="twitter popup" href="http://twitter.com/share"><img src="/img/images/twitter_icon.png"/></a></div>
                     <div class="sharing_program_link"><span>Share</span></div>
                 </div>
@@ -47,11 +47,37 @@
     </div>
 </div>
 <script>
-    function fbShare(url, title, descr, image, winWidth, winHeight) {
-        var winTop = (screen.height / 2) - (winHeight / 2);
-        var winLeft = (screen.width / 2) - (winWidth / 2);
-        window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
-    }
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '577637839045306',  // Change appId 409742669131720 with your Facebook Application ID
+            status: true,
+            xfbml: true,
+            cookie: true
+        });
+        // FB.api('/me', function(res){
+        //     console.log(res);
+        // })
+    };    
+    function fbShare1(url_image){  
+        var content_text = 'Jocelyn is starting a program on Studiogym.com';        
+        FB.ui({
+            method: 'feed',
+            name: 'Studio Gym',
+            link: window.location.href,
+            picture: url_image,
+            description: content_text
+        });
+    }    
     $('.popup').click(function(event) {
         var width  = 575,
             height = 400,

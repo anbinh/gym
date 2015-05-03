@@ -538,10 +538,6 @@ input[type=date]{
     border:1px solid #ccc;
     position: relative;
 }
-a:focus div, a:active div{
-    border: 0;
-    outline : 0;
-}
 .user_favorite_exercise_img p{
     color: black;    
     line-height: 1.14;
