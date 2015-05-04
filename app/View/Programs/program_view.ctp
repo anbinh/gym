@@ -67,24 +67,17 @@
         // FB.api('/me', function(res){
         //     console.log(res);
         // })
-    };   
+    };    
     function fbShare(url_image){  
         var content_text = 'Jocelyn is starting a program on Studiogym.com'; 
         //url_image = window.location.href + url_image;
-        FB.ui(
-        {
-            method: 'share',
-            href: window.location.href,
-        },
-          // callback
-          function(response) {
-            if (response && !response.error_code) {
-              //alert('Posting completed.');
-            } else {
-              //alert('Error while posting.');
-            }
-          }
-        );
+        FB.ui({
+            method: 'feed',
+            name: 'Studio Gym',
+            link: window.location.href,
+            picture: url_image,
+            description: content_text
+        });
     }    
     $('.popup').click(function(event) {
         var width  = 575,
