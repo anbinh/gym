@@ -25,7 +25,7 @@
                         Intentse work on the buttocks and thighs
                     </div>
                     <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
-                    <div class="sharing_program_social_fb"><a href="javascript:fbShare1('gym.miratik.com/img/images/bunnybacon.png');"><img src="/img/images/facebook_icon.png"/> </a></div>
+                    <div class="sharing_program_social_fb"><a href="javascript:fbShare1('http://gym.miratik.com/img/images/bunnybacon.png');"><img src="/img/images/facebook_icon.png"/> </a></div>
                     <div class="sharing_program_social_twitter"><a class="twitter popup" href="http://twitter.com/share"><img src="/img/images/twitter_icon.png"/></a></div>
                     <div class="sharing_program_link"><span>Share</span></div>
                 </div>
@@ -69,7 +69,8 @@
         // })
     };    
     function fbShare1(url_image){  
-        var content_text = 'Jocelyn is starting a program on Studiogym.com';        
+        var content_text = 'Jocelyn is starting a program on Studiogym.com'; 
+        //url_image = window.location.href + url_image;
         FB.ui({
             method: 'feed',
             name: 'Studio Gym',
