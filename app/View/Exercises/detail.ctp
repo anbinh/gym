@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 <?php } else { ?>
-                    <video class="img-responsive" loop="loop" autoplay="autoplay" src="<?php echo $exercise['Exercise']['video']; ?>" poster="<?php echo $exercise['Exercise']['photo']; ?>"></video>
+                    <video class="img-responsive" controls="true" autoplay="autoplay" src="<?php echo $exercise['Exercise']['video']; ?>" poster="<?php echo $exercise['Exercise']['photo']; ?>"></video>
                 <?php }}?>
             </div>
             <div style="border:1px solid #ccc; margin: 10px;">
