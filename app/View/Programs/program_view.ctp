@@ -25,7 +25,7 @@
                         Intentse work on the buttocks and thighs
                     </div>
                     <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
-                    <div class="sharing_program_social_fb"><a href="javascript:fbShare1('http://gym.miratik.com/img/images/bunnybacon.png');"><img src="/img/images/facebook_icon.png"/> </a></div>
+                    <div class="sharing_program_social_fb"><a href="javascript:fbShare('http://gym.miratik.com/img/images/bunnybacon.png');"><img src="/img/images/facebook_icon.png"/> </a></div>
                     <div class="sharing_program_social_twitter"><a class="twitter popup" href="http://twitter.com/share"><img src="/img/images/twitter_icon.png"/></a></div>
                     <div class="sharing_program_link"><span>Share</span></div>
                 </div>
@@ -67,17 +67,24 @@
         // FB.api('/me', function(res){
         //     console.log(res);
         // })
-    };    
-    function fbShare1(url_image){  
+    };   
+    function fbShare(url_image){  
         var content_text = 'Jocelyn is starting a program on Studiogym.com'; 
         //url_image = window.location.href + url_image;
-        FB.ui({
-            method: 'feed',
-            name: 'Studio Gym',
-            link: window.location.href,
-            picture: url_image,
-            description: content_text
-        });
+        FB.ui(
+        {
+            method: 'share',
+            href: window.location.href,
+        },
+          // callback
+          function(response) {
+            if (response && !response.error_code) {
+              //alert('Posting completed.');
+            } else {
+              //alert('Error while posting.');
+            }
+          }
+        );
     }    
     $('.popup').click(function(event) {
         var width  = 575,
