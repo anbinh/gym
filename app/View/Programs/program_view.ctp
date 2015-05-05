@@ -70,11 +70,11 @@
     };    
     function fbShare(url_image){  
         var content_text = 'Jocelyn is starting a program on Studiogym.com'; 
-        //url_image = window.location.href + url_image;
+        //url_image = window.location.href + url_image;       
         FB.ui({
-            method: 'feed',
+            method: 'share',
             name: 'Studio Gym',
-            link: window.location.href,
+            href: window.location.href,
             picture: url_image,
             description: content_text
         });
