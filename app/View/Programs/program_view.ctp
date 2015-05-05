@@ -47,37 +47,49 @@
     </div>
 </div>
 <script>
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id))
-            return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+    // (function(d, s, id) {
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id))
+    //         return;
+    //     js = d.createElement(s);
+    //     js.id = id;
+    //     js.src = "//connect.facebook.net/en_US/all.js";
+    //     fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk'));
 
-    window.fbAsyncInit = function() {
-        FB.init({
+    // window.fbAsyncInit = function() {
+    //     FB.init({
+    //         appId: '577637839045306',  // Change appId 409742669131720 with your Facebook Application ID
+    //         status: true,
+    //         xfbml: true,
+    //         cookie: true
+    //     });
+    //     // FB.api('/me', function(res){
+    //     //     console.log(res);
+    //     // })
+    // };  
+     FB.init({
             appId: '577637839045306',  // Change appId 409742669131720 with your Facebook Application ID
             status: true,
             xfbml: true,
             cookie: true
-        });
-        // FB.api('/me', function(res){
-        //     console.log(res);
-        // })
-    };    
+        });  
     function fbShare(url_image){  
         var content_text = 'Jocelyn is starting a program on Studiogym.com'; 
         //url_image = window.location.href + url_image;       
         FB.ui({
-            method: 'share',
+            method: 'feed',
             name: 'Studio Gym',
-            href: window.location.href,
+            link: window.location.href,
             picture: url_image,
             description: content_text
+
         });
+        // FB.ui({
+        //   method: 'feed',
+        //   link: 'https://developers.facebook.com/docs/',
+        //   caption: 'An example caption',
+        // }, function(response){});
     }    
     $('.popup').click(function(event) {
         var width  = 575,
