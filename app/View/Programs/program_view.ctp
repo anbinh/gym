@@ -74,16 +74,7 @@
         xfbml: true,
         cookie: true
     });  
-    // var name = '';
-    // FB.getLoginStatus(function(response) {
-    //     if (response.status === 'connected'){
-    //         FB.api('/me', function(response){
-    //             name = response.first_name + ' ' +response.last_name;
-    //             //console.log(response);
-    //         });
-    //     }
-    // });
-        
+    var name = '';
 
     function fbShare(url_image){         
 
@@ -93,9 +84,21 @@
                     name = response.first_name + ' ' +response.last_name;
                     //console.log(response);
                 });
+            }  
+            else{
+                FB.login(function(response) {
+                     if (response.authResponse)
+                     {
+                        FB.api('/me', function(response) {
+                            name = response.first_name + ' ' +response.last_name;
+                        });
+                     }
+                 });                
             }
+
         });
-        if(name!=''){
+        //alert(name);
+        if(name!='' && name != 'undefined undefined'){
             var content_text = name + ' is starting a program on Studiogym.com'; 
             //url_image = window.location.href + url_image;       
             FB.ui({
@@ -105,6 +108,12 @@
                 picture: url_image,
                 description: content_text
 
+            },
+            function(response) {
+                if (response && !response.error_code) {                  
+                } else {
+                  name = '';
+                }
             });    
         }
         
