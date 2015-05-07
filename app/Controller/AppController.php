@@ -5,7 +5,7 @@ class AppController extends Controller {
 
     public $components = array('Session', 'RequestHandler', 'Cookie');
     public $helpers = array('Form', 'Html', 'Js', 'Time');
-    public $uses = array('User','BodyPart','Exercise','Program','Objective');
+    public $uses = array('User','BodyPart','Exercise','Program','Objective','TextResource');
 
     var $language, $availableLanguages;
     public $auth_user;
