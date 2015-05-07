@@ -68,23 +68,55 @@
     //     //     console.log(res);
     //     // })
     // };  
-     FB.init({
-            appId: '577637839045306',  // Change appId 409742669131720 with your Facebook Application ID
-            status: true,
-            xfbml: true,
-            cookie: true
-        });  
-    function fbShare(url_image){  
-        var content_text = 'Jocelyn is starting a program on Studiogym.com'; 
-        //url_image = window.location.href + url_image;       
-        FB.ui({
-            method: 'feed',
-            name: 'Studio Gym',
-            link: window.location.href,
-            picture: url_image,
-            description: content_text
+    FB.init({
+        appId: '577637839045306',  // Change appId 409742669131720 with your Facebook Application ID
+        status: true,
+        xfbml: true,
+        cookie: true
+    });  
+    var name = '';
+
+    function fbShare(url_image){         
+
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected'){
+                FB.api('/me', function(response){
+                    name = response.first_name + ' ' +response.last_name;
+                    //console.log(response);
+                });
+            }  
+            else{
+                FB.login(function(response) {
+                     if (response.authResponse)
+                     {
+                        FB.api('/me', function(response) {
+                            name = response.first_name + ' ' +response.last_name;
+                        });
+                     }
+                 });                
+            }
 
         });
+        //alert(name);
+        if(name!='' && name != 'undefined undefined'){
+            var content_text = name + ' is starting a program on Studiogym.com'; 
+            //url_image = window.location.href + url_image;       
+            FB.ui({
+                method: 'feed',
+                name: 'Studio Gym',
+                link: window.location.href,
+                picture: url_image,
+                description: content_text
+
+            },
+            function(response) {
+                if (response && !response.error_code) {                  
+                } else {
+                  name = '';
+                }
+            });    
+        }
+        
         // FB.ui({
         //   method: 'feed',
         //   link: 'https://developers.facebook.com/docs/',
