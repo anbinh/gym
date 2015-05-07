@@ -25,7 +25,12 @@
     </div> -->
      <div class="program_tab" flex>       
         <md-tabs md-selected="selectedIndex" flex>            
-            <md-tab ng-repeat="tab in tabs track by $index" label="{{$index != 2 ? 'Day '+tab.day_number : '+'}}">            
+            <md-tab ng-repeat="tab in tabs track by $index">  
+              <md-tab-label>                
+                <img src="/img/images/delete_copy.png" ng-click="removeTab(tab)" ng-show="tab.day_number != '' && tabs.length > 2" class="delete_tab">
+                <img src="/img/images/add.png" ng-click="addTab()" ng-show="tab.day_number == ''">
+                {{ tab.day_number != "" ? 'Day '+ tab.day_number : ''}}
+              </md-tab-label>          
                   <?php echo $this->Element('program_editor');?>            
             </md-tab>                                           
         </md-tabs>

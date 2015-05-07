@@ -1579,9 +1579,14 @@ input:invalid {
     display: none;
 }
 /*program tab*/
-.md-header-items-container{
-    max-width: 331px;
+.md-header-items-container{    
     margin: 0 !important;
+}
+
+.delete_tab{
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 .tabsdemoDynamicTabs .sample {

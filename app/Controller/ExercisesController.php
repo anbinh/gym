@@ -7,7 +7,9 @@ class ExercisesController  extends AppController {
 
     public function test()
     {
-        
+        $this->request->data['TextResource']['test'] = "eng";
+        $text = $this->TextResource->find('all');
+        pr($text);
     }
 
     public function login_modal() {

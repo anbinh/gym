@@ -937,10 +937,16 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 
     }
 
-    $scope.tabs = [];   
-    $scope.tabs.push({'day_number':'+'});
+    $scope.tabs = [];
+    $scope.index = 1;   
+    $scope.tabs.push(
+        {
+            'day_number':'',
+            'exercise_list': []
+        }
+    );
     var program_item = {
-        'day_number': "1",
+        'day_number': $scope.index,
         'exercise_list': []
     };     
     $scope.tabs.unshift(program_item);
@@ -976,26 +982,34 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter)
 
         return !valid;
     };
-
    
-    // $scope.tabs = [{
-    //     "id": "allItems",
-    //     "name": "All Items",
-    //     "order": 0
-    //   }, {
-    //     "id": "CaseItem",
-    //     "name": "Case Item",
-    //     "model": "PredefinedModel"
-    //   }, {
-    //     "id": "Application",
-    //     "name": "Application",
-    //     "model": "Bank"
-    //   }];
-    // drop
     $scope.dropCallback = function (event, ui) {
         var $lane = $(event.target);
         var $exercise = ui.draggable;                                  
     };
+
+    $scope.removeTab = function(tab)
+    {
+        $scope.index = $scope.index - 1;
+        console.log(tab);
+        var index = $scope.tabs.indexOf(tab);
+        $scope.tabs.splice(index, 1);
+        // update the index
+        var j = index;
+        for(j = index; j < $scope.tabs.length - 1; j++){                    
+            $scope.tabs[j].day_number = $scope.tabs[j].day_number - 1;    
+        }
+    };
+
+    $scope.addTab = function()
+    {
+        $scope.index = $scope.index + 1;
+        var program_item = {
+            'day_number': $scope.index,
+            'exercise_list': []
+        };
+        $scope.tabs.splice($scope.tabs.length - 1,0,program_item);
+    }
 });
 app.filter('filterExerciseProgramEditor', function(){
     return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
