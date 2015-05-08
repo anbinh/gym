@@ -1355,7 +1355,7 @@ input:invalid {
     width: 225px;    
     margin: 1px;
     background: white; 
-    position: relative;
+    position: relative;    
 }
 .list_program_view{
     margin: auto;
@@ -1652,7 +1652,10 @@ md-tabs.md-default-theme md-tabs-ink-bar {
     background: white;
 }
 .program_tab .md-header{  
-  margin-left: 10px;
+  /*margin-left: 10px;*/
+}
+.md-tabs-content{
+    padding-left: 7px;
 }
 .serie_text{
     color:#c7c8c9; 
@@ -1729,6 +1732,9 @@ ul.option_program_editor li:hover{
     width: 50px;
     height: 50px;   
     font-size: 28px;
+}
+.box_creator_plus:hover{
+    cursor: pointer;
 }
 .header_box{
     overflow: auto;
