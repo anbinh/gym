@@ -1,7 +1,7 @@
 <div class="UserIndexLeftContent">                
     <div layout="row">            
         <div class="list_program_view">  
-            <creator></creator>           
+            <creator></creator>                       
         </div>
     </div>
 </div>
