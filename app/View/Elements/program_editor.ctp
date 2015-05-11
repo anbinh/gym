@@ -1,6 +1,7 @@
-<div class="UserIndexLeftContent">                
+<div ng-if="tab.day_number != ''" class="UserIndexLeftContent">                
     <div layout="row">            
-        <div class="list_program_view">  
+        <div class="list_program_view"> 
+        	<regular isnew="1" index="0" type="1" day="{{index}}"></regular> 
             <creator></creator>                       
         </div>
     </div>

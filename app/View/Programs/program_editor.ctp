@@ -30,8 +30,8 @@
                 <img src="/img/images/delete_copy.png" ng-click="removeTab(tab)" ng-show="tab.day_number != '' && tabs.length > 2" class="delete_tab">
                 <img src="/img/images/add.png" ng-click="addTab()" ng-show="tab.day_number == ''">
                 {{ tab.day_number != "" ? 'Day '+ tab.day_number : ''}}
-              </md-tab-label>          
-                  <?php echo $this->Element('program_editor');?>            
+              </md-tab-label>   
+                <?php echo $this->Element('program_editor');?>
             </md-tab>                                           
         </md-tabs>
     </div>

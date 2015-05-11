@@ -503,11 +503,11 @@ app.directive( 'regular', function ( $compile ) {
                             <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
                         </div>\
                         <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">REGULAR</li>\
-                            <li ng-click=\"change_type_exercise('2')\">STRETCHING</li>\
-                            <li ng-click=\"change_type_exercise('3')\">SUPER-SET</li>\
-                            <li ng-click=\"change_type_exercise('4')\">WITH NOTE</li>\
-                            <li ng-click=\"change_type_exercise('5')\">ONLY TEXT</li>\
+                            <li ng-click=\"change_type_exercise('2')\">Stretching</li>\
+                            <li ng-click=\"change_type_exercise('3')\">Super-set</li>\
+                            <li ng-click=\"change_type_exercise('4')\">With notes</li>\
+                            <li ng-click=\"change_type_exercise('5')\">Only text</li>\
+                            <li ng-click=\"delete_exercise()\">Delete</li>\
                         </ul>\
                         <div class=\"content_box_regular\">\
                             <div class=\"content_image\" layout-align=\"center center\" layout=\"column\">\
@@ -536,12 +536,12 @@ app.directive( 'regular', function ( $compile ) {
         
         if($scope.isnew == 1){ // create new an exercise
 
-            $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item);        
+            $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item); 
 
         }
         else{ // update exercise
             
-            $scope.$parent.tabs[day-1]["exercise_list"] = exercise_list_item;
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         } 
         
@@ -562,6 +562,11 @@ app.directive( 'regular', function ( $compile ) {
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.change_type_exercise($element, type_of_exercise);
         }
+        // delete exercise
+        $scope.delete_exercise = function(type_of_exercise){           
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
+            $scope.$parent.delete_exercise($element);
+        }
     }
   };
 });
@@ -581,11 +586,11 @@ app.directive( 'stretching', function ( $compile ) {
                             <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
                         </div>\
                         <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">REGULAR</li>\
-                            <li ng-click=\"change_type_exercise('2')\">STRETCHING</li>\
-                            <li ng-click=\"change_type_exercise('3')\">SUPER-SET</li>\
-                            <li ng-click=\"change_type_exercise('4')\">WITH NOTE</li>\
-                            <li ng-click=\"change_type_exercise('5')\">ONLY TEXT</li>\
+                            <li ng-click=\"change_type_exercise('1')\">Regular</li>\
+                            <li ng-click=\"change_type_exercise('3')\">Super-set</li>\
+                            <li ng-click=\"change_type_exercise('4')\">With notes</li>\
+                            <li ng-click=\"change_type_exercise('5')\">Only text</li>\
+                            <li ng-click=\"delete_exercise()\">Delete</li>\
                         </ul>\
                         <div class=\"content_box_stretching\">\
                             <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback1()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
@@ -624,7 +629,7 @@ app.directive( 'stretching', function ( $compile ) {
         }
         else{ // update exercise
             
-            $scope.$parent.tabs[day-1]["exercise_list"] = exercise_list_item;
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }  
         $scope.dropCallback1 = function(event, ui){  
@@ -655,6 +660,11 @@ app.directive( 'stretching', function ( $compile ) {
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.change_type_exercise($element, type_of_exercise);
         }
+        // delete exercise
+        $scope.delete_exercise = function(type_of_exercise){           
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
+            $scope.$parent.delete_exercise($element);
+        }
     }
   };
 });
@@ -674,11 +684,11 @@ app.directive( 'superset', function ( $compile ) {
                             <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
                         </div>\
                         <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">REGULAR</li>\
-                            <li ng-click=\"change_type_exercise('2')\">STRETCHING</li>\
-                            <li ng-click=\"change_type_exercise('3')\">SUPER-SET</li>\
-                            <li ng-click=\"change_type_exercise('4')\">WITH NOTE</li>\
-                            <li ng-click=\"change_type_exercise('5')\">ONLY TEXT</li>\
+                            <li ng-click=\"change_type_exercise('1')\">Regular</li>\
+                            <li ng-click=\"change_type_exercise('2')\">Stretching</li>\
+                            <li ng-click=\"change_type_exercise('4')\">With notes</li>\
+                            <li ng-click=\"change_type_exercise('5')\">Only text</li>\
+                            <li ng-click=\"delete_exercise()\">Delete</li>\
                         </ul>\
                         <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback1()'}\" class=\"content_box_super_set\">\
                             <div class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
@@ -721,7 +731,7 @@ app.directive( 'superset', function ( $compile ) {
         }
         else{ // update exercise
             
-            $scope.$parent.tabs[day-1]["exercise_list"] = exercise_list_item;
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }  
 
@@ -744,6 +754,11 @@ app.directive( 'superset', function ( $compile ) {
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.change_type_exercise($element, type_of_exercise);
         }
+        // delete exercise
+        $scope.delete_exercise = function(type_of_exercise){           
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
+            $scope.$parent.delete_exercise($element);
+        }
     }
   };
 });
@@ -763,11 +778,11 @@ app.directive( 'withnote', function ( $compile ) {
                             <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
                         </div>\
                         <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">REGULAR</li>\
-                            <li ng-click=\"change_type_exercise('2')\">STRETCHING</li>\
-                            <li ng-click=\"change_type_exercise('3')\">SUPER-SET</li>\
-                            <li ng-click=\"change_type_exercise('4')\">WITH NOTE</li>\
-                            <li ng-click=\"change_type_exercise('5')\">ONLY TEXT</li>\
+                            <li ng-click=\"change_type_exercise('1')\">Regular</li>\
+                            <li ng-click=\"change_type_exercise('2')\">Stretching</li>\
+                            <li ng-click=\"change_type_exercise('3')\">Super-set</li>\
+                            <li ng-click=\"change_type_exercise('5')\">Only text</li>\
+                            <li ng-click=\"delete_exercise()\">Delete</li>\
                         </ul>\
                         <div class=\"content_box_regular\">\
                             <div class=\"content_image\" layout-align=\"center center\" layout=\"column\">\
@@ -796,7 +811,7 @@ app.directive( 'withnote', function ( $compile ) {
         }
         else{ // update exercise
             
-            $scope.$parent.tabs[day-1]["exercise_list"] = exercise_list_item;
+           $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }  
 
@@ -814,6 +829,11 @@ app.directive( 'withnote', function ( $compile ) {
         $scope.change_type_exercise = function(type_of_exercise){           
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.change_type_exercise($element, type_of_exercise);
+        }
+        // delete exercise
+        $scope.delete_exercise = function(type_of_exercise){           
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
+            $scope.$parent.delete_exercise($element);
         }
     }
   };
@@ -834,11 +854,11 @@ app.directive( 'textonly', function ( $compile ) {
                             <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
                         </div>\
                         <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">REGULAR</li>\
-                            <li ng-click=\"change_type_exercise('2')\">STRETCHING</li>\
-                            <li ng-click=\"change_type_exercise('3')\">SUPER-SET</li>\
-                            <li ng-click=\"change_type_exercise('4')\">WITH NOTE</li>\
-                            <li ng-click=\"change_type_exercise('5')\">ONLY TEXT</li>\
+                            <li ng-click=\"change_type_exercise('1')\">Regular</li>\
+                            <li ng-click=\"change_type_exercise('2')\">Stretching</li>\
+                            <li ng-click=\"change_type_exercise('3')\">Super-set</li>\
+                            <li ng-click=\"change_type_exercise('4')\">With notes</li>\
+                            <li ng-click=\"delete_exercise()\">Delete</li>\
                         </ul>\
                         <textarea class=\"content_only_text\" type=\"text\"></textarea>\
                     </div>\
@@ -858,7 +878,7 @@ app.directive( 'textonly', function ( $compile ) {
         }
         else{ // update exercise
             
-            $scope.$parent.tabs[day-1]["exercise_list"] = exercise_list_item;
+           $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }
 
@@ -871,6 +891,11 @@ app.directive( 'textonly', function ( $compile ) {
         $scope.change_type_exercise = function(type_of_exercise){           
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.change_type_exercise($element, type_of_exercise);
+        }
+        // delete exercise
+        $scope.delete_exercise = function(type_of_exercise){           
+            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
+            $scope.$parent.delete_exercise($element);
         }
     }
   };
@@ -978,8 +1003,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
            // return;
            $scope.body_part_id = "";
         }
-        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
-        console.log($scope.exercises_list.length);
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));       
     }
     $scope.changeValueExercise = function(item){
         switch(item){
@@ -1029,6 +1053,13 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         var el = $compile( exercise_template )( $scope );        
         element.replaceWith(el);
     }
+    // delete exerise in program editor
+    $scope.delete_exercise = function(element){
+        var index_of_exercise = element.attr('index'); 
+        var day_number = $scope.index_current_tab;
+        $scope.tabs[day_number-1]['exercise_list'][index_of_exercise] = '';
+        element.replaceWith('');
+    }
     $scope.tabs = [];
     $scope.index = 1;   
     $scope.tabs.push(
@@ -1040,7 +1071,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     var program_item = {
         'day_number': $scope.index,
         'exercise_list': []
-    };     
+    };   
     $scope.tabs.unshift(program_item);
     $scope.selectedIndex = 0;    
     $scope.create_day_program = function(){
@@ -1103,6 +1134,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             'exercise_list': []
         };
         $scope.tabs.splice($scope.tabs.length - 1,0,program_item);
+        console.log($scope.tabs);
     }
 });
 app.filter('filterExerciseProgramEditor', function(){
