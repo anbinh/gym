@@ -42,61 +42,7 @@
                                 </a>                                               
                             </div>
                         </div>
-                    </div>
-                    <!-- <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                        <div class="user_favorite_exercise_img tile_butcher none_border">                           
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/butcher.png"></div>
-                            <div class="program_text_name"> SHAPE MODELING</div>
-                        </div>                            
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                        <div class="user_favorite_exercise_img tile_packabs none_border"  >                                
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/packabs.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box ">
-                        <div class="user_favorite_exercise_img tile_packabs none_border"  >                                 
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/eugenie.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div>
-                    </div>                    
-                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box ">
-                        <div class="user_favorite_exercise_img tile_1 none_border">                           
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                            <div class="program_text_name"> SHAPE MODELING</div>
-                        </div>                            
-                    </div>
-                     <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                        <div class="user_favorite_exercise_img tile_2 none_border"  >                                
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/bellyJelly.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                        <div class="user_favorite_exercise_img tile_3 none_border"  >                                 
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box ">
-                        <div class="user_favorite_exercise_img tile_packabs none_border">                           
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                            <div class="program_text_name"> SHAPE MODELING</div>
-                        </div>                            
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box ">
-                        <div class="user_favorite_exercise_img tile_butcher none_border">                           
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/bunnybacon.png"></div>
-                            <div class="program_text_name"> SHAPE MODELING</div>
-                        </div>                            
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 exercise_box">
-                        <div class="user_favorite_exercise_img tile_2 none_border"  >                                 
-                            <div style="text-align:center;"><img class="img_program" src="/img/images/burn.png"></div>
-                            <div class="program_text_name"> LOOSING WEIGHT </div>
-                        </div>
-                    </div> -->
+                    </div>                   
                 </div>                
             </div>
         </div>
