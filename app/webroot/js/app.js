@@ -530,13 +530,14 @@ app.directive( 'regular', function ( $compile ) {
             'mode':$scope.type,
             'order':$scope.type,
             'exercise_item':[],
-            'text':''
+            'text':''            
         };
         
         
         if($scope.isnew == 1){ // create new an exercise
 
             $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item); 
+            $scope.$parent.tabs[day-1]["count_exercise"]++;
 
         }
         else{ // update exercise
@@ -1057,8 +1058,13 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.delete_exercise = function(element){
         var index_of_exercise = element.attr('index'); 
         var day_number = $scope.index_current_tab;
-        $scope.tabs[day_number-1]['exercise_list'][index_of_exercise] = '';
-        element.replaceWith('');
+
+        // only can remove exercise in a tab, if number of exercise > 1
+        if($scope.tabs[day_number-1]['count_exercise'] > 1){
+            $scope.tabs[day_number-1]['exercise_list'][index_of_exercise] = '';
+            element.replaceWith('');    
+            $scope.tabs[day_number-1]['count_exercise'] = $scope.tabs[day_number-1]['count_exercise'] - 1;
+        }        
     }
     $scope.tabs = [];
     $scope.index = 1;   
@@ -1070,7 +1076,8 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     );
     var program_item = {
         'day_number': $scope.index,
-        'exercise_list': []
+        'exercise_list': [],
+        'count_exercise':0
     };   
     $scope.tabs.unshift(program_item);
     $scope.selectedIndex = 0;    
@@ -1113,10 +1120,15 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
 
     $scope.removeTab = function(tab)
     {
-        $scope.index_current_tab = $scope.current_tab - 1;        
-        $scope.index = $scope.index - 1;
-        console.log(tab);
+        $scope.index = $scope.index - 1;        
         var index = $scope.tabs.indexOf(tab);
+        if(index == 0){
+            $scope.index_current_tab = 1;
+        }
+        else{
+            $scope.index_current_tab = $scope.current_tab - 1;
+        }        
+        
         $scope.tabs.splice(index, 1);
         // update the index
         var j = index;
@@ -1131,7 +1143,8 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.index_current_tab = $scope.index;
         var program_item = {
             'day_number': $scope.index,
-            'exercise_list': []
+            'exercise_list': [],
+            'count_exercise': 0
         };
         $scope.tabs.splice($scope.tabs.length - 1,0,program_item);
         console.log($scope.tabs);

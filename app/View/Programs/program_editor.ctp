@@ -26,9 +26,9 @@
      <div class="program_tab" flex>       
         <md-tabs md-selected="selectedIndex" flex>            
             <md-tab ng-repeat="tab in tabs track by $index">  
-              <md-tab-label ng-click="set_index_current_tab($index);">                
+              <md-tab-label style="padding:13px 0 13px 0;" ng-click="tab.day_number == ''? addTab() : set_index_current_tab($index);">                
                 <img src="/img/images/delete_copy.png" ng-click="removeTab(tab)" ng-show="tab.day_number != '' && tabs.length > 2" class="delete_tab">
-                <img src="/img/images/add.png" ng-click="addTab()" ng-show="tab.day_number == ''">
+                <img src="/img/images/add.png" ng-show="tab.day_number == ''">
                 {{ tab.day_number != "" ? 'Day '+ tab.day_number : ''}}
               </md-tab-label>   
                 <?php echo $this->Element('program_editor');?>
@@ -103,8 +103,7 @@
             <div data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="exercises_list" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}" class="dropbox_program_editor">
               <div class="zone_hand_drag">
                   <img style="position:absolute; left:7px; top:5px;" ng-src="{{getImage()}}">
-                  <img style="position:absolute; right:7px; top:5px;" src="/img/images/square.png">
-                  <img style="position:absolute; right:3px; top:11px;" src="/img/images/hand_drag.png">        
+                  <img style="position:absolute; right:5px; top:5px;" src="/img/images/drag_exercise.png">                  
               </div>
               <div style="text-align:center; padding-top:10px;">
                 <img src="df{{exercise.Exercise.photo}}" class="img-responsive">
