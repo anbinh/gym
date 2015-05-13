@@ -511,6 +511,7 @@ app.directive( 'regular', function ( $compile ) {
                         </ul>\
                         <div class=\"content_box_regular\">\
                             <div class=\"content_image\" layout-align=\"center center\" layout=\"column\">\
+                                <img ng-click=\"delete_exercise_drop();\" ng-show=\"model_temp != null ? true : false\" class=\"icon_delete_regular\" src=\"/img/images/delete_copy.png\">\
                                 <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp.Exercise.video}}\" poster=\"{{model_temp != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
                                 <div>{{model_temp == null ? 'DRAG EXERCISE' : ''}}</div>\
                             </div>\
@@ -518,9 +519,9 @@ app.directive( 'regular', function ( $compile ) {
                         </div>\
                         <div class=\"fotter_box\" layout-align=\"center center\" layout=\"row\">\
                             Serie\
-                            <input class=\"serie1\" type=\"text\" value=\"\">\
+                            <input class=\"serie1\" type=\"text\" value=\"{{model_temp.serie}}\">\
                             Repeation\
-                            <input class=\"repeat1\" type=\"text\" value=\"\">\
+                            <input class=\"repeat1\" type=\"text\" value=\"{{model_temp.repeat}}\">\
                         </div>\
                     </div>\
                 </div>",
@@ -549,7 +550,7 @@ app.directive( 'regular', function ( $compile ) {
 
         $scope.dropCallback = function(event, ui){            
             var exercise = $(event.target).scope().model_temp;
-            exercise_list_item.exercise_item[0] = {'exercise_id':exercise.Exercise.id};  
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':exercise.Exercise.id};
             $(event.target).find('.content_image').removeClass('hightlight_dropzone');          
         };             
         $scope.overCallback = function(event, ui){
@@ -573,6 +574,11 @@ app.directive( 'regular', function ( $compile ) {
         $scope.delete_exercise = function(type_of_exercise){           
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.delete_exercise($element);
+        }
+        // delete exercise drop
+        $scope.delete_exercise_drop = function(){            
+            $scope.$parent.tabs[day-1]["exercise_list"][0]["exercise_item"].splice(0, 1);
+            $(event.target).scope().model_temp = null;           
         }
     }
   };
@@ -600,16 +606,20 @@ app.directive( 'stretching', function ( $compile ) {
                             <li ng-click=\"delete_exercise()\">Delete</li>\
                         </ul>\
                         <div class=\"content_box_stretching\">\
-                            <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback1()', onOver: 'overCallback1()', onOut: 'outCallback1()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                            <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(0)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                                <img ng-click=\"delete_exercise_drop(0);\" ng-show=\"model_temp1 != null ? true : false\" class=\"icon_delete_stretching\" src=\"/img/images/delete_copy.png\">\
                                 <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp1.Exercise.video}}\" poster=\"{{model_temp1 != null ? model_temp1.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
                             </div>\
-                            <div ng-model=\"model_temp2\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback2()', onOver: 'overCallback2()', onOut: 'outCallback2()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                            <div ng-model=\"model_temp2\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(1)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                                <img ng-click=\"delete_exercise_drop(1);\" ng-show=\"model_temp2 != null ? true : false\" class=\"icon_delete_stretching\" src=\"/img/images/delete_copy.png\">\
                                 <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp2.Exercise.video}}\" poster=\"{{model_temp2 != null ? model_temp2.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
                             </div>\
-                            <div ng-model=\"model_temp3\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback3()', onOver: 'overCallback3()', onOut: 'outCallback3()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                            <div ng-model=\"model_temp3\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(2)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                                <img ng-click=\"delete_exercise_drop(2);\" ng-show=\"model_temp3 != null ? true : false\" class=\"icon_delete_stretching\" src=\"/img/images/delete_copy.png\">\
                                 <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp3.Exercise.video}}\" poster=\"{{model_temp3 != null ? model_temp3.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
                             </div>\
-                            <div ng-model=\"model_temp4\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback4()', onOver: 'overCallback4()', onOut: 'outCallback4()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                            <div ng-model=\"model_temp4\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(3)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                                <img ng-click=\"delete_exercise_drop(3);\" ng-show=\"model_temp4 != null ? true : false\" class=\"icon_delete_stretching\" src=\"/img/images/delete_copy.png\">\
                                 <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp4.Exercise.video}}\" poster=\"{{model_temp4 != null ? model_temp4.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
                             </div>\
                         </div>\
@@ -639,53 +649,55 @@ app.directive( 'stretching', function ( $compile ) {
             $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }  
-        $scope.dropCallback1 = function(event, ui){  
-            var exercise = $(event.target).scope().model_temp1;
-            exercise_list_item.exercise_item[0] = {'exercise_id':exercise.Exercise.id};
+        $scope.dropCallback = function(event, ui, index){  
+            var data = $(event.target).scope();
+            var exercise = null;            
+            switch(index){
+                case 0:
+                    exercise = data.model_temp1;                    
+                    break;
+                case 1:
+                    exercise = data.model_temp2;                    
+                    break;
+                case 2:
+                    exercise = data.model_temp3;                    
+                    break;
+                case 3:
+                    exercise = data.model_temp4;                    
+                    break;
+            }
+            // var exercise = $(event.target).scope().model_temp1;
+            //exercise_list_item.exercise_item[index] = {'exercise_id':exercise.Exercise.id};
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][index] = {'exercise_id':exercise.Exercise.id};
             $(event.target).removeClass('hightlight_dropzone');
-        };   
-        $scope.overCallback1 = function(event, ui){
-            $(event.target).addClass('hightlight_dropzone');
-        };
-        $scope.outCallback1 = function(event, ui){
-            $(event.target).removeClass('hightlight_dropzone');
-        }; 
+        };                
+        
 
-        $scope.dropCallback2 = function(event, ui){  
-            var exercise = $(event.target).scope().model_temp2;
-            exercise_list_item.exercise_item[1] = {'exercise_id':exercise.Exercise.id};     
-            $(event.target).removeClass('hightlight_dropzone');       
-        };     
-        $scope.overCallback2 = function(event, ui){
+        // hightligh cell when drag over
+        $scope.overCallback = function(event, ui){
             $(event.target).addClass('hightlight_dropzone');
         };
-        $scope.outCallback2 = function(event, ui){
+        $scope.outCallback = function(event, ui){
             $(event.target).removeClass('hightlight_dropzone');
         };
-
-        $scope.dropCallback3 = function(event, ui){  
-            var exercise = $(event.target).scope().model_temp3;
-            exercise_list_item.exercise_item[2] = {'exercise_id':exercise.Exercise.id}; 
-            $(event.target).removeClass('hightlight_dropzone');           
-        };
-        $scope.overCallback3 = function(event, ui){
-            $(event.target).addClass('hightlight_dropzone');
-        };
-        $scope.outCallback3 = function(event, ui){
-            $(event.target).removeClass('hightlight_dropzone');
-        };
-
-        $scope.dropCallback4 = function(event, ui){  
-            var exercise = $(event.target).scope().model_temp4;
-            exercise_list_item.exercise_item[3] = {'exercise_id':exercise.Exercise.id};
-            $(event.target).removeClass('hightlight_dropzone');
-        };  
-        $scope.overCallback4 = function(event, ui){
-            $(event.target).addClass('hightlight_dropzone');
-        };
-        $scope.outCallback4 = function(event, ui){
-            $(event.target).removeClass('hightlight_dropzone');
-        };   
+        // delete exercise drop
+        $scope.delete_exercise_drop = function(index_cell){                
+            switch(index_cell){
+                case 0:                    
+                    $(event.target).scope().model_temp1 = null; 
+                    break;
+                case 1:                    
+                    $(event.target).scope().model_temp2 = null; 
+                    break;
+                case 2:                    
+                    $(event.target).scope().model_temp3 = null; 
+                    break;
+                case 3:                    
+                    $(event.target).scope().model_temp4 = null; 
+                    break;
+            }
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][index_cell] = "";            
+        }   
 
         $scope.showOptionChooseTypeExercise = false;
         $scope.click_icon_option = function(){
@@ -727,8 +739,9 @@ app.directive( 'superset', function ( $compile ) {
                             <li ng-click=\"change_type_exercise('5')\">Only text</li>\
                             <li ng-click=\"delete_exercise()\">Delete</li>\
                         </ul>\
-                        <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback1()', onOver: 'overCallback1()', onOut: 'outCallback1()'}\" class=\"content_box_super_set\">\
+                        <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(0)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_super_set\">\
                             <div class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                                <img ng-click=\"delete_exercise_drop(0);\" ng-show=\"model_temp1 != null ? true : false\" class=\"icon_delete_superset_1\" src=\"/img/images/delete_copy.png\">\
                                 <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp1.Exercise.video}}\" poster=\"{{model_temp1 != null ? model_temp1.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
                             </div>\
                             <div class=\"content_box_main\" layout=\"column\">\
@@ -739,8 +752,9 @@ app.directive( 'superset', function ( $compile ) {
                             </div>\
                             <p class=\"name_exercise\">{{model_temp1.Exercise.name}}</p>\
                         </div>\
-                        <div ng-model=\"model_temp2\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback2()', onOver: 'overCallback2()', onOut: 'outCallback2()'}\" class=\"content_box_super_set\">\
+                        <div ng-model=\"model_temp2\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(1)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_super_set\">\
                             <div class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
+                                <img ng-click=\"delete_exercise_drop(1);\" ng-show=\"model_temp2 != null ? true : false\" class=\"icon_delete_superset_2\" src=\"/img/images/delete_copy.png\">\
                                 <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp2.Exercise.video}}\" poster=\"{{model_temp2 != null ? model_temp2.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
                             </div>\
                             <div class=\"content_box_main\" layout=\"column\">\
@@ -771,31 +785,41 @@ app.directive( 'superset', function ( $compile ) {
             $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }  
-
-        $scope.dropCallback1 = function(event, ui){               
-            var exercise = $(event.target).scope().model_temp1;
-            exercise_list_item.exercise_item[0] = {'exercise_id':exercise.Exercise.id};
+         $scope.dropCallback = function(event, ui, index){  
+            var data = $(event.target).scope();
+            var exercise = null;            
+            switch(index){
+                case 0:
+                    exercise = data.model_temp1;                    
+                    break;
+                case 1:
+                    exercise = data.model_temp2;                    
+                    break;               
+            }            
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][index] = {'exercise_id':exercise.Exercise.id};
             $(event.target).find('.content_box_img').removeClass('hightlight_dropzone');
-        }; 
-        $scope.overCallback1 = function(event, ui){
+        };            
+
+        // hightlight drop zone
+        $scope.overCallback = function(event, ui){
             $(event.target).find('.content_box_img').addClass('hightlight_dropzone');
         };
-        $scope.outCallback1 = function(event, ui){
-            $(event.target).find('.content_box_img').removeClass('hightlight_dropzone');
-        };     
-
-        $scope.dropCallback2 = function(event, ui){  
-            var exercise = $(event.target).scope().model_temp2;
-            exercise_list_item.exercise_item[1] = {'exercise_id':exercise.Exercise.id};
-            $(event.target).find('.content_box_img').removeClass('hightlight_dropzone');                    
-        };
-        $scope.overCallback2 = function(event, ui){
-            $(event.target).find('.content_box_img').addClass('hightlight_dropzone');
-        };
-        $scope.outCallback2 = function(event, ui){
+        $scope.outCallback = function(event, ui){
             $(event.target).find('.content_box_img').removeClass('hightlight_dropzone');
         };   
 
+        // delete exercise drop
+        $scope.delete_exercise_drop = function(index_cell){                
+            switch(index_cell){
+                case 0:                    
+                    $(event.target).scope().model_temp1 = null; 
+                    break;
+                case 1:                    
+                    $(event.target).scope().model_temp2 = null; 
+                    break;               
+            }
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][index_cell] = "";            
+        } 
         $scope.showOptionChooseTypeExercise = false;
         $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
@@ -823,7 +847,7 @@ app.directive( 'withnote', function ( $compile ) {
         index: '@',
         isnew: '@'            
     },
-    template : "<div ng-model=\"model_temp\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback()'}\" class=\"exercise_box\">\
+    template : "<div ng-model=\"model_temp\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback()', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"exercise_box\">\
                     <div class=\"box_program_vew\">\
                         <div class=\"header_box\">\
                             <p>1</p>\
@@ -838,6 +862,7 @@ app.directive( 'withnote', function ( $compile ) {
                         </ul>\
                         <div class=\"content_box_regular\">\
                             <div class=\"content_image\" layout-align=\"center center\" layout=\"column\">\
+                                <img ng-click=\"delete_exercise_drop();\" ng-show=\"model_temp != null ? true : false\" class=\"icon_delete_regular\" src=\"/img/images/delete_copy.png\">\
                                 <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp.Exercise.video}}\" poster=\"{{model_temp != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
                                 <div>{{model_temp == null ? 'DRAG EXERCISE' : ''}}</div>\
                             </div>\
@@ -867,10 +892,17 @@ app.directive( 'withnote', function ( $compile ) {
 
         }  
 
-        $scope.dropCallback = function(event, ui){               
+        $scope.dropCallback = function(event, ui){            
             var exercise = $(event.target).scope().model_temp;
-            exercise_list_item.exercise_item[0] = {'exercise_id':exercise.Exercise.id};
+            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':exercise.Exercise.id};
+            $(event.target).find('.content_image').removeClass('hightlight_dropzone');          
+        };             
+        $scope.overCallback = function(event, ui){
+            $(event.target).find('.content_image').addClass('hightlight_dropzone');
         };
+        $scope.outCallback = function(event, ui){
+            $(event.target).find('.content_image').removeClass('hightlight_dropzone');
+        };    
 
         $scope.showOptionChooseTypeExercise = false;
         $scope.click_icon_option = function(){
@@ -886,6 +918,11 @@ app.directive( 'withnote', function ( $compile ) {
         $scope.delete_exercise = function(type_of_exercise){           
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.delete_exercise($element);
+        }
+        // delete exercise drop
+        $scope.delete_exercise_drop = function(){            
+            $scope.$parent.tabs[day-1]["exercise_list"][0]["exercise_item"].splice(0, 1);
+            $(event.target).scope().model_temp = null;               
         }
     }
   };

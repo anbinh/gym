@@ -1686,7 +1686,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
       right: -95px;
       top: 24px;
       background: white;
-      z-index: 99;
+      z-index: 9999;
       font-size: 14px;
       width: 120px;
       box-shadow: 0px 1px 16px -1px #88887F;
@@ -1758,6 +1758,14 @@ ul.option_program_editor li:hover{
     margin: 0 24px 0 24px;
     border: 1px dotted;
     height: 118px;
+    position: relative;
+}
+.icon_delete_regular{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 999;
+    cursor: pointer;
 }
 .content_box_regular .name_exercise{
     text-align: center;
@@ -1788,6 +1796,7 @@ ul.option_program_editor li:hover{
     height: 70px;
     float: left;
     margin-top: 8px;
+    position: relative;
 }
 .content_box_super_set .content_box_main{
     padding-left: 11px;
@@ -1802,6 +1811,28 @@ ul.option_program_editor li:hover{
     border: 1px dotted;
     float: left;
     margin: 3px;
+    position: relative;
+}
+.icon_delete_stretching{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 999;
+    cursor: pointer;
+}
+.icon_delete_superset_1{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 999;
+  cursor: pointer;    
+}
+.icon_delete_superset_2{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 999;
+  cursor: pointer;    
 }
 .serie2{
     width: 50px;
@@ -1814,6 +1845,7 @@ ul.option_program_editor li:hover{
 .hightlight_dropzone{
     border: 2px solid !important;
 }
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;
