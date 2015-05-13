@@ -989,7 +989,7 @@ app.directive( 'textonly', function ( $compile ) {
     }
   };
 });
-app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,$compile){
+app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,$compile,$timeout){
     $scope.exercises_list_backup = [];
     $scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
@@ -1206,6 +1206,8 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         var $exercise = ui.draggable;                                  
     };
 
+    $scope.selectedIndex = 0;
+    $scope.isOk = true;
     $scope.removeTab = function(tab)
     {
         $scope.index = $scope.index - 1;        
@@ -1214,15 +1216,26 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             $scope.index_current_tab = 1;
         }
         else{
-            $scope.index_current_tab = $scope.current_tab - 1;
-        }        
+            $scope.index_current_tab = $scope.index_current_tab - 1;
+        }     
         
+        
+
         $scope.tabs.splice(index, 1);
         // update the index
         var j = index;
         for(j = index; j < $scope.tabs.length - 1; j++){                    
             $scope.tabs[j].day_number = $scope.tabs[j].day_number - 1;    
         }
+        $scope.selectedIndex = 0;
+        if(index == $scope.tabs.length - 1)
+        {
+            $scope.isOk = false;
+            $timeout(function () {
+                $scope.isOk = true;
+                $scope.selectedIndex = $scope.tabs.length - 2;
+            }, 50);
+        }        
     };
 
     $scope.addTab = function()
@@ -1236,7 +1249,8 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         };
         $scope.tabs.splice($scope.tabs.length - 1,0,program_item);
         console.log($scope.tabs);
-    }
+        $scope.selectedIndex = 0; 
+    } 
 });
 app.filter('filterExerciseProgramEditor', function(){
     return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {

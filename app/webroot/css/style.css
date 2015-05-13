@@ -358,7 +358,6 @@ margin: 0 30px 25px 30px;
     font-weight: bold;
 }
 .list_tile{
-    overflow: auto;
     padding-top: 4px;
     /*padding-left: 1px;*/
 }
@@ -1872,3 +1871,12 @@ ul.option_program_editor li:hover{
 
 /* End --- Drag Drop css*/
 
+.program_author{
+    text-align: center;
+    margin-top: 5px;    
+}
+
+.box_program_template{
+    height: 260px;
+    float: left;
+}

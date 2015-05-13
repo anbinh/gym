@@ -20,7 +20,7 @@
             </div>
         </div>
         <div layout="row">
-            <div flex style="padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+            <div flex style="padding-bottom: 40px; border-bottom: 1px solid #ccc;">
                 <div class="my_program">
                     <div class="my_program_text" layout="row" layout-align="start center"><div class="arrow_click" ng-class="isProgramShow ? 'arrow_down' : 'arrow_right'" ng-click="toggleMyProgram()"></div><p><?php echo __('my program')?></p>
                         <a class="edit_text" ng-click="editProgram()" style="padding-left:10px;" href="javascript:void(0);"> <?php echo __('edit')?></a></div>
