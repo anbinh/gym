@@ -1810,6 +1810,9 @@ ul.option_program_editor li:hover{
     width: 70px;
     height: 22px;
 }
+.hightlight_dropzone{
+    border: 2px solid !important;
+}
 ::-webkit-scrollbar {
     width: 8px;
     height: 2px;
