@@ -525,15 +525,15 @@ app.directive( 'regular', function ( $compile ) {
                         </div>\
                     </div>\
                 </div>",
-    link: function ( $scope, $element ) {         
+    link: function ( $scope, $element ) {    
+
         var day = $scope.day;          
         var exercise_list_item = {
             'mode':$scope.type,
             'order':$scope.type,
             'exercise_item':[],
             'text':''            
-        };
-        
+        };        
         
         if($scope.isnew == 1){ // create new an exercise
 
@@ -545,6 +545,18 @@ app.directive( 'regular', function ( $compile ) {
             
             $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
+        } 
+
+        // list models of old type before was changed
+        var list_model_temp = $scope.$parent.list_model_temp;
+        // optimal model (eg: if listmodel[0]=null & listmodel[1]!=null => swap [1] -> [0])        
+        for(var i = 0; i < list_model_temp.length; i++){
+            if(list_model_temp[i]!=null && list_model_temp[i]!='undefined')
+            {
+                $scope.model_temp = list_model_temp[i];
+                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':$scope.model_temp.Exercise.id};
+                break;
+            }
         } 
         
 
@@ -566,9 +578,14 @@ app.directive( 'regular', function ( $compile ) {
         };
 
         //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){           
+        $scope.change_type_exercise = function(type_of_exercise){       
+            var listmodel = [];
+            listmodel[0] = $scope.model_temp;
+            listmodel[1] = null;
+            listmodel[2] = null;
+            listmodel[3] = null;
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise);
+            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
         }
         // delete exercise
         $scope.delete_exercise = function(type_of_exercise){           
@@ -579,7 +596,7 @@ app.directive( 'regular', function ( $compile ) {
         $scope.delete_exercise_drop = function(){            
             $scope.$parent.tabs[day-1]["exercise_list"][0]["exercise_item"].splice(0, 1);
             $(event.target).scope().model_temp = null;           
-        }
+        }        
     }
   };
 });
@@ -590,7 +607,8 @@ app.directive( 'stretching', function ( $compile ) {
         type: '@',
         day: '@',
         index: '@',
-        isnew: '@'            
+        isnew: '@',
+        listmodel: '='            
     },
     template: "<div class=\"exercise_box\">\
                     <div class=\"box_program_vew\">\
@@ -631,7 +649,7 @@ app.directive( 'stretching', function ( $compile ) {
                         </div>\
                     </div>\
                 </div>",
-    controller: function ( $scope, $element ) {       
+    controller: function ( $scope, $element ) {                  
         var day = $scope.day;
         var exercise_list_item = {
             'mode':$scope.type,
@@ -649,6 +667,27 @@ app.directive( 'stretching', function ( $compile ) {
             $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }  
+
+        var list_model_temp = $scope.$parent.list_model_temp;
+        // optimal model (eg: if listmodel[0]=null & listmodel[1]!=null => swap [1] -> [0])
+        var check = 1;
+        for(var i = 0; i < list_model_temp.length; i++){
+            if(list_model_temp[i]!=null && list_model_temp[i]!='undefined')
+            {
+                if(check == 1){
+                    $scope.model_temp1 = list_model_temp[i];
+                    $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':list_model_temp[i].Exercise.id};
+                    check = check + 1;
+                    continue;
+                }
+                if(check == 2){
+                    $scope.model_temp2 = list_model_temp[i];
+                    $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][1] = {'exercise_id':list_model_temp[i].Exercise.id};
+                    break;
+                }                
+            }
+        }  
+
         $scope.dropCallback = function(event, ui, index){  
             var data = $(event.target).scope();
             var exercise = null;            
@@ -705,15 +744,20 @@ app.directive( 'stretching', function ( $compile ) {
         };
 
         //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){           
+        $scope.change_type_exercise = function(type_of_exercise){    
+            var listmodel = [];
+            listmodel[0] = $scope.model_temp1;
+            listmodel[1] = $scope.model_temp2;
+            listmodel[2] = $scope.model_temp3;
+            listmodel[3] = $scope.model_temp4;       
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise);
+            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
         }
         // delete exercise
         $scope.delete_exercise = function(type_of_exercise){           
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.delete_exercise($element);
-        }
+        }        
     }
   };
 });
@@ -767,7 +811,7 @@ app.directive( 'superset', function ( $compile ) {
                         </div>\
                     </div>\
                 </div>",
-    controller: function ( $scope, $element ) {
+    controller: function ( $scope, $element ) {        
         var day = $scope.day;
         var exercise_list_item = {
             'mode':$scope.type,
@@ -785,6 +829,26 @@ app.directive( 'superset', function ( $compile ) {
             $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }  
+
+        var list_model_temp = $scope.$parent.list_model_temp;
+        // optimal model (eg: if listmodel[0]=null & listmodel[1]!=null => swap [1] -> [0])
+        var check = 1;
+        for(var i = 0; i < list_model_temp.length; i++){
+            if(list_model_temp[i]!=null && list_model_temp[i]!='undefined')
+            {
+                if(check == 1){
+                    $scope.model_temp1 = list_model_temp[i];
+                    $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':list_model_temp[i].Exercise.id};
+                    check = check + 1;
+                    continue;
+                }
+                if(check == 2){
+                    $scope.model_temp2 = list_model_temp[i];
+                    $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][1] = {'exercise_id':list_model_temp[i].Exercise.id};
+                    break;
+                }                
+            }
+        } 
          $scope.dropCallback = function(event, ui, index){  
             var data = $(event.target).scope();
             var exercise = null;            
@@ -826,9 +890,14 @@ app.directive( 'superset', function ( $compile ) {
         };
 
         //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){           
+        $scope.change_type_exercise = function(type_of_exercise){         
+            var listmodel = [];
+            listmodel[0] = $scope.model_temp1;
+            listmodel[1] = $scope.model_temp2;
+            listmodel[2] = null;
+            listmodel[3] = null;    
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise);
+            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
         }
         // delete exercise
         $scope.delete_exercise = function(type_of_exercise){           
@@ -873,7 +942,7 @@ app.directive( 'withnote', function ( $compile ) {
                         </div>\
                     </div>\
                 </div>",
-    controller: function ( $scope, $element ) {
+    controller: function ( $scope, $element ) {       
         var day = $scope.day;
         var exercise_list_item = {
             'mode':$scope.type,
@@ -891,6 +960,17 @@ app.directive( 'withnote', function ( $compile ) {
            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
 
         }  
+
+        var list_model_temp = $scope.$parent.list_model_temp;
+        // optimal model (eg: if listmodel[0]=null & listmodel[1]!=null => swap [1] -> [0])        
+        for(var i = 0; i < list_model_temp.length; i++){
+            if(list_model_temp[i]!=null && list_model_temp[i]!='undefined')
+            {
+                $scope.model_temp = list_model_temp[i];
+                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':list_model_temp[i].Exercise.id};
+                break;
+            }
+        }
 
         $scope.dropCallback = function(event, ui){            
             var exercise = $(event.target).scope().model_temp;
@@ -910,9 +990,14 @@ app.directive( 'withnote', function ( $compile ) {
         };
 
         //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){           
+        $scope.change_type_exercise = function(type_of_exercise){ 
+            var listmodel = [];
+            listmodel[0] = $scope.model_temp;
+            listmodel[1] = null;
+            listmodel[2] = null;
+            listmodel[3] = null;            
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise);
+            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
         }
         // delete exercise
         $scope.delete_exercise = function(type_of_exercise){           
@@ -934,9 +1019,11 @@ app.directive( 'textonly', function ( $compile ) {
         type: '@',
         day: '@',
         index: '@',
-        isnew: '@'              
+        isnew: '@',
+        content: '=ngModel'
     },
-    template : "<div class=\"exercise_box\">\
+    require: 'ngModel',
+    template : "<div ng-model=\"content\" class=\"exercise_box\">\
                     <div class=\"box_program_vew\">\
                         <div class=\"header_box\">\
                             <p>1</p>\
@@ -949,7 +1036,7 @@ app.directive( 'textonly', function ( $compile ) {
                             <li ng-click=\"change_type_exercise('4')\">With notes</li>\
                             <li ng-click=\"delete_exercise()\">Delete</li>\
                         </ul>\
-                        <textarea class=\"content_only_text\" type=\"text\"></textarea>\
+                        <textarea class=\"content_only_text\" type=\"text\">{{content}}</textarea>\
                     </div>\
                 </div>",
     controller: function ( $scope, $element ) {
@@ -958,7 +1045,7 @@ app.directive( 'textonly', function ( $compile ) {
             'mode':$scope.type,
             'order':$scope.type,
             'exercise_item':[],
-            'text':''
+            'content':''
         };  
         if($scope.isnew == 1){ // create new an exercise
 
@@ -977,15 +1064,25 @@ app.directive( 'textonly', function ( $compile ) {
         };
 
         //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){           
+        $scope.change_type_exercise = function(type_of_exercise){ 
+            var listmodel = [];
+            listmodel[0] = null;
+            listmodel[1] = null;
+            listmodel[2] = null;
+            listmodel[3] = null;            
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise);
+            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
+            console.log($scope.content);
         }
         // delete exercise
         $scope.delete_exercise = function(type_of_exercise){           
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
             $scope.$parent.delete_exercise($element);
         }
+        $scope.$watch('content',function(){
+                //$scope.$parent.myModel[$attrs.name]=$scope.directiveModel;
+        }) ;
+
     }
   };
 });
@@ -998,7 +1095,9 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.showOptionChooseTypeExercise = false;
     $scope.testdrop = '';
     $scope.index_current_tab = 1;
-    
+    $scope.list_model_temp = [];
+    $scope.list_model_temp[0] = $scope.list_model_temp[1] = $scope.list_model_temp[2] = $scope.list_model_temp[3] = null;
+
     // get list body part
     $http.get('/Apis/getListBodyPart.json')
         .then(function(res){   
@@ -1118,10 +1217,12 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.index_current_tab = index_tab+1;        
     }
     // change type of exercise in program editor
-    $scope.change_type_exercise = function(element, type_of_exercise){   
+    $scope.change_type_exercise = function(element, type_of_exercise, list_model_temp){   
         var index_of_exercise = element.attr('index');
         var day_number = $scope.index_current_tab;
         var exercise_template = '';
+        $scope.list_model_temp = list_model_temp;
+
         switch(type_of_exercise){
             case '1':
                 exercise_template = "<regular isnew='0' index='"+ index_of_exercise +"' type='"+type_of_exercise+"' day='"+day_number+"'></regular>";        
