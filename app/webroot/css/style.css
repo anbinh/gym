@@ -1848,3 +1848,22 @@ ul.option_program_editor li:hover{
     height: 260px;
     float: left;
 }
+
+.button_white{
+  background: #FFFFFF;
+  border-radius: 0 !important;
+  border: 2px solid #000000 !important;
+  width: 100px;
+  height: 35px !important;
+  color: black;
+  font-weight: bold !important;
+}
+
+.button_green{
+  background: #a4c408;
+  border-radius: 0 !important;  
+  width: 100px;
+  height: 35px !important;
+  color: black;
+  font-weight: bold !important;
+}

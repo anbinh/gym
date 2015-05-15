@@ -391,7 +391,8 @@ class ApisController extends AppController {
             $search = array(
                 '_id' => array('$in' => $user['User']['assigned_programs'])
             );
-            $list_programs_of_user = $this->Program->find('all', array('conditions'=>$search));                        
+            $list_programs_of_user = $this->Program->find('all', array('conditions'=>$search));  
+            // reorder list                      
             $reorder_list = array();
             foreach ($user['User']['assigned_programs'] as $key => $value) {
                 foreach ($list_programs_of_user as $key1 => $value1) {
@@ -399,6 +400,7 @@ class ApisController extends AppController {
                         array_push($reorder_list, $value1);
                 }
             }
+
             $this->set(array(
                 'program_order'=> $user['User']['assigned_programs'],
                 'message' => $reorder_list,
@@ -469,7 +471,8 @@ class ApisController extends AppController {
         }
     }
     public function getListProgram(){
-        $programs_list = $this->Program->find('all',array('conditions'=>array('is_public'=>1)));
+        //$programs_list = $this->Program->find('all',array('conditions'=>array('is_public'=>1)));
+        $programs_list = $this->Program->find('all');
         $this->set(array(
             'programs_list' => $programs_list,
             '_serialize' => array('programs_list')

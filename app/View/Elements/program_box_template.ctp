@@ -13,5 +13,5 @@
 		    <div class="program_text_name"><?php echo ($language=='fra')?'{{item.Program.name_fr}}':'{{item.Program.name}}';?>	    		    	
 		    </div>		    
 	</div>
-	<div class="program_author"><img src="/img/images/picto.png"> By {{item.Program.author}}</div>
+	<div class="program_author" ng-show="item.Program.author != 'Studiogym'"><img src="/img/images/picto.png"> <?php echo __("By")?> {{item.Program.author}}</div>
 </div>
