@@ -451,7 +451,12 @@ class ApisController extends AppController {
         $user = $this->getAuthentication();
         if($user){
             $user_id = $user['id'];
-           
+            $program = $this->Program->findById($assigned_programs);
+            if($program['Program']['creator_id'] == $user_id)
+            {
+                $program['Program']['creator_id'] = "";
+                $this->Program->save($program);
+            }
             $this->User->mongoNoSetOperator = '$pull';
             $susp = array(
                 "id" => $user_id,
@@ -460,7 +465,8 @@ class ApisController extends AppController {
             $result = $this->User->save($susp);
             $this->set(array(
                 'message' => $result,
-                '_serialize' => array('message')
+                'xxx'=>$program,
+                '_serialize' => array('message','xxx')
             ));
         }
         else{

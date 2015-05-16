@@ -181,8 +181,7 @@ app.controller('UserController', function($scope,$http,$modal) {
                     $scope.list_program_saved.splice(index, 1);
                     $http.get('/Apis/deleteAssignedProgram/'+program_id+'.json')
                     .then(function(res){
-                        console.log(res);
-                        $modal.close();
+                        console.log(res);                        
                     });
                 }                
             }, function () {
@@ -1832,6 +1831,10 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
             $scope.isAuthenticate = res.data.message;
         });
 
+    $scope.modify_program = function(program_id)
+    {
+        $window.location = "/Programs/program_editor/" + program_id;
+    }
 
     $scope.save_program = function(program_id){
         
