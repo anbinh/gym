@@ -10,8 +10,8 @@ class ExercisesController  extends AppController {
         /*$this->request->data['TextResource']['test'] = "eng";
         $text = $this->TextResource->find('all');
         pr($text);*/
-        $programs_list = $this->Program->find('all',array('conditions'=>array('is_public'=>1)));
-        pr($programs_list);
+        //$programs_list = $this->Program->find('all',array('conditions'=>array('is_public'=>1)));
+        //pr($programs_list);
     }
 
     public function login_modal() {

@@ -17,12 +17,6 @@
   </div>
 
   <div layout="row" class="main_content_program_editor">
-    <!-- <div data-drop="true" ng-model='list4' jqyoui-droppable="{multiple:true}" droppable style="border:1px solid; width:300px; height:150px;" flex class="program_tab_editor1">
-        <div ng-model="list4">
-          {{list4.Exercise.name}}
-        </div>
-    
-    </div> -->
      <div class="program_tab" flex>       
         <md-tabs md-selected="selectedIndex" flex>            
             <md-tab ng-repeat="tab in tabs track by $index">  

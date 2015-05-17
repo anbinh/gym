@@ -110,7 +110,7 @@ app.controller('ListController', ['$scope', '$http', function($scope, $http){
 }
 ]);
 
-app.controller('UserController', function($scope,$http) {
+app.controller('UserController', function($scope,$http,$modal) {
     $scope.user = [];
     $scope.exercises_list = [];
     $scope.exercises_like = [];
@@ -165,12 +165,36 @@ app.controller('UserController', function($scope,$http) {
     $scope.toggleExercise = function(){
         $scope.isExerciseShow = !$scope.isExerciseShow;
     };
-    $scope.delete_program = function(program_id, index){
-        $scope.list_program_saved.splice(index, 1);
-        $http.get('/Apis/deleteAssignedProgram/'+program_id+'.json')
-        .then(function(res){               
-            
-        });
+    $scope.delete_program = function(program_id, index){        
+        if($scope.list_program_saved[index].Program.creator_id != "")
+        {
+            var modalInstance = $modal.open({
+              templateUrl:'/Users/confirm_delete.ctp',
+              controller: 'confirmDeleteController',
+              backdropClass: 'backdropClass_custom',
+              size:'sm'                    
+            });            
+            modalInstance.result.then(function (isDelete) {
+                console.log(isDelete);
+                if(isDelete == 1)
+                {
+                    $scope.list_program_saved.splice(index, 1);
+                    $http.get('/Apis/deleteAssignedProgram/'+program_id+'.json')
+                    .then(function(res){
+                        console.log(res);                        
+                    });
+                }                
+            }, function () {
+            });
+        }
+        else
+        {
+            $scope.list_program_saved.splice(index, 1);
+            $http.get('/Apis/deleteAssignedProgram/'+program_id+'.json')
+            .then(function(res){               
+                
+            });
+        }        
     };
     $scope.isExerciseShow = true;
     $scope.isProgramShow = true;
@@ -217,6 +241,18 @@ app.controller('UserController', function($scope,$http) {
         console.log('drag : ' + index);     
         $scope.dragIndex = index;     
     };
+});
+
+app.controller('confirmDeleteController',function($scope,$modalInstance){
+    $scope.cancel = function()
+    {
+        $modalInstance.close(0);
+    }
+
+    $scope.delete_program = function()
+    {
+        $modalInstance.close(1);
+    }
 });
 
 app.controller('UserProfileController', function($scope,$http){
@@ -534,7 +570,7 @@ app.directive( 'regular', function ( $compile ) {
                         </div>\
                     </div>\
                 </div>",
-    link: function ( $scope, $element ) {    
+    link: function ( $scope, $element ) {         
 
         var day = $scope.day;          
         var exercise_list_item = {
@@ -545,15 +581,11 @@ app.directive( 'regular', function ( $compile ) {
         };        
         
         if($scope.isnew == 1){ // create new an exercise
-
             $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item); 
             $scope.$parent.tabs[day-1]["count_exercise"]++;
-
         }
-        else{ // update exercise
-            
+        else{ // update exercise            
             $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
-
         }         
         $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':'','serie':'','repeat':''};
 
@@ -1347,6 +1379,12 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     }
     $scope.tabs = [];
     $scope.index = 1;   
+    /*var exercise_list_item = {
+            'mode':1,
+            'order':1,
+            'exercise_item':[],
+            'text':'fewew'            
+        };*/
     $scope.tabs.push(
         {
             'day_number':'',
@@ -1355,14 +1393,13 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     );
     var program_item = {
         'day_number': $scope.index,
-        'exercise_list': [],
+        'exercise_list': [            
+                       
+        ],
         'count_exercise':0
     };   
     $scope.tabs.unshift(program_item);
     $scope.selectedIndex = 0;    
-    $scope.create_day_program = function(){
-      
-    }
     
     $scope.getImageShowOnly = function(){
         if($scope.showAllExercise){
@@ -1908,6 +1945,10 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
             $scope.isAuthenticate = res.data.message;
         });
 
+    $scope.modify_program = function(program_id)
+    {
+        $window.location = "/Programs/program_editor/" + program_id;
+    }
 
     $scope.save_program = function(program_id){
         

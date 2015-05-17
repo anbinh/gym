@@ -9,8 +9,10 @@
                         <div class="program_view_text_name"> <?php echo ($language=='fra')?$programs['Program']['name_fr']:$programs['Program']['name'];?></div>
                     </div>
                 </div>
-                <div flex layout-align="end end" style="text-align: end; margin-right:15px;">                    
-                    <?php if($isSaved):?>                        
+                <div flex layout-align="end end" style="text-align: end; margin-right:15px;">      
+                    <?php if($isCreator): ?>
+                        <input ng-click="modify_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Modify');?>">
+                    <?php elseif($isSaved):?>       
                         <input ng-click="remove_program('<?php echo $programs['Program']['id']?>')" type="button" class="btn btn_remove_from_profile" value="<?php echo __('Remove from profile');?>">                        
                         <input style="display:none;" ng-click="save_program('<?php echo $programs['Program']['id']?>');" type="button" class="btn btn_save_program" value="<?php echo __('Save');?>">                        
                     <?php else:?>                        

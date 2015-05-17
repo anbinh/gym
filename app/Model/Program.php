@@ -11,7 +11,9 @@ class Program extends AppModel {
         'content' => array('type'=>'Array'),
         'photo' => array('type'=>'String'),
         'color_code' => array('type'=>'String'),
-        'name_fr' => array('type'=>'String')
+        'name_fr' => array('type'=>'String'),
+        'creator_id'=>array('type'=>'String'),
+        'is_public'=>array('type'=>'int'),
     );
     public $hasMany = array(
         'Exercise' => array(

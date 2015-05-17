@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 class ProgramsController  extends AppController {
    
     public function index(){
-    	$programs = $this->Program->find('all');
+    	//$programs = $this->Program->find('all');
 
     	//pr($programs);
     }
@@ -18,6 +18,7 @@ class ProgramsController  extends AppController {
             //pr($this->Exercise->findById('551e9f9670711fb269285cd2'));
             $programs = $this->Program->findById($id);                    
             $this->set('isSaved', $this->check_program_is_saved($id));
+            $this->set('isCreator', $this->check_user_is_creator($programs));
             $this->set('programs', $programs);
 
             //pr($programs);
@@ -43,6 +44,21 @@ class ProgramsController  extends AppController {
             $this->redirect('/Programs/index');
         }
         
+    }
+
+    public function check_user_is_creator($program)
+    {
+        $user = $this->getAuthentication();
+        if($user)
+        {            
+            $user = $this->User->findById($user['id']);
+            if($program['Program']['creator_id'] == $user['User']['id'] && in_array($program['Program']['id'], $user['User']['assigned_programs']))            
+                return true;            
+            else
+                return false;
+        }
+        else
+            return false;
     }
 
     public function check_program_is_saved($program_id){

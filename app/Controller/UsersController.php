@@ -5,6 +5,11 @@ class UsersController extends AppController {
 
     public $components = array('RequestHandler');
 
+    public function confirm_delete() {
+        $this->layout = false;
+    }
+
+
 
     public function index() {
         $auth = $this->getAuthentication();
