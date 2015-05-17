@@ -718,10 +718,54 @@ class ApisController extends AppController {
 
     public function saveProgramEditor(){
         $data = $this->request->input('json_decode',true);
-        $this->set(array(
-            'message' => $data,
-            '_serialize' => array('message')
-        ));
+        $program = [];
+
+        $user = $this->getAuthentication();
+        if($user)
+        {
+            $user = $this->User->findById($user['id']);
+            $user = $user['User'];
+
+            $program['creation_date'] = '2010-01-12 00:27:50';
+            $program['modification_date'] = '2015-01-23 03:52:23';
+            $program['name'] = '';
+            $program['author'] = $user['firstname'] .' '. $user['lastname'];
+            //$program['author'] = 'test';
+            $program['level'] = '';
+            $program['objective'] = '1';
+            $program['content'] = '';
+            $program['photo'] = '';
+            $program['color_code'] = '';
+            $program['name_fr'] = '';
+            $program['is_public'] = '';
+            $program['creator_id'] = '';
+
+            // removing exercise was removed in editor
+            for($i = 0; $i < count($data) - 1; $i++)
+            {                
+                for($j = 0; $j < count($data[$i]['exercise_list']); $j++){
+                    if($data[$i]['exercise_list'][$j]=='')
+                    {
+                        $data[$i]['exercise_list'].splice($j, 1);
+                    }
+                }
+            }
+            // fill in $program['content'] = [];
+            $program['content'] = $data;
+
+            $this->Program->save($program);
+
+            $this->set(array(
+                'message' => 'success',
+                '_serialize' => array('message')
+            ));
+
+        }  
+        // $this->set(array(
+        //     'message' => $data,
+        //     '_serialize' => array('message')
+        // ));
+
         // $message = $data;
         // // validate email
         // $user = $this->User->find("first",array( "conditions" => array(

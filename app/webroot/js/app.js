@@ -1487,12 +1487,16 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     } 
 
     $scope.save_program = function(){
-        // var data = $scope.formData;
-        // console.log(data);
+       //console.log($scope.tabs);
+       var tabs = $scope.tabs;
+       for(var i = 0; i < tabs.length; i++){
+            delete tabs[i]['count_exercise'];
+       }  
+            
         $http({
             method  : 'POST',
             url     : '/Apis/saveProgramEditor.json',            
-            data    : $scope.tabs,  // pass in data as strings
+            data    : tabs,  // pass in data as array
             headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
         })
             .success(function(data) {
