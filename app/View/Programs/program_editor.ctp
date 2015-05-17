@@ -6,9 +6,9 @@
               <img src="/img/images/object_dynamique.png">
               <span style="margin-left:25px;"><?php echo __("CREAT A PROGRAM");?></span>
             </div>         
-            <div flex class="list_button">
-              <input ng-click="test_function()" type="button" class="btn btn_program_editor btn_public_program" value="Publish">
-              <input type="button" class="btn btn_program_editor btn_draft_program" value="Save draft">
+            <div flex class="list_button">              
+              <input type="button" class="btn btn_program_editor btn_draft_program" value="Preview">
+              <input ng-click="save_program()" type="button" class="btn btn_program_editor btn_public_program" value="Save">
               <input type="button" class="btn btn_program_editor btn_cancel_program" value="Cancel">
             </div>
           </div>             
@@ -41,7 +41,8 @@
         <div class="type_of_program">      
           <span style="margin-right:10px;"><?php echo __("OBJECTIVE");?></span>
           <select  class="input_select input_location">
-              <option value=""><?php echo __('Choose')?></option>              
+              <option value=""><?php echo __('Choose')?></option>  
+              <option value="{{item.id}}" ng-repeat="item in objective_items">{{item.name}}</option>
           </select>
         </div>
         <div class="main_content_type_of_program">
