@@ -1,9 +1,15 @@
 <div ng-if="tab.day_number != ''" class="UserIndexLeftContent">                
     <div layout="row">            
-        <div class="list_program_view"> 
-        	<regular isnew="1" index="0" type="1" day="{{index}}"></regular> 
-            <creator></creator>                       
+        <div class="list_program_view" ng-repeat="item in tab.exercise_list">         	
+				<?php echo $this->Element('template_regular');?>                					
+				<?php echo $this->Element('template_stretching');?>                					
+				<?php echo $this->Element('template_superset');?>                
+				<?php echo $this->Element('template_withnote');?>                
+				<?php echo $this->Element('template_onlytext');?>                			
         </div>
+        <creator></creator>
+        <!-- <input type="button" value="add" ng-click="test()">
+        <input type="button" value="remove" ng-click="testremove()"> -->
     </div>
 </div>
 

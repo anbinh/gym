@@ -5,8 +5,8 @@
  * For the correct positioning of the placeholder element, the dnd-list and
  * it's children must have position: relative
  */
-.advancedDemo ul[dnd-list],
-.advancedDemo ul[dnd-list] > li {
+.nestedDemo ul[dnd-list],
+.nestedDemo ul[dnd-list] > li {
     position: relative;
 }
 
@@ -16,7 +16,7 @@
  * The dnd-list should always have a min-height,
  * otherwise you can't drop to it once it's empty
  */
-.advancedDemo .dropzone ul[dnd-list] {
+.nestedDemo .dropzone ul[dnd-list] {
     min-height: 42px;
     margin: 0px;
     padding-left: 0px;
@@ -29,8 +29,11 @@
  * half of the element we are dragging over. In other
  * browsers we can use event.offsetY for this.
  */
-.advancedDemo .dropzone li {
+.nestedDemo .dropzone li {
+    background-color: #fff;
+    border: 1px solid #ddd;
     display: block;
+    padding: 0px;
 }
 
 /**
@@ -38,7 +41,7 @@
  * to see where he is dropping his element, even if the element is huge. The
  * .dndDragging class is automatically set during the drag operation.
  */
-.advancedDemo .dropzone .dndDragging {
+.nestedDemo .dropzone .dndDragging {
     opacity: 0.7;
 }
 
@@ -47,7 +50,7 @@
  * operation. It makes sense to hide it to give the user the feeling that he's
  * actually moving it. Note that the source element has also .dndDragging class.
  */
-.advancedDemo .dropzone .dndDraggingSource {
+.nestedDemo .dropzone .dndDraggingSource {
     display: none;
 }
 
@@ -55,64 +58,177 @@
  * An element with .dndPlaceholder class will be added as child of the dnd-list
  * while the user is dragging over it.
  */
-.advancedDemo .dropzone .dndPlaceholder {
-    background-color: #ddd !important;
+.nestedDemo .dropzone .dndPlaceholder {
+    background-color: #ddd;
     min-height: 42px;
     display: block;
     position: relative;
-    border: 2px solid red;
 }
 
-.dndPlaceholder {    
-    border: 2px solid red;
+/***************************** Element Selection *****************************/
+
+.nestedDemo .dropzone .selected .item {
+    color: #3c763d;
+    background-color: #dff0d8;
+}
+
+.nestedDemo .dropzone .selected .box {
+    border-color: #d6e9c6;
+}
+
+.nestedDemo .dropzone .selected .box > h3 {
+    color: #3c763d;
+    background-color: #dff0d8;
+    background-image: linear-gradient(to bottom,#dff0d8 0,#d0e9c6 100%);
+    border-color: #d6e9c6;
 }
 
 /***************************** Element type specific styles *****************************/
 
-.advancedDemo .dropzone .itemlist {
-    min-height: 120px !important;
+.nestedDemo .dropzone .item {
+    padding: 10px 15px;
 }
 
-.advancedDemo .dropzone .itemlist > li {
-    background-color: #337ab7;
-    border: none;
-    border-radius: .25em;
-    color: #fff;
-    float: left;
-    font-weight: 700;
-    height: 50px;
-    margin: 5px;
-    padding: 3px;
-    text-align: center;
-    width: 50px;
-}
-
-.advancedDemo .dropzone .container-element {
+.nestedDemo .dropzone .container-element {
     margin: 10px;
 }
+
+.nestedDemo .dropzone .container-element .column {
+    float: left;
+    width: 50%;
+}
+
+/***************************** Toolbox *****************************/
+
+.nestedDemo .toolbox ul {
+    list-style: none;
+    padding-left: 0px;
+    cursor: move;
+}
+
+.nestedDemo .toolbox button {
+    margin: 5px;
+    width: 123px;
+    opacity: 1.0;
+}
+
+.nestedDemo .toolbox .dndDragging {
+    opacity: 0.5;
+}
+
+.nestedDemo .toolbox .dndDraggingSource {
+    opacity: 1.0;
+}
+
+/***************************** Trashcan *****************************/
+
+.nestedDemo .trashcan ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.nestedDemo .trashcan img {
+    width: 100%;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.nestedDemo .trashcan .dndDragover img {
+    width: 100%;
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+
+.nestedDemo .trashcan .dndPlaceholder {
+    display: none;
+}
 </style>
-<div ng-controller="TestRepeatController" class="advancedDemo">
-    <div class="row">        
-        <div class="container-element box box-blue">
-            <h3>Container</h3>
-            <ul dnd-list="items"
-                dnd-allowed-types="['itemType']"
-                dnd-horizontal-list="true"
-                dnd-external-sources="true"
-                dnd-dragover="dragoverCallback(event, index, external, type)"
-                dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
-                class="itemlist">
-                <li ng-repeat="item in items"
-                    dnd-draggable="item"
-                    dnd-type="'itemType'"
-                    dnd-effect-allowed="copyMove"
-                    dnd-dragstart="logEvent('Started to drag an item', event)"
-                    dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
-                    dnd-copied="logEvent('Item copied', event)">
-                    {{item.label}}
-                </li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>                        
+<!-- Markup for lists inside the dropzone. It's inside a seperate template
+     because it will be used recursively. The dnd-list directive enables
+     to drop elements into the referenced array. The dnd-draggable directive
+     makes an element draggable and will transfer the object that was
+     assigned to it. If an element was dragged away, you have to remove
+     it from the original list yourself using the dnd-moved attribute -->
+<div ng-controller="TestController"> 
+<script type="text/ng-template" id="list.html">
+    <ul dnd-list="list">
+        <li ng-repeat="item in list"
+            dnd-draggable="item"
+            dnd-effect-allowed="move"
+            dnd-moved="list.splice($index, 1)"
+            dnd-selected="models.selected = item"
+            ng-class="{selected: models.selected === item}"
+            ng-include="item.type + '.html'">
+        </li>
+    </ul>
+</script>
+
+<!-- This template is responsible for rendering a container element. It uses
+     the above list template to render each container column -->
+<script type="text/ng-template" id="container.html">
+    <div class="container-element box box-blue">
+        <h3>Container {{item.id}}</h3>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+        <div class="clearfix"></div>
     </div>
+</script>
+
+<!-- Template for a normal list item -->
+<script type="text/ng-template" id="item.html">
+    <div class="item">Item {{item.id}}</div>
+</script>
+
+<!-- Main area with dropzones and source code -->
+<div class="col-md-10">
+    <div class="row">
+        <div ng-repeat="(zone, list) in models.dropzones" class="col-md-6">
+            <div class="dropzone box box-yellow">
+                <!-- The dropzone also uses the list template -->
+                <h3>Dropzone {{zone}}</h3>
+                <div ng-include="'list.html'"></div>
+            </div>
+        </div>
+    </div>
+
+    <div view-source="nested" highlight-lines="{markup: '1-18, 20-28, 40-42, 57-68, 78-82'}"></div>
+
+    <h2>Generated Model</h2>
+    <pre>{{modelAsJson}}</pre>
+</div>
+
+<!-- Sidebar -->
+<div class="col-md-2">
+
+    <div class="toolbox box box-grey box-padding">
+        <h3>New Elements</h3>
+        <ul>
+            <!-- The toolbox only allows to copy objects, not move it. After a new
+                 element was created, dnd-copied is invoked and we generate the next id -->
+            <li ng-repeat="item in models.templates"
+                dnd-draggable="item"
+                dnd-effect-allowed="copy"
+                dnd-copied="item.id = item.id + 1"
+                >
+                <button type="button" class="btn btn-default btn-lg" disabled="disabled">{{item.type}}</button>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-if="models.selected" class="box box-grey box-padding">
+        <h3>Selected</h3>
+        <strong>Type: </strong> {{models.selected.type}}<br>
+        <input type="text" ng-model="models.selected.id" class="form-control" style="margin-top: 5px" />
+    </div>
+
+    <div class="trashcan box box-grey box-padding">
+        <!-- If you use [] as referenced list, the dropped elements will be lost -->
+        <h3>Trashcan</h3>
+        <ul dnd-list="[]">
+            <li><img src="nested/trashcan.jpg"></li>
+        </ul>
+    </div>
+
+</div>
 </div>
