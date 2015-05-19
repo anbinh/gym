@@ -504,7 +504,7 @@ app.directive( 'creator', function ( $compile ) {
         $scope.showOptionChooseTypeExercise = false;        
         $scope.create_exercise = function(){
             // hide option dropdown list
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;    
+            /*$scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;    
             var type_of_exercise = 1;
             var day_number = $scope.$parent.index_current_tab;
             // tracking index of exercise when create new
@@ -521,7 +521,24 @@ app.directive( 'creator', function ( $compile ) {
 
             exercise_template = "<regular isnew='1' index='"+index_of_exercise+"' type='"+type_of_exercise+"' day='"+day_number+"'></regular>";            
             var el = $compile( exercise_template )( $scope );           
-            el.insertBefore($element);
+            el.insertBefore($element);*/
+            var day_number = $scope.$parent.index_current_tab;
+            var program_item = {            
+                'mode':1,
+                'order':1,
+                'exercise_item':[
+                    {
+                        'exercise_id':'',
+                        'serie':'',
+                        'repeatation_from':'',
+                        'repeatation_to':'',
+                        'hold':''
+                    }
+                ],
+                'text':''                   
+            };   
+            $scope.$parent.tabs[day_number-1].exercise_list.push(program_item);
+
         }
         $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
@@ -1395,7 +1412,20 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     var program_item = {
         'day_number': $scope.index,
         'exercise_list': [            
-                       
+            {
+                'mode':1,
+                'order':1,
+                'exercise_item':[
+                    {
+                        'exercise_id':'',
+                        'serie':'',
+                        'repeatation_from':'',
+                        'repeatation_to':'',
+                        'hold':'',
+                    }
+                ],
+                'text':''   
+            }              
         ],
         'count_exercise':0
     };   
@@ -1438,33 +1468,37 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.selectedIndex = 0;
     $scope.isOk = true;
     $scope.removeTab = function(tab)
-    {
+    {        
         $scope.index = $scope.index - 1;        
-        var index = $scope.tabs.indexOf(tab);
-        if(index == 0){
+        var index_remove = $scope.tabs.indexOf(tab);
+        if(index_remove == 0){
             $scope.index_current_tab = 1;
         }
         else{
             $scope.index_current_tab = $scope.index_current_tab - 1;
-        }     
-        
-        $scope.list_model_temp.splice(index, 1);
-
-        $scope.tabs.splice(index, 1);
-        // update the index
-        var j = index;
-        for(j = index; j < $scope.tabs.length - 1; j++){                    
-            $scope.tabs[j].day_number = $scope.tabs[j].day_number - 1;    
         }
-        $scope.selectedIndex = 0;
-        if(index == $scope.tabs.length - 1)
+
+        console.log(index_remove);
+        console.log($scope.tabs[index_remove]);
+
+        $scope.list_model_temp.splice(index_remove, 1);        
+        $scope.tabs.splice(index_remove, 1);
+        // update the index
+        var j = index_remove;
+        for(j = index_remove; j < $scope.tabs.length - 1; j++){       
+            var daynumber = $scope.tabs[j].day_number;             
+            $scope.tabs[j].day_number = daynumber - 1;    
+        }   
+
+        if(index_remove == $scope.tabs.length - 1)
         {
             $scope.isOk = false;
             $timeout(function () {
                 $scope.isOk = true;
                 $scope.selectedIndex = $scope.tabs.length - 2;
             }, 50);
-        }           
+        }    
+        console.log($scope.tabs);       
     };
 
     $scope.addTab = function()
@@ -1473,12 +1507,26 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.index_current_tab = $scope.index;
         var program_item = {
             'day_number': $scope.index,
-            'exercise_list': [],
-            'count_exercise': 0
-        };
-        $scope.tabs.splice($scope.tabs.length - 1,0,program_item);        
-        $scope.selectedIndex = 0; 
-
+            'exercise_list': [            
+                {
+                    'mode':1,
+                    'order':1,
+                    'exercise_item':[
+                        {
+                            'exercise_id':'',
+                            'serie':'',
+                            'repeatation_from':'',
+                            'repeatation_to':'',
+                            'hold':'',
+                        }
+                    ],
+                    'text':''  
+                }              
+            ],
+            'count_exercise':0
+        };   
+        $scope.tabs.splice($scope.tabs.length - 1,0,program_item);                
+        console.log($scope.tabs); 
         // for change type of exercise        
         $scope.list_model_temp[$scope.index_current_tab-1] = [[]];
         $scope.list_model_temp[$scope.index_current_tab-1][0][0] = null;
@@ -1486,6 +1534,34 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.list_model_temp[$scope.index_current_tab-1][0][2] = null;
         $scope.list_model_temp[$scope.index_current_tab-1][0][3] = null;
     } 
+
+    $scope.test = function(){
+        var program_item = {            
+            'mode':2,
+            'order':1,
+            'exercise_item':[
+                {
+                    'exercise_id':'',
+                    'serie':'',
+                    'repeatation_from':'',
+                    'repeatation_to':'',
+                    'hold':''
+                }
+            ],
+            'text':''                   
+        };   
+        $scope.tabs[0].exercise_list.push(program_item);
+    }
+
+    $scope.testremove = function(){
+        var program_item = {            
+            'mode':2,
+            'order':1,
+            'exercise_item':[],
+            'text':'fewew'                   
+        };   
+        $scope.tabs[0].exercise_list.push(program_item);
+    }
 
     $scope.save_program = function(){
        //console.log($scope.tabs);
