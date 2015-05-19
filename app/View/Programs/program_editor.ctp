@@ -34,10 +34,10 @@
       <div>
         <div class="type_of_program">      
           <span style="margin-right:10px;"><?php echo __("OBJECTIVE");?></span>
-          <select  class="input_select input_location">
+          <select ng-model="selectObjectiveChange" ng-change="selectObjective(selectObjectiveChange)" class="input_select input_location">
               <option value=""><?php echo __('Choose')?></option>  
               <option value="{{item.id}}" ng-repeat="item in objective_items">{{item.name}}</option>
-          </select>
+          </select>            
         </div>
         <div class="main_content_type_of_program">
           <div layout="row" layout-align="center center" class="user_favorite_exercise_img none_border topic_box_program_editor"> 

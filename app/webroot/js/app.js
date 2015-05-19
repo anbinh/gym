@@ -1207,6 +1207,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.exercise_type = ""; // select type of exercise when using on Iphone portrait device   
     $scope.showOptionChooseTypeExercise = false;
     $scope.testdrop = '';
+    $scope.selectedObjective = '';
     $scope.index_current_tab = 1;
     $scope.list_model_temp = [];
     $scope.list_model_temp[0] = [[]];
@@ -1492,7 +1493,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
        for(var i = 0; i < tabs.length; i++){
             delete tabs[i]['count_exercise'];
        }  
-            
+        var data = {'tabs':tabs, 'objective':$scope.selectedObjective,'name':};
         $http({
             method  : 'POST',
             url     : '/Apis/saveProgramEditor.json',            
@@ -1506,6 +1507,11 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 // else
                 //     $scope.message = data.message;
             })
+    }
+
+    $scope.selectObjective = function(selected){
+        //$scope.selectedObjective = selected;            
+        alert(selected);
     }
 });
 app.filter('filterExerciseProgramEditor', function(){

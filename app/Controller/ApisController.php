@@ -759,32 +759,6 @@ class ApisController extends AppController {
                 'message' => 'success',
                 '_serialize' => array('message')
             ));
-
-        }  
-        // $this->set(array(
-        //     'message' => $data,
-        //     '_serialize' => array('message')
-        // ));
-
-        // $message = $data;
-        // // validate email
-        // $user = $this->User->find("first",array( "conditions" => array(
-        //         'email' => $data['email']))
-        // );
-        // if($user)
-        // {            
-        //     $this->set(array(
-        //         'message' => 'This Email existed !',
-        //         '_serialize' => array('message')
-        //     ));
-        // }
-        // else
-        // {
-        //     $this->saveCurrentRegister($data);
-        //     $this->set(array(
-        //         'message' => 'success',
-        //         '_serialize' => array('message')
-        //     ));
-        // }   
+        }          
     }
 }
