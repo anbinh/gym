@@ -122,4 +122,12 @@ class AppController extends Controller {
     {
         $this->Cookie->destroy();
     }
+
+    function getProgramEdit(){
+        return $this->Session->read('PROGRAM_EDIT');
+    }
+
+    function setProgramEdit($program){
+        $this->Session->write('PROGRAM_EDIT',$program);
+    }
 }
