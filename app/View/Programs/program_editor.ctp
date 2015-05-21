@@ -96,10 +96,10 @@
             </div>                    
           </div>   
           <div style="padding:10px 0 10px 0">
-              <input class="description_title_program_editor" placeholder=" <?php echo __("Descriptive title");?>"> 
+              <input ng-model="descriptive" class="description_title_program_editor" placeholder=" <?php echo __("Descriptive title");?>"> 
           </div>     
           <div>
-              <textarea class="short_text_program_editor" placeholder=" <?php echo __("Short text about program");?>" rows="5"></textarea>
+              <textarea ng-model="short_tex" class="short_text_program_editor" placeholder=" <?php echo __("Short text about program");?>" rows="5"></textarea>
           </div>      
         </div>              
       </div>
