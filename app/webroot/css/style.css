@@ -1769,6 +1769,11 @@ ul.option_program_editor li:hover{
 }
 .content_box_regular .name_exercise{
     text-align: center;
+    margin: 0;
+    line-height: 1.2;
+    padding: 8px 1px 0px 2px;
+    height: 40px;
+    overflow: hidden;
 }
 .serie1{
     width: 30px;
@@ -1788,7 +1793,10 @@ ul.option_program_editor li:hover{
 }
 .content_box_super_set p{
     margin: 0;
-    line-height: 1;
+    line-height: 1.8;
+    height: 20px;
+    overflow: hidden;
+    padding-left: 2px;
 }
 .content_box_super_set .content_box_img{
     border: 1px dotted;

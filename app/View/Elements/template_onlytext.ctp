@@ -2,7 +2,7 @@
     <div class="box_program_vew">
         <div class="header_box">
            <p>{{$index+1}}</p>
-            <img src="/img/images/icon_option.png">
+            <img ng-click="click_icon_option($event);" src="/img/images/icon_option.png">
             <ul class="option_program_editor">
                 <li ng-click="change_type_exercise('1', $index)">Regular</li>
                 <li ng-click="change_type_exercise('2', $index)">Stretching</li>

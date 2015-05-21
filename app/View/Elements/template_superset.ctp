@@ -2,7 +2,7 @@
     <div class="box_program_vew">
         <div class="header_box">
             <p>{{$index+1}}</p>
-            <img src="/img/images/icon_option.png">
+            <img ng-click="click_icon_option($event);" src="/img/images/icon_option.png">
             <ul class="option_program_editor">
                 <li ng-click="change_type_exercise('1', $index)">Regular</li>
                 <li ng-click="change_type_exercise('2', $index)">Stretching</li>
@@ -10,32 +10,34 @@
                 <li ng-click="change_type_exercise('5', $index)">Only text</li>
                 <li ng-if="$index!=0" ng-click="delete_exercise()">Delete</li>
             </ul>
-        </div>        
-        <div ng-model="model_temp1" ng-init="model_temp1.Exercise = item.exercise_item[0].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp1, $index, 3, 0)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="content_box_super_set">
-            <div class="content_box_img" layout-align="center center" layout="column">
-                <img ng-click="delete_exercise_drop( 0, $index);" ng-show="model_temp1.Exercise != null ? true : false" class="icon_delete_superset_1" src="/img/images/delete_copy.png">
-                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp1.Exercise.video}}" poster="{{model_temp1.Exercise != null ? model_temp1.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
+        </div>   
+        <div style="position:absolute; top:10px;">
+            <div ng-model="model_temp1" ng-init="model_temp1.Exercise = item.exercise_item[0].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp1, $index, 3, 0)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="content_box_super_set">
+                <div class="content_box_img" layout-align="center center" layout="column">
+                    <img ng-click="delete_exercise_drop( 0, $index, 3);" ng-show="model_temp1.Exercise != null ? true : false" class="icon_delete_superset_1" src="/img/images/delete_copy.png">
+                    <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp1.Exercise.video}}" poster="{{model_temp1.Exercise != null ? model_temp1.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
+                </div>
+                <div class="content_box_main" layout="column">
+                    Serie
+                    <input ng-model="item.exercise_item[0].serie" class="serie2" type="text">
+                    Repetition
+                    <input ng-model="item.exercise_item[0].repeat" class="repeat2" type="text">
+                </div>
+                <p class="name_exercise">{{model_temp1.Exercise.name}}</p>
             </div>
-            <div class="content_box_main" layout="column">
-                Serie
-                <input ng-model="item.exercise_item[0].serie" class="serie2" type="text">
-                Repetition
-                <input ng-model="item.exercise_item[0].repeat" class="repeat2" type="text">
+            <div ng-model="model_temp2" ng-init="model_temp2.Exercise = item.exercise_item[1].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp2, $index, 3, 1)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="content_box_super_set">
+                <div class="content_box_img" layout-align="center center" layout="column">
+                    <img ng-click="delete_exercise_drop(1, $index, 3);" ng-show="model_temp2.Exercise != null ? true : false" class="icon_delete_superset_2" src="/img/images/delete_copy.png">
+                    <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp2.Exercise.video}}" poster="{{model_temp2.Exercise != null ? model_temp2.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
+                </div>
+                <div class="content_box_main" layout="column">
+                    Serie
+                    <input ng-model="item.exercise_item[1].serie" class="serie2" type="text">
+                    Repetition
+                    <input ng-model="item.exercise_item[1].repeat" class="repeat2" type="text">
+                </div>
+                <p class="name_exercise">{{model_temp2.Exercise.name}}</p>
             </div>
-            <p class="name_exercise">{{model_temp1.Exercise.name}}</p>
-        </div>
-        <div ng-model="model_temp2" ng-init="model_temp2.Exercise = item.exercise_item[1].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp2, $index, 3, 1)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="content_box_super_set">
-            <div class="content_box_img" layout-align="center center" layout="column">
-                <img ng-click="delete_exercise_drop(1, $index);" ng-show="model_temp2.Exercise != null ? true : false" class="icon_delete_superset_2" src="/img/images/delete_copy.png">
-                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp2.Exercise.video}}" poster="{{model_temp2.Exercise != null ? model_temp2.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
-            </div>
-            <div class="content_box_main" layout="column">
-                Serie
-                <input ng-model="item.exercise_item[1].serie" class="serie2" type="text">
-                Repetition
-                <input ng-model="item.exercise_item[1].repeat" class="repeat2" type="text">
-            </div>
-            <p class="name_exercise">{{model_temp2.Exercise.name}}</p>
-        </div>
+        </div>     
     </div>
 </div>

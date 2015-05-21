@@ -36,15 +36,15 @@ $(document).ready(function(){
 		$('.option_program_editor').hide();
 	});
 
-	$('.icon_change_type_exercise').on('click', function(event){
-	    event.stopPropagation();	   	    
-	    if($(this).parent().find('.option_program_editor').is(":visible")){
-	    	$(this).parent().find('.option_program_editor').hide();
-	    }
-	    else{
-	    	$(this).parent().find('.option_program_editor').show();
-	    }
-	});
+	// $('.icon_change_type_exercise').on('click', function(event){
+	//     event.stopPropagation();	   	    
+	//     if($(this).parent().find('.option_program_editor').is(":visible")){
+	//     	$(this).parent().find('.option_program_editor').hide();
+	//     }
+	//     else{
+	//     	$(this).parent().find('.option_program_editor').show();
+	//     }
+	// });
 	// $('.option_program_editor').on('click', function(event){		
 	// 	$(this).hide();
 	// });

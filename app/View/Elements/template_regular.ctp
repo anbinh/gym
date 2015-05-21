@@ -2,7 +2,7 @@
     <div class="box_program_vew">
         <div class="header_box">
             <p>{{$index+1}}</p>
-            <img class="icon_change_type_exercise" src="/img/images/icon_option.png">
+            <img ng-click="click_icon_option($event);" src="/img/images/icon_option.png">
             <ul class="option_program_editor">
                 <li ng-click="change_type_exercise('2', $index)">Stretching</li>
                 <li ng-click="change_type_exercise('3', $index)">Super-set</li>
@@ -13,7 +13,7 @@
         </div>        
         <div class="content_box_regular">
             <div class="content_image" layout-align="center center" layout="column">
-                <img ng-click="delete_exercise_drop(0, $index);" ng-show="model_temp.Exercise != null ? true : false" class="icon_delete_regular" src="/img/images/delete_copy.png">
+                <img ng-click="delete_exercise_drop(0, $index, 1);" ng-show="model_temp.Exercise != null ? true : false" class="icon_delete_regular" src="/img/images/delete_copy.png">
                 <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp.Exercise.video}}" poster="{{model_temp.Exercise != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
                 <div>{{model_temp.Exercise == null ? 'DRAG EXERCISE' : ''}}</div>
             </div>

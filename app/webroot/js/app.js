@@ -540,9 +540,9 @@ app.directive( 'creator', function ( $compile ) {
 
             $scope.$parent.tabs[day_number-1].exercise_list.push(program_item);
         }
-        $scope.click_icon_option = function(){
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-        };
+        // $scope.click_icon_option = function(){
+        //     $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
+        // };
     }
   };
 });
@@ -1352,6 +1352,17 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.set_index_current_tab = function(index_tab){
         $scope.index_current_tab = index_tab+1;        
     }
+    $scope.click_icon_option = function(event){
+        event.stopPropagation();
+        var elem = angular.element(event.currentTarget);
+
+        if(elem.parent().find('.option_program_editor').is(":visible")){
+            elem.parent().find('.option_program_editor').hide();
+        }
+        else{
+            elem.parent().find('.option_program_editor').show();
+        }
+    };
     // change type of exercise in program editor
     $scope.change_type_exercise = function(type_of_exercise, index_of_exercise){                 
         $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].mode = type_of_exercise;
@@ -1623,8 +1634,40 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
 
     }
 
-    $scope.delete_exercise_drop = function(index, index_of_exercise){
-        $(event.target).scope().model_temp = null;
+    $scope.delete_exercise_drop = function(index, index_of_exercise, type_of_exercise){
+        switch(type_of_exercise){
+            case 1://regular  
+            case 4://withnote
+                $(event.target).scope().model_temp = null; 
+                break;
+            case 2:// stretching
+                switch(index){
+                    case 0:
+                        $(event.target).scope().model_temp1 = null; 
+                        break;
+                    case 1:
+                        $(event.target).scope().model_temp2 = null; 
+                        break;
+                    case 2:
+                        $(event.target).scope().model_temp3 = null; 
+                        break;
+                    case 3:
+                        $(event.target).scope().model_temp4 = null; 
+                        break;
+                }
+                break;
+            case 3://superset
+                switch(index){
+                    case 0:
+                        $(event.target).scope().model_temp1 = null; 
+                        break;
+                    case 1:
+                        $(event.target).scope().model_temp2 = null; 
+                        break;                    
+                }
+                break;
+        }
+       
         $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].Exercise = null;
         $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].exercise_id = '';
     }
