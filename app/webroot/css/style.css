@@ -1899,3 +1899,14 @@ ul.option_program_editor li:hover{
   color: black;
   font-weight: bold !important;
 }
+
+.program_upload_img{   
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 230px !important;
+    width: 230px !important;
+    background-position: center center;
+    /*margin:2px; */
+    border:1px solid #ccc;
+    position: relative;
+}

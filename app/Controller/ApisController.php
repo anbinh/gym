@@ -455,6 +455,7 @@ class ApisController extends AppController {
             if($program['Program']['creator_id'] == $user_id)
             {
                 $program['Program']['creator_id'] = "";
+                $program['Program']['author'] = "";
                 $this->Program->save($program);
             }
             $this->User->mongoNoSetOperator = '$pull';
@@ -760,5 +761,25 @@ class ApisController extends AppController {
                 '_serialize' => array('message')
             ));
         }          
+    }
+
+    public function ProgramUploadFile()
+    {
+        $data = $this->request->params['form']['file'];
+        if($data){
+            if($data['name']){
+                $path = $data['name'];
+                $ext = pathinfo($path, PATHINFO_EXTENSION);
+                $sFileName = $this->generateRandomString().'.'.$ext;
+                $file_uri = '/upload/image/'.$sFileName;
+                //$data['User']['picture'] = $file_uri;
+                move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri);
+                //move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri);
+            }
+        }
+        $this->set(array(
+                'message' => $data,
+                '_serialize' => array('message')
+            ));
     }
 }

@@ -1216,7 +1216,7 @@ app.directive( 'textonly', function ( $compile ) {
     }
   };
 });
-app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,$compile,$timeout){
+app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,$compile,$timeout,fileUpload){
     $scope.exercises_list_backup = [];
     $scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
@@ -1565,11 +1565,11 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
 
     $scope.save_program = function(){
        //console.log($scope.tabs);
-       var tabs = $scope.tabs;
+       /*var tabs = $scope.tabs;
        for(var i = 0; i < tabs.length; i++){
             delete tabs[i]['count_exercise'];
        }  
-        var data = {'tabs':tabs, 'objective':$scope.selectedObjective,'name':};
+        var data = {'tabs':tabs, 'objective':$scope.selectedObjective,'name': ''};
         $http({
             method  : 'POST',
             url     : '/Apis/saveProgramEditor.json',            
@@ -1582,14 +1582,57 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 //     window.location='/Users/edit_profile';
                 // else
                 //     $scope.message = data.message;
-            })
+            })*/
+        $scope.uploadFile();
     }
 
     $scope.selectObjective = function(selected){
         //$scope.selectedObjective = selected;            
         alert(selected);
     }
+
+    $scope.uploadFile = function(){
+        var file = $scope.myFile;
+        console.log('file is ' + JSON.stringify(file));
+        var uploadUrl = "/Apis/ProgramUploadFile.json";
+        fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
 });
+
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
+
+app.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl){
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(data){            
+            console.log('ok');
+            console.log(data);
+        })
+        .error(function(){
+            console.log('fail');
+        });
+    }
+}]);
+
 app.filter('filterExerciseProgramEditor', function(){
     return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
        var results = [];            
