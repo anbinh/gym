@@ -1227,7 +1227,9 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.testdrop = '';
     $scope.selectedObjective = '';
     $scope.index_current_tab = 1;
-   
+    $scope.descriptive = '';
+    $scope.short_tex = '';
+
     $http.get('/Apis/getListObjective.json')
         .then(function(res){         
             $scope.objective_items = res.data.objective_list;            
@@ -1549,7 +1551,9 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
        var data = {
                     'tabs':tabs_save,
                     'objective':$scope.selectedObjective,
-                    'name':''
+                    'name':'',
+                    'descriptive':$scope.descriptive,
+                    'short_text':$scope.short_text
                 };
        for(var i = 0; i < $scope.objective_items.length; i++){
             if($scope.objective_items[i].id == $scope.selectedObjective){
