@@ -1,3 +1,47 @@
+<script>    
+    $(function(){
+        $("#upload_link").on('click', function(e){
+            e.preventDefault();
+            $("#upload").trigger('click');
+        });              
+        $(".toggle_bar").click(function(){
+          if($(".detail_footer_program_editor").hasClass('actived')){
+              $(".detail_footer_program_editor").animate({height: '50px'}, 300, function(){
+                $(".bar").attr("style","overflow:hidden;");            
+              }).removeClass('actived');                    
+              $(".toggle_bar").html("<img src='/img/images/bar_sprite.png'/>");
+          }else{
+              $(".bar").removeAttr("style");
+              $(".detail_footer_program_editor").animate({height: '200px'}).addClass('actived');
+              $(".toggle_bar").html("<img src='/img/images/bar_sprite_down.png'/>");
+          }
+            
+        });
+        if(!$(".detail_footer_program_editor").hasClass('actived')){
+              $(".detail_footer_program_editor").animate({height: '50px'}, 300, function(){
+                $(".bar").attr("style","overflow:hidden;");  
+              });          
+          }
+    });
+
+    function fileSelected() {
+        // get selected file element
+        var oFile = document.getElementById('upload').files[0];
+        var oImage = $('#box-img');
+        // prepare HTML5 FileReader
+        var oReader = new FileReader();
+        oReader.onload = function(e) {
+            // e.target.result contains the DataURL which we will use as a source of the image
+            /*oImage.attr("src",e.target.result);*/
+            oImage.css('background-image', 'url(' + e.target.result + ')');
+            //$('#btn_add_picture').css('padding-top', '210px');
+            //$('#btn_add_picture a').html("<?php echo __("Edit Picture")?>");
+        };
+
+        // read selected file as DataURL
+        oReader.readAsDataURL(oFile);
+    }
+</script>
 <div ng-controller="ExerciseProgramEditorController">
   <div layout="row" layout-align="center start">
       <div flex>
@@ -40,10 +84,13 @@
           </select>            
         </div>
         <div class="main_content_type_of_program">
-          <div layout="row" layout-align="center center" class="user_favorite_exercise_img none_border topic_box_program_editor"> 
+          <div layout="row" layout-align="center center" class="program_upload_img none_border topic_box_program_editor" id="box-img"> 
             <div style="text-align:center;">
-              <img src="/img/images/add_picture_program.png">            
-              <p style="color:white;margin-top:10px;"><?php echo __("ADD PICTURE");?></p>
+              <a href="javascript:void(0);" class="btn_add_picture" id="upload_link">
+                <img src="/img/images/add_picture_program.png">
+                <p style="color:white;margin-top:10px;"><?php echo __("ADD PICTURE");?></p>
+              </a>                    
+              <input id="upload" type="file" file-model="myFile" onchange='fileSelected()'/>                            
             </div>                    
           </div>   
           <div style="padding:10px 0 10px 0">
@@ -112,25 +159,3 @@
     </div>
   </div>
 </div>
-<script> 
-$(document).ready(function(){
-    $(".toggle_bar").click(function(){
-      if($(".detail_footer_program_editor").hasClass('actived')){
-          $(".detail_footer_program_editor").animate({height: '50px'}, 300, function(){
-            $(".bar").attr("style","overflow:hidden;");            
-          }).removeClass('actived');                    
-          $(".toggle_bar").html("<img src='/img/images/bar_sprite.png'/>");
-      }else{
-          $(".bar").removeAttr("style");
-          $(".detail_footer_program_editor").animate({height: '200px'}).addClass('actived');
-          $(".toggle_bar").html("<img src='/img/images/bar_sprite_down.png'/>");
-      }
-        
-    });
-    if(!$(".detail_footer_program_editor").hasClass('actived')){
-          $(".detail_footer_program_editor").animate({height: '50px'}, 300, function(){
-            $(".bar").attr("style","overflow:hidden;");  
-          });          
-      }
-});
-</script>
