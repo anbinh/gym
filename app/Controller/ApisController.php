@@ -727,8 +727,8 @@ class ApisController extends AppController {
             $user = $this->User->findById($user['id']);
             $user = $user['User'];
 
-            $program['creation_date'] = date("Y-m-d H:i:s"); ;
-            $program['modification_date'] = date("Y-m-d H:i:s"); ;
+            $program['creation_date'] = date("Y-m-d H:i:s"); 
+            $program['modification_date'] = date("Y-m-d H:i:s"); 
             $program['name'] = $data['name'];
             $program['author'] = $user['firstname'] .' '. $user['lastname'];            
             $program['level'] = '';
@@ -738,21 +738,10 @@ class ApisController extends AppController {
             $program['name_fr'] = '';
             $program['is_public'] = 0;
             $program['creator_id'] = $user['id'];
-
-            // // removing exercise was removed in editor
-            // for($i = 0; $i < count($data) - 1; $i++)
-            // {                
-            //     for($j = 0; $j < count($data[$i]['exercise_list']); $j++){
-            //         if($data[$i]['exercise_list'][$j]=='')
-            //         {
-            //             $data[$i]['exercise_list'].splice($j, 1);
-            //         }
-            //     }
-            // }
-            // fill in $program['content'] = [];
             $program['content'] = $data['tabs'];
 
-            $this->Program->save($program);
+            $this->setProgramEdit($program);
+            //$this->Program->save($program);
 
             $this->set(array(
                 'message' => 'success',
@@ -763,21 +752,33 @@ class ApisController extends AppController {
 
     public function ProgramUploadFile()
     {
-        $data = $this->request->params['form']['file'];
-        if($data){
-            if($data['name']){
-                $path = $data['name'];
+        $data = $this->request;
+        if($data->params['form']['file']){
+            $file = $data->params['form']['file'];
+            if($file['name']){
+                $path = $file['name'];
                 $ext = pathinfo($path, PATHINFO_EXTENSION);
                 $sFileName = $this->generateRandomString().'.'.$ext;
-                $file_uri = '/upload/image/'.$sFileName;
-                //$data['User']['picture'] = $file_uri;
-                move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri);
-                //move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri);
+                $file_uri = '/img/images/'.$sFileName;                
+                //if(move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri));
+                if(move_uploaded_file($file['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri))                
+                {
+                    $program = $this->getProgramEdit();
+                    $program['photo'] = $sFileName;
+                    $this->Program->save($program);
+                    $this->set(array(
+                        'message' => $program,
+                        '_serialize' => array('message')
+                    ));
+                }                
             }
         }
-        $this->set(array(
-                'message' => $data,
+        else
+        {
+            $this->set(array(
+                'message' => 'fail',
                 '_serialize' => array('message')
-            ));
+            ));  
+        }              
     }
 }

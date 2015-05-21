@@ -502,26 +502,7 @@ app.directive( 'creator', function ( $compile ) {
                 </div>",
     controller: function ( $scope, $element ) {
         $scope.showOptionChooseTypeExercise = false;        
-        $scope.create_exercise = function(){
-            // hide option dropdown list
-            /*$scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;    
-            var type_of_exercise = 1;
-            var day_number = $scope.$parent.index_current_tab;
-            // tracking index of exercise when create new
-            var index_of_exercise = $scope.$parent.tabs[day_number-1]["exercise_list"].length;
-            var exercise_template = "";                                
-
-            //$scope.$parent.list_model_temp[day_number-1] = [[]];
-            var model_current = [];
-            model_current[0] = null;
-            model_current[1] = null;
-            model_current[2] = null;
-            model_current[3] = null;
-            $scope.$parent.list_model_temp[day_number-1].push(model_current);            
-
-            exercise_template = "<regular isnew='1' index='"+index_of_exercise+"' type='"+type_of_exercise+"' day='"+day_number+"'></regular>";            
-            var el = $compile( exercise_template )( $scope );           
-            el.insertBefore($element);*/
+        $scope.create_exercise = function(){           
             var day_number = $scope.$parent.index_current_tab;
             var program_item = {            
                 'mode':1,
@@ -529,7 +510,7 @@ app.directive( 'creator', function ( $compile ) {
                 'exercise_item':[
                     {
                         'exercise_id':'',
-                        'serie':'',
+                        'series':'',
                         'repeatation_from':'',
                         'repeatation_to':'',
                         'hold':''
@@ -546,677 +527,7 @@ app.directive( 'creator', function ( $compile ) {
     }
   };
 });
-app.directive( 'regular', function ( $compile ) {
-  return {
-    // model = tabs.day_1.exercise 
-    restrict: 'E',
-    scope: { 
-        type: '@',
-        day: '@',
-        index: '@',
-        isnew: '@'        
-    },
-    require: 'ngModel',
-    replace: true,
-    template : "<div ng-model=\"model_temp\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback()', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"exercise_box\">\
-                    <div class=\"box_program_vew\">\
-                        <div class=\"header_box\">\
-                            <p>1</p>\
-                            <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
-                        </div>\
-                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('2')\">Stretching</li>\
-                            <li ng-click=\"change_type_exercise('3')\">Super-set</li>\
-                            <li ng-click=\"change_type_exercise('4')\">With notes</li>\
-                            <li ng-click=\"change_type_exercise('5')\">Only text</li>\
-                            <li ng-click=\"delete_exercise()\">Delete</li>\
-                        </ul>\
-                        <div class=\"content_box_regular\">\
-                            <div class=\"content_image\" layout-align=\"center center\" layout=\"column\">\
-                                <img ng-click=\"delete_exercise_drop();\" ng-show=\"model_temp != null ? true : false\" class=\"icon_delete_regular\" src=\"/img/images/delete_copy.png\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp.Exercise.video}}\" poster=\"{{model_temp != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
-                                <div>{{model_temp == null ? 'DRAG EXERCISE' : ''}}</div>\
-                            </div>\
-                            <p class=\"name_exercise\">{{model_temp.Exercise.name}}</p>\
-                        </div>\
-                        <div class=\"fotter_box\" layout-align=\"center center\" layout=\"row\">\
-                            Serie\
-                            <input ng-model=\"serie\" class=\"serie1\" type=\"text\" value=\"\">\
-                            Repeation\
-                            <input ng-model=\"repeat\" class=\"repeat1\" type=\"text\" value=\"\">\
-                        </div>\
-                    </div>\
-                </div>",
-    link: function ( $scope, $element ) {         
 
-        var day = $scope.day;          
-        var exercise_list_item = {
-            'mode':$scope.type,
-            'order':$scope.type,
-            'exercise_item':[],
-            'text':''
-        };        
-        
-        if($scope.isnew == 1){ // create new an exercise
-            $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item); 
-            $scope.$parent.tabs[day-1]["count_exercise"]++;
-        }
-        else{ // update exercise            
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
-        }         
-        $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':'','serie':'','repeat':''};
-
-        // list models of old type before was changed
-        var list_model_temp = $scope.$parent.list_model_temp;
-        // optimal model (eg: if listmodel[0]=null & listmodel[1]!=null => swap [1] -> [0])        
-        for(var i = 0; i < list_model_temp[day-1][$scope.index].length; i++){
-            if(list_model_temp[day-1][$scope.index][i]!=null && list_model_temp[day-1][$scope.index][i]!=undefined)
-            {
-                $scope.model_temp = list_model_temp[day-1][$scope.index][i];
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0].exercise_id = $scope.model_temp.Exercise.id;
-                break;
-            }
-        } 
-        
-
-        $scope.dropCallback = function(event, ui){            
-            var exercise = $scope.model_temp;            
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0].exercise_id = exercise.Exercise.id;
-            $(event.target).find('.content_image').removeClass('hightlight_dropzone');          
-        };             
-        $scope.overCallback = function(event, ui){
-            $(event.target).find('.content_image').addClass('hightlight_dropzone');
-        };
-        $scope.outCallback = function(event, ui){
-            $(event.target).find('.content_image').removeClass('hightlight_dropzone');
-        };        
-        
-        $scope.showOptionChooseTypeExercise = false;
-        $scope.click_icon_option = function(){            
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-        };
-
-        //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){       
-            var listmodel = [];
-            listmodel[0] = $scope.model_temp;
-            listmodel[1] = null;
-            listmodel[2] = null;
-            listmodel[3] = null;
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
-        }
-        // delete exercise
-        $scope.delete_exercise = function(type_of_exercise){           
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.delete_exercise($element);
-        }
-        // delete exercise drop
-        $scope.delete_exercise_drop = function(){            
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][0].exercise_id = '';
-            $(event.target).scope().model_temp = null;           
-        }     
-        $scope.$watch('serie + repeat',function(){
-            if($scope.serie != undefined ){
-                if(!$.isNumeric($scope.serie)){
-                    $scope.serie = '';
-                } 
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][0].serie = $scope.serie;                  
-            }
-            if($scope.repeat != undefined ){
-                if(!$.isNumeric($scope.repeat)){
-                    $scope.repeat = '';
-                }
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][0].repeat = $scope.repeat;               
-            }
-        });   
-    }
-  };
-});
-app.directive( 'stretching', function ( $compile ) {
-  return {
-    restrict: 'E',
-    scope: { 
-        type: '@',
-        day: '@',
-        index: '@',
-        isnew: '@'                
-    },
-    require:'ngModel',
-    replace: true,
-    template: "<div class=\"exercise_box\">\
-                    <div class=\"box_program_vew\">\
-                        <div class=\"header_box\">\
-                            <p>1</p>\
-                            <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
-                        </div>\
-                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">Regular</li>\
-                            <li ng-click=\"change_type_exercise('3')\">Super-set</li>\
-                            <li ng-click=\"change_type_exercise('4')\">With notes</li>\
-                            <li ng-click=\"change_type_exercise('5')\">Only text</li>\
-                            <li ng-click=\"delete_exercise()\">Delete</li>\
-                        </ul>\
-                        <div class=\"content_box_stretching\">\
-                            <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(0)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
-                                <img ng-click=\"delete_exercise_drop(0);\" ng-show=\"model_temp1 != null ? true : false\" class=\"icon_delete_stretching\" src=\"/img/images/delete_copy.png\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp1.Exercise.video}}\" poster=\"{{model_temp1 != null ? model_temp1.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
-                            </div>\
-                            <div ng-model=\"model_temp2\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(1)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
-                                <img ng-click=\"delete_exercise_drop(1);\" ng-show=\"model_temp2 != null ? true : false\" class=\"icon_delete_stretching\" src=\"/img/images/delete_copy.png\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp2.Exercise.video}}\" poster=\"{{model_temp2 != null ? model_temp2.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
-                            </div>\
-                            <div ng-model=\"model_temp3\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(2)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
-                                <img ng-click=\"delete_exercise_drop(2);\" ng-show=\"model_temp3 != null ? true : false\" class=\"icon_delete_stretching\" src=\"/img/images/delete_copy.png\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp3.Exercise.video}}\" poster=\"{{model_temp3 != null ? model_temp3.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
-                            </div>\
-                            <div ng-model=\"model_temp4\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(3)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
-                                <img ng-click=\"delete_exercise_drop(3);\" ng-show=\"model_temp4 != null ? true : false\" class=\"icon_delete_stretching\" src=\"/img/images/delete_copy.png\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp4.Exercise.video}}\" poster=\"{{model_temp4 != null ? model_temp4.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
-                            </div>\
-                        </div>\
-                        <div class=\"fotter_box\" layout-align=\"center center\" layout=\"row\">\
-                            Serie\
-                            <input ng-model=\"serie\" class=\"serie1\" type=\"text\">\
-                            Repeation\
-                            <input ng-model=\"repeat\" class=\"repeat1\" type=\"text\">\
-                        </div>\
-                    </div>\
-                </div>",
-    controller: function ( $scope, $element ) {                  
-        var day = $scope.day;
-        var exercise_list_item = {
-            'mode':$scope.type,
-            'order':$scope.type,
-            'exercise_item':[],
-            'text':''
-        };        
-        if($scope.isnew == 1){ // create new an exercise
-
-            $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item);        
-
-        }
-        else{ // update exercise
-            
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
-
-        }  
-        $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':'','serie':'','repeat':''};
-        $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][1] = {'exercise_id':'','serie':'','repeat':''};
-        $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][2] = {'exercise_id':'','serie':'','repeat':''};
-        $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][3] = {'exercise_id':'','serie':'','repeat':''};
-       
-        var list_model_temp = $scope.$parent.list_model_temp;
-        // optimal model (eg: if listmodel[0]=null & listmodel[1]!=null => swap [1] -> [0])
-        var check = 1;
-        for(var i = 0; i < list_model_temp[day-1][$scope.index].length; i++){
-            if(list_model_temp[day-1][$scope.index][i]!=null && list_model_temp[day-1][$scope.index][i]!=undefined)
-            {
-                if(check == 1){
-                    $scope.model_temp1 = list_model_temp[day-1][$scope.index][i];
-                    $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0].exercise_id = $scope.model_temp1.Exercise.id;
-                    check = check + 1;
-                    continue;
-                }
-                if(check == 2){
-                    $scope.model_temp2 = list_model_temp[day-1][$scope.index][i];
-                    $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][1].exercise_id = $scope.model_temp2.Exercise.id;
-                    break;
-                }                
-            }
-        }  
-
-        $scope.dropCallback = function(event, ui, index){  
-            var data = $scope;
-            var exercise = null;            
-            switch(index){
-                case 0:
-                    exercise = data.model_temp1;                    
-                    break;
-                case 1:
-                    exercise = data.model_temp2;                    
-                    break;
-                case 2:
-                    exercise = data.model_temp3;                    
-                    break;
-                case 3:
-                    exercise = data.model_temp4;                    
-                    break;
-            }
-            // var exercise = $(event.target).scope().model_temp1;
-            //exercise_list_item.exercise_item[index] = {'exercise_id':exercise.Exercise.id};
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][index].exercise_id = exercise.Exercise.id;
-            $(event.target).removeClass('hightlight_dropzone');
-        };                
-        
-
-        // hightligh cell when drag over
-        $scope.overCallback = function(event, ui){
-            $(event.target).addClass('hightlight_dropzone');
-        };
-        $scope.outCallback = function(event, ui){
-            $(event.target).removeClass('hightlight_dropzone');
-        };
-        // delete exercise drop
-        $scope.delete_exercise_drop = function(index_cell){                
-            switch(index_cell){
-                case 0:                    
-                    $(event.target).scope().model_temp1 = null; 
-                    break;
-                case 1:                    
-                    $(event.target).scope().model_temp2 = null; 
-                    break;
-                case 2:                    
-                    $(event.target).scope().model_temp3 = null; 
-                    break;
-                case 3:                    
-                    $(event.target).scope().model_temp4 = null; 
-                    break;
-            }
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][index_cell].exercise_id = '';            
-        }   
-
-        $scope.showOptionChooseTypeExercise = false;
-        $scope.click_icon_option = function(){
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-        };
-
-        //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise, index_of_exercise){    
-            // var listmodel = [];
-            // listmodel[0] = $scope.model_temp1;
-            // listmodel[1] = $scope.model_temp2;
-            // listmodel[2] = $scope.model_temp3;
-            // listmodel[3] = $scope.model_temp4;       
-            // $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            // $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
-            alert(index_of_exercise)
-        }
-        // delete exercise
-        $scope.delete_exercise = function(type_of_exercise){           
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.delete_exercise($element);
-        }   
-        $scope.$watch('serie + repeat',function(){
-            if($scope.serie != undefined ){
-                if(!$.isNumeric($scope.serie)){
-                    $scope.serie = '';
-                }
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][0].serie = $scope.serie;                  
-            }
-            if($scope.repeat != undefined ){
-                if(!$.isNumeric($scope.repeat)){
-                    $scope.repeat = '';
-                }
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][0].repeat = $scope.repeat;               
-            }
-        });     
-    }
-  };
-});
-app.directive( 'superset', function ( $compile ) {
-  return {
-    restrict: 'E',
-    scope: { 
-        type: '@',
-        day: '@',
-        index: '@',
-        isnew: '@'            
-    },
-    require:'ngModel',
-    replace: true,
-    template : "<div class=\"exercise_box\">\
-                    <div class=\"box_program_vew\">\
-                        <div class=\"header_box\">\
-                            <p>1</p>\
-                            <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
-                        </div>\
-                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">Regular</li>\
-                            <li ng-click=\"change_type_exercise('2')\">Stretching</li>\
-                            <li ng-click=\"change_type_exercise('4')\">With notes</li>\
-                            <li ng-click=\"change_type_exercise('5')\">Only text</li>\
-                            <li ng-click=\"delete_exercise()\">Delete</li>\
-                        </ul>\
-                        <div ng-model=\"model_temp1\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(0)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_super_set\">\
-                            <div class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
-                                <img ng-click=\"delete_exercise_drop(0);\" ng-show=\"model_temp1 != null ? true : false\" class=\"icon_delete_superset_1\" src=\"/img/images/delete_copy.png\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp1.Exercise.video}}\" poster=\"{{model_temp1 != null ? model_temp1.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
-                            </div>\
-                            <div class=\"content_box_main\" layout=\"column\">\
-                                Serie\
-                                <input ng-model=\"serie1\" class=\"serie2\" type=\"text\">\
-                                Repetition\
-                                <input ng-model=\"repeat1\" class=\"repeat2\" type=\"text\">\
-                            </div>\
-                            <p class=\"name_exercise\">{{model_temp1.Exercise.name}}</p>\
-                        </div>\
-                        <div ng-model=\"model_temp2\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback(1)', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"content_box_super_set\">\
-                            <div class=\"content_box_img\" layout-align=\"center center\" layout=\"column\">\
-                                <img ng-click=\"delete_exercise_drop(1);\" ng-show=\"model_temp2 != null ? true : false\" class=\"icon_delete_superset_2\" src=\"/img/images/delete_copy.png\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp2.Exercise.video}}\" poster=\"{{model_temp2 != null ? model_temp2.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
-                            </div>\
-                            <div class=\"content_box_main\" layout=\"column\">\
-                                Serie\
-                                <input ng-model=\"serie2\" class=\"serie2\" type=\"text\">\
-                                Repetition\
-                                <input ng-model=\"repeat2\" class=\"repeat2\" type=\"text\">\
-                            </div>\
-                            <p class=\"name_exercise\">{{model_temp2.Exercise.name}}</p>\
-                        </div>\
-                    </div>\
-                </div>",
-    controller: function ( $scope, $element ) {        
-        var day = $scope.day;
-        var exercise_list_item = {
-            'mode':$scope.type,
-            'order':$scope.type,
-            'exercise_item':[],
-            'text':''
-        };     
-        if($scope.isnew == 1){ // create new an exercise
-
-            $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item);        
-
-        }
-        else{ // update exercise
-            
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
-
-        }  
-        $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':'','serie':'','repeat':''};
-        $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][1] = {'exercise_id':'','serie':'','repeat':''};
-        var list_model_temp = $scope.$parent.list_model_temp;
-        // optimal model (eg: if listmodel[0]=null & listmodel[1]!=null => swap [1] -> [0])
-        var check = 1;
-        for(var i = 0; i < list_model_temp[day-1][$scope.index].length; i++){
-            if(list_model_temp[day-1][$scope.index][i]!=null && list_model_temp[day-1][$scope.index][i]!=undefined)
-            {
-                if(check == 1){
-                    $scope.model_temp1 = list_model_temp[day-1][$scope.index][i];
-                    $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0].exercise_id = $scope.model_temp1.Exercise.id;
-                    check = check + 1;
-                    continue;
-                }
-                if(check == 2){
-                    $scope.model_temp2 = list_model_temp[day-1][$scope.index][i];
-                    $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][1].exercise_id = $scope.model_temp2.Exercise.id;
-                    break;
-                }                
-            }
-        } 
-         $scope.dropCallback = function(event, ui, index){  
-            var data = $scope;
-            var exercise = null;            
-            switch(index){
-                case 0:
-                    exercise = data.model_temp1;                    
-                    break;
-                case 1:
-                    exercise = data.model_temp2;                    
-                    break;               
-            }            
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][index].exercise_id = exercise.Exercise.id;
-            $(event.target).find('.content_box_img').removeClass('hightlight_dropzone');
-        };            
-
-        // hightlight drop zone
-        $scope.overCallback = function(event, ui){
-            $(event.target).find('.content_box_img').addClass('hightlight_dropzone');
-        };
-        $scope.outCallback = function(event, ui){
-            $(event.target).find('.content_box_img').removeClass('hightlight_dropzone');
-        };   
-
-        // delete exercise drop
-        $scope.delete_exercise_drop = function(index_cell){                
-            switch(index_cell){
-                case 0:                    
-                    $scope.model_temp1 = null; 
-                    break;
-                case 1:                    
-                    $scope.model_temp2 = null; 
-                    break;               
-            }
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][index_cell].exercise_id = '';            
-        } 
-        $scope.showOptionChooseTypeExercise = false;
-        $scope.click_icon_option = function(){
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-        };
-
-        //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){         
-            var listmodel = [];
-            listmodel[0] = $scope.model_temp1;
-            listmodel[1] = $scope.model_temp2;
-            listmodel[2] = null;
-            listmodel[3] = null;    
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
-        }
-        // delete exercise
-        $scope.delete_exercise = function(type_of_exercise){           
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.delete_exercise($element);
-        }
-        $scope.$watch('serie1 + repeat1 + serie2 + repeat2',function(){
-            if($scope.serie1 != undefined ){
-                if(!$.isNumeric($scope.serie1)){
-                    $scope.serie1 = '';
-                }
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][0].serie = $scope.serie1;                  
-            }
-            if($scope.repeat1 != undefined ){
-                if(!$.isNumeric($scope.repeat1)){
-                    $scope.repeat1 = '';
-                }
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][0].repeat = $scope.repeat1;               
-            }
-            if($scope.serie2 != undefined ){
-                if(!$.isNumeric($scope.serie2)){
-                    $scope.serie2 = '';
-                }
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][1].serie = $scope.serie2;                  
-            }
-            if($scope.repeat2 != undefined ){
-                if(!$.isNumeric($scope.repeat2)){
-                    $scope.repeat2 = '';
-                }
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][1].repeat = $scope.repeat2;               
-            }
-        }); 
-    }
-  };
-});
-app.directive( 'withnote', function ( $compile ) {
-  return {
-    restrict: 'E',
-    scope: { 
-        type: '@',
-        day: '@',
-        index: '@',
-        isnew: '@'            
-    },
-    require:'ngModel',
-    replace: true,
-    template : "<div ng-model=\"model_temp\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallback()', onOver: 'overCallback()', onOut: 'outCallback()'}\" class=\"exercise_box\">\
-                    <div class=\"box_program_vew\">\
-                        <div class=\"header_box\">\
-                            <p>1</p>\
-                            <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
-                        </div>\
-                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">Regular</li>\
-                            <li ng-click=\"change_type_exercise('2')\">Stretching</li>\
-                            <li ng-click=\"change_type_exercise('3')\">Super-set</li>\
-                            <li ng-click=\"change_type_exercise('5')\">Only text</li>\
-                            <li ng-click=\"delete_exercise()\">Delete</li>\
-                        </ul>\
-                        <div class=\"content_box_regular\">\
-                            <div class=\"content_image\" layout-align=\"center center\" layout=\"column\">\
-                                <img ng-click=\"delete_exercise_drop();\" ng-show=\"model_temp != null ? true : false\" class=\"icon_delete_regular\" src=\"/img/images/delete_copy.png\">\
-                                <video ng-mouseover=\"hoverIn($event)\" ng-mouseleave=\"hoverOut($event)\" class=\"img-responsive\" preload=\"none\" src=\"{{model_temp.Exercise.video}}\" poster=\"{{model_temp != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}\" <=\"\" video=\"\"></video>\
-                                <div>{{model_temp == null ? 'DRAG EXERCISE' : ''}}</div>\
-                            </div>\
-                            <p class=\"name_exercise\">{{model_temp.Exercise.name}}</p>\
-                        </div>\
-                        <div class=\"fotter_box\" layout-align=\"center center\" layout=\"row\">\
-                            <input ng-model=\"content\" style=\"width:185px\" type=\"text\">\
-                        </div>\
-                    </div>\
-                </div>",
-    controller: function ( $scope, $element ) {       
-        var day = $scope.day;
-        var exercise_list_item = {
-            'mode':$scope.type,
-            'order':$scope.type,
-            'exercise_item':[],
-            'text':''
-        };     
-        if($scope.isnew == 1){ // create new an exercise
-
-            $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item);        
-
-        }
-        else{ // update exercise
-            
-           $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
-
-        }  
-        $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0] = {'exercise_id':'','serie':'','repeat':''};
-
-        var list_model_temp = $scope.$parent.list_model_temp;
-        // optimal model (eg: if listmodel[0]=null & listmodel[1]!=null => swap [1] -> [0])        
-        for(var i = 0; i < list_model_temp[day-1][$scope.index].length; i++){
-            if(list_model_temp[day-1][$scope.index][i]!=null && list_model_temp[day-1][$scope.index][i]!=undefined)
-            {
-                $scope.model_temp = list_model_temp[day-1][$scope.index][i];
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0].exercise_id = $scope.model_temp.Exercise.id;
-                break;
-            }
-        }
-
-        $scope.dropCallback = function(event, ui){            
-            var exercise = $scope.model_temp;
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['exercise_item'][0].exercise_id = exercise.Exercise.id;
-            $(event.target).find('.content_image').removeClass('hightlight_dropzone');          
-        };             
-        $scope.overCallback = function(event, ui){
-            $(event.target).find('.content_image').addClass('hightlight_dropzone');
-        };
-        $scope.outCallback = function(event, ui){
-            $(event.target).find('.content_image').removeClass('hightlight_dropzone');
-        };    
-
-        $scope.showOptionChooseTypeExercise = false;
-        $scope.click_icon_option = function(){
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-        };
-
-        //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){ 
-            var listmodel = [];
-            listmodel[0] = $scope.model_temp;
-            listmodel[1] = null;
-            listmodel[2] = null;
-            listmodel[3] = null;            
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
-        }
-        // delete exercise
-        $scope.delete_exercise = function(type_of_exercise){           
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.delete_exercise($element);
-        }
-        // delete exercise drop
-        $scope.delete_exercise_drop = function(){            
-            $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]["exercise_item"][0].exercise_id = '';
-            $(event.target).scope().model_temp = null;               
-        }
-        $scope.$watch('content',function(){
-            if($scope.content != undefined ){                
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index].text= $scope.content;                  
-            }           
-        }); 
-    }
-  };
-});
-app.directive( 'textonly', function ( $compile ) {
-  return {
-    restrict: 'E',
-    scope: { 
-        type: '@',
-        day: '@',
-        index: '@',
-        isnew: '@'        
-    },
-    require: 'ngModel',
-    replace: true,
-    template : "<div ng-model=\"content\" class=\"exercise_box\">\
-                    <div class=\"box_program_vew\">\
-                        <div class=\"header_box\">\
-                            <p>1</p>\
-                            <img ng-click=\"click_icon_option()\" src=\"/img/images/icon_option.png\">\
-                        </div>\
-                        <ul ng-show=\"showOptionChooseTypeExercise\" class=\"option_program_editor\">\
-                            <li ng-click=\"change_type_exercise('1')\">Regular</li>\
-                            <li ng-click=\"change_type_exercise('2')\">Stretching</li>\
-                            <li ng-click=\"change_type_exercise('3')\">Super-set</li>\
-                            <li ng-click=\"change_type_exercise('4')\">With notes</li>\
-                            <li ng-click=\"delete_exercise()\">Delete</li>\
-                        </ul>\
-                        <textarea class=\"content_only_text\" type=\"text\" ng-model=\"content\"></textarea>\
-                    </div>\
-                </div>",
-    controller: function ( $scope, $element ) {
-        var day = $scope.day;
-        var exercise_list_item = {
-            'mode':$scope.type,
-            'order':$scope.type,
-            'exercise_item':[],
-            'text':''
-        };  
-        if($scope.isnew == 1){ // create new an exercise
-
-            $scope.$parent.tabs[day-1]["exercise_list"].push(exercise_list_item);        
-
-        }
-        else{ // update exercise
-            
-           $scope.$parent.tabs[day-1]["exercise_list"][$scope.index] = exercise_list_item;
-
-        }
-
-        $scope.showOptionChooseTypeExercise = false;
-        $scope.click_icon_option = function(){
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-        };
-
-        //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){ 
-            var listmodel = [];
-            listmodel[0] = null;
-            listmodel[1] = null;
-            listmodel[2] = null;
-            listmodel[3] = null;            
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);            
-        }
-        // delete exercise
-        $scope.delete_exercise = function(type_of_exercise){           
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.delete_exercise($element);
-        }
-        $scope.$watch('content',function(){
-            if($scope.content!=undefined){
-                $scope.$parent.tabs[day-1]["exercise_list"][$scope.index]['text'] = $scope.content;                
-            }
-        }) ;
-
-    }
-  };
-});
 app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,$compile,$timeout,fileUpload){
     $scope.exercises_list_backup = [];
     $scope.exercises_beforefilter_backup = [];
@@ -1389,7 +700,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         for(var i = 0; i < 4; i++){
             items[i] = {
                             'exercise_id':'',
-                            'serie':'',
+                            'series':'',
                             'repeatation_from':'',
                             'repeatation_to':'',
                             'hold':'',
@@ -1439,12 +750,6 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.tabs = [];
     $scope.tabs_backup = [];
     $scope.index = 1;   
-    /*var exercise_list_item = {
-            'mode':1,
-            'order':1,
-            'exercise_item':[],
-            'text':'fewew'            
-        };*/
     $scope.tabs.push(
         {
             'day_number':'',
@@ -1460,7 +765,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 'exercise_item':[
                     {
                         'exercise_id':'',
-                        'serie':'',
+                        'series':'',
                         'repeatation_from':'',
                         'repeatation_to':'',
                         'hold':'',
@@ -1529,7 +834,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                     'exercise_item':[
                         {
                             'exercise_id':'',
-                            'serie':'',
+                            'series':'',
                             'repeatation_from':'',
                             'repeatation_to':'',
                             'hold':'',
@@ -1544,53 +849,65 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.tabs.splice($scope.tabs.length - 1,0,program_item);                                           
     } 
    
-
+    $scope.isObjectiveChose = false;
+    $scope.isImgChose = false;
     $scope.save_program = function(){
-       //console.log($scope.tabs);
-       /*var tabs = $scope.tabs;
-       var tabs_save = angular.copy($scope.tabs);
-       for(var i = 0; i < tabs_save.length; i++){
-            delete tabs_save[i]['count_exercise'];
-            for(var j = 0; j < tabs_save[i]['exercise_list'].length; j++){
-                for(var k = 0; k < tabs_save[i]['exercise_list'][j]['exercise_item'].length; k++){
-                    delete tabs_save[i]['exercise_list'][j]['exercise_item'][k]['Exercise'];
+        if($scope.selectedObjective == "")
+        {
+            $scope.isObjectiveChose = true;
+            if($scope.myFile == undefined)
+                $scope.isImgChose = true;
+        }
+        else
+        {
+            //console.log($scope.tabs);
+           var tabs = $scope.tabs;
+           var tabs_save = angular.copy($scope.tabs);
+           for(var i = 0; i < tabs_save.length; i++){
+                delete tabs_save[i]['count_exercise'];
+                for(var j = 0; j < tabs_save[i]['exercise_list'].length; j++){
+                    for(var k = 0; k < tabs_save[i]['exercise_list'][j]['exercise_item'].length; k++){
+                        delete tabs_save[i]['exercise_list'][j]['exercise_item'][k]['Exercise'];
+                    }
                 }
-            }
-       }  
-       //console.log(tabs_save);
-       tabs_save.splice(tabs_save.length-1, 1);
-       var data = {
-                    'tabs':tabs_save,
-                    'objective':$scope.selectedObjective,
-                    'name':'',
-                    'descriptive':$scope.descriptive,
-                    'short_text':$scope.short_text
-                };
-       for(var i = 0; i < $scope.objective_items.length; i++){
-            if($scope.objective_items[i].id == $scope.selectedObjective){
-                data.name = $scope.objective_items[i].name;
-                break;
-            }
-       }
-        
-        $http({
-            method  : 'POST',
-            url     : '/Apis/saveProgramEditor.json',            
-            data    : data, 
-            headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
-        })
-            .success(function(data) {
-                console.log(data);  
-                // if(data.message == "success")
-                //     window.location='/Users/edit_profile';
-                // else
-                //     $scope.message = data.message;
-            })*/
-        $scope.uploadFile();
-    }
+           }  
+           //console.log(tabs_save);
+           tabs_save.splice(tabs_save.length-1, 1);
+           var data = {
+                        'tabs':tabs_save,
+                        'objective':'',
+                        'name':''
+                    };
+           for(var i = 0; i < $scope.objective_items.length; i++){
+                if($scope.objective_items[i].id == $scope.selectedObjective){
+                    data.objective = $scope.objective_items[i].name;
+                    break;
+                }
+           }
+            
+            $http({
+                method  : 'POST',
+                url     : '/Apis/saveProgramEditor.json',            
+                data    : data, 
+                headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
+            })
+                .success(function(data) {
+                    if(data.message == 'success')
+                    {
+                        console.log(data);                    
+                        var file = $scope.myFile;        
+                        var uploadUrl = "/Apis/ProgramUploadFile.json";
+                        fileUpload.uploadFileToUrl(file, uploadUrl);                    
+                    }
+                    else
+                    {
 
+                    }                
+                });
+        }              
+    }    
     $scope.selectObjective = function(selected){
-        $scope.selectedObjective = selected;        
+        $scope.selectedObjective = selected;      
     }
 
     $scope.overCallback = function(event, ui){
@@ -1670,7 +987,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
        
         $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].Exercise = null;
         $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].exercise_id = '';
-    }
+    }    
 
 });
 

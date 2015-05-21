@@ -3,7 +3,7 @@
         <div class="list_program_view" class="row">
             <?php $i = 0;?>
             <?php foreach($content['exercise_list'] as $item):?>
-                <?php $i++;?>
+                <?php $i++;?>                
                 <?php if($item['mode']==1):?>                
                     <div class="exercise_box exercise_box_editor" ng-controller="VideoController">
                         <div class="box_program_vew">                           
@@ -15,16 +15,16 @@
                                     <video 
                                     ng-mouseover="hoverIn($event)"
                                     ng-mouseleave="hoverOut($event)"
-                                    class="img-responsive" preload="none" src="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['video_small'];?>" poster="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>" width="208px" height="152px" <="" video=""></video>
+                                    class="img-responsive" preload="none" src="<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['video_small'];?>" poster="<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo'];?>" width="208px" height="152px" <="" video=""></video>
                                 <?php } else { ?>
                                     <img class="img-responsive"
-                                                     ng-src="{{getExerciseImage('<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>','<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo_animate'];?>')}}"
-                                                     ng-click="OnMobileImgClick($event,'<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['id'];?>')"
+                                                     ng-src="{{getExerciseImage('<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo'];?>','<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo_animate'];?>')}}"
+                                                     ng-click="OnMobileImgClick($event,'<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['id'];?>')"
                                                 >
                                 <?php }?>
                             </div>
                             <div class="description">
-                                <p><?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['name'];?></p>
+                                <p><?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'];?></p>
                             </div>
                             <div class="serie">
                                 <p style="color:#c7c8c9; margin-right:10px; font-size:10pt;"><?php echo __('Set')?></p> 
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>      
                                 <div class="description">
-                                    <p><?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['name'];?></p>
+                                    <p><?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'];?></p>
                                 </div>
                                 <div style="position:relative;padding-left:14px; padding-top:3px;">
                                     <div class="small_box" style="width:90px; height:63px; float:left;"></div>                            
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>   
                                 <div class="description">
-                                    <p><?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['name'];?></p>
+                                    <p><?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'];?></p>
                                 </div>                    
                             </div>                    
                         </div>                            
@@ -112,16 +112,16 @@
                                     <video 
                                     ng-mouseover="hoverIn($event)"
                                     ng-mouseleave="hoverOut($event)"
-                                    class="img-responsive" preload="none" src="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['video_small'];?>" poster="<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>" width="208px" height="152px" <="" video=""></video>
+                                    class="img-responsive" preload="none" src="<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['video_small'];?>" poster="<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo'];?>" width="208px" height="152px" <="" video=""></video>
                                 <?php } else { ?>
                                     <img class="img-responsive"
-                                                     ng-src="{{getExerciseImage('<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo'];?>','<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['photo_animate'];?>')}}"
-                                                     ng-click="OnMobileImgClick($event,'<?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['id'];?>')"
+                                                     ng-src="{{getExerciseImage('<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo'];?>','<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo_animate'];?>')}}"
+                                                     ng-click="OnMobileImgClick($event,'<?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['id'];?>')"
                                                 >
                                 <?php }?>
                             </div>
                             <div class="description">
-                                <p><?php echo $exercises_list[(string)$item['exercise_item'][0]['exercise_id']->{'$id'}]['name'];?></p>
+                                <p><?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'];?></p>
                             </div>
                             <div class="serie">
                                 <p style="color:#c7c8c9; margin-right:10px; font-size:10pt;"><?php echo __('Set')?></p> 
