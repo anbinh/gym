@@ -1689,6 +1689,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
       font-size: 14px;
       width: 120px;
       box-shadow: 0px 1px 16px -1px #88887F;
+      display: none;
 }
 .option_program_editor li{
     padding-left: 10px;

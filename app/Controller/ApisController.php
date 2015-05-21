@@ -726,32 +726,30 @@ class ApisController extends AppController {
             $user = $this->User->findById($user['id']);
             $user = $user['User'];
 
-            $program['creation_date'] = '2010-01-12 00:27:50';
-            $program['modification_date'] = '2015-01-23 03:52:23';
-            $program['name'] = '';
-            $program['author'] = $user['firstname'] .' '. $user['lastname'];
-            //$program['author'] = 'test';
+            $program['creation_date'] = date("Y-m-d H:i:s"); ;
+            $program['modification_date'] = date("Y-m-d H:i:s"); ;
+            $program['name'] = $data['name'];
+            $program['author'] = $user['firstname'] .' '. $user['lastname'];            
             $program['level'] = '';
-            $program['objective'] = '1';
-            $program['content'] = '';
+            $program['objective'] = $data['objective'];            
             $program['photo'] = '';
             $program['color_code'] = '';
             $program['name_fr'] = '';
-            $program['is_public'] = '';
-            $program['creator_id'] = '';
+            $program['is_public'] = 0;
+            $program['creator_id'] = $user['id'];
 
-            // removing exercise was removed in editor
-            for($i = 0; $i < count($data) - 1; $i++)
-            {                
-                for($j = 0; $j < count($data[$i]['exercise_list']); $j++){
-                    if($data[$i]['exercise_list'][$j]=='')
-                    {
-                        $data[$i]['exercise_list'].splice($j, 1);
-                    }
-                }
-            }
+            // // removing exercise was removed in editor
+            // for($i = 0; $i < count($data) - 1; $i++)
+            // {                
+            //     for($j = 0; $j < count($data[$i]['exercise_list']); $j++){
+            //         if($data[$i]['exercise_list'][$j]=='')
+            //         {
+            //             $data[$i]['exercise_list'].splice($j, 1);
+            //         }
+            //     }
+            // }
             // fill in $program['content'] = [];
-            $program['content'] = $data;
+            $program['content'] = $data['tabs'];
 
             $this->Program->save($program);
 
