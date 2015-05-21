@@ -537,8 +537,8 @@ app.directive( 'creator', function ( $compile ) {
                 ],
                 'text':''                   
             };   
-            $scope.$parent.tabs[day_number-1].exercise_list.push(program_item);
 
+            $scope.$parent.tabs[day_number-1].exercise_list.push(program_item);
         }
         $scope.click_icon_option = function(){
             $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
@@ -822,14 +822,15 @@ app.directive( 'stretching', function ( $compile ) {
         };
 
         //change type of exercise
-        $scope.change_type_exercise = function(type_of_exercise){    
-            var listmodel = [];
-            listmodel[0] = $scope.model_temp1;
-            listmodel[1] = $scope.model_temp2;
-            listmodel[2] = $scope.model_temp3;
-            listmodel[3] = $scope.model_temp4;       
-            $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
-            $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
+        $scope.change_type_exercise = function(type_of_exercise, index_of_exercise){    
+            // var listmodel = [];
+            // listmodel[0] = $scope.model_temp1;
+            // listmodel[1] = $scope.model_temp2;
+            // listmodel[2] = $scope.model_temp3;
+            // listmodel[3] = $scope.model_temp4;       
+            // $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;         
+            // $scope.$parent.change_type_exercise($element, type_of_exercise, listmodel);
+            alert(index_of_exercise)
         }
         // delete exercise
         $scope.delete_exercise = function(type_of_exercise){           
@@ -1226,14 +1227,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.testdrop = '';
     $scope.selectedObjective = '';
     $scope.index_current_tab = 1;
-    $scope.list_model_temp = [];
-    $scope.list_model_temp[0] = [[]];
-    // $scope.list_model_temp[current_tab][index_cell] = [];
-    //$scope.list_model_temp[0][0] = [];
-    $scope.list_model_temp[0][0][0] = null;
-    $scope.list_model_temp[0][0][1] = null;
-    $scope.list_model_temp[0][0][2] = null;
-    $scope.list_model_temp[0][0][3] = null;
+   
     $http.get('/Apis/getListObjective.json')
         .then(function(res){         
             $scope.objective_items = res.data.objective_list;            
@@ -1357,45 +1351,80 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.index_current_tab = index_tab+1;        
     }
     // change type of exercise in program editor
-    $scope.change_type_exercise = function(element, type_of_exercise, model_current){   
-        var index_of_exercise = element.attr('index');
-        var day_number = $scope.index_current_tab;
-        var exercise_template = '';
-        $scope.list_model_temp[day_number-1][index_of_exercise] = model_current;
-
-        switch(type_of_exercise){
-            case '1':
-                exercise_template = "<regular isnew='0' index='"+ index_of_exercise +"' type='"+type_of_exercise+"' day='"+day_number+"'></regular>";        
-                break;
-            case '2':
-                exercise_template = "<stretching isnew='0' index='"+ index_of_exercise +"' type='"+type_of_exercise+"' day='"+day_number+"'></stretching>";
-                break;
-            case '3':
-                exercise_template = "<superset isnew='0' index='"+ index_of_exercise +"' type='"+type_of_exercise+"' day='"+day_number+"'></superset>";
-                break;
-            case '4':                
-                exercise_template = "<withnote isnew='0' index='"+ index_of_exercise +"' type='"+type_of_exercise+"' day='"+day_number+"'></withnote>";
-                break;    
-            case '5':
-                exercise_template = "<textonly isnew='0' index='"+ index_of_exercise +"' type='"+type_of_exercise+"' day='"+day_number+"'></textonly>";
-                break;
+    $scope.change_type_exercise = function(type_of_exercise, index_of_exercise){                 
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].mode = type_of_exercise;
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].order = type_of_exercise;
+        
+        var items =  [];
+        // filter null item
+        var exercise_item = $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item;
+        var model1 = null;
+        var model2 = null;
+        var count = 0;
+        for(var i = 0; i < exercise_item.length; i++){
+            if(exercise_item[i].Exercise != null){
+               if(count==0){
+                    model1 = exercise_item[i];
+                    count++;
+                    continue; 
+               }
+               if(count==1){
+                    model2 = exercise_item[i];
+               }
+            }
         }
-        var el = $compile( exercise_template )( $scope );        
-        element.replaceWith(el);
+        for(var i = 0; i < 4; i++){
+            items[i] = {
+                            'exercise_id':'',
+                            'serie':'',
+                            'repeatation_from':'',
+                            'repeatation_to':'',
+                            'hold':'',
+                            'Exercise':null
+                        }; 
+        }
+    
+        switch(type_of_exercise){
+            case '1': // regular
+            case '4': // with note
+                if(model1!=null){                    
+                    items[0] = model1;
+                }                
+                items.splice(1, 3);                              
+            case '2': // stretching
+                if(model2!=null){
+                    items[0] = model1;
+                    items[1] = model2;
+                }
+                else{
+                    if(model1!=null){
+                        items[0] = model1;
+                    }
+                }
+            break;
+            case '3': // superset
+                if(model2!=null){
+                    items[0] = model1;
+                    items[1] = model2;
+                }
+                else{
+                    if(model1!=null){
+                        items[0] = model1;
+                    }
+                }
+                items.splice(2, 2);  
+                //$scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item.push(item);
+            break;
+        }
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item = items;
     }
     // delete exerise in program editor
-    $scope.delete_exercise = function(element){
-        var index_of_exercise = element.attr('index'); 
-        var day_number = $scope.index_current_tab;
-
-        // only can remove exercise in a tab, if number of exercise > 1
-        if($scope.tabs[day_number-1]['count_exercise'] > 1){
-            $scope.tabs[day_number-1]['exercise_list'][index_of_exercise] = '';
-            element.replaceWith('');    
-            $scope.tabs[day_number-1]['count_exercise'] = $scope.tabs[day_number-1]['count_exercise'] - 1;
-        }        
+    $scope.delete_exercise = function(index_of_exercise){        
+    console.log(index_of_exercise);       
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice(index_of_exercise, 1);        
     }
     $scope.tabs = [];
+    $scope.tabs_backup = [];
     $scope.index = 1;   
     /*var exercise_list_item = {
             'mode':1,
@@ -1408,7 +1437,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             'day_number':'',
             'exercise_list': []
         }
-    );
+    );    
     var program_item = {
         'day_number': $scope.index,
         'exercise_list': [            
@@ -1422,6 +1451,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                         'repeatation_from':'',
                         'repeatation_to':'',
                         'hold':'',
+                        'Exercise':null
                     }
                 ],
                 'text':''   
@@ -1430,8 +1460,8 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         'count_exercise':0
     };   
     $scope.tabs.unshift(program_item);
-    $scope.selectedIndex = 0;    
-    
+    $scope.selectedIndex = 0;        
+
     $scope.getImageShowOnly = function(){
         if($scope.showAllExercise){
             return "/img/images/star_show_only.png";
@@ -1440,30 +1470,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             return "/img/images/star.png";
         }
     }
-   
-   
-    // drag 
-    $scope.startCallback = function(event, ui){
-        var $draggable = $(event.target);
-        ui.helper.width($draggable.width());
-        ui.helper.height($draggable.height());
-        $draggable.css('opacity', '0');
-    };
-    $scope.revertCard = function(valid){
-        if(!valid){
-            var that = this;
-            setTimeout(function(){
-                $(that).css('opacity', 'inherit');
-            }, 500);
-        }
-
-        return !valid;
-    };
-   
-    $scope.dropCallback = function (event, ui) {
-        var $lane = $(event.target);
-        var $exercise = ui.draggable;                                  
-    };
+          
 
     $scope.selectedIndex = 0;
     $scope.isOk = true;
@@ -1476,12 +1483,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         }
         else{
             $scope.index_current_tab = $scope.index_current_tab - 1;
-        }
-
-        console.log(index_remove);
-        console.log($scope.tabs[index_remove]);
-
-        $scope.list_model_temp.splice(index_remove, 1);        
+        }       
         $scope.tabs.splice(index_remove, 1);
         // update the index
         var j = index_remove;
@@ -1518,6 +1520,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                             'repeatation_from':'',
                             'repeatation_to':'',
                             'hold':'',
+                            'Exercise':null
                         }
                     ],
                     'text':''  
@@ -1525,55 +1528,40 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             ],
             'count_exercise':0
         };   
-        $scope.tabs.splice($scope.tabs.length - 1,0,program_item);                
-        console.log($scope.tabs); 
-        // for change type of exercise        
-        $scope.list_model_temp[$scope.index_current_tab-1] = [[]];
-        $scope.list_model_temp[$scope.index_current_tab-1][0][0] = null;
-        $scope.list_model_temp[$scope.index_current_tab-1][0][1] = null;
-        $scope.list_model_temp[$scope.index_current_tab-1][0][2] = null;
-        $scope.list_model_temp[$scope.index_current_tab-1][0][3] = null;
+        $scope.tabs.splice($scope.tabs.length - 1,0,program_item);                                           
     } 
-
-    $scope.test = function(){
-        var program_item = {            
-            'mode':2,
-            'order':1,
-            'exercise_item':[
-                {
-                    'exercise_id':'',
-                    'serie':'',
-                    'repeatation_from':'',
-                    'repeatation_to':'',
-                    'hold':''
-                }
-            ],
-            'text':''                   
-        };   
-        $scope.tabs[0].exercise_list.push(program_item);
-    }
-
-    $scope.testremove = function(){
-        var program_item = {            
-            'mode':2,
-            'order':1,
-            'exercise_item':[],
-            'text':'fewew'                   
-        };   
-        $scope.tabs[0].exercise_list.push(program_item);
-    }
+   
 
     $scope.save_program = function(){
        //console.log($scope.tabs);
        /*var tabs = $scope.tabs;
-       for(var i = 0; i < tabs.length; i++){
-            delete tabs[i]['count_exercise'];
+       var tabs_save = angular.copy($scope.tabs);
+       for(var i = 0; i < tabs_save.length; i++){
+            delete tabs_save[i]['count_exercise'];
+            for(var j = 0; j < tabs_save[i]['exercise_list'].length; j++){
+                for(var k = 0; k < tabs_save[i]['exercise_list'][j]['exercise_item'].length; k++){
+                    delete tabs_save[i]['exercise_list'][j]['exercise_item'][k]['Exercise'];
+                }
+            }
        }  
-        var data = {'tabs':tabs, 'objective':$scope.selectedObjective,'name': ''};
+       //console.log(tabs_save);
+       tabs_save.splice(tabs_save.length-1, 1);
+       var data = {
+                    'tabs':tabs_save,
+                    'objective':$scope.selectedObjective,
+                    'name':''
+                };
+       for(var i = 0; i < $scope.objective_items.length; i++){
+            if($scope.objective_items[i].id == $scope.selectedObjective){
+                data.name = $scope.objective_items[i].name;
+                break;
+            }
+       }
+        
         $http({
             method  : 'POST',
             url     : '/Apis/saveProgramEditor.json',            
-            data    : tabs,  // pass in data as array
+            data    : data, 
             headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
         })
             .success(function(data) {
@@ -1587,16 +1575,56 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     }
 
     $scope.selectObjective = function(selected){
-        //$scope.selectedObjective = selected;            
-        alert(selected);
+        $scope.selectedObjective = selected;        
     }
 
-    $scope.uploadFile = function(){
-        var file = $scope.myFile;
-        console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "/Apis/ProgramUploadFile.json";
-        fileUpload.uploadFileToUrl(file, uploadUrl);
+    $scope.overCallback = function(event, ui){
+        if($(event.target).find('.content_image').length!=0){
+            $(event.target).find('.content_image').addClass('hightlight_dropzone');    
+        }
+        else if($(event.target).find('.content_box_img').length!=0){
+            $(event.target).find('.content_box_img').addClass('hightlight_dropzone');    
+        }
+        else{
+            $(event.target).addClass('hightlight_dropzone');
+        }                
     };
+    $scope.outCallback = function(event, ui){ 
+        if($(event.target).find('.content_image').length!=0){
+            $(event.target).find('.content_image').removeClass('hightlight_dropzone');
+        }        
+        else if($(event.target).find('.content_box_img').length!=0){
+            $(event.target).find('.content_box_img').removeClass('hightlight_dropzone');
+        }
+        else{
+            $(event.target).removeClass('hightlight_dropzone');    
+        }
+    };   
+
+    $scope.dropCallback = function(event, ui, model_temp, index_of_exercise, type_of_exercise, index){
+        if($(event.target).find('.content_image').length!=0){
+            $(event.target).find('.content_image').removeClass('hightlight_dropzone');
+        }
+        else if($(event.target).find('.content_box_img').length!=0){
+            $(event.target).find('.content_box_img').removeClass('hightlight_dropzone');
+        }
+        else{
+            $(event.target).removeClass('hightlight_dropzone');    
+        }
+                
+        var data = angular.copy(model_temp);        
+
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].exercise_id = data.Exercise.id;
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].Exercise = data.Exercise;
+
+    }
+
+    $scope.delete_exercise_drop = function(index, index_of_exercise){
+        $(event.target).scope().model_temp = null;
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].Exercise = null;
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].exercise_id = '';
+    }
+
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {

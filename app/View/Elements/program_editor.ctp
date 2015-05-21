@@ -1,16 +1,14 @@
-<div ng-if="tab.day_number != ''" class="UserIndexLeftContent">                
-    <div layout="row">            
-        <div class="list_program_view" ng-repeat="item in tab.exercise_list">         	
+<div ng-if="tab.day_number != ''" class="UserIndexLeftContent">                    
+        <div ng-repeat="item in tab.exercise_list track by $index">         	
 				<?php echo $this->Element('template_regular');?>                					
-				<?php echo $this->Element('template_stretching');?>                					
+				<?php echo $this->Element('template_stretching');?>                				
 				<?php echo $this->Element('template_superset');?>                
 				<?php echo $this->Element('template_withnote');?>                
 				<?php echo $this->Element('template_onlytext');?>                			
         </div>
         <creator></creator>
         <!-- <input type="button" value="add" ng-click="test()">
-        <input type="button" value="remove" ng-click="testremove()"> -->
-    </div>
+        <input type="button" value="remove" ng-click="testremove()"> -->    
 </div>
 
 <!-- <div class="exercise_box">
