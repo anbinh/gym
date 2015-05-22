@@ -8,7 +8,7 @@
                 <li ng-click="change_type_exercise('3', $index)">Super-set</li>
                 <li ng-click="change_type_exercise('4', $index)">With notes</li>
                 <li ng-click="change_type_exercise('5', $index)">Only text</li>
-                <li ng-if="$index!=0" ng-click="delete_exercise()">Delete</li>
+                <li ng-click="delete_exercise($index)">Delete</li>
             </ul>
         </div>
         
@@ -32,9 +32,9 @@
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
             Serie
-            <input ng-model="item.exercise_item[0].serie" class="serie1" type="text">
+            <input ng-model="item.exercise_item[0].series" class="serie1" type="text">
             Repeation
-            <input ng-model="item.exercise_item[0].repeat" class="repeat1" type="text">
+            <input ng-model="item.exercise_item[0].repeatation_from" class="repeat1" type="text">
         </div>
     </div>
 </div>

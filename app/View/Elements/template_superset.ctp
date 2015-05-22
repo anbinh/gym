@@ -8,7 +8,7 @@
                 <li ng-click="change_type_exercise('2', $index)">Stretching</li>
                 <li ng-click="change_type_exercise('4', $index)">With notes</li>
                 <li ng-click="change_type_exercise('5', $index)">Only text</li>
-                <li ng-if="$index!=0" ng-click="delete_exercise()">Delete</li>
+                <li ng-click="delete_exercise($index)">Delete</li>
             </ul>
         </div>   
         <div style="position:absolute; top:10px;">
@@ -19,9 +19,9 @@
                 </div>
                 <div class="content_box_main" layout="column">
                     Serie
-                    <input ng-model="item.exercise_item[0].serie" class="serie2" type="text">
+                    <input ng-model="item.exercise_item[0].series" class="serie2" type="text">
                     Repetition
-                    <input ng-model="item.exercise_item[0].repeat" class="repeat2" type="text">
+                    <input ng-model="item.exercise_item[0].repeatation_from" class="repeat2" type="text">
                 </div>
                 <p class="name_exercise">{{model_temp1.Exercise.name}}</p>
             </div>

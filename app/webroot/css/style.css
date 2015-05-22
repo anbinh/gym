@@ -1790,6 +1790,7 @@ ul.option_program_editor li:hover{
 }
 .content_box_super_set{
     padding-left: 18px;
+    overflow: auto;
 }
 .content_box_super_set p{
     margin: 0;

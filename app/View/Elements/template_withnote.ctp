@@ -8,7 +8,7 @@
                 <li ng-click="change_type_exercise('2', $index)">Stretching</li>
                 <li ng-click="change_type_exercise('3', $index)">Super-set</li>
                 <li ng-click="change_type_exercise('5', $index)">Only text</li>
-                <li ng-click="delete_exercise()">Delete</li>
+                <li ng-click="delete_exercise($index)">Delete</li>
             </ul>
         </div>        
         <div class="content_box_regular">
