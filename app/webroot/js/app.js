@@ -774,8 +774,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 ],
                 'text':''   
             }              
-        ],
-        'count_exercise':0
+        ]        
     };   
     $scope.tabs.unshift(program_item);
     $scope.selectedIndex = 0;        
@@ -817,8 +816,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 $scope.isOk = true;
                 $scope.selectedIndex = $scope.tabs.length - 2;
             }, 50);
-        }    
-        console.log($scope.tabs);       
+        }       
     };
 
     $scope.addTab = function()
@@ -843,8 +841,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                     ],
                     'text':''  
                 }              
-            ],
-            'count_exercise':0
+            ]            
         };   
         $scope.tabs.splice($scope.tabs.length - 1,0,program_item);                                           
     } 
@@ -853,6 +850,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.isImgChose = false;
     $scope.isSaving = false;
     $scope.save_program = function(){
+        //console.log($scope.tabs);
         if($scope.selectedObjective == "")
         {
             $scope.isObjectiveChose = true;

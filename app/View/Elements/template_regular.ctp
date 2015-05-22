@@ -21,9 +21,9 @@
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
             Serie
-            <input ng-model="item.exercise_item[0].serie" class="serie1" type="text" value="">
+            <input ng-model="item.exercise_item[0].series" class="serie1" type="text" value="">
             Repeation
-            <input ng-model="item.exercise_item[0].repeat" class="repeat1" type="text" value="">
+            <input ng-model="item.exercise_item[0].repeatation_from" class="repeat1" type="text" value="">
         </div>
     </div>
 </div>
