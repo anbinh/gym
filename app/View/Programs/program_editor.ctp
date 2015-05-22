@@ -52,8 +52,8 @@
             </div>         
             <div flex class="list_button">              
               <input type="button" class="btn btn_program_editor btn_draft_program" value="Preview">
-              <input ng-click="save_program()" type="button" class="btn btn_program_editor btn_public_program" value="Save">
-              <input type="button" class="btn btn_program_editor btn_cancel_program" value="Cancel">
+              <input ng-disabled="isSaving" ng-click="save_program()" type="button" class="btn btn_program_editor btn_public_program" value="Save">
+              <input type="button" ng-click="cancel_click()" class="btn btn_program_editor btn_cancel_program" value="Cancel">
             </div>
           </div>             
       </div>  
@@ -77,17 +77,17 @@
     <div layout="row" layout-align="center start" class="right_content_program_editor">
       <div>
         <div class="type_of_program">    
-          <span style="color:red;font-weight:bold;font-size: x-large;" ng-show="isObjectiveChose">*</span>  
+          <span style="color:red;font-weight:bold;font-size: x-large;margin-left: -18px;" ng-show="isObjectiveChose">*</span>  
           <span style="margin-right:10px;"><?php echo __("OBJECTIVE");?></span>
           <select ng-model="selectObjectiveChange" ng-change="selectObjective(selectObjectiveChange)" class="input_select input_location">
               <option value=""><?php echo __('Choose')?></option>  
               <option value="{{item.id}}" ng-repeat="item in objective_items">{{item.name}}</option>
           </select>            
         </div>
-        <div class="main_content_type_of_program">
-          <div layout="row" layout-align="center center" class="program_upload_img none_border topic_box_program_editor" id="box-img"> 
-            <span style="color:red;font-weight:bold;font-size: x-large;" ng-show="isImgChose">*</span>
-            <div style="text-align:center;">
+        <div class="main_content_type_of_program">          
+          <div layout="row" layout-align="center center" class="program_upload_img none_border topic_box_program_editor" id="box-img">   
+            <span style="color:red;font-weight:bold;font-size: x-large;" ng-show="isImgChose">*</span>          
+            <div style="text-align:center;">              
               <a href="javascript:void(0);" class="btn_add_picture" id="upload_link">
                 <img src="/img/images/add_picture_program.png">
                 <p style="color:white;margin-top:10px;"><?php echo __("ADD PICTURE");?></p>
@@ -99,7 +99,7 @@
               <input ng-model="descriptive" class="description_title_program_editor" placeholder=" <?php echo __("Descriptive title");?>"> 
           </div>     
           <div>
-              <textarea ng-model="short_tex" class="short_text_program_editor" placeholder=" <?php echo __("Short text about program");?>" rows="5"></textarea>
+              <textarea ng-model="short_text" class="short_text_program_editor" placeholder=" <?php echo __("Short text about program");?>" rows="5"></textarea>
           </div>      
         </div>              
       </div>

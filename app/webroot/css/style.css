@@ -572,6 +572,12 @@ input[type=date]{
 .img_program{
     /*height: 130px;*/
     margin-top:20px;
+    max-width: 100%;
+}
+
+.img_program_private{
+    height: 230px;    
+    max-width: 100%;
 }
 
 .program_box{

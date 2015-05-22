@@ -727,25 +727,31 @@ class ApisController extends AppController {
             $user = $this->User->findById($user['id']);
             $user = $user['User'];
 
+            $objective = $this->Objective->find('first',array('conditions'=>array('objective_id'=>(int)$data['objective'])));
+
             $program['creation_date'] = date("Y-m-d H:i:s"); 
             $program['modification_date'] = date("Y-m-d H:i:s"); 
-            $program['name'] = $data['name'];
+            $program['name'] = $objective['Objective']['description'];
             $program['author'] = $user['firstname'] .' '. $user['lastname'];            
             $program['level'] = '';
             $program['objective'] = $data['objective'];            
             $program['photo'] = '';
             $program['color_code'] = '';
-            $program['name_fr'] = '';
+            $program['name_fr'] = $objective['Objective']['description_fr'];
             $program['is_public'] = 0;
             $program['creator_id'] = $user['id'];
             $program['content'] = $data['tabs'];
+            $program['short_text'] = $data['text'];
+            $program['descriptive'] = $data['descriptive'];
 
             $this->setProgramEdit($program);
             //$this->Program->save($program);
 
             $this->set(array(
                 'message' => 'success',
-                '_serialize' => array('message')
+                'data'=> $objective,
+                'data2' => $data,
+                '_serialize' => array('message','data','data2')
             ));
         }          
     }
@@ -766,8 +772,24 @@ class ApisController extends AppController {
                     $program = $this->getProgramEdit();
                     $program['photo'] = $sFileName;
                     $this->Program->save($program);
+
+                    // save this program into Owner list
+                    $program_id = $this->Program->getLastInsertId();
+                    $user = $this->getAuthentication();
+                    if($user)
+                    {
+                        $user_id = $user['id'];
+                        // add new object Id
+                        $this->User->mongoNoSetOperator = '$addToSet';
+                        $susp = array(
+                            "id" => $user_id,
+                            "assigned_programs" => new MongoId($program_id)
+                        );
+                        $this->User->save($susp);                        
+                    }                    
+
                     $this->set(array(
-                        'message' => $program,
+                        'message' => $program_id,
                         '_serialize' => array('message')
                     ));
                 }                

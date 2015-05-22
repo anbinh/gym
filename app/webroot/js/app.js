@@ -539,7 +539,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.selectedObjective = '';
     $scope.index_current_tab = 1;
     $scope.descriptive = '';
-    $scope.short_tex = '';
+    $scope.short_text = '';
 
     $http.get('/Apis/getListObjective.json')
         .then(function(res){         
@@ -851,6 +851,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
    
     $scope.isObjectiveChose = false;
     $scope.isImgChose = false;
+    $scope.isSaving = false;
     $scope.save_program = function(){
         if($scope.selectedObjective == "")
         {
@@ -860,6 +861,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         }
         else
         {
+            $scope.isSaving = true;
             //console.log($scope.tabs);
            var tabs = $scope.tabs;
            var tabs_save = angular.copy($scope.tabs);
@@ -875,15 +877,10 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
            tabs_save.splice(tabs_save.length-1, 1);
            var data = {
                         'tabs':tabs_save,
-                        'objective':'',
-                        'name':''
+                        'objective':$scope.selectObjectiveChange,
+                        'descriptive': $scope.descriptive,
+                        'text': $scope.short_text,
                     };
-           for(var i = 0; i < $scope.objective_items.length; i++){
-                if($scope.objective_items[i].id == $scope.selectedObjective){
-                    data.objective = $scope.objective_items[i].name;
-                    break;
-                }
-           }
             
             $http({
                 method  : 'POST',
@@ -907,7 +904,9 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         }              
     }    
     $scope.selectObjective = function(selected){
-        $scope.selectedObjective = selected;      
+        $scope.selectedObjective = selected;  
+        if(selected != 0)
+            $scope.isObjectiveChose = false;
     }
 
     $scope.overCallback = function(event, ui){
@@ -989,6 +988,11 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item[index].exercise_id = '';
     }    
 
+    $scope.cancel_click = function()
+    {
+        window.location = "/Programs/index";
+    }
+
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {
@@ -1017,7 +1021,7 @@ app.service('fileUpload', ['$http', function ($http) {
         })
         .success(function(data){            
             console.log('ok');
-            console.log(data);
+            window.location = "/Programs/program_view/" + data.message;
         })
         .error(function(){
             console.log('fail');
