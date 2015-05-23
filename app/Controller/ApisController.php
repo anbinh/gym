@@ -803,4 +803,20 @@ class ApisController extends AppController {
             ));  
         }              
     }
+
+    public function getListProgramEditor($program_id){
+        $program = $this->Program->findById($program_id);
+        if($program){
+            $this->set(array(
+                'message' => $program,
+                '_serialize' => array('message')
+            ));     
+        }
+        else{
+            $this->set(array(
+                'message' => 'fail',
+                '_serialize' => array('message')
+            )); 
+        }
+    }
 }

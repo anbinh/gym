@@ -505,8 +505,8 @@ app.directive( 'creator', function ( $compile ) {
         $scope.create_exercise = function(){           
             var day_number = $scope.$parent.index_current_tab;
             var program_item = {            
-                'mode':1,
-                'order':1,
+                'mode':'1',
+                'order':'1',
                 'exercise_item':[
                     {
                         'exercise_id':'',
@@ -541,6 +541,41 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.descriptive = '';
     $scope.short_text = '';
 
+    // tabs 
+    $scope.tabs = [];    
+    $scope.index = 1;   
+    $scope.tabs.push(
+        {
+            'day_number':'',
+            'exercise_list': []
+        }
+    );    
+    var program_item = {
+        'day_number': $scope.index,
+        'exercise_list': [            
+            {
+                'mode':'1',
+                'order':'1',
+                'exercise_item':[
+                    {
+                        'exercise_id':'',
+                        'series':'',
+                        'repeatation_from':'',
+                        'repeatation_to':'',
+                        'hold':'',
+                        'Exercise':null
+                    }
+                ],
+                'text':''   
+            }              
+        ]        
+    };   
+    $scope.tabs.unshift(program_item);
+    $scope.selectedIndex = 0;    
+    // end tabs
+    var program_id = window.location.search;
+    program_id = program_id.substr(program_id.indexOf("=") + 1);
+     
     $http.get('/Apis/getListObjective.json')
         .then(function(res){         
             $scope.objective_items = res.data.objective_list;            
@@ -555,14 +590,58 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         .then(function(res){
             $scope.exercises_like = res.data.exercises_like;
             $scope.exercises_list = angular.copy(res.data.exercises_list);
-            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);            
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);                        
+        }).then(function(){// get list programs
+
+            if(program_id){
+                $http.get('/Apis/getListProgramEditor/'+program_id+'.json')
+                .then(function(res){                        
+                    $scope.tabs = res.data.message.Program.content;
+                    
+                    for(var i = 0; i < $scope.tabs.length; i++){
+                        for(var j = 0; j < $scope.tabs[i].exercise_list.length; j++){
+                            switch($scope.tabs[i].exercise_list[j].mode)
+                            {
+                                case '1':  // regular
+                                case '2': // stretching                                                  
+                                case '3':  // super set                                  
+                                case '4': // with note
+                                    for(var k = 0; k < $scope.tabs[i].exercise_list[j].exercise_item.length; k++)
+                                    {
+                                        var exercise_id = $scope.tabs[i].exercise_list[j].exercise_item[k].exercise_id;
+                                        if(exercise_id!=''){
+                                            var Exercise = $scope.getExerciseById(exercise_id);
+                                            if(Exercise.length != 0){
+                                                 $scope.tabs[i].exercise_list[j].exercise_item[k].Exercise = Exercise[0].Exercise;
+                                            }
+                                        }
+                                    }
+                                    break;                                
+                            }
+                        }
+                    }     
+                    
+         
+                });
+                
+            }            
+
         });
 
     $scope.showAllExercise = true; 
     $scope.isStretchingSelected = false;
     $scope.isCardioSelected = false;   
     $scope.isMuscleSelected = false;
-       
+    
+    $scope.getExerciseDetail = function(){
+
+    }
+    $scope.getExerciseById = function(exercise_id){
+       var result  = $scope.exercises_list_backup.filter(function(item){
+                        return item.Exercise.id == exercise_id;
+                    } );
+        return result;
+    }   
     $scope.chooseFavouriteExerciseClick = function(){
         if($scope.showAllExercise){                        
             $scope.showAllExercise = false;
@@ -743,41 +822,9 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item = items;
     }
     // delete exerise in program editor
-    $scope.delete_exercise = function(index_of_exercise){        
-    console.log(index_of_exercise);       
+    $scope.delete_exercise = function(index_of_exercise){            
         $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice(index_of_exercise, 1);        
-    }
-    $scope.tabs = [];
-    $scope.tabs_backup = [];
-    $scope.index = 1;   
-    $scope.tabs.push(
-        {
-            'day_number':'',
-            'exercise_list': []
-        }
-    );    
-    var program_item = {
-        'day_number': $scope.index,
-        'exercise_list': [            
-            {
-                'mode':1,
-                'order':1,
-                'exercise_item':[
-                    {
-                        'exercise_id':'',
-                        'series':'',
-                        'repeatation_from':'',
-                        'repeatation_to':'',
-                        'hold':'',
-                        'Exercise':null
-                    }
-                ],
-                'text':''   
-            }              
-        ]        
-    };   
-    $scope.tabs.unshift(program_item);
-    $scope.selectedIndex = 0;        
+    }    
 
     $scope.getImageShowOnly = function(){
         if($scope.showAllExercise){
@@ -789,7 +836,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     }
           
 
-    $scope.selectedIndex = 0;
+    // $scope.selectedIndex = 0;
     $scope.isOk = true;
     $scope.removeTab = function(tab)
     {        
@@ -827,8 +874,8 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             'day_number': $scope.index,
             'exercise_list': [            
                 {
-                    'mode':1,
-                    'order':1,
+                    'mode':'1',
+                    'order':'1',
                     'exercise_item':[
                         {
                             'exercise_id':'',
@@ -1470,7 +1517,8 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
 
     $scope.modify_program = function(program_id)
     {
-        $window.location = "/Programs/program_editor/" + program_id;
+        var url = "/Programs/program_editor?id=" + program_id;
+        window.location = url;
     }
 
     $scope.save_program = function(program_id){

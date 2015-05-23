@@ -150,7 +150,7 @@
                   <img style="position:absolute; right:5px; top:5px;" src="/img/images/drag_exercise.png">                  
               </div>
               <div style="text-align:center; padding-top:10px;">
-                <img src="df{{exercise.Exercise.photo}}" class="img-responsive">
+                <img src="{{exercise.Exercise.photo}}" class="img-responsive">
               </div> 
               <div class="text_exercise">
                 <p>{{exercise.Exercise.name}}</p>

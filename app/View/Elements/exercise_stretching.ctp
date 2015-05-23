@@ -16,7 +16,7 @@
                  <?php if($item['mode']==4):?> <!-- with-note-->             
                     <?php echo $this->Element('template_withnote_view', array('index'=>$key, 'item'=>$item, 'exercise_list'=>$exercises_list));?>                    
                 <?php endif;?>                
-                <?php if($item['mode']==5):?>
+                <?php if($item['mode']==5):?> <!-- only text --> 
                     <?php echo $this->Element('template_onlytext_view', array('index'=>$key, 'item'=>$item, 'exercise_list'=>$exercises_list));?>                    
                 <?php endif;?>
             <?php endforeach;?>            

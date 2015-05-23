@@ -19,9 +19,9 @@
                     <?php endif;?>  
                 </div>
                 <div class="content_box_main" layout="column">
-                    Serie
-                    <?php echo $item['exercise_item'][0]['series'];?>
-                    Repetition
+                    Serie<br/>
+                    <?php echo $item['exercise_item'][0]['series'];?><br/>
+                    Repetition<br/>
                     <?php echo $item['exercise_item'][0]['repeatation_from'];?>
                 </div>                
                 <p class="name_exercise"><?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'];?></p>
@@ -41,9 +41,9 @@
                     <?php endif;?> 
                 </div>
                 <div class="content_box_main" layout="column">
-                    Serie
-                    <?php echo $item['exercise_item'][1]['series'];?>
-                    Repetition
+                    Serie<br/>
+                    <?php echo $item['exercise_item'][1]['series'];?><br/>
+                    Repetition<br/>
                     <?php echo $item['exercise_item'][1]['repeatation_from'];?>
                 </div>
                 <p class="name_exercise"><?php echo $exercises_list[$item['exercise_item'][1]['exercise_id']]['name'];?></p>
