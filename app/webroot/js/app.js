@@ -926,6 +926,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                         'objective':$scope.selectObjectiveChange,
                         'descriptive': $scope.descriptive,
                         'text': $scope.short_text,
+                        'program_id' : program_id,
                     };
             
             $http({
@@ -1051,6 +1052,7 @@ app.directive('fileModel', ['$parse', function ($parse) {
             element.bind('change', function(){
                 scope.$apply(function(){
                     modelSetter(scope, element[0].files[0]);
+
                 });
             });
         }

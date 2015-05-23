@@ -744,6 +744,12 @@ class ApisController extends AppController {
             $program['short_text'] = $data['text'];
             $program['descriptive'] = $data['descriptive'];
 
+            // check if this is add new or edit action
+            if($data['program_id'] != "")
+            {
+                $program['id'] = $data['program_id'];
+            }
+
             $this->setProgramEdit($program);
             //$this->Program->save($program);
 
@@ -770,11 +776,14 @@ class ApisController extends AppController {
                 if(move_uploaded_file($file['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri))                
                 {
                     $program = $this->getProgramEdit();
-                    $program['photo'] = $sFileName;
+                    $program['photo'] = $sFileName;                    
                     $this->Program->save($program);
 
-                    // save this program into Owner list
-                    $program_id = $this->Program->getLastInsertId();
+                    if($program['id'] != "")
+                        $program_id = $program['id'];
+                    else
+                        $program_id = $this->Program->getLastInsertId();
+                    // save this program into Owner list                    
                     $user = $this->getAuthentication();
                     if($user)
                     {
