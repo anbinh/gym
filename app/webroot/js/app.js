@@ -898,9 +898,10 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.isSaving = false;
     $scope.save_program = function(){
         //console.log($scope.tabs);
-        if($scope.selectedObjective == "")
+        if($scope.selectedObjective == "" || $scope.myFile == undefined)
         {
-            $scope.isObjectiveChose = true;
+            if($scope.selectedObjective == "")
+                $scope.isObjectiveChose = true;
             if($scope.myFile == undefined)
                 $scope.isImgChose = true;
         }

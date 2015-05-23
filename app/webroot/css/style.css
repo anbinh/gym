@@ -1434,7 +1434,10 @@ input:invalid {
     border-bottom: 1px solid #D8E6DC;
 }
 .header_program_editor .list_button{
-    float: right;
+    float: right;    
+}
+.list_button{
+    margin-left: 50px;  
 }
 .btn_program_editor{
     width: 100px;

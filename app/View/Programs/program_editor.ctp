@@ -46,15 +46,21 @@
   <div layout="row" layout-align="center start">
       <div flex>
           <div layout="row" layout-sm="column" class="header_program_editor" layout-align="start center">
-            <div flex style="padding-top:10px;">
+            <div flex='45' style="padding-top:10px;">
               <img src="/img/images/object_dynamique.png">
               <span style="margin-left:25px;"><?php echo __("CREAT A PROGRAM");?></span>
             </div>         
-            <div flex class="list_button">              
-              <input type="button" class="btn btn_program_editor btn_draft_program" value="Preview">
-              <input ng-disabled="isSaving" ng-click="save_program()" type="button" class="btn btn_program_editor btn_public_program" value="Save">
-              <input type="button" ng-click="cancel_click()" class="btn btn_program_editor btn_cancel_program" value="Cancel">
-            </div>
+            <div flex='100' layout="column" class="list_button">    
+              <div>          
+                <input type="button" class="btn btn_program_editor btn_draft_program" value="<?php echo __("Preview");?>">
+                <input ng-disabled="isSaving" ng-click="save_program()" type="button" class="btn btn_program_editor btn_public_program" value="<?php echo __("Save");?>" style="margin-left: 2px;margin-right: 10px;">
+                <input type="button" ng-click="cancel_click()" class="btn btn_program_editor btn_cancel_program" value="<?php echo __("Cancel");?>">
+              </div>
+              <div ng-show="isObjectiveChose || isImgChose || isSaving">
+                <span ng-show="isObjectiveChose || isImgChose" style="color:red;padding-left: 8px;"><?php echo __("Complete all fields");?> *</span>
+                <span ng-show="isSaving" style="color:grey;padding-left: 8px;"><img src="/img/loader.gif"/> <?php echo __("Saving");?></span>
+              </div>
+            </div>            
           </div>             
       </div>  
          
