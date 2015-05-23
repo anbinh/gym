@@ -851,9 +851,10 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.isSaving = false;
     $scope.save_program = function(){
         //console.log($scope.tabs);
-        if($scope.selectedObjective == "")
+        if($scope.selectedObjective == "" || $scope.myFile == undefined)
         {
-            $scope.isObjectiveChose = true;
+            if($scope.selectedObjective == "")
+                $scope.isObjectiveChose = true;
             if($scope.myFile == undefined)
                 $scope.isImgChose = true;
         }
@@ -1470,7 +1471,9 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
 
     $scope.modify_program = function(program_id)
     {
-        $window.location = "/Programs/program_editor/" + program_id;
+        var url = "/Programs/program_editor?id=" + program_id;
+        window.location = url;
+        //$window.location = "/Programs/program_editor/" + program_id;
     }
 
     $scope.save_program = function(program_id){
