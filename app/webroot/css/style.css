@@ -1749,7 +1749,7 @@ ul.option_program_editor li:hover{
     cursor: pointer;
 }
 .header_box{
-    overflow: auto;
+    overflow: hidden;
 }
 .header_box p{
     margin: 0;
