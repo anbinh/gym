@@ -67,8 +67,9 @@
   </div>
 
   <div layout="row" class="main_content_program_editor">
-     <div class="program_tab" flex>       
-        <md-tabs md-selected="selectedIndex" flex>            
+      <div class="program_tab" flex>               
+        <p ng-show='isLoading'><img src="/img/loader.gif"/>Loading...</p>
+        <md-tabs ng-show="isShowTabs" md-selected="selectedIndex" flex>            
             <md-tab ng-repeat="tab in tabs track by $index">  
               <md-tab-label style="padding:13px 0 13px 0;" ng-click="(tab.day_number == '' && isOk == true)? addTab() : set_index_current_tab($index);">                
                 <img src="/img/images/delete_copy.png" ng-click="removeTab(tab)" ng-show="tab.day_number != '' && tabs.length > 2" class="delete_tab">
@@ -78,7 +79,7 @@
                 <?php echo $this->Element('program_editor');?>                
             </md-tab>                                           
         </md-tabs>
-    </div>
+      </div>
     
     <div layout="row" layout-align="center start" class="right_content_program_editor">
       <div>
@@ -156,7 +157,7 @@
                   <img style="position:absolute; right:5px; top:5px;" src="/img/images/drag_exercise.png">                  
               </div>
               <div style="text-align:center; padding-top:10px;">
-                <img src="{{exercise.Exercise.photo}}" class="img-responsive">
+                <img src="{{exercise.Exercise.photo}}" class="img-responsive" style="height:82px; margin:auto;">
               </div> 
               <div class="text_exercise">
                 <p>{{exercise.Exercise.name}}</p>

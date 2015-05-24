@@ -1,7 +1,7 @@
 <div ng-model="model_temp" ng-init="model_temp.Exercise = item.exercise_item[0].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp, $index, 1, 0)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="exercise_box" ng-if="item.mode == 1">
     <div class="box_program_vew">
         <div class="header_box">
-            <p>{{$index+1}}</p>            
+            <p>{{$index+1}}</p>
             <img ng-click="click_icon_option($event);" src="/img/images/icon_option.png">
             <ul class="option_program_editor">
                 <li ng-click="change_type_exercise('2', $index)">Stretching</li>
@@ -25,5 +25,5 @@
             Repeation
             <input ng-model="item.exercise_item[0].repeatation_from" class="repeat1" type="text" value="">
         </div>
-    </div>
+    </div>   
 </div>

@@ -540,7 +540,8 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.index_current_tab = 1;
     $scope.descriptive = '';
     $scope.short_text = '';
-
+    $scope.isLoading = false;
+    $scope.isShowTabs = true;
     // tabs 
     $scope.tabs = [];    
     $scope.index = 1;   
@@ -576,6 +577,11 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     var program_id = window.location.search;
     program_id = program_id.substr(program_id.indexOf("=") + 1);
      
+    if(program_id!=""){
+        $scope.isLoading = true;
+        $scope.isShowTabs = false;
+    }
+
     $http.get('/Apis/getListObjective.json')
         .then(function(res){         
             $scope.objective_items = res.data.objective_list;            
@@ -621,7 +627,14 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                         }
                     }     
                     
-         
+                    $scope.tabs.push(
+                        {
+                            'day_number':'',
+                            'exercise_list': []
+                        }
+                    );  
+                    $scope.isLoading = false;
+                    $scope.isShowTabs = true;
                 });
                 
             }            
@@ -868,7 +881,13 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
 
     $scope.addTab = function()
     {
-        $scope.index = $scope.index + 1;
+        if(program_id!=undefined){
+            $scope.index = $scope.tabs.length;    
+        }
+        else{
+            $scope.index = $scope.index + 1;    
+        }
+        
         $scope.index_current_tab = $scope.index;
         var program_item = {
             'day_number': $scope.index,
@@ -896,7 +915,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.isObjectiveChose = false;
     $scope.isImgChose = false;
     $scope.isSaving = false;
-    $scope.save_program = function(){
+    $scope.save_program = function(){  
         //console.log($scope.tabs);
         if($scope.selectedObjective == "" || $scope.myFile == undefined)
         {
