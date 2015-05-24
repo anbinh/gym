@@ -814,7 +814,8 @@ class ApisController extends AppController {
 
                     $this->set(array(
                         'message' => $program_id,
-                        '_serialize' => array('message')
+                        'data' => $data,
+                        '_serialize' => array('message','data')
                     ));
                 }                
             }
