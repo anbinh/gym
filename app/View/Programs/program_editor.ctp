@@ -45,6 +45,7 @@
     }
 </script>
 <div ng-controller="ExerciseProgramEditorController">
+  <form action="" method="POST" enctype="multipart/form-data">
   <!-- Start Header-->
   <div layout="row" layout-align="center start">
       <div flex>
@@ -199,4 +200,5 @@
     </div>
   </div>
   <!-- End Bottom Filter -->
+  </form>
 </div>
