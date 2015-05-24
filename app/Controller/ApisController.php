@@ -786,7 +786,7 @@ class ApisController extends AppController {
                 $path = $file['name'];
                 $ext = pathinfo($path, PATHINFO_EXTENSION);
                 $sFileName = $this->generateRandomString().'.'.$ext;
-                $file_uri = '/img/images/'.$sFileName;                
+                $file_uri = '/upload/image/'.$sFileName;                
                 if(move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri));
                 //if(move_uploaded_file($file['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri))                
                 {

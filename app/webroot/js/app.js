@@ -607,7 +607,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                     $scope.selectObjectiveChange = res.data.message.Program.objective;
                     $scope.short_text = res.data.message.Program.short_text;
                     $scope.descriptive = res.data.message.Program.descriptive;
-                    $scope.imgURL = "/img/images/" + res.data.message.Program.photo;
+                    $scope.imgURL = "/upload/image/" + res.data.message.Program.photo;
                     for(var i = 0; i < $scope.tabs.length; i++){
                         for(var j = 0; j < $scope.tabs[i].exercise_list.length; j++){
                             switch($scope.tabs[i].exercise_list[j].mode)
