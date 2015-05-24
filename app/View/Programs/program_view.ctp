@@ -24,9 +24,9 @@
             <div layout="row">
                 <div flex id="program_header_content">
                     <div class="title_program">
-                        Intentse work on the buttocks and thighs
+                        <?php echo $programs['Program']['descriptive'];?>
                     </div>
-                    <div class="content_program">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed no</div>
+                    <div class="content_program"><?php echo $programs['Program']['short_text'];?></div>
                     <div class="sharing_program_social_fb"><a href="javascript:fbShare('http://gym.miratik.com/img/images/bunnybacon.png');"><img src="/img/images/facebook_icon.png"/> </a></div>
                     <div class="sharing_program_social_twitter"><a class="twitter popup" href="http://twitter.com/share"><img src="/img/images/twitter_icon.png"/></a></div>
                     <div class="sharing_program_link"><span>Share</span></div>

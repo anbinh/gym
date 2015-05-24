@@ -17,7 +17,7 @@
                                 >
                 <?php endif;?>            
             </div>
-            <p class="name_exercise"><?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'];?></p>
+            <p class="name_exercise"><?php echo ($item['exercise_item'][0]['exercise_id'] != null)? $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'] : ''?></p>
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
             Serie
