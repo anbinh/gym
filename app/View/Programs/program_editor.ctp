@@ -187,8 +187,8 @@
                   <img style="position:absolute; left:7px; top:5px;" ng-src="{{getImage()}}">
                   <img style="position:absolute; right:5px; top:5px;" src="/img/images/drag_exercise.png">                  
               </div>
-              <div style="text-align:center; padding-top:10px;">
-                <img src="{{exercise.Exercise.photo}}" class="img-responsive" style="height:82px; margin:auto;">
+              <div style="width: 110px; margin:auto; text-align:center; padding-top:10px;">                
+                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{exercise.Exercise.video}}" poster="{{exercise.Exercise.photo}}" <="" video=""></video>
               </div> 
               <div class="text_exercise">
                 <p>{{exercise.Exercise.name}}</p>

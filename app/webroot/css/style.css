@@ -1118,7 +1118,9 @@ input[type=date]{
     margin-top: 60px;    
     color: #000000;
 }
-
+a .btn_add_picture{
+    text-decoration: none !important;
+}
 #upload{
     display: none;
 }​
