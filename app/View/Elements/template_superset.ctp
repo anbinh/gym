@@ -8,7 +8,7 @@
                 <li ng-click="change_type_exercise('2', $index)">Stretching</li>
                 <li ng-click="change_type_exercise('4', $index)">With notes</li>
                 <li ng-click="change_type_exercise('5', $index)">Only text</li>
-                <li ng-click="delete_exercise($index)">Delete</li>
+                <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index)">Delete</li>
             </ul>
         </div>   
         <div style="position:absolute; top:10px;">

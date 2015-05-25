@@ -8,7 +8,7 @@
                 <li ng-click="change_type_exercise('2', $index)">Stretching</li>
                 <li ng-click="change_type_exercise('3', $index)">Super-set</li>
                 <li ng-click="change_type_exercise('4', $index)">With notes</li>
-                <li ng-click="delete_exercise($index)">Delete</li>
+                <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index)">Delete</li>
             </ul>
         </div>        
         <textarea class="content_only_text" style="text-align:center;resize:none;" type="text" ng-model="item.text" ng-disabled="!isEdit"></textarea>

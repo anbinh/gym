@@ -932,13 +932,14 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             var tabs_save = angular.copy($scope.tabs);
             for(var i = 0; i < tabs_save.length; i++){
                 delete tabs_save[i]['count_exercise'];
+
                 for(var j = 0; j < tabs_save[i]['exercise_list'].length; j++){
                     for(var k = 0; k < tabs_save[i]['exercise_list'][j]['exercise_item'].length; k++){
                         delete tabs_save[i]['exercise_list'][j]['exercise_item'][k]['Exercise'];
                     }
                 }
-            }  
-            //console.log(tabs_save);
+                
+            } 
             if($scope.isEdit)
                 tabs_save.splice(tabs_save.length-1, 1);
             var isNewImg = false;
