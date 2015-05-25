@@ -19,10 +19,14 @@
                     <?php endif;?>  
                 </div>
                 <div class="content_box_main" layout="column">
-                    Serie<br/>
-                    <?php echo $item['exercise_item'][0]['series'];?><br/>
-                    Repetition<br/>
-                    <?php echo $item['exercise_item'][0]['repeatation_from'];?>
+                    <p class="serie">Serie</p>
+                    <p class="serie_number_super_set">
+                        <?php echo $item['exercise_item'][0]['series'];?>
+                    </p>
+                    <p class="repeat">Repeation </p>
+                    <p class="repeat_number_super_set">
+                        <?php echo $item['exercise_item'][0]['repeatation_from'];?>
+                    </p>
                 </div>                
                 <p class="name_exercise"><?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'];?></p>
             </div>
@@ -41,10 +45,14 @@
                     <?php endif;?> 
                 </div>
                 <div class="content_box_main" layout="column">
-                    Serie<br/>
-                    <?php echo $item['exercise_item'][1]['series'];?><br/>
-                    Repetition<br/>
-                    <?php echo $item['exercise_item'][1]['repeatation_from'];?>
+                   <p class="serie">Serie</p>
+                    <p class="serie_number_super_set">
+                        <?php echo $item['exercise_item'][1]['series'];?>
+                    </p>
+                    <p class="repeat">Repeation </p>
+                    <p class="repeat_number_super_set">
+                        <?php echo $item['exercise_item'][1]['repeatation_from'];?>
+                    </p>
                 </div>
                 <p class="name_exercise"><?php echo $exercises_list[$item['exercise_item'][1]['exercise_id']]['name'];?></p>
             </div>

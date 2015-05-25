@@ -20,10 +20,14 @@
             <p class="name_exercise"><?php echo $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'];?></p>
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
-            Serie
-            <?php echo $item['exercise_item'][0]['series'];?>
-            Repeation
-            <?php echo $item['exercise_item'][0]['repeatation_from'];?>
+            <p class="serie">Serie </p>
+            <p class="serie_number">
+                <?php echo $item['exercise_item'][0]['series'];?>
+            </p>            
+            <p class="repeat">Repeation </p>
+            <p class="repeat_number">
+                <?php echo $item['exercise_item'][0]['repeatation_from'];?>
+            </p>            
         </div>
     </div>
 </div>

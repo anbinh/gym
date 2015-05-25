@@ -1378,18 +1378,37 @@ input:invalid {
     margin: 3px 5px 3px 5px;
     background: #f0f0ef;
 }
-.serie{
+/*.serie{
     padding-top:2px;
     padding-left: 10px;
     overflow: auto;
     position: absolute;
     bottom: 4px;
-}
-.serie p{
+}*/
+.serie{
     float:left;
     margin: 0;
+    color:grey;
+    padding-right: 5px;
 }
-
+.repeat{
+    float:left;
+    margin: 0;
+    color:grey;
+    padding-left: 10px;   
+    padding-right: 5px;
+}
+.serie_number_super_set{
+      font-size: 17px;
+  font-weight: bold;
+  line-height: 1;
+  padding-left: 10px !important;
+}
+.repeat_number_super_set{
+    font-size: 17px;
+  font-weight: bold;
+  padding-left: 10px !important;
+}
 .sequence_number_box{
     font-weight: bold;
     padding: 5px 0 0 10px;
@@ -1674,21 +1693,25 @@ md-tabs.md-default-theme md-tabs-ink-bar {
     font-size:11pt;
 }
 .serie_number{
-    font-size:18px; 
-    font-weight:bold; 
-    line-height: 1.45; 
-    border-right:1px solid; 
-    padding-right:5px; 
-    margin-right:5px;
+    font-size: 18px;
+      font-weight: bold;
+      line-height: 1.45;
+      border-right: 1px solid;
+      padding-right: 5px;
+      margin-right: 5px;
+      margin-bottom: 0;
+      margin-left: 5px;
 }
 .repeat_text{
     color:#bcbdbe; 
     margin-right:10px;
 }
 .repeat_number{
-    font-size:18px; 
-    font-weight:bold; 
-    line-height: 1.45;
+    font-size: 18px;
+  font-weight: bold;
+  line-height: 1.45;
+  margin-left: 5px;
+  margin-bottom: 0;
 }
 .option_program_editor{
       list-style: none;
@@ -1799,6 +1822,8 @@ ul.option_program_editor li:hover{
     width: 201px;
     margin: 11px;
     height: 176px;
+    padding:7px;
+    border: 1px solid grey;
 }
 .content_box_super_set{
     padding-left: 18px;
