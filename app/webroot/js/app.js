@@ -542,6 +542,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.short_text = '';
     $scope.isLoading = false;
     $scope.isShowTabs = true;
+    $scope.imgURL = "";
     // tabs 
     $scope.tabs = [];    
     $scope.index = 1;   
@@ -603,7 +604,10 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 $http.get('/Apis/getListProgramEditor/'+program_id+'.json')
                 .then(function(res){                        
                     $scope.tabs = res.data.message.Program.content;
-                    
+                    $scope.selectObjectiveChange = res.data.message.Program.objective;
+                    $scope.short_text = res.data.message.Program.short_text;
+                    $scope.descriptive = res.data.message.Program.descriptive;
+                    $scope.imgURL = "/upload/image/" + res.data.message.Program.photo;
                     for(var i = 0; i < $scope.tabs.length; i++){
                         for(var j = 0; j < $scope.tabs[i].exercise_list.length; j++){
                             switch($scope.tabs[i].exercise_list[j].mode)
@@ -915,37 +919,43 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.isObjectiveChose = false;
     $scope.isImgChose = false;
     $scope.isSaving = false;
+    $scope.isEdit = true;
     $scope.save_program = function(){  
         //console.log($scope.tabs);
-        if($scope.selectedObjective == "" || $scope.myFile == undefined)
+        if($scope.selectObjectiveChange == "" || $scope.selectObjectiveChange == undefined || ($scope.myFile == undefined && $scope.imgURL == ""))
         {
-            if($scope.selectedObjective == "")
+            if($scope.selectObjectiveChange == "" || $scope.selectObjectiveChange == undefined)
                 $scope.isObjectiveChose = true;
-            if($scope.myFile == undefined)
+            if($scope.myFile == undefined && $scope.imgURL == "")
                 $scope.isImgChose = true;
         }
         else
         {
             $scope.isSaving = true;
             //console.log($scope.tabs);
-           var tabs = $scope.tabs;
-           var tabs_save = angular.copy($scope.tabs);
-           for(var i = 0; i < tabs_save.length; i++){
+            var tabs = $scope.tabs;
+            var tabs_save = angular.copy($scope.tabs);
+            for(var i = 0; i < tabs_save.length; i++){
                 delete tabs_save[i]['count_exercise'];
                 for(var j = 0; j < tabs_save[i]['exercise_list'].length; j++){
                     for(var k = 0; k < tabs_save[i]['exercise_list'][j]['exercise_item'].length; k++){
                         delete tabs_save[i]['exercise_list'][j]['exercise_item'][k]['Exercise'];
                     }
                 }
-           }  
-           //console.log(tabs_save);
-           tabs_save.splice(tabs_save.length-1, 1);
-           var data = {
+            }  
+            //console.log(tabs_save);
+            if($scope.isEdit)
+                tabs_save.splice(tabs_save.length-1, 1);
+            var isNewImg = false;
+            if($scope.myFile != undefined)
+                isNewImg = true;
+            var data = {
                         'tabs':tabs_save,
                         'objective':$scope.selectObjectiveChange,
                         'descriptive': $scope.descriptive,
                         'text': $scope.short_text,
                         'program_id' : program_id,
+                        'isNewImg' : isNewImg
                     };
             
             $http({
@@ -957,10 +967,17 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 .success(function(data) {
                     if(data.message == 'success')
                     {
-                        console.log(data);                    
-                        var file = $scope.myFile;        
-                        var uploadUrl = "/Apis/ProgramUploadFile.json";
-                        fileUpload.uploadFileToUrl(file, uploadUrl);                    
+                        console.log(data);   
+                        if(isNewImg == true)
+                        {
+                            var file = $scope.myFile;        
+                            var uploadUrl = "/Apis/ProgramUploadFile.json";
+                            fileUpload.uploadFileToUrl(file, uploadUrl);                    
+                        }
+                        else
+                        {
+                            window.location = "/Programs/program_view/" + data.id;
+                        }                               
                     }
                     else
                     {
@@ -969,6 +986,33 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 });
         }              
     }    
+
+    $scope.preview_program = function()
+    {
+        if($scope.selectObjectiveChange == "" || $scope.selectObjectiveChange == undefined || ($scope.myFile == undefined && $scope.imgURL == ""))
+        {
+            if($scope.selectObjectiveChange == "" || $scope.selectObjectiveChange == undefined)
+                $scope.isObjectiveChose = true;
+            if($scope.myFile == undefined && $scope.imgURL == "")
+                $scope.isImgChose = true;
+        }
+        else
+        {
+            $scope.isEdit = false;
+            $scope.tabs.splice($scope.tabs.length-1, 1);
+        }
+    }
+    $scope.backToEditor = function()
+    {
+        $scope.isEdit = true;
+        $scope.tabs.push(
+            {
+                'day_number':'',
+                'exercise_list': []
+            }
+        );
+    }
+
     $scope.selectObjective = function(selected){
         $scope.selectedObjective = selected;  
         if(selected != 0)
@@ -1059,6 +1103,11 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         window.location = "/Programs/index";
     }
 
+});
+
+app.controller('ProgramPreviewController', function($scope,$http){    
+    
+    
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {

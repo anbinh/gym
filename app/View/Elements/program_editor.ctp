@@ -6,7 +6,7 @@
 				<?php echo $this->Element('template_withnote');?>                
 				<?php echo $this->Element('template_onlytext');?>                			
         </div>
-        <creator></creator>
+        <creator ng-show="isEdit"></creator>
         <!-- <input type="button" value="add" ng-click="test()">
         <input type="button" value="remove" ng-click="testremove()"> -->    
 </div>

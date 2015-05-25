@@ -734,8 +734,7 @@ class ApisController extends AppController {
             $program['name'] = $objective['Objective']['description'];
             $program['author'] = $user['firstname'] .' '. $user['lastname'];            
             $program['level'] = '';
-            $program['objective'] = $data['objective'];            
-            $program['photo'] = '';
+            $program['objective'] = $data['objective'];                        
             $program['color_code'] = '';
             $program['name_fr'] = $objective['Objective']['description_fr'];
             $program['is_public'] = 0;
@@ -743,6 +742,7 @@ class ApisController extends AppController {
             $program['content'] = $data['tabs'];
             $program['short_text'] = $data['text'];
             $program['descriptive'] = $data['descriptive'];
+            $program['id'] = "";
 
             // check if this is add new or edit action
             if($data['program_id'] != "")
@@ -750,15 +750,30 @@ class ApisController extends AppController {
                 $program['id'] = $data['program_id'];
             }
 
-            $this->setProgramEdit($program);
-            //$this->Program->save($program);
 
-            $this->set(array(
-                'message' => 'success',
-                'data'=> $objective,
-                'data2' => $data,
-                '_serialize' => array('message','data','data2')
-            ));
+            if($data['isNewImg'] == true)
+            {
+                $this->setProgramEdit($program);
+                $this->set(array(
+                    'message' => 'success',
+                    'data'=> $objective,
+                    'data2' => $data,
+                    '_serialize' => array('message','data','data2')
+                ));
+            }                
+            else // update mode
+            {
+                $this->Program->save($program);
+                if($program['id'] != "")
+                    $program_id = $program['id'];
+                else
+                    $program_id = $this->Program->getLastInsertId();
+                $this->set(array(
+                    'message' => 'success',
+                    'id' => $program_id,
+                    '_serialize' => array('message','id')
+                ));
+            }                            
         }          
     }
 
@@ -771,9 +786,11 @@ class ApisController extends AppController {
                 $path = $file['name'];
                 $ext = pathinfo($path, PATHINFO_EXTENSION);
                 $sFileName = $this->generateRandomString().'.'.$ext;
-                $file_uri = '/img/images/'.$sFileName;                
+                $file_uri = '/upload/image/'.$sFileName;     
+                //$pathSave = $_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri;     
+                $pathSave = $_SERVER['DOCUMENT_ROOT'].$file_uri;     
                 //if(move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri));
-                if(move_uploaded_file($file['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri))                
+                if(move_uploaded_file($file['tmp_name'],$pathSave))                
                 {
                     $program = $this->getProgramEdit();
                     $program['photo'] = $sFileName;                    
@@ -799,7 +816,9 @@ class ApisController extends AppController {
 
                     $this->set(array(
                         'message' => $program_id,
-                        '_serialize' => array('message')
+                        'data' => $data,
+                        'path' => $pathSave,
+                        '_serialize' => array('message','data','path')
                     ));
                 }                
             }
