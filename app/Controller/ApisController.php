@@ -478,8 +478,8 @@ class ApisController extends AppController {
         }
     }
     public function getListProgram(){
-        //$programs_list = $this->Program->find('all',array('conditions'=>array('is_public'=>1)));
-        $programs_list = $this->Program->find('all');
+        $programs_list = $this->Program->find('all',array('conditions'=>array('is_public'=>1)));
+        //$programs_list = $this->Program->find('all');
         $this->set(array(
             'programs_list' => $programs_list,
             '_serialize' => array('programs_list')
