@@ -44,8 +44,7 @@
         oReader.readAsDataURL(oFile);
     }
 </script>
-<div ng-controller="ExerciseProgramEditorController">
-  <form action="" method="POST" enctype="multipart/form-data">
+<div ng-controller="ExerciseProgramEditorController">  
   <!-- Start Header-->
   <div layout="row" layout-align="center start">
       <div flex>
@@ -97,7 +96,7 @@
   <div layout="row" class="main_content_program_editor">
     <!-- Start Tab content -->
       <div class="program_tab" flex>               
-        <p ng-show='isLoading'><img src="/img/loader.gif"/>Loading...</p>
+        <p ng-show='isLoading'><img src="/img/loader.gif"/> Loading...</p>
         <md-tabs ng-show="isShowTabs" md-selected="selectedIndex" flex>            
             <md-tab ng-repeat="tab in tabs track by $index">  
               <md-tab-label style="padding:13px 0 13px 0;" ng-click="(tab.day_number == '' && isOk == true)? addTab() : set_index_current_tab($index);">                
@@ -199,6 +198,4 @@
       </div>
     </div>
   </div>
-  <!-- End Bottom Filter -->
-  </form>
 </div>

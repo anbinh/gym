@@ -612,7 +612,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                         for(var j = 0; j < $scope.tabs[i].exercise_list.length; j++){
                             switch($scope.tabs[i].exercise_list[j].mode)
                             {
-                                case '1':  // regular
+                                case '1':  // regular                                   
                                 case '2': // stretching                                                  
                                 case '3':  // super set                                  
                                 case '4': // with note
