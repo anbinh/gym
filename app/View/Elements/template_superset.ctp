@@ -32,9 +32,9 @@
                 </div>
                 <div class="content_box_main" layout="column">
                     Serie
-                    <input ng-model="item.exercise_item[1].series" class="serie2" type="text">
+                    <input ng-model="item.exercise_item[1].series" class="serie2" type="text" ng-disabled="!isEdit">
                     Repetition
-                    <input ng-model="item.exercise_item[1].repeatation_from" class="repeat2" type="text">
+                    <input ng-model="item.exercise_item[1].repeatation_from" class="repeat2" type="text" ng-disabled="!isEdit">
                 </div>
                 <p class="name_exercise">{{model_temp2.Exercise.name}}</p>
             </div>

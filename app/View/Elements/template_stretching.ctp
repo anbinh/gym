@@ -32,9 +32,9 @@
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
             Serie
-            <input ng-model="item.exercise_item[0].series" class="serie1" type="text">
+            <input ng-model="item.exercise_item[0].series" class="serie1" type="text" ng-disabled="!isEdit">
             Repeation
-            <input ng-model="item.exercise_item[0].repeatation_from" class="repeat1" type="text">
+            <input ng-model="item.exercise_item[0].repeatation_from" class="repeat1" type="text" ng-disabled="!isEdit">
         </div>
     </div>
 </div>

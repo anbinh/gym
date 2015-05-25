@@ -1,5 +1,5 @@
 <div ng-model="content" class="exercise_box" ng-if="item.mode == 5">
-    <div class="box_program_vew">
+    <div class="box_program_vew" id="wrap">
         <div class="header_box">
            <p>{{$index+1}}</p>
             <img ng-click="click_icon_option($event);" src="/img/images/icon_option.png" ng-show="isEdit">
@@ -11,6 +11,6 @@
                 <li ng-click="delete_exercise($index)">Delete</li>
             </ul>
         </div>        
-        <textarea class="content_only_text" type="text" ng-model="item.text"></textarea>
+        <textarea class="content_only_text" style="text-align:center;resize:none;" type="text" ng-model="item.text" ng-disabled="!isEdit"></textarea>
     </div>
 </div>

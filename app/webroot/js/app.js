@@ -722,16 +722,11 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
       // select body part change
     $scope.changedValue=function(item){
         if(item.length > 0)
-        {        
-           // var temp = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected));    
-            //$scope.exercises_list = angular.copy($filter('exerciseOptionBodyPartFilter')(temp,4,item));
-            //return;
+        {                   
             $scope.body_part_id = item;
         }
         else
-        {
-           // $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected));    
-           // return;
+        {           
            $scope.body_part_id = "";
         }
         $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));       
@@ -1103,11 +1098,17 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         window.location = "/Programs/index";
     }
 
-});
+    $scope.hoverIn = function(item){
+         var videoElements = angular.element(item.target);
+         videoElements[0].play();       
+    };
+    $scope.hoverOut = function(e){
+        var videoElements = angular.element(e.target);
+        videoElements[0].pause();        
+        videoElements[0].currentTime = 0;
+        videoElements[0].load();
+    };
 
-app.controller('ProgramPreviewController', function($scope,$http){    
-    
-    
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {
@@ -1577,7 +1578,7 @@ app.controller('ItemProgramController', function($scope,$http,$filter,$modal,$wi
 
 });
 
-app.controller('ProgramController', function($scope, $http, $modal,$window){
+app.controller('ProgramController', function($scope, $http, $modal,$window,state){
     $scope.selectedIndex = 0;   
     $scope.isAuthenticate = false;
     $http.get('/Apis/GetIsAuthenticate.json')
@@ -1667,7 +1668,7 @@ app.controller('ProgramController', function($scope, $http, $modal,$window){
         }).finally(function() {           
            // $('.btn_save_program').attr('disabled', 'disabled');
         });     
-    }
+    }    
 });
 
 app.controller('ForgetPasswordController', ['$scope', '$http' , '$sce' , function($scope,$http,$sce){
@@ -1961,28 +1962,7 @@ app.controller('DeleteaccountController', function($http, $scope, $mdDialog, $ti
             });
         }else{
 
-        }
-        // $scope.showLoader = true;
-        // if(isValid){
-        //     $http({
-        //         method  : 'POST',
-        //         url     : '/Apis/deleteAccount.json',
-        //         data    : {'email' : model.email},  
-        //         headers : { 'Content-Type': 'application/json' }  // set the headers so angular passing info as form data (not request payload)
-        //     })
-        //     .success(function(data) {         
-        //         $scope.showLoader = false;
-        //         if(data.message == "email_does_not_match"){
-        //             model.message = "Your email does not match!";   
-        //         }
-        //         else{
-        //             model.message = "Delete account successful!";
-        //         }
-                 
-        //     }) 
-        // }else{
-
-        // }
+        }        
     };
 });
 // Filter part
@@ -1997,69 +1977,6 @@ app.filter('checkExerciseIsLike', function() {
         return false;
     }
 });
-// app.filter('exerciseOptionFilter', function() {
-//     return function(input , mode) {
-//         var i=0, len=input.length;
-//         var option = "";
-//         var offset = 0;
-//         switch (mode)
-//         {
-//             case 1:
-//                 option = "1";
-//                 break;
-//             case 2:
-//                 option = "2";
-//                 break;
-//             case 3:
-//                 option = "3";
-//                 break;
-//             default :
-//                 return input;
-//         }
-           
-//         input = input.filter(function(element){
-//             return element.Exercise.category_id == option;
-//         });
-        
-//         return input;
-//     }
-// });
-
-
-// app.filter('exerciseOptionBodyPartFilter', function() {
-
-
-
-//     return function(input , option , body_part_id) {        
-        
-//         // filter by category_id
-//         if(option != 4)
-//         {            
-//             input = input.filter(function(element){
-//                 return element.Exercise.category_id == option;
-//             });                      
-//         }
-        
-//         // filter by bodypart_id
-//         input = input.filter(function(element){
-
-//             var j, flag = false;                
-//             for(j = 0; j < element.Exercise.muscle.length; j++){                    
-//                 if(element.Exercise.muscle[j].bodypart_id == body_part_id){
-//                     flag = true;                        
-//                     break;
-//                 }                    
-//             }
-
-//             if(flag){
-//                 return true;
-//             }
-//             return false;            
-//         });
-
-//         return input;
-//     }
-// });
 
 app.filter('programOptionFilter', function() {
     return function(input , item) {
@@ -2080,8 +1997,8 @@ app.controller('VideoController', function($scope,$http,$filter,state){
         $scope.isAnimate = false;
         $scope.exercise_id = '';   
         $scope.hoverIn = function(item){
-         var videoElements = angular.element(item.target);
-         videoElements[0].play();       
+            var videoElements = angular.element(item.target);
+            videoElements[0].play();       
         };
         $scope.hoverOut = function(e){
             var videoElements = angular.element(e.target);
