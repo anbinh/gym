@@ -1,4 +1,11 @@
-<div class="exercise_box" ng-if="item.mode == 2">
+<div class="exercise_box" ng-if="item.mode == 2"
+    dnd-draggable="item"    
+    dnd-horizontal-list="true"
+    dnd-moved="movedCallback1(event, $index, item)" 
+    dnd-dragstart="dragStartCallback1(event, $index, item)"     
+    dnd-effect-allowed="move"
+    dnd-disable-if="!isEdit"
+>
     <div class="box_program_vew">
         <div class="header_box">
             <p>{{$index+1}}</p>

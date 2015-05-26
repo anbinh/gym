@@ -1,5 +1,12 @@
-<div ng-model="content" class="exercise_box" ng-if="item.mode == 5">
-    <div class="box_program_vew" id="wrap">
+<div ng-model="content" class="exercise_box" ng-if="item.mode == 5" 
+    >
+    <div class="box_program_vew"
+        dnd-draggable="item"    
+        dnd-horizontal-list="true"
+        dnd-moved="movedCallback1(event, $index, item)" 
+        dnd-dragstart="dragStartCallback1(event, $index, item)"     
+        dnd-effect-allowed="move"
+        dnd-disable-if="!isEdit">
         <div class="header_box">
            <p>{{$index+1}}</p>
             <img ng-click="click_icon_option($event);" src="/img/images/icon_option.png" ng-show="isEdit">

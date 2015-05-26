@@ -28,7 +28,7 @@
                         dnd-list="list_program_saved"        
                         dnd-disable-if="isSelected == false"                
                         dnd-drop="dropCallback(event, index, item)">                        
-                            <?php echo $this->element('program_box_template');?>
+                            <?php echo $this->element('program_box_template');?>                            
                     </div>
                 </div>
             </div>

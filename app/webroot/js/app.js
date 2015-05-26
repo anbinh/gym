@@ -1110,6 +1110,32 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         videoElements[0].load();
     };
 
+    $scope.dragIndex = 0;    
+    $scope.dropIndex = 0; 
+    $scope.dropCallback1 = function(event, index, item) {        
+        console.log('drop : ' + index);   
+        $scope.dropIndex = index;     
+        return item;
+    };
+
+    $scope.movedCallback1 = function(event, index, item) {       
+        console.log('moved : ' + index);  
+        if($scope.dragIndex > $scope.dropIndex)      
+        {
+            $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice(index+1, 1);              
+        }   
+        else
+        {
+            $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice(index, 1);
+        }                                       
+    };
+
+    $scope.dragStartCallback1 = function(event, index, item) {      
+        console.log('drag : ' + index);       
+        $scope.dragIndex = index;           
+    };
+
+
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {

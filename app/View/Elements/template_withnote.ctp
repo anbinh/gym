@@ -1,4 +1,11 @@
-<div ng-model="model_temp" ng-init="model_temp.Exercise = item.exercise_item[0].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp, $index, 4, 0)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="exercise_box" ng-if="item.mode == 4">
+<div ng-model="model_temp" ng-init="model_temp.Exercise = item.exercise_item[0].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp, $index, 4, 0)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="exercise_box" ng-if="item.mode == 4"
+    dnd-draggable="item"    
+    dnd-horizontal-list="true"
+    dnd-moved="movedCallback1(event, $index, item)" 
+    dnd-dragstart="dragStartCallback1(event, $index, item)"     
+    dnd-effect-allowed="move"
+    dnd-disable-if="!isEdit"
+>
     <div class="box_program_vew">
         <div class="header_box">
             <p>{{$index+1}}</p>

@@ -1957,3 +1957,10 @@ ul.option_program_editor li:hover{
     border:1px solid #ccc;
     position: relative;
 }
+
+.drag_drop_item{   
+    height: 230px !important;
+    width: 1px !important;
+    background-position: center center;
+    position: relative;
+}
