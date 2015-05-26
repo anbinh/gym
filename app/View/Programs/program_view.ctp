@@ -27,7 +27,7 @@
                         <?php echo $programs['Program']['descriptive'];?>
                     </div>
                     <div class="content_program"><?php echo $programs['Program']['short_text'];?></div>
-                    <div class="sharing_program_social_fb"><a href="javascript:fbShare('http://gym.miratik.com/img/images/bunnybacon.png');"><img src="/img/images/facebook_icon.png"/> </a></div>
+                    <div class="sharing_program_social_fb"><a href="javascript:fbShare('http://gym.miratik.com/img/images/<?php echo $programs['Program']['photo'];?>');"><img src="/img/images/facebook_icon.png"/> </a></div>
                     <div class="sharing_program_social_twitter"><a class="twitter popup" href="http://twitter.com/share"><img src="/img/images/twitter_icon.png"/></a></div>
                     <div class="sharing_program_link"><span>Share</span></div>
                 </div>
