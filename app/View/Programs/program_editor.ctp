@@ -181,7 +181,8 @@
         </div>      
       </header>
       <div style="height:140px; overflow-y:scroll; padding: 5px 10px 0 10px">
-          <div  ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseProgramEditorController">
+          <p ng-show='isLoadingExercises' style="color:white;"> Loading...</p>
+          <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseProgramEditorController">
             <div data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="exercises_list" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}" class="dropbox_program_editor">
               <div class="zone_hand_drag">
                   <img style="position:absolute; left:7px; top:5px;" ng-src="{{getImage()}}">

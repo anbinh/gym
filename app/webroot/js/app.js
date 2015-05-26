@@ -542,6 +542,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.short_text = '';
     $scope.isLoading = false;
     $scope.isShowTabs = true;
+    $scope.isLoadingExercises = true;    
     $scope.imgURL = "";
     // tabs 
     $scope.tabs = [];    
@@ -593,11 +594,12 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             $scope.body_part_items = res.data.body_list;
         });
     // get list exercise
-    $http.get('/Apis/getListExercise.json')
+    $http.get('/Apis/getListExerciseProgramEditor.json')
         .then(function(res){
             $scope.exercises_like = res.data.exercises_like;
             $scope.exercises_list = angular.copy(res.data.exercises_list);
-            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);                        
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);    
+            $scope.isLoadingExercises = false;
         }).then(function(){// get list programs
 
             if(program_id){
@@ -666,8 +668,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         else{            
             $scope.showAllExercise = true;
         }            
-        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
-        console.log($scope.exercises_list.length);
+        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));       
     }
     $scope.stretchingClick = function(){
         if($scope.isStretchingSelected)
@@ -1169,8 +1170,7 @@ app.filter('filterExerciseProgramEditor', function(){
         }  
         if(body_part_id != ""){
             results = exercisePartFilter(results, body_part_id);
-        }
-       //console.log(results);
+        }       
         return results;
     }
 });
@@ -1186,10 +1186,7 @@ function exercisePartFilter(input, body_part_id){
             }                    
         }
 
-        if(flag){
-            return true;
-        }
-        return false;            
+        return flag;           
     });
 
     return input;
