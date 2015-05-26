@@ -1115,11 +1115,12 @@ input[type=date]{
 }
 
 .btn_add_picture{
-    margin-top: 60px;
-    text-decoration: underline;
+    margin-top: 60px;    
     color: #000000;
 }
-
+a .btn_add_picture{
+    text-decoration: none !important;
+}
 #upload{
     display: none;
 }​
@@ -1548,7 +1549,7 @@ input:invalid {
 }
 .text_exercise{
     text-align: center;
-    padding-top: 10px;
+    padding: 10px 2px 0 2px;;
 }
 .type_of_exercise_program_editor_hidden{
     margin-left: 10px;

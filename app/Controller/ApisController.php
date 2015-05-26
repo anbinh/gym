@@ -205,6 +205,27 @@ class ApisController extends AppController {
         }               
     }
 
+    public function getListExerciseProgramEditor(){
+        $user = $this->getAuthentication();
+        $exercises_like = array();
+        if($user)
+        {
+            $user = $this->User->findById($user['id']);
+            $user = $user['User'];
+            $search = array(
+                '_id' => array('$in' => $user['favorite_exercises'])
+            );
+            // find all exercise this user like
+            $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
+        }        
+        
+        $exercises_list = $this->Exercise->find('all');
+        $this->set(array(
+            'exercises_list' => $exercises_list,
+            'exercises_like' => $exercises_like,
+            '_serialize' => array('exercises_list','exercises_like')
+        ));
+    }
     public function getListExercise(){
         //$exercises = $this->Exercise->find('all',array('limit' => 8));
         $user = $this->getAuthentication();
