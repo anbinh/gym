@@ -2,11 +2,10 @@
 >
     <div class="box_program_vew"
         dnd-draggable="item"    
-        dnd-horizontal-list="true"
-        dnd-moved="movedCallback1(event, $index, item)" 
+        dnd-horizontal-list="true"        
         dnd-dragstart="dragStartCallback1(event, $index, item)"     
         dnd-effect-allowed="move"
-        dnd-disable-if="!isEdit"
+        dnd-disable-if="!isEdit"        
     >
         <div class="header_box">
             <p>{{$index+1}}</p>

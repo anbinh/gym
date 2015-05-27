@@ -4,12 +4,12 @@
     dnd-disable-if="!isEdit"
 >                    
         <div ng-repeat="item in tab.exercise_list track by $index"        	
-        >         					             				
-				<?php echo $this->Element('template_stretching');?>                				
-				<?php echo $this->Element('template_superset');?>                
-				<?php echo $this->Element('template_withnote');?>                
-				<?php echo $this->Element('template_onlytext');?>                			
-				<?php echo $this->Element('template_regular');?>   
+        >         	        	
+			<?php echo $this->Element('template_stretching');?>                				
+			<?php echo $this->Element('template_superset');?>                
+			<?php echo $this->Element('template_withnote');?>                
+			<?php echo $this->Element('template_onlytext');?>                			
+			<?php echo $this->Element('template_regular');?>   
         </div>
         <creator ng-show="isEdit"></creator>
         <!-- <input type="button" value="add" ng-click="test()">

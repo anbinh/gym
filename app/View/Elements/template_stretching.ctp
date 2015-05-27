@@ -1,7 +1,6 @@
 <div class="exercise_box" ng-if="item.mode == 2"
     dnd-draggable="item"    
-    dnd-horizontal-list="true"
-    dnd-moved="movedCallback1(event, $index, item)" 
+    dnd-horizontal-list="true"    
     dnd-dragstart="dragStartCallback1(event, $index, item)"     
     dnd-effect-allowed="move"
     dnd-disable-if="!isEdit"

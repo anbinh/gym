@@ -1116,20 +1116,26 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.dropCallback1 = function(event, index, item) {        
         console.log('drop : ' + index);   
         $scope.dropIndex = index;     
-        return item;
-    };
-
-    $scope.movedCallback1 = function(event, index, item) {       
-        console.log('moved : ' + index);  
-        if($scope.dragIndex > $scope.dropIndex)      
+        if($scope.dragIndex == $scope.dropIndex)      
         {
-            $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice(index+1, 1);              
+             
         }   
         else
         {
-            $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice(index, 1);
-        }                                       
-    };
+            var copier = $scope.tabs[$scope.index_current_tab - 1].exercise_list[$scope.dragIndex];
+            if($scope.dragIndex > $scope.dropIndex)
+            {
+                $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice($scope.dragIndex, 1);
+                $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice($scope.dropIndex,0,copier);   
+            }
+            else
+            {                
+                $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice($scope.dragIndex, 1);
+                $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice($scope.dropIndex-1,0,copier);   
+            }              
+        }   
+        return false;
+    };    
 
     $scope.dragStartCallback1 = function(event, index, item) {      
         console.log('drag : ' + index);       
