@@ -54,7 +54,7 @@
                         <?php echo $item['exercise_item'][1]['repeatation_from'];?>
                     </p>
                 </div>
-                <p class="name_exercise"><?php echo ($item['exercise_item'][0]['exercise_id'] != null)? $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'] : ''?></p>
+                <p class="name_exercise"><?php echo ($item['exercise_item'][1]['exercise_id'] != null)? $exercises_list[$item['exercise_item'][1]['exercise_id']]['name'] : ''?></p>
             </div>
         </div>     
     </div>
