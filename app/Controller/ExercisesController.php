@@ -8,7 +8,7 @@ class ExercisesController  extends AppController {
     public function test()
     {
         //$this->request->data['TextResource']['test'] = "eng";
-        $text = $this->TextResource->findById('557859f9707134de101bb1f0');
+        $text = $this->Exercise->findById('55785b80707134de101bb30e');
         pr($text);
         $this->set('exercise',$text);
         //$programs_list = $this->Program->find('all',array('conditions'=>array('is_public'=>1)));
@@ -26,7 +26,7 @@ class ExercisesController  extends AppController {
         {
             $id = $this->params['url']['id'];
             $exercise_item = $this->Exercise->find('first', array('conditions'=>array('id'=>$id)));
-            //pr($exercise_item);
+            pr($exercise_item);
             $this->set('exercise',$exercise_item);
         }
         else{

@@ -91,7 +91,7 @@
                     <p style="color:black; margin-right: 20px; margin-top:15px;"><?php echo __('Body Part');?></p>
                     <p style="margin-top:15px;">
                         <?php 
-                        $muscle_text = '';
+                        /*$muscle_text = '';
                         $bodypart_text = '';      
                         $body_field = 'body_path_text'; 
                         if($language == 'fr')     
@@ -109,8 +109,8 @@
                                 $muscle_text .= ", ";
                             }                           
                         endforeach;     
-                        $bodypart_text = substr($bodypart_text,0,-2);              
-                        echo $bodypart_text." | ".$muscle_text;
+                        $bodypart_text = substr($bodypart_text,0,-2);   */           
+                        echo $exercise['Exercise']['bodypart']." | ".$exercise['Exercise']['muscles'];
                         ?>
                     </p>
                 </div>

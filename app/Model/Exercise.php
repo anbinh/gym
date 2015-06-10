@@ -2,66 +2,73 @@
 App::uses('CakeSession', 'Model/Datasource');
 class Exercise extends AppModel {
     //var $useDbConfig = 'Mongodb';
-    var $mongoSchema = array(
-        'care' => array('type'=>'String'),
-        'comment' => array('type'=>'String'),
-        'date_creation' => array('type'=>'Timestamp'),
-        'dynamic' => array('type'=>'String'),
-        'execution' => array('type'=>'String'),
-        'identifiant' => array('type'=>'String'),
-        'indicepop' => array('type'=>'String'),
-        'name' => array('type'=>'String'),
-        'posture' => array('type'=>'String'),
-        'category' => array('type'=>'Array'),
-        'body_building' => array('type'=>'Array'),
-        'stretching' => array('type'=>'Array'),
-        'cardio' => array('type'=>'Array'),
+    var $mongoSchema = array(                        
+        'identifiant' => array('type'=>'String'),                    
+        'category_id' => array('type'=>'String'),
+        'name_fr' => array('type'=>'String'),
+        'name_eng' => array('type'=>'String'), 
+        'bodypart_id' => array('type'=>'String'),
+        'bodypart_fr' => array('type'=>'String'),
+        'bodypart_eng' => array('type'=>'String'),
+        'muscles_id' => array('type'=>'String'),
+        'muscles_fr' => array('type'=>'String'),
+        'muscles_eng' => array('type'=>'String'),
+        'posture_fr' => array('type'=>'String'),
+        'posture_eng' => array('type'=>'String'),
+        'execution_fr' => array('type'=>'String'),
+        'execution_eng' => array('type'=>'String'),
+        'care_fr' => array('type'=>'String'),
+        'care_eng' => array('type'=>'String'),        
+        'equipment_fr' => array('type'=>'String'),        
+        'equipment_eng' => array('type'=>'String'),        
+        'type' => array('type'=>'String'),        
+        'similar' => array('type'=>'String'),                    
         'photo' => array('type'=>'String'),
         'video' => array('type'=>'String'),
-        'video_small' => array('type'=>'String'),
-        'web_player' => array('type'=>'String')
+        'photo_animate' => array('type'=>'String'),
+        'web_player' => array('type'=>'String'),
+        'other' => array('type'=>'String')
     );
 
-    public function afterFind($results, $primary = false) {
-        //$lang = 'fra';
+    public function afterFind($results, $primary = false) {        
         $lang = CakeSession::read('Config.language');               
         foreach ($results as $key => $val) {
             if($lang == 'fra')
             {
-                $results[$key]['TextResource']['name'] = $val['TextResource']['name_fr'];                
-                $results[$key]['TextResource']['bodypart'] = $val['TextResource']['bodypart_fr'];
-                $results[$key]['TextResource']['muscles'] = $val['TextResource']['muscles_fr'];
-                $results[$key]['TextResource']['posture'] = $val['TextResource']['posture_fr'];
-                $results[$key]['TextResource']['execution'] = $val['TextResource']['execution_fr'];
-                $results[$key]['TextResource']['care'] = $val['TextResource']['care_fr'];
-                $results[$key]['TextResource']['equipment'] = $val['TextResource']['equipment_fr'];                
+                $results[$key]['Exercise']['name'] = $val['Exercise']['name_fr'];                
+                $results[$key]['Exercise']['bodypart'] = $val['Exercise']['bodypart_fr'];
+                $results[$key]['Exercise']['muscles'] = $val['Exercise']['muscles_fr'];
+                $results[$key]['Exercise']['posture'] = $val['Exercise']['posture_fr'];
+                $results[$key]['Exercise']['execution'] = $val['Exercise']['execution_fr'];
+                $results[$key]['Exercise']['care'] = $val['Exercise']['care_fr'];
+                $results[$key]['Exercise']['equipment'] = $val['Exercise']['equipment_fr'];                
             }
             else
             {
-                $results[$key]['TextResource']['name'] = $val['TextResource']['name_eng'];
-                $results[$key]['TextResource']['bodypart'] = $val['TextResource']['bodypart_eng'];
-                $results[$key]['TextResource']['muscles'] = $val['TextResource']['muscles_eng'];
-                $results[$key]['TextResource']['posture'] = $val['TextResource']['posture_eng'];
-                $results[$key]['TextResource']['execution'] = $val['TextResource']['execution_eng'];
-                $results[$key]['TextResource']['care'] = $val['TextResource']['care_eng'];                
-                $results[$key]['TextResource']['equipment'] = $val['TextResource']['equipment_eng'];                            
+                $results[$key]['Exercise']['name'] = $val['Exercise']['name_eng'];
+                $results[$key]['Exercise']['bodypart'] = $val['Exercise']['bodypart_eng'];
+                $results[$key]['Exercise']['muscles'] = $val['Exercise']['muscles_eng'];
+                $results[$key]['Exercise']['posture'] = $val['Exercise']['posture_eng'];
+                $results[$key]['Exercise']['execution'] = $val['Exercise']['execution_eng'];
+                $results[$key]['Exercise']['care'] = $val['Exercise']['care_eng'];                
+                $results[$key]['Exercise']['equipment'] = $val['Exercise']['equipment_eng'];                            
             } 
 
-            unset($results[$key]['TextResource']['name_fr']);
-            unset($results[$key]['TextResource']['bodypart_fr']);
-            unset($results[$key]['TextResource']['muscles_fr']);
-            unset($results[$key]['TextResource']['posture_fr']);
-            unset($results[$key]['TextResource']['execution_fr']);
-            unset($results[$key]['TextResource']['care_fr']);
-            unset($results[$key]['TextResource']['equipment_fr']);  
+            unset($results[$key]['Exercise']['name_fr']);
+            unset($results[$key]['Exercise']['bodypart_fr']);
+            unset($results[$key]['Exercise']['muscles_fr']);
+            unset($results[$key]['Exercise']['posture_fr']);
+            unset($results[$key]['Exercise']['execution_fr']);
+            unset($results[$key]['Exercise']['care_fr']);
+            unset($results[$key]['Exercise']['equipment_fr']);  
 
-            unset($results[$key]['TextResource']['name_eng']);
-            unset($results[$key]['TextResource']['bodypart_eng']);
-            unset($results[$key]['TextResource']['muscles_eng']);
-            unset($results[$key]['TextResource']['posture_eng']);
-            unset($results[$key]['TextResource']['execution_eng']);
-            unset($results[$key]['TextResource']['care_eng']);
-            unset($results[$key]['TextResource']['equipment_eng']);                           
+            unset($results[$key]['Exercise']['name_eng']);
+            unset($results[$key]['Exercise']['bodypart_eng']);
+            unset($results[$key]['Exercise']['muscles_eng']);
+            unset($results[$key]['Exercise']['posture_eng']);
+            unset($results[$key]['Exercise']['execution_eng']);
+            unset($results[$key]['Exercise']['care_eng']);
+            unset($results[$key]['Exercise']['equipment_eng']);                           
         }
         return $results;
     }
