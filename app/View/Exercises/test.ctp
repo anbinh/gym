@@ -1,1 +1,1 @@
-<?php echo $exercise['TextResource']['name_fr'];?>
+<?php //echo $exercise['TextResource']['name_fr'];?>
