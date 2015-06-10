@@ -7,13 +7,14 @@ class ExercisesController  extends AppController {
 
     public function test()
     {
-        /*$this->request->data['TextResource']['test'] = "eng";
-        $text = $this->TextResource->find('all');
-        pr($text);*/
+        //$this->request->data['TextResource']['test'] = "eng";
+        $text = $this->TextResource->findById('557859f9707134de101bb1f0');
+        pr($text);
+        $this->set('exercise',$text);
         //$programs_list = $this->Program->find('all',array('conditions'=>array('is_public'=>1)));
         //pr($programs_list);
-        $objective = $this->Objective->find('first',array('conditions'=>array('objective_id'=>(int)'6')));
-        pr($objective);
+        /*$objective = $this->Objective->find('first',array('conditions'=>array('objective_id'=>(int)'6')));
+        pr($objective);*/
     }
 
     public function login_modal() {
