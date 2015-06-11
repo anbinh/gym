@@ -49,9 +49,10 @@
   <div layout="row" layout-align="center start">
       <div flex>
           <div layout="row" layout-sm="column" class="header_program_editor" layout-align="start center">
-            <div flex='45' style="padding-top:10px;">
-              <img src="/img/images/object_dynamique.png">
-              <span style="margin-left:25px;" ng-show="isEdit"><?php echo __("CREAT A PROGRAM");?></span>
+            <div flex='45' style="padding-top:10px; padding-left:10px;">
+              <img style="position: absolute;padding-top: 8px;" src="/img/images/object_dynamique.png">
+              <span style="margin-left:49px;" ng-show="isEdit"><?php echo __("CREAT");?></span><br>
+              <span style="margin-left:30px;" ng-show="isEdit"><?php echo __("A PROGRAM");?></span>
               <span style="margin-left:25px;" ng-show="!isEdit"><?php echo __("PROGRAM PREVIEW");?></span>
             </div>         
             <div flex='100' layout="column" class="list_button">    
