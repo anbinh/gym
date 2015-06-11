@@ -1057,7 +1057,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
 
     }
 
-    $scope.delete_exercise_drop = function(index, index_of_exercise, type_of_exercise){
+    $scope.delete_exercise_drop = function(index, index_of_exercise, type_of_exercise, event){
         switch(type_of_exercise){
             case 1://regular  
             case 4://withnote

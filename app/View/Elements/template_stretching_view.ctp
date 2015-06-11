@@ -59,14 +59,7 @@
             </div>
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
-            <p class="serie">Serie </p>
-            <p class="serie_number">
-                <?php echo $item['exercise_item'][0]['series'];?>
-            </p>
-            <p class="repeat">Repeation </p>
-            <p class="repeat_number">
-                <?php echo $item['exercise_item'][0]['repeatation_from'];?>
-            <p>
+            <?php echo $item['text'];?>
         </div>
     </div>
 </div>

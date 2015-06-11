@@ -19,7 +19,7 @@
         </div>        
         <div class="content_box_regular">
             <div class="content_image" layout-align="center center" layout="column">
-                <img ng-click="delete_exercise_drop(0, $index, 4);" ng-show="model_temp.Exercise != null && isEdit ? true : false" class="icon_delete_regular" src="/img/images/delete_copy.png">
+                <img ng-click="delete_exercise_drop(0, $index, 4, $event);" ng-show="model_temp.Exercise != null && isEdit ? true : false" class="icon_delete_regular" src="/img/images/delete_copy.png">
                 <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp.Exercise.video}}" poster="{{model_temp.Exercise != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
                 <div>{{model_temp.Exercise == null ? 'DRAG EXERCISE' : ''}}</div>
             </div>
