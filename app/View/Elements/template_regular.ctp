@@ -33,9 +33,9 @@
             <p ng-if="$index == 0" class="name_exercise">{{item.exercise_item[0].Exercise.name}}</p>
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
-            Serie
+            <?php echo __('Sets');?>
             <input ng-model="item.exercise_item[0].series" class="serie1" type="text" value="" ng-disabled="!isEdit">
-            Repeation
+            <?php echo __('Repetitions');?>
             <input ng-model="item.exercise_item[0].repeatation_from" class="repeat1" type="text" value="" ng-disabled="!isEdit">
         </div>
     </div>   

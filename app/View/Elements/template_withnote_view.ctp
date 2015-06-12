@@ -4,7 +4,7 @@
             <p><?php echo $index + 1;?></p>           
         </div>        
         <div class="content_box_regular">
-            <div class="content_image" layout-align="center center" layout="column" ng-controller="VideoController">
+            <div class="content_image none_border" layout-align="center center" layout="column" ng-controller="VideoController">
                 <?php if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"

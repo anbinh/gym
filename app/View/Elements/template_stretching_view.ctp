@@ -5,7 +5,7 @@
         </div>
         
         <div class="content_box_stretching">
-            <div class="content_box_img" layout-align="center center" layout="column" ng-controller="VideoController">                
+            <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">                
                 <?php if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"
@@ -18,7 +18,7 @@
                                 >
                 <?php endif;?> 
             </div>
-            <div class="content_box_img" layout-align="center center" layout="column" ng-controller="VideoController">
+            <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">
                 <?php if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"
@@ -31,7 +31,7 @@
                                 >
                 <?php endif;?> 
             </div>
-            <div class="content_box_img" layout-align="center center" layout="column" ng-controller="VideoController">
+            <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">
                 <?php if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"
@@ -44,7 +44,7 @@
                                 >
                 <?php endif;?> 
             </div>
-            <div class="content_box_img" layout-align="center center" layout="column" ng-controller="VideoController">
+            <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">
                 <?php if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"

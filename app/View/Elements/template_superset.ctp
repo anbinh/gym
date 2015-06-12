@@ -24,9 +24,9 @@
                     <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp1.Exercise.video}}" poster="{{model_temp1.Exercise != null ? model_temp1.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
                 </div>
                 <div class="content_box_main" layout="column">
-                    Serie
+                    <?php echo __('Sets');?>
                     <input ng-model="item.exercise_item[0].series" class="serie2" type="text">
-                    Repetition
+                    <?php echo __('Repetitions');?>
                     <input ng-model="item.exercise_item[0].repeatation_from" class="repeat2" type="text">
                 </div>
                 <p class="name_exercise">{{model_temp1.Exercise.name}}</p>
@@ -37,9 +37,9 @@
                     <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp2.Exercise.video}}" poster="{{model_temp2.Exercise != null ? model_temp2.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
                 </div>
                 <div class="content_box_main" layout="column">
-                    Serie
+                    <?php echo __('Sets');?>
                     <input ng-model="item.exercise_item[1].series" class="serie2" type="text" ng-disabled="!isEdit">
-                    Repetition
+                    <?php echo __('Repetitions');?>
                     <input ng-model="item.exercise_item[1].repeatation_from" class="repeat2" type="text" ng-disabled="!isEdit">
                 </div>
                 <p class="name_exercise">{{model_temp2.Exercise.name}}</p>

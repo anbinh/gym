@@ -495,14 +495,14 @@ app.directive( 'test', function ( $compile ) {
 app.directive( 'creator', function ( $compile ) {
   return {
     restrict: 'E',
-    template : "<div class=\"exercise_box\">\
+    template : "<div ng-model=\"model_temp_plus\" data-drop=\"true\" jqyoui-droppable=\"{multiple:true, onDrop: 'dropCallbackPlus(model_temp_plus)'}\" class=\"exercise_box\">\
                     <div class=\"box_program_vew box_creator\" layout-align=\"center center\" layout=\"row\">\
                         <div ng-click=\"create_exercise(1);\" class=\"box_creator_plus\" layout-align=\"center center\" layout=\"row\">+</div>\
                     </div>\
                 </div>",
     controller: function ( $scope, $element ) {
         $scope.showOptionChooseTypeExercise = false;        
-        $scope.create_exercise = function(){           
+        $scope.create_exercise = function(event, model_temp_plus){           
             var day_number = $scope.$parent.index_current_tab;
             var program_item = {            
                 'mode':'1',
@@ -513,17 +513,26 @@ app.directive( 'creator', function ( $compile ) {
                         'series':'',
                         'repeatation_from':'',
                         'repeatation_to':'',
-                        'hold':''
+                        'hold':'',
+                        'Exercise':null
                     }
                 ],
                 'text':''                   
             };   
-
+            if(model_temp_plus != undefined){
+                var data = angular.copy(model_temp_plus);
+                program_item.exercise_item[0].exercise_id = data.Exercise.id;
+                program_item.exercise_item[0].Exercise = data.Exercise;
+                $element.remove();
+            }
+                    
             $scope.$parent.tabs[day_number-1].exercise_list.push(program_item);
+            
+
         }
-        // $scope.click_icon_option = function(){
-        //     $scope.showOptionChooseTypeExercise = !$scope.showOptionChooseTypeExercise;
-        // };
+        $scope.dropCallbackPlus = function(event, ui, model_temp_plus){
+            $scope.create_exercise(event, model_temp_plus);            
+        };
     }
   };
 });

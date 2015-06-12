@@ -4,7 +4,7 @@
             <p><?php echo $index + 1;?></p>            
         </div>                   
         <div class="content_box_regular">
-            <div class="content_image" layout-align="center center" layout="column" ng-controller="VideoController">                
+            <div class="content_image none_border" layout-align="center center" layout="column" ng-controller="VideoController">                
                 <?php if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"
@@ -20,11 +20,11 @@
             <p class="name_exercise"><?php echo ($item['exercise_item'][0]['exercise_id'] != null)? $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'] : ''?></p>
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
-            <p class="serie">Serie </p>
+            <p class="serie"><?php echo __('Sets');?> </p>
             <p class="serie_number">
                 <?php echo $item['exercise_item'][0]['series'];?>
             </p>            
-            <p class="repeat">Repeation </p>
+            <p class="repeat"><?php echo __('Repetitions');?> </p>
             <p class="repeat_number">
                 <?php echo $item['exercise_item'][0]['repeatation_from'];?>
             </p>            

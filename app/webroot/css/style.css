@@ -1278,7 +1278,7 @@ input:invalid {
     margin-top: 10px;
 }
 .none_border{
-    border: 0;
+    border: 0 !important;
 }
 .border_dotted{
     border: 2px dotted;
@@ -1389,15 +1389,17 @@ input:invalid {
 .serie{
     float:left;
     margin: 0;
-    color:grey;
+    color:grey !important;
     padding-right: 5px;
+    font-size: 13px;
 }
 .repeat{
     float:left;
     margin: 0;
-    color:grey;
+    color:grey !important;
     padding-left: 10px;   
     padding-right: 5px;
+    font-size: 13px;
 }
 .serie_number_super_set{
       font-size: 17px;
@@ -1686,7 +1688,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
   /*margin-left: 10px;*/
 }
 .md-tabs-content{
-    padding-left: 7px;
+    padding: 7px;
 }
 .serie_text{
     color:#c7c8c9; 
@@ -1694,7 +1696,7 @@ md-tabs.md-default-theme md-tabs-ink-bar {
     font-size:11pt;
 }
 .serie_number{
-    font-size: 18px;
+    font-size: 15px;
       font-weight: bold;
       line-height: 1.45;
       border-right: 1px solid;
@@ -1702,17 +1704,19 @@ md-tabs.md-default-theme md-tabs-ink-bar {
       margin-right: 5px;
       margin-bottom: 0;
       margin-left: 5px;
+      color: black;
 }
 .repeat_text{
     color:#bcbdbe; 
     margin-right:10px;
 }
 .repeat_number{
-    font-size: 18px;
+    font-size: 15px;
   font-weight: bold;
   line-height: 1.45;
   margin-left: 5px;
   margin-bottom: 0;
+  color: black;
 }
 .option_program_editor{
       list-style: none;
@@ -1780,7 +1784,7 @@ ul.option_program_editor li:hover{
     float: left;
     font-weight: bold;
     padding: 5px 0 0 5px;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 1;
 }
 .header_box img{
@@ -1810,13 +1814,14 @@ ul.option_program_editor li:hover{
     padding: 8px 1px 0px 2px;
     height: 40px;
     overflow: hidden;
+    font-size: 13px;
 }
 .serie1{
-    width: 30px;
+    width: 45px;
     margin: 5px;
 }
 .repeat1{
-    width: 50px;
+    width: 55px;
     margin: 5px;
 }
 .content_only_text{
@@ -1836,6 +1841,8 @@ ul.option_program_editor li:hover{
     height: 20px;
     overflow: hidden;
     padding-left: 2px;
+    font-size: 13px;
+    color:black;
 }
 .content_box_super_set .content_box_img{
     border: 1px dotted;
@@ -1847,6 +1854,8 @@ ul.option_program_editor li:hover{
 }
 .content_box_super_set .content_box_main{
     padding-left: 11px;
+    font-size: 13px;
+    color: grey;
 }
 .content_box_stretching{
     overflow: auto;  
@@ -1964,4 +1973,9 @@ ul.option_program_editor li:hover{
     width: 1px !important;
     background-position: center center;
     position: relative;
+}
+
+.fotter_box{
+    font-size: 13px;
+    color: grey;
 }
