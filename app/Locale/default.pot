@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-05-01 18:17+0200\n"
+"POT-Creation-Date: 2015-06-13 17:57+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/UsersController.php:14;26
+#: Controller/UsersController.php:19;31
 msgid "Invalid user"
 msgstr ""
 
@@ -128,20 +128,8 @@ msgstr ""
 msgid "Edit Subdocument"
 msgstr ""
 
-#: View/Elements/exercise_stretching.ctp:30;59;75;89;127
-msgid "Set"
-msgstr ""
-
-#: View/Elements/exercise_stretching.ctp:32;79;93
-msgid "Repetitions"
-msgstr ""
-
-#: View/Elements/exercise_stretching.ctp:128
-msgid "Hold"
-msgstr ""
-
-#: View/Elements/exercise_stretching.ctp:128
-msgid "Seconds"
+#: View/Elements/program_box_template.ctp:16
+msgid "By"
 msgstr ""
 
 #: View/Elements/right_advs.ctp:5
@@ -156,39 +144,96 @@ msgstr ""
 msgid "advertising"
 msgstr ""
 
+#: View/Elements/template_onlytext.ctp:13
+#: View/Elements/template_stretching.ctp:13
+#: View/Elements/template_superset.ctp:13
+#: View/Elements/template_withnote.ctp:13
+msgid "Regular"
+msgstr ""
+
+#: View/Elements/template_onlytext.ctp:14
+#: View/Elements/template_regular.ctp:14
+#: View/Elements/template_superset.ctp:14
+#: View/Elements/template_withnote.ctp:14
+#: View/Exercises/index.ctp:17
+#: View/Programs/program_editor.ctp:154;168
+msgid "Stretching"
+msgstr ""
+
+#: View/Elements/template_onlytext.ctp:15
+#: View/Elements/template_regular.ctp:15
+#: View/Elements/template_stretching.ctp:14
+#: View/Elements/template_withnote.ctp:15
+msgid "Super-set"
+msgstr ""
+
+#: View/Elements/template_onlytext.ctp:16
+#: View/Elements/template_regular.ctp:16
+#: View/Elements/template_stretching.ctp:15
+#: View/Elements/template_superset.ctp:15
+msgid "With notes"
+msgstr ""
+
+#: View/Elements/template_onlytext.ctp:17
+#: View/Elements/template_regular.ctp:18
+#: View/Elements/template_stretching.ctp:17
+#: View/Elements/template_superset.ctp:17
+#: View/Elements/template_withnote.ctp:17
+msgid "Delete"
+msgstr ""
+
+#: View/Elements/template_regular.ctp:17
+#: View/Elements/template_stretching.ctp:16
+#: View/Elements/template_superset.ctp:16
+#: View/Elements/template_withnote.ctp:16
+msgid "Only text"
+msgstr ""
+
+#: View/Elements/template_regular.ctp:25;30
+#: View/Elements/template_withnote.ctp:24
+msgid "DRAG EXERCISE"
+msgstr ""
+
+#: View/Elements/template_regular.ctp:36
+#: View/Elements/template_regular_view.ctp:23
+#: View/Elements/template_superset.ctp:27;40
+msgid "Sets"
+msgstr ""
+
+#: View/Elements/template_regular.ctp:38
+#: View/Elements/template_regular_view.ctp:27
+#: View/Elements/template_superset.ctp:29;42
+msgid "Repetitions"
+msgstr ""
+
 #: View/Exercises/detail.ctp:91
 msgid "Body Part"
 msgstr ""
 
-#: View/Exercises/detail.ctp:119
+#: View/Exercises/detail.ctp:100
 msgid "Position"
 msgstr ""
 
-#: View/Exercises/detail.ctp:132
+#: View/Exercises/detail.ctp:113
 msgid "Execution"
 msgstr ""
 
-#: View/Exercises/detail.ctp:146
+#: View/Exercises/detail.ctp:127
 msgid "Care"
 msgstr ""
 
 #: View/Exercises/index.ctp:12
-#: View/Programs/program_editor.ctp:65;79
+#: View/Programs/program_editor.ctp:153;167
 msgid "Bodybuilding"
 msgstr ""
 
-#: View/Exercises/index.ctp:17
-#: View/Programs/program_editor.ctp:66;80
-msgid "Stretching"
-msgstr ""
-
 #: View/Exercises/index.ctp:22
-#: View/Programs/program_editor.ctp:67;81
+#: View/Programs/program_editor.ctp:155;169
 msgid "Cardio"
 msgstr ""
 
 #: View/Exercises/index.ctp:26
-#: View/Programs/program_editor.ctp:70;84
+#: View/Programs/program_editor.ctp:158;172
 msgid "Part"
 msgstr ""
 
@@ -296,40 +341,86 @@ msgid "Term of use"
 msgstr ""
 
 #: View/Programs/index.ctp:22
-#: View/Programs/program_editor.ctp:37
+#: View/Programs/program_editor.ctp:118
 msgid "OBJECTIVE"
 msgstr ""
 
 #: View/Programs/index.ctp:25
-#: View/Programs/program_editor.ctp:39
+#: View/Programs/program_editor.ctp:120
 msgid "Choose"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:7
-msgid "CREAT A PROGRAM"
+#: View/Programs/program_editor.ctp:40
+#: View/Users/edit_profile.ctp:29;56
+msgid "Edit Picture"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:46
-msgid "ADD PICTURE"
+#: View/Programs/program_editor.ctp:54
+msgid "CREAT"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:78
-msgid "Choosing"
+#: View/Programs/program_editor.ctp:55
+msgid "A PROGRAM"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:91
-msgid "Show only"
+#: View/Programs/program_editor.ctp:56
+msgid "PROGRAM PREVIEW"
 msgstr ""
 
-#: View/Programs/program_view.ctp:14
-msgid "Remove from profile"
+#: View/Programs/program_editor.ctp:60
+msgid "Preview"
 msgstr ""
 
-#: View/Programs/program_view.ctp:16
+#: View/Programs/program_editor.ctp:61
+msgid "Back to creator"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:62
+#: View/Programs/program_view.ctp:22;24
 msgid "Save"
 msgstr ""
 
-#: View/Programs/program_view.ctp:36
+#: View/Programs/program_editor.ctp:63
+msgid "Cancel"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:66
+msgid "Complete all fields"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:67
+msgid "Saving"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:130
+msgid "ADD PICTURE"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:136
+msgid "Descriptive title"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:139
+msgid "Short text about program"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:166
+msgid "Choosing"
+msgstr ""
+
+#: View/Programs/program_editor.ctp:179
+msgid "Show only"
+msgstr ""
+
+#: View/Programs/program_view.ctp:19
+msgid "Modify"
+msgstr ""
+
+#: View/Programs/program_view.ctp:21;25
+msgid "Remove from profile"
+msgstr ""
+
+#: View/Programs/program_view.ctp:45
 msgid "Day"
 msgstr ""
 
@@ -356,9 +447,30 @@ msgid "SAVE"
 msgstr ""
 
 #: View/Users/change_password.ctp:40
+#: View/Users/confirm_delete.ctp:14
 #: View/Users/delete_account.ctp:42
 #: View/Users/edit_profile.ctp:146
 msgid "CANCEL"
+msgstr ""
+
+#: View/Users/confirm_delete.ctp:8
+msgid "You are about to"
+msgstr ""
+
+#: View/Users/confirm_delete.ctp:9
+msgid "remove the program."
+msgstr ""
+
+#: View/Users/confirm_delete.ctp:10
+msgid "Are you sure"
+msgstr ""
+
+#: View/Users/confirm_delete.ctp:11
+msgid "you want to delete it?"
+msgstr ""
+
+#: View/Users/confirm_delete.ctp:13
+msgid "DELETE"
 msgstr ""
 
 #: View/Users/delete_account.ctp:30
@@ -367,10 +479,6 @@ msgstr ""
 
 #: View/Users/delete_account.ctp:32
 msgid "To confirm your account deletion please type &lt&ltDELETE&gt&gt below."
-msgstr ""
-
-#: View/Users/edit_profile.ctp:29;56
-msgid "Edit Picture"
 msgstr ""
 
 #: View/Users/edit_profile.ctp:62

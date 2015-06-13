@@ -10,11 +10,11 @@
             <p>{{$index+1}}</p>
             <img ng-click="click_icon_option($event);" src="/img/images/icon_option.png" ng-show="isEdit">
             <ul class="option_program_editor">
-                <li ng-click="change_type_exercise('1', $index)">Regular</li>
-                <li ng-click="change_type_exercise('2', $index)">Stretching</li>
-                <li ng-click="change_type_exercise('4', $index)">With notes</li>
-                <li ng-click="change_type_exercise('5', $index)">Only text</li>
-                <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index)">Delete</li>
+                <li ng-click="change_type_exercise('1', $index)"><?php echo __('Regular');?></li>
+                <li ng-click="change_type_exercise('2', $index)"><?php echo __('Stretching');?></li>
+                <li ng-click="change_type_exercise('4', $index)"><?php echo __('With notes');?></li>
+                <li ng-click="change_type_exercise('5', $index)"><?php echo __('Only text');?></li>
+                <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index)"><?php echo __('Delete');?></li>
             </ul>
         </div>   
         <div style="position:absolute; top:10px;">
@@ -25,9 +25,9 @@
                 </div>
                 <div class="content_box_main" layout="column">
                     <?php echo __('Sets');?>
-                    <input ng-model="item.exercise_item[0].series" class="serie2" type="text">
+                    <input ng-model="item.exercise_item[0].series" class="serie2" type="text" ng-disabled="!isEdit">
                     <?php echo __('Repetitions');?>
-                    <input ng-model="item.exercise_item[0].repeatation_from" class="repeat2" type="text">
+                    <input ng-model="item.exercise_item[0].repeatation_from" class="repeat2" type="text" ng-disabled="!isEdit">
                 </div>
                 <p class="name_exercise">{{model_temp1.Exercise.name}}</p>
             </div>

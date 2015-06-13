@@ -580,6 +580,11 @@ input[type=date]{
     max-width: 100%;
 }
 
+.img_program_private_first{
+    height: 220px;    
+    max-width: 100%;
+}
+
 .program_box{
     min-height: 220px !important;
     width: 25%;
@@ -598,7 +603,9 @@ input[type=date]{
 
 /* Large Screen */
 @media (min-width: 1042px) {
-
+    .title_program_destop_view{
+        width: 75%;
+    }
 }
 /* Desktop */
 @media (max-width: 1041px) {
