@@ -10,18 +10,18 @@
             <p>{{$index+1}}</p>
             <img ng-click="click_icon_option($event);" ng-click src="/img/images/icon_option.png" ng-show="isEdit">
             <ul class="option_program_editor">
-                <li ng-click="change_type_exercise('1', $index)">Regular</li>
-                <li ng-click="change_type_exercise('2', $index)">Stretching</li>
-                <li ng-click="change_type_exercise('3', $index)">Super-set</li>
-                <li ng-click="change_type_exercise('5', $index)">Only text</li>
-                <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index)">Delete</li>
+                <li ng-click="change_type_exercise('1', $index)"><?php echo __('Regular');?></li>
+                <li ng-click="change_type_exercise('2', $index)"><?php echo __('Stretching');?></li>
+                <li ng-click="change_type_exercise('3', $index)"><?php echo __('Super-set');?></li>
+                <li ng-click="change_type_exercise('5', $index)"><?php echo __('Only text');?></li>
+                <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index)"><?php echo __('Delete');?></li>
             </ul>
         </div>        
         <div class="content_box_regular">
             <div class="content_image" layout-align="center center" layout="column">
                 <img ng-click="delete_exercise_drop(0, $index, 4, $event);" ng-show="model_temp.Exercise != null && isEdit ? true : false" class="icon_delete_regular" src="/img/images/delete_copy.png">
                 <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp.Exercise.video}}" poster="{{model_temp.Exercise != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
-                <div>{{model_temp.Exercise == null ? 'DRAG EXERCISE' : ''}}</div>
+                <div>{{model_temp.Exercise == null ? "<?php echo __('DRAG EXERCISE');?>" : ""}}</div>
             </div>
             <p class="name_exercise">{{model_temp.Exercise.name}}</p>
         </div>

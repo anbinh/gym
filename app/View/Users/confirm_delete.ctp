@@ -5,10 +5,10 @@
 		  right: 0;
 		  top: 70px;
 		  bottom: 0;">
-	You are about to <br>
-	remove the program.<br>
-	Are you sure<br>
-	you want to delete it?<br>
+	<?php echo __('You are about to');?> <br>
+	<?php echo __('remove the program.');?><br>
+	<?php echo __('Are you sure');?><br>
+	<?php echo __('you want to delete it?');?><br>
 	<br>
 	<input ng-click="delete_program();" type="button" class="btn button_white" value="<?php echo __('DELETE');?>"> 
 	<input style="font-weight: bold;" ng-click="cancel();" type="button" class="btn button_green" value="<?php echo __('CANCEL');?>"> 

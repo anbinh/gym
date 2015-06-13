@@ -4,9 +4,14 @@
         <div layout="column" class="summary_program">
             <div layout="row" class="header_program" layout-wrap>
                 <div flex="20"  style="padding-left:10px;">
-                    <div class="program_logo_topic" style="background-color: <?php echo $programs['Program']['color_code']?>">
-                        <div style="text-align:center;"><img class="img_program_view" src="/upload/image/<?php echo $programs['Program']['photo']?>"></div>
-                        <div class="program_view_text_name"> <?php echo ($language=='fra')?$programs['Program']['name_fr']:$programs['Program']['name'];?></div>
+                    <div class="program_logo_topic" style="<?php echo ($programs['Program']['is_public'] == 1) ?  'background-color:'.$programs['Program']['color_code'] : 'background-image:url(/upload/image/'.$programs['Program']['photo'].');background-size: cover;'
+                    ?>">
+                        <div style="text-align:center;">
+                            <?php if($programs['Program']['is_public'] == 1) {?>   
+                                <img class="img_program_view" src="/upload/image/<?php echo $programs['Program']['photo']?>">
+                            <?php }?>                
+                            <div class="program_view_text_name" style="<?php echo ($programs['Program']['is_public'] == 0) ? 'margin-top: 150px;' : ''?>"> <?php echo $programs['Program']['name'];?></div>
+                        </div>                        
                     </div>
                 </div>
                 <div flex layout-align="end end" style="text-align: end; margin-right:15px;">      
@@ -23,7 +28,7 @@
             </div>
             <div layout="row">
                 <div flex id="program_header_content">
-                    <div class="title_program">
+                    <div class="title_program title_program_destop_view">
                         <?php echo $programs['Program']['descriptive'];?>
                     </div>
                     <div class="content_program"><?php echo $programs['Program']['short_text'];?></div>

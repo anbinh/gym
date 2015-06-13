@@ -131,7 +131,7 @@ class UsersController extends AppController {
                     // Update author name of the program this account is owner
                     $program = $this->Program->find('all',array('conditions'=>array('creator_id'=> $data['User']['id'])));
                     foreach ($program as $key => $value) {
-                        $value['Program']['author'] = $data['User']['firstname']. " " . $data['User']['lastname'];
+                        $value['Program']['author'] = $data['User']['login'];
                         $this->Program->save($value);
                     }
                 }
