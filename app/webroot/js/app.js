@@ -523,7 +523,7 @@ app.directive( 'creator', function ( $compile ) {
                 var data = angular.copy(model_temp_plus);
                 program_item.exercise_item[0].exercise_id = data.Exercise.id;
                 program_item.exercise_item[0].Exercise = data.Exercise;
-                $element.remove();
+                //$element.remove();
             }
                     
             $scope.$parent.tabs[day_number-1].exercise_list.push(program_item);
@@ -1220,12 +1220,18 @@ function exercisePartFilter(input, body_part_id){
     input = input.filter(function(element){
 
         var j, flag = false;                
-        for(j = 0; j < element.Exercise.muscle.length; j++){                    
-            if(element.Exercise.muscle[j].bodypart_id == body_part_id){
-                flag = true;                        
-                break;
-            }                    
+        var arr_temp = element.Exercise.bodypart_id.split('.');
+        if(arr_temp.indexOf(body_part_id) != -1){
+            //console.log(arr_temp.indexOf(body_part_id));    
+            flag = true;
         }
+        
+        // for(j = 0; j < element.Exercise.muscle.length; j++){                    
+        //     if(element.Exercise.muscle[j].bodypart_id == body_part_id){
+        //         flag = true;                        
+        //         break;
+        //     }                    
+        // }
 
         return flag;           
     });
@@ -1369,7 +1375,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     };   
 
     // select body part change
-    $scope.changedValue=function(item){
+    $scope.changedValue=function(item){        
         if(item.length > 0)
         {                  
             $scope.body_part_id = item;
@@ -1382,8 +1388,8 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     }   
 
     // print out on the view
-    $scope.print_out_view = function(){        
-        $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
+    $scope.print_out_view = function(){                
+       $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));    
     }
     // load more exercises
     $scope.current_ofset = 1;    
