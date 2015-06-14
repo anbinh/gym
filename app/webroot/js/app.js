@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop','dndLists','ngTouch']);
+var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop','dndLists']);
 
 app.controller('ExerciseDetailController', function($scope,$http) {
     var exercise_id = window.location.search;
