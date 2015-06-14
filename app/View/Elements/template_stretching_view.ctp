@@ -6,11 +6,11 @@
         
         <div class="content_box_stretching">
             <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">                
-                <?php if(!isset($is_mobile)): ?>
+                <?php if(isset($item['exercise_item'][0])) if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"
                     ng-mouseleave="hoverOut($event)"
-                    class="img-responsive" preload="none" src="<?php echo (($item['exercise_item'][0]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][0]['exercise_id']]['video_small'] : '';?>" poster="<?php echo (($item['exercise_item'][0]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo']: '';?>" width="208px" height="152px"></video>
+                    class="img-responsive" preload="none" src="<?php echo (($item['exercise_item'][0]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][0]['exercise_id']]['video'] : '';?>" poster="<?php echo (($item['exercise_item'][0]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo']: '';?>" width="208px" height="152px"></video>
                 <?php else:?>
                     <img class="img-responsive"
                                      ng-src="{{getExerciseImage('<?php echo (($item['exercise_item'][0]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo'] : '';?>','<?php echo (($item['exercise_item'][0]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][0]['exercise_id']]['photo_animate']: '';?>')}}"
@@ -19,11 +19,11 @@
                 <?php endif;?> 
             </div>
             <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">
-                <?php if(!isset($is_mobile)): ?>
+                <?php if(isset($item['exercise_item'][1])) if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"
                     ng-mouseleave="hoverOut($event)"
-                    class="img-responsive" preload="none" src="<?php echo (($item['exercise_item'][1]['exercise_id']) != '') ? $exercises_list[$item['exercise_item'][1]['exercise_id']]['video_small'] : '';?>" poster="<?php echo (($item['exercise_item'][1]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][1]['exercise_id']]['photo']: '';?>" width="208px" height="152px"></video>
+                    class="img-responsive" preload="none" src="<?php echo (($item['exercise_item'][1]['exercise_id']) != '') ? $exercises_list[$item['exercise_item'][1]['exercise_id']]['video'] : '';?>" poster="<?php echo (($item['exercise_item'][1]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][1]['exercise_id']]['photo']: '';?>" width="208px" height="152px"></video>
                 <?php else:?>
                     <img class="img-responsive"
                                      ng-src="{{getExerciseImage('<?php echo (($item['exercise_item'][1]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][1]['exercise_id']]['photo'] : '';?>','<?php echo (($item['exercise_item'][1]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][1]['exercise_id']]['photo_animate']: '';?>')}}"
@@ -32,11 +32,11 @@
                 <?php endif;?> 
             </div>
             <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">
-                <?php if(!isset($is_mobile)): ?>
+                <?php if(isset($item['exercise_item'][2])) if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"
                     ng-mouseleave="hoverOut($event)"
-                    class="img-responsive" preload="none" src="<?php echo (($item['exercise_item'][2]['exercise_id']) != '') ? $exercises_list[$item['exercise_item'][2]['exercise_id']]['video_small'] : '';?>" poster="<?php echo (($item['exercise_item'][2]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][2]['exercise_id']]['photo']: '';?>" width="208px" height="152px"></video>
+                    class="img-responsive" preload="none" src="<?php echo (($item['exercise_item'][2]['exercise_id']) != '') ? $exercises_list[$item['exercise_item'][2]['exercise_id']]['video'] : '';?>" poster="<?php echo (($item['exercise_item'][2]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][2]['exercise_id']]['photo']: '';?>" width="208px" height="152px"></video>
                 <?php else:?>
                     <img class="img-responsive"
                                      ng-src="{{getExerciseImage('<?php echo (($item['exercise_item'][2]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][2]['exercise_id']]['photo'] : '';?>','<?php echo (($item['exercise_item'][2]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][2]['exercise_id']]['photo_animate']: '';?>')}}"
@@ -45,11 +45,11 @@
                 <?php endif;?> 
             </div>
             <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">
-                <?php if(!isset($is_mobile)): ?>
+                <?php if(isset($item['exercise_item'][3])) if(!isset($is_mobile)): ?>
                     <video 
                     ng-mouseover="hoverIn($event)"
                     ng-mouseleave="hoverOut($event)"
-                    class="img-responsive" preload="none" src="<?php echo (($item['exercise_item'][3]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][3]['exercise_id']]['video_small'] : '';?>" poster="<?php echo (($item['exercise_item'][3]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][3]['exercise_id']]['photo']: '';?>" width="208px" height="152px"></video>
+                    class="img-responsive" preload="none" src="<?php echo (($item['exercise_item'][3]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][3]['exercise_id']]['video'] : '';?>" poster="<?php echo (($item['exercise_item'][3]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][3]['exercise_id']]['photo']: '';?>" width="208px" height="152px"></video>
                 <?php else:?>
                     <img class="img-responsive"
                                      ng-src="{{getExerciseImage('<?php echo (($item['exercise_item'][3]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][3]['exercise_id']]['photo'] : '';?>','<?php echo (($item['exercise_item'][3]['exercise_id']) != '')? $exercises_list[$item['exercise_item'][3]['exercise_id']]['photo_animate']: '';?>')}}"
