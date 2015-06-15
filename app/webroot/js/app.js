@@ -884,6 +884,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             $timeout(function () {
                 $scope.isOk = true;
                 $scope.selectedIndex = $scope.tabs.length - 2;
+                $scope.index_current_tab = $scope.index_current_tab - 1;
             }, 50);
         }       
     };
