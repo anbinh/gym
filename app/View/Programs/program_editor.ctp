@@ -50,12 +50,12 @@
       <div flex>
           <div layout="row" layout-sm="column" class="header_program_editor" layout-align="start center">
             <div flex='45' style="padding-top:10px; padding-left:10px;">
-              <img style="position: absolute;padding-top: 8px;" src="/img/images/object_dynamique.png">
+              <img style="position: absolute;" ng-class="isEdit ? 'icon_program_editor':'icon_program_editor_preview'" src="/img/images/object_dynamique.png">
               <span style="margin-left:49px;" ng-show="isEdit"><?php echo __("CREAT");?></span><br>
               <span style="margin-left:30px;" ng-show="isEdit"><?php echo __("A PROGRAM");?></span>
               <span style="margin-left:25px;" ng-show="!isEdit"><?php echo __("PROGRAM PREVIEW");?></span>
             </div>         
-            <div flex='100' layout="column" class="list_button">    
+            <div flex='100' layout="column" class="list_button" style="margin-top: 10px;">    
               <div>          
                 <input type="button" ng-click="preview_program()" class="btn btn_program_editor btn_draft_program" value="<?php echo __("Preview");?>" ng-show="isEdit">
                 <input type="button" style="width:150px" ng-click="backToEditor()" class="btn btn_program_editor btn_draft_program" value="<?php echo __("Back to creator");?>" ng-show="!isEdit">
@@ -187,10 +187,12 @@
             <div data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="exercises_list" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}" class="dropbox_program_editor">
               <div class="zone_hand_drag">
                   <img style="position:absolute; left:7px; top:5px;" ng-src="{{getImage()}}">
-                  <img style="position:absolute; right:5px; top:5px;" src="/img/images/drag_exercise.png">                  
+                  <img style="position:absolute; right:5px; top:5px;" src="/img/images/drag_exercise.png">
               </div>
-              <div style="width: 110px; margin:auto; text-align:center; padding-top:10px;">                
-                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{exercise.Exercise.video}}" poster="{{exercise.Exercise.photo}}" <="" video=""></video>
+              <div style="width: 110px; margin:auto; text-align:center; padding-top:10px;">
+                <img class="img-responsive"
+                     src="{{exercise.Exercise.photo}}"
+                >
               </div> 
               <div class="text_exercise">
                 <p>{{exercise.Exercise.name}}</p>

@@ -165,10 +165,17 @@ class ApisController extends AppController {
             {
                 $this->setLang("eng");
             }
+
+            // check if user has to try any private page before
+            $url = $this->getUnauthenticateUrl();
+            if(!isset($url))
+                $url = null;            
+                
             $this->set(array(
                 'message' => 'success',
                 'id' => $user['User']['id'],
-                '_serialize' => array('message','id')
+                'url' => $url,
+                '_serialize' => array('message','id','url')
             ));
         }
         else

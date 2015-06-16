@@ -30,7 +30,7 @@ class AppController extends Controller {
             }
         }   
             
-        
+        //pr($this->getUnauthenticateUrl());
         $this->setLang($this->language); // call protected method setLang with the lang shortcode
         $this->set('language',$this->language); // send $this->language value to the view
 
@@ -59,7 +59,10 @@ class AppController extends Controller {
                         if($auth_user == null) {
                             $is_register = $this->getCurrentRegister();
                             if($is_register == null && $this->params['controller'] != 'Exercises' && $this->params['controller'] != 'Programs')
+                            {
+                                $this->saveUnauthenticateUrl('/' . $this->params['controller'] . '/' . $this->params['action']);
                                 $this->redirect('/Users/login');
+                            }
                         }
                         else {
                             $this->set('auth_user',$auth_user);
@@ -95,6 +98,14 @@ class AppController extends Controller {
 
     function getCurrentRegister() {
         return $this->Session->read('GYM_CURRENT_REGISTER');
+    }
+
+    function saveUnauthenticateUrl($url) {
+        $this->Session->write('GYM_UNAUTHENTICATE_URL',$url);
+    }
+
+    function getUnauthenticateUrl() {
+        return $this->Session->read('GYM_UNAUTHENTICATE_URL');
     }
 
     function generateRandomString ($length = 10)
