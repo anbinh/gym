@@ -1986,3 +1986,11 @@ ul.option_program_editor li:hover{
     font-size: 13px;
     color: grey;
 }
+
+.icon_program_editor{
+      padding-top: 8px;
+}
+
+.icon_program_editor_preview{
+      padding-top: 20px;
+}

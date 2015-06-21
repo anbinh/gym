@@ -470,7 +470,7 @@ app.controller('LoginController', function($scope,$http,$location){
             .success(function(data) {
                 console.log(data);
                 if(data.message == 'success')
-                    window.location='/Programs/index';
+                    window.location= data.url;
                 else
                     $scope.message = data.message;
             })
