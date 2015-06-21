@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-06-13 17:57+0200\n"
+"POT-Creation-Date: 2015-06-21 15:11+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -238,7 +238,7 @@ msgid "Part"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:3
-#: View/Layouts/default.ctp:109
+#: View/Layouts/default.ctp:110
 #: View/Programs/login_modal.ctp:3
 #: View/Users/login.ctp:6
 msgid "Login"
@@ -320,11 +320,11 @@ msgstr ""
 msgid "Sign Up now!"
 msgstr ""
 
-#: View/Layouts/default.ctp:83
+#: View/Layouts/default.ctp:84
 msgid "program header"
 msgstr ""
 
-#: View/Layouts/default.ctp:84
+#: View/Layouts/default.ctp:85
 msgid "exercise header"
 msgstr ""
 

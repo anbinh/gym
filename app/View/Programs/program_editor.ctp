@@ -35,7 +35,7 @@
             // e.target.result contains the DataURL which we will use as a source of the image
             /*oImage.attr("src",e.target.result);*/
             oImage.css('background-image', 'url(' + e.target.result + ')');
-            oImage_pre.attr('src', e.target.result );
+            oImage_pre.css('background-image', 'url(' + e.target.result + ')');
             //$('#btn_add_picture').css('padding-top', '210px');
             //$('#btn_add_picture a').html("<?php echo __("Edit Picture")?>");
         };
@@ -72,9 +72,8 @@
             <div layout="column" class="summary_program">
               <div layout="row" class="header_program" layout-wrap>
                   <div flex="15"  style="padding-left:10px;">
-                      <div class="program_logo_topic">
-                          <div style="text-align:center;"><img id="box-img-preview" class="img_program_view" ng-src="{{imgURL}}"></div>
-                          <div class="program_view_text_name"> {{objective_items[selectObjectiveChange-1].name}}</div>
+                      <div class="program_logo_topic" id="box-img-preview" style="background-image:url({{imgURL}});background-size: cover;">
+                          <div class="program_view_text_name" style="margin-top: 150px;"> {{objective_items[selectObjectiveChange-1].name}}</div>
                       </div>
                   </div>                    
               </div>

@@ -226,7 +226,7 @@ class ApisController extends AppController {
             $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
         }        
         
-        $exercises_list = $this->Exercise->find('all', array('limit'=>1));
+        $exercises_list = $this->Exercise->find('all', array('limit'=>100));
         $this->set(array(
             'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,
@@ -816,10 +816,10 @@ class ApisController extends AppController {
                 $sFileName = $this->generateRandomString().'.'.$ext;
                 $file_uri = '/upload/image/'.$sFileName;     
                 //local path
-                //$pathSave = $_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri;     
+                $pathSave = $_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri;     
 
                 //server path
-                $pathSave = $_SERVER['DOCUMENT_ROOT'].$file_uri;     
+                //$pathSave = $_SERVER['DOCUMENT_ROOT'].$file_uri;     
                 //if(move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri));
                 if(move_uploaded_file($file['tmp_name'],$pathSave))                
                 {

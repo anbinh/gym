@@ -32,8 +32,8 @@
                         <?php echo $programs['Program']['descriptive'];?>
                     </div>
                     <div class="content_program"><?php echo $programs['Program']['short_text'];?></div>
-                    <div class="sharing_program_social_fb"><a href="javascript:fbShare('http://gym.miratik.com/upload/image/<?php echo $programs['Program']['photo'];?>');"><img src="/img/images/facebook_icon.png"/> </a></div>
-                    <div class="sharing_program_social_twitter"><a class="twitter popup" href="http://twitter.com/share"><img src="/img/images/twitter_icon.png"/></a></div>
+                    <a href="javascript:fbShare('http://gym.miratik.com/upload/image/<?php echo $programs['Program']['photo'];?>');"><div class="sharing_program_social_fb"><img src="/img/images/facebook_icon.png"/></div></a>
+                    <a class="twitter popup" href="http://twitter.com/share"><div class="sharing_program_social_twitter"><img src="/img/images/twitter_icon.png"/></div></a>
                     <div class="sharing_program_link"><span>Share</span></div>
                 </div>
             </div>
@@ -76,7 +76,8 @@
     //     // })
     // };  
     FB.init({
-        appId: '577637839045306',  // Change appId 409742669131720 with your Facebook Application ID
+        appId: '577637839045306' , // Server
+        //appId: '707291562709868', // localhost
         status: true,
         xfbml: true,
         cookie: true
@@ -104,25 +105,28 @@
             }
 
         });
-        //alert(name);
-        if(name!='' && name != 'undefined undefined'){
-            var content_text = name + ' is starting a program on Studiogym.com'; 
-            //url_image = window.location.href + url_image;       
-            FB.ui({
-                method: 'feed',
-                name: 'Studio Gym',
-                link: window.location.href,
-                picture: url_image,
-                description: content_text
+        //alert(name);        
+        <?php if($language == "eng") {?>
+            var content_text = 'I just started a training program on Studiogym. Go creat yours.'; 
+        <?php }else{?>
+            var content_text = 'Je viens de commencer un programme d’entraînement sur Studiogym. Va créer le tiens.'; 
+        <?php }?>
+        //url_image = window.location.href + url_image;       
+        FB.ui({
+            method: 'feed',
+            name: 'Studio Gym',
+            link: window.location.href,
+            picture: url_image,
+            description: content_text
 
-            },
-            function(response) {
-                if (response && !response.error_code) {                  
-                } else {
-                  name = '';
-                }
-            });    
-        }
+        },
+        function(response) {
+            if (response && !response.error_code) {                  
+            } else {
+              name = '';
+            }
+        });    
+        
         
         // FB.ui({
         //   method: 'feed',

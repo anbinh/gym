@@ -844,8 +844,12 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $scope.tabs[$scope.index_current_tab - 1].exercise_list[index_of_exercise].exercise_item = items;
     }
     // delete exerise in program editor
-    $scope.delete_exercise = function(index_of_exercise){            
-        $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice(index_of_exercise, 1);        
+    $scope.delete_exercise = function(index_of_exercise,event){  
+        console.log(index_of_exercise); 
+        console.log($(event.target).scope().model_temp);
+        $(event.target).scope().model_temp = null;
+        $scope.tabs[$scope.index_current_tab - 1].exercise_list.splice(index_of_exercise, 1);
+        console.log($scope.tabs[$scope.index_current_tab - 1].exercise_list);
     }    
 
     $scope.getImageShowOnly = function(){
@@ -1437,7 +1441,7 @@ app.directive('uiVideo', function () {
         template: [
             '<div class="video">',
             '<video class="img-responsive" preload="none"',
-            ' src="{{video.Exercise.video_small}}"',   
+            ' src="{{video.Exercise.video}}"',   
             ' poster="{{video.Exercise.photo}}"',         
             ' width="208px" height="152px"',
             '</video>',
