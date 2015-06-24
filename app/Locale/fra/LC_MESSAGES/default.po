@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-13 17:57+0200\n"
-"PO-Revision-Date: 2015-06-13 22:58+0700\n"
+"PO-Revision-Date: 2015-06-21 20:12+0700\n"
 "Last-Translator: valentino <valentino.nguyen.92@gmail.com>\n"
 "Language-Team: miratik\n"
 "Language: en\n"
@@ -160,7 +160,7 @@ msgstr "Regulier"
 #: View/Exercises/index.ctp:17
 #: View/Programs/program_editor.ctp:154;168
 msgid "Stretching"
-msgstr "Supprimer"
+msgstr "Stretching"
 
 #: View/Elements/template_onlytext.ctp:15
 #: View/Elements/template_regular.ctp:15

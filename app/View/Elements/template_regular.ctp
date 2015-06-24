@@ -15,7 +15,7 @@
                 <li ng-click="change_type_exercise('3', $index)"><?php echo __('Super-set');?></li>
                 <li ng-click="change_type_exercise('4', $index)"><?php echo __('With notes');?></li>
                 <li ng-click="change_type_exercise('5', $index)"><?php echo __('Only text');?></li>
-                <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index)"><?php echo __('Delete');?></li>
+                <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index,$event)"><?php echo __('Delete');?></li>
             </ul>
         </div>        
         <div class="content_box_regular">

@@ -1994,3 +1994,8 @@ ul.option_program_editor li:hover{
 .icon_program_editor_preview{
       padding-top: 20px;
 }
+
+.img_exercise_detail{
+    width: 480px;
+    height: 350px;
+}

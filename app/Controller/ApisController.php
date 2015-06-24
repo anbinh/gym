@@ -226,7 +226,7 @@ class ApisController extends AppController {
             $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
         }        
         
-        $exercises_list = $this->Exercise->find('all', array('limit'=>1));
+        $exercises_list = $this->Exercise->find('all', array('limit'=>100));
         $this->set(array(
             'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,

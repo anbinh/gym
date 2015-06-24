@@ -1,5 +1,8 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-<?php if(!isset($is_mobile) && $exercise['Exercise']['category_id'] != 2) {?>
+<?php 
+    $filename = $exercise['Exercise']['web_player'];
+    $pos = strrpos($filename, "unity3d");
+    if(!isset($is_mobile) && $pos != false) {?>
     <script type="text/javascript">
     var config = {
                     width: 480,
@@ -64,10 +67,8 @@
     <div class="wrap_content right_banner" layout="row">
         <div flex>
             <div layout="row" layout-align="center start">
-                <?php if($exercise['Exercise']['category_id'] == 2) {?>
-                    <img src="<?php echo $exercise['Exercise']['photo'];?>" class="img-responsive"/>
-                <?php }else{
-                if(!isset($is_mobile)) { ?>
+                <?php 
+                if(!isset($is_mobile) && $pos != false) { ?>
                     <div class="content">
                         <div id="unityPlayer" style="z-index: 0;">
                             <div class="missing">
@@ -82,9 +83,11 @@
                             </div>
                         </div>
                     </div>
-                <?php } else { ?>
-                    <video class="img-responsive" controls="true" autoplay="autoplay" src="<?php echo $exercise['Exercise']['video']; ?>" poster="<?php echo $exercise['Exercise']['photo']; ?>"></video>
-                <?php }}?>
+                <?php } else if(isset($is_mobile)){ ?>         
+                    <img src="<?php echo $exercise['Exercise']['photo'];?>" class="img-responsive"/>
+                <?php } else {?>
+                    <img src="<?php echo $exercise['Exercise']['web_player'];?>" class="img_exercise_detail"/>
+                <?php } ?>
             </div>
             <div style="border:1px solid #ccc; margin: 10px;">
                 <div class="region" layout="row" layout-align="start center">
