@@ -51,7 +51,8 @@ class AppController extends Controller {
             }
             else
             {
-                if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup')){
+                if($this->params['controller'] != 'Users' || ($this->params['action'] != 'login' && $this->params['action'] != 'signup'))
+                {
                     if($this->params['action'] != 'registerByUsername' && $this->params['action'] != 'loginByEmailAndPassword' && $this->params['action'] != 'forget_password')
                     {
                         $auth_user = $this->getAuthentication();
@@ -60,16 +61,15 @@ class AppController extends Controller {
                             $is_register = $this->getCurrentRegister();
                             if($is_register == null && $this->params['controller'] != 'Exercises' && $this->params['controller'] != 'Programs')
                             {
-                                $this->saveUnauthenticateUrl('/' . $this->params['controller'] . '/' . $this->params['action']);
+                                //$this->saveUnauthenticateUrl('/' . $this->params['controller'] . '/' . $this->params['action']);
                                 $this->redirect('/Users/login');
-                            }
+                            }                        
                         }
                         else {
                             $this->set('auth_user',$auth_user);
                         }
-                    }
-
-                }
+                    }                    
+                }   
             }
         }
     }

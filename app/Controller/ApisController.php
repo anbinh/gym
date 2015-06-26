@@ -167,15 +167,14 @@ class ApisController extends AppController {
             }
 
             // check if user has to try any private page before
-            $url = $this->getUnauthenticateUrl();
+/*          $url = $this->getUnauthenticateUrl();
             if(!isset($url))
-                $url = null;            
+                $url = null;   */         
                 
             $this->set(array(
                 'message' => 'success',
                 'id' => $user['User']['id'],
-                'url' => $url,
-                '_serialize' => array('message','id','url')
+                '_serialize' => array('message','id')
             ));
         }
         else
