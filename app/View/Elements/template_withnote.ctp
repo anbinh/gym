@@ -18,10 +18,10 @@
             </ul>
         </div>        
         <div class="content_box_regular">
-            <div class="content_image" layout-align="center center" layout="column">
+            <div class="content_image" ng-class="isEdit ? '' : 'none_border'" layout-align="center center" layout="column">
                 <img ng-click="delete_exercise_drop(0, $index, 4, $event);" ng-show="model_temp.Exercise != null && isEdit ? true : false" class="icon_delete_regular" src="/img/images/delete_copy.png">
-                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp.Exercise.video}}" poster="{{model_temp.Exercise != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
-                <div>{{model_temp.Exercise == null ? "<?php echo __('DRAG EXERCISE');?>" : ""}}</div>
+                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp.Exercise.video}}" poster="{{model_temp.Exercise != null ? model_temp.Exercise.photo : isEdit ? '/img/images/drag_exercise.png' : ''}}" <="" video=""></video>
+                <div>{{model_temp.Exercise == null ? isEdit ? "<?php echo __('DRAG EXERCISE');?>" : "" : ""}}</div>
             </div>
             <p class="name_exercise">{{model_temp.Exercise.name}}</p>
         </div>

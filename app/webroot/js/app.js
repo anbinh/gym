@@ -470,9 +470,7 @@ app.controller('LoginController', function($scope,$http,$location){
             .success(function(data) {
                 console.log(data);
                 if(data.message == 'success')
-                {
-                    window.location = "/Users/index";
-                }                    
+                    window.location= data.url;
                 else
                     $scope.message = data.message;
             })
@@ -1222,6 +1220,30 @@ app.filter('filterExerciseProgramEditor', function(){
         return results;
     }
 });
+app.filter('filterExercise', function(){
+    return function(isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
+       var results = [];           
+    var mode = 0;
+    if(isStretchingSelected){
+        mode = 1;
+    }
+    else if(isCardioSelected){
+        mode = 2;
+    }
+    else if(isMuscleSelected){
+        mode = 3;
+    }
+    $http.get('/Apis/getListExercise/'+mode+'/'+'.json')
+        .then(function(res){    
+            console.log(res);        
+            $scope.exercises_like = res.data.exercises_like;
+            $scope.exercises_list = angular.copy(res.data.exercises_list);
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
+            //$scope.print_out_view(angular.copy(res.data.exercises_list));
+        });   
+    return results;
+    }
+});
 function exercisePartFilter(input, body_part_id){        
     // filter by bodypart_id
     input = input.filter(function(element){
@@ -1242,7 +1264,15 @@ function exercisePartFilter(input, body_part_id){
 
         return flag;           
     });
-
+    
+    for(var i = 0; i < input.length; i++){
+        input.sort(function(a, b){
+            if(a.Exercise.bodypart_id.split('.').length > b.Exercise.bodypart_id.split('.').length)
+                return true;
+            return false;
+        });
+    }
+    
     return input;
 }
 function exerciseOptionFilter(input , mode){    

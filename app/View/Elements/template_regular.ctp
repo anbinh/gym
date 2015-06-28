@@ -19,15 +19,15 @@
             </ul>
         </div>        
         <div class="content_box_regular">
-            <div ng-if="$index != 0" class="content_image" layout-align="center center" layout="column">
+            <div ng-if="$index != 0" class="content_image" ng-class="isEdit ? '' : 'none_border'" layout-align="center center" layout="column">
                 <img ng-click="delete_exercise_drop(0, $index, 1, $event);" ng-show="model_temp.Exercise != null && isEdit ? true : false" class="icon_delete_regular" src="/img/images/delete_copy.png">
-                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp.Exercise.video}}" poster="{{model_temp.Exercise != null ? model_temp.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
-                <div>{{model_temp.Exercise == null ? "<?php echo __('DRAG EXERCISE');?>" : ""}}</div>
+                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp.Exercise.video}}" poster="{{model_temp.Exercise != null ? model_temp.Exercise.photo : isEdit ? '/img/images/drag_exercise.png' : ''}}" <="" video=""></video>
+                <div>{{model_temp.Exercise == null ? isEdit ? "<?php echo __('DRAG EXERCISE');?>" : "" : ""}}</div>
             </div>
-            <div ng-if="$index == 0" class="content_image" layout-align="center center" layout="column">
+            <div ng-if="$index == 0" class="content_image" ng-class="isEdit ? '' : 'none_border'" layout-align="center center" layout="column">
                 <img ng-click="delete_exercise_drop(0, $index, 1, $event);" ng-show="item.exercise_item[0].Exercise != null && isEdit ? true : false" class="icon_delete_regular" src="/img/images/delete_copy.png">
-                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{item.exercise_item[0].Exercise.video}}" poster="{{item.exercise_item[0].Exercise != null ? item.exercise_item[0].Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
-                <div>{{item.exercise_item[0].Exercise == null ? "<?php echo __('DRAG EXERCISE');?>" : ""}}</div>
+                <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{item.exercise_item[0].Exercise.video}}" poster="{{item.exercise_item[0].Exercise != null ? item.exercise_item[0].Exercise.photo : isEdit ? '/img/images/drag_exercise.png' : ''}}" <="" video=""></video>
+                <div>{{item.exercise_item[0].Exercise == null ? isEdit ? "<?php echo __('DRAG EXERCISE');?>" : "" : ""}}</div>
             </div>
             <p ng-if="$index != 0" class="name_exercise">{{model_temp.Exercise.name}}</p>
             <p ng-if="$index == 0" class="name_exercise">{{item.exercise_item[0].Exercise.name}}</p>

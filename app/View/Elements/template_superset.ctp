@@ -19,9 +19,9 @@
         </div>   
         <div style="position:absolute; top:10px;">
             <div style="width:225px;" ng-model="model_temp1" ng-init="model_temp1.Exercise = item.exercise_item[0].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp1, $index, 3, 0)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="content_box_super_set">
-                <div class="content_box_img" layout-align="center center" layout="column">
+                <div class="content_box_img" ng-class="isEdit ? '' : 'none_border'" layout-align="center center" layout="column">
                     <img ng-click="delete_exercise_drop( 0, $index, 3, $event);" ng-show="model_temp1.Exercise != null && isEdit ? true : false" class="icon_delete_superset_1" src="/img/images/delete_copy.png">
-                    <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp1.Exercise.video}}" poster="{{model_temp1.Exercise != null ? model_temp1.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
+                    <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp1.Exercise.video}}" poster="{{model_temp1.Exercise != null ? model_temp1.Exercise.photo : isEdit ? '/img/images/drag_exercise.png' : ''}}" <="" video=""></video>
                 </div>
                 <div class="content_box_main" layout="column">
                     <?php echo __('Sets');?>
@@ -32,9 +32,9 @@
                 <p class="name_exercise">{{model_temp1.Exercise.name}}</p>
             </div>
             <div style="width:225px;" ng-model="model_temp2" ng-init="model_temp2.Exercise = item.exercise_item[1].Exercise" data-drop="true" jqyoui-droppable="{multiple:true, onDrop: 'dropCallback(model_temp2, $index, 3, 1)', onOver: 'overCallback()', onOut: 'outCallback()'}" class="content_box_super_set">
-                <div class="content_box_img" layout-align="center center" layout="column">
+                <div class="content_box_img" ng-class="isEdit ? '' : 'none_border'" layout-align="center center" layout="column">
                     <img ng-click="delete_exercise_drop(1, $index, 3, $event);" ng-show="model_temp2.Exercise != null && isEdit ? true : false" class="icon_delete_superset_2" src="/img/images/delete_copy.png" >
-                    <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp2.Exercise.video}}" poster="{{model_temp2.Exercise != null ? model_temp2.Exercise.photo : '/img/images/drag_exercise.png'}}" <="" video=""></video>
+                    <video ng-mouseover="hoverIn($event)" ng-mouseleave="hoverOut($event)" class="img-responsive" preload="none" src="{{model_temp2.Exercise.video}}" poster="{{model_temp2.Exercise != null ? model_temp2.Exercise.photo : isEdit ? '/img/images/drag_exercise.png' : ''}}" <="" video=""></video>
                 </div>
                 <div class="content_box_main" layout="column">
                     <?php echo __('Sets');?>

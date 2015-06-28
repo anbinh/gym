@@ -17,11 +17,11 @@
           }
             
         });
-        if(!$(".detail_footer_program_editor").hasClass('actived')){
-              $(".detail_footer_program_editor").animate({height: '50px'}, 300, function(){
-                $(".bar").attr("style","overflow:hidden;");  
-              });          
-          }
+        // if(!$(".detail_footer_program_editor").hasClass('actived')){
+        //     $(".detail_footer_program_editor").animate({height: '50px'}, 300, function(){
+        //       $(".bar").attr("style","overflow:hidden;");  
+        //     });          
+        // }
     });
 
     function fileSelected() {
@@ -144,7 +144,7 @@
   </div> 
     <!-- Start Bottom Filter -->
   <div class="bar" ng-show="isEdit">  
-    <div class="detail_footer_program_editor">
+    <div class="detail_footer_program_editor actived">
       <header layout="row" layout-align="center center">
         <div flex class="type_of_exercise_program_editor">        
           <ul class="list-inline">
@@ -173,7 +173,7 @@
           </select>
         </div>      
         <div flex class="show_only_program_editor">
-          <div class="toggle_bar"><img src="/img/images/bar_sprite.png"></div>
+          <div class="toggle_bar"><img src="/img/images/bar_sprite_down.png"></div>
           <ul ng-click="chooseFavouriteExerciseClick();" class="list-inline show_favourite_exercise" style="float:right;">           
               <li class="text_show_only_program_editor"><?php echo __('Show only');?></li>
               <li><img ng-src="{{getImageShowOnly();}}"></li>
