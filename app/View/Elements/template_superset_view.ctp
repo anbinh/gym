@@ -4,7 +4,7 @@
            <p><?php echo $index + 1;?></p>            
         </div>   
         <div style="position:absolute; top:10px;">
-            <div class="content_box_super_set">
+            <div style="width:225px;" class="content_box_super_set">
                 <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">
                     <?php if(isset($item['exercise_item'][0])) if(!isset($is_mobile)): ?>
                         <video 
@@ -30,7 +30,7 @@
                 </div>                
                 <p class="name_exercise"><?php echo ($item['exercise_item'][0]['exercise_id'] != null)? $exercises_list[$item['exercise_item'][0]['exercise_id']]['name'] : ''?></p>
             </div>
-            <div class="content_box_super_set">
+            <div style="width:225px;" class="content_box_super_set">
                 <div class="content_box_img none_border" layout-align="center center" layout="column" ng-controller="VideoController">
                     <?php if(isset($item['exercise_item'][1])) if(!isset($is_mobile)): ?>
                         <video 
