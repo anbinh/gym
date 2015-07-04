@@ -1475,7 +1475,7 @@ app.directive('uiVideo', function () {
             '<video class="img-responsive" preload="none"',
             ' src="{{video.Exercise.video}}"',   
             ' poster="{{video.Exercise.photo}}"',         
-            ' width="208px" height="152px"',
+            ' width="208px" height="152px">',
             '</video>',
             '</div>'
         ].join(''),

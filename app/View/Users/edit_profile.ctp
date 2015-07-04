@@ -137,7 +137,7 @@
                         <div class="input_row_register">
                             <label><?php echo __("Promotion Email")?></label>
                             <div class="right_input_edit_profile">
-                                <input id="cb" type="checkbox" name="data[User][receive_promote]" ng-model="formData.receive_promote"><?php echo __("Receive promotion emails")?>
+                                <input id="cb" type="checkbox" name="data[User][receive_promote]" ng-model="formData.receive_promote"> <?php echo __("Receive promotion emails")?>
                             </div>
                         </div>
                         <hr>
@@ -182,8 +182,7 @@
 </div>
 <script type="text/javascript">
     FB.init({
-        appId: '607706552694436',
-        //appId: '609280322537059', // gym.miratik.com account test
+        appId: '<?php echo APP_FB_ID;?>',
         status: true,
         cookie: true,
         oauth: true

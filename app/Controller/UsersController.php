@@ -140,8 +140,14 @@ class UsersController extends AppController {
             {
                 $data['User']['password'] = md5($data['User']['password']);
                 $data['User']['favorite_exercises'] = array();
-                $data['User']['role'] = array();
+                $data['User']['role'] = "user";
+                $data['User']['actif'] = 0;
+                $data['User']['date_inscription'] = date("Y-m-d H:i:s");
+                $data['User']['date_member'] = date("Y-m-d H:i:s");
+                $data['User']['bookmark'] = "";                
                 $data['User']['assigned_programs'] = array();
+                $data['User']['sex'] = $data['User']['sex'];
+                $data['User']['country'] = array('code'=>'','name'=>'');                
             }
             if(isset($data['User']['receive_promote']))
                 $data['User']['receive_promote'] = true;

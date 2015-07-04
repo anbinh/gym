@@ -55,8 +55,7 @@
 
 <script type="text/javascript">
     FB.init({
-        appId: '577637839045306' , // Server
-        //appId: '707291562709868', // localhost
+        appId: '<?php echo APP_FB_ID;?>',
         status: true,
         cookie: true,
         oauth: true

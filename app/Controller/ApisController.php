@@ -91,7 +91,7 @@ class ApisController extends AppController {
             $email = $_POST['email'];
             $name = $_POST['name'];
 //            $link = $_POST['link'];
-//            $locale = $_POST['locale'];
+            $locale = $_POST['locale'];
 
             $user = $this->checkExistUser($id);
             if(count($user) > 0) // already have this user on db
@@ -113,21 +113,32 @@ class ApisController extends AppController {
                 $user['User']['firstname'] =  $firstname;
                 $user['User']['lastname'] =  $lastname;
                 $user['User']['email'] =  $email;
+                // sex
                 if($gender == 'male')
                     $user['User']['sex'] =  1;
                 else
                     $user['User']['sex'] = 0;
+                // language
+                if($locale == 'en_US')
+                    $user['User']['language'] = "English";
+                else
+                    $user['User']['language'] = "French";
                 $user['User']['login'] = $name;
                 $user['User']['fb_id'] = $id;
-                $user['User']['password'] = md5("demo");
-                $user['User']['language'] = "";
+                $user['User']['password'] = md5("demo");                
                 $user['User']['address']['street'] = "";
                 $user['User']['birthday'] = "";
                 $user['User']['receive_promote'] = false;
                 $user['User']['picture'] = "//graph.facebook.com/".$id."/picture?type=large";
                 $user['User']['favorite_exercises'] = array();
-                $user['User']['role'] = array();
-                $user['User']['assigned_programs'] = array();
+                $user['User']['assigned_programs'] = array();                            
+                $user['User']['actif'] = 0;
+                $user['User']['date_inscription'] = date("Y-m-d H:i:s");
+                $user['User']['date_member'] = date("Y-m-d H:i:s");
+                $user['User']['bookmark'] = "";                                                
+                $user['User']['country'] = array('code'=>'','name'=>'');
+                $user['User']['role'] = USER_ROLE;
+
                 $this->User->save($user);
                 $user['User']['id'] = $this->User->getLastInsertId();
                 $this->setAuthentication($user['User']);
@@ -203,7 +214,8 @@ class ApisController extends AppController {
         }
         else
         {
-            $this->saveCurrentRegister($data);
+            // Add default data            
+            $this->saveCurrentRegister($data);            
             $this->set(array(
                 'message' => 'success',
                 '_serialize' => array('message')
@@ -294,14 +306,15 @@ class ApisController extends AppController {
         $lang = $this->Session->read('Config.language');
         $body_list = $this->BodyPart->find('all');
         $list = array();
+        $lang_text = "description";
+        if($lang == "fra")
+        {
+            $lang_text = "description_fr";
+        }
         foreach($body_list as $item)
         {
             $temp['id'] = $item['BodyPart']['body_part_id'];
-            $temp['name'] = $item['BodyPart']['description'];
-            if($lang == "fr")
-            {
-                $temp['name'] = $item['BodyPart']['description_fr'];
-            }
+            $temp['name'] = $item['BodyPart'][$lang_text];
             array_push($list,$temp);
         }
         $this->set(array(
@@ -764,7 +777,10 @@ class ApisController extends AppController {
             $program['objective'] = $data['objective'];                        
             $program['color_code'] = '';
             $program['name_fr'] = $objective['Objective']['description_fr'];
-            $program['is_public'] = 0;
+            if($user['role'] == ADMIN_ROLE)
+                $program['is_public'] = 1;    
+            else
+                $program['is_public'] = 0;
             $program['creator_id'] = $user['id'];
             $program['content'] = $data['tabs'];
             $program['short_text'] = $data['text'];
@@ -819,7 +835,7 @@ class ApisController extends AppController {
 
                 //server path
                 $pathSave = $_SERVER['DOCUMENT_ROOT'].$file_uri;     
-                //if(move_uploaded_file($data['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri));
+                
                 if(move_uploaded_file($file['tmp_name'],$pathSave))                
                 {
                     $program = $this->getProgramEdit();

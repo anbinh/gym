@@ -15,7 +15,7 @@ class User extends AppModel {
         'address' => array('type'=>'Object'),
         'country' => array('type'=>'Object'),
         'bookmark' => array('type'=>'Object'),
-        'role' => array('type'=>'Array'),
+        'role' => array('type'=>'String'),
         'favorite_exercises' => array('type'=>'Array'),
         'assigned_programs' => array('type'=>'Array'),
         'language' => array('type'=>'String'),
