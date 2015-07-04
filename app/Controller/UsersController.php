@@ -78,8 +78,7 @@ class UsersController extends AppController {
 
     public function save_profile() {
         if ($this->data) {
-            $data=$this->data;
-
+            $data=$this->data;            
             $data['User']['birthday'] = $data['User']['day'] . "-" . $data['User']['month'] . "-" . $data['User']['year'];
             // save img file
             if($_FILES){
@@ -146,7 +145,8 @@ class UsersController extends AppController {
                 $data['User']['date_member'] = date("Y-m-d H:i:s");
                 $data['User']['bookmark'] = "";                
                 $data['User']['assigned_programs'] = array();
-                $data['User']['sex'] = $data['User']['sex'];
+                if(!isset($data['User']['sex']))
+                    $data['User']['sex'] = '';
                 $data['User']['country'] = array('code'=>'','name'=>'');                
             }
             if(isset($data['User']['receive_promote']))
