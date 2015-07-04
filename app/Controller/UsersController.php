@@ -78,8 +78,7 @@ class UsersController extends AppController {
 
     public function save_profile() {
         if ($this->data) {
-            $data=$this->data;
-            pr($data);
+            $data=$this->data;            
             $data['User']['birthday'] = $data['User']['day'] . "-" . $data['User']['month'] . "-" . $data['User']['year'];
             // save img file
             if($_FILES){
@@ -159,10 +158,10 @@ class UsersController extends AppController {
             if($data['User']['id'] == 0)
                 $data['User']['id'] = $this->User->getLastInsertId();
             $this->setAuthentication($data['User']);
-            pr($data);
+            //pr($data);
         }
-        //$this->redirect('/Users/index');
-        $this->render(FALSE);
+        $this->redirect('/Users/index');
+        //$this->render(FALSE);
     }
 
     public function forget_password(){
