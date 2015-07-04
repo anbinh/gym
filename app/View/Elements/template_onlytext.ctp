@@ -17,6 +17,6 @@
                 <li ng-if="tab.exercise_list.length > 1" ng-click="delete_exercise($index)"><?php echo __('Delete');?></li>
             </ul>
         </div>        
-        <textarea class="content_only_text" style="text-align:center;resize:none;" type="text" ng-model="item.text" ng-disabled="!isEdit"></textarea>
+        <textarea class="content_only_text" ng-class="isEdit ? '' : 'tranparent_input'" style="text-align:center;resize:none;font-weight:normal; border:1px solid black;" type="text" ng-model="item.text" ng-disabled="!isEdit"></textarea>
     </div>
 </div>

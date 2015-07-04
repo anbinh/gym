@@ -34,9 +34,9 @@
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
             <?php echo __('Sets');?>
-            <input ng-model="item.exercise_item[0].series" class="serie1" type="text" value="" ng-disabled="!isEdit">
+            <input ng-model="item.exercise_item[0].series" class="serie1" ng-class="isEdit ? '' : 'tranparent_input'" type="text" value="" ng-disabled="!isEdit">
             <?php echo __('Repetitions');?>
-            <input ng-model="item.exercise_item[0].repeatation_from" class="repeat1" type="text" value="" ng-disabled="!isEdit">
+            <input ng-model="item.exercise_item[0].repeatation_from" class="repeat1" ng-class="isEdit ? '' : 'tranparent_input'" type="text" value="" ng-disabled="!isEdit">
         </div>
     </div>   
 </div>

@@ -1999,3 +1999,10 @@ ul.option_program_editor li:hover{
     width: 480px;
     height: 350px;
 }
+
+.tranparent_input{
+    background: transparent;
+    border: 0;
+    font-weight: bold;
+    color: black;
+}

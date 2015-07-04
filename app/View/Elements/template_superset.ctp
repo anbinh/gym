@@ -25,9 +25,9 @@
                 </div>
                 <div class="content_box_main" layout="column">
                     <?php echo __('Sets');?>
-                    <input ng-model="item.exercise_item[0].series" class="serie2" type="text" ng-disabled="!isEdit">
+                    <input ng-model="item.exercise_item[0].series" class="serie2" ng-class="isEdit ? '' : 'tranparent_input'" type="text" ng-disabled="!isEdit">
                     <?php echo __('Repetitions');?>
-                    <input ng-model="item.exercise_item[0].repeatation_from" class="repeat2" type="text" ng-disabled="!isEdit">
+                    <input ng-model="item.exercise_item[0].repeatation_from" class="repeat2" ng-class="isEdit ? '' : 'tranparent_input'" type="text" ng-disabled="!isEdit">
                 </div>
                 <p class="name_exercise">{{model_temp1.Exercise.name}}</p>
             </div>
@@ -38,9 +38,9 @@
                 </div>
                 <div class="content_box_main" layout="column">
                     <?php echo __('Sets');?>
-                    <input ng-model="item.exercise_item[1].series" class="serie2" type="text" ng-disabled="!isEdit">
+                    <input ng-model="item.exercise_item[1].series" class="serie2" ng-class="isEdit ? '' : 'tranparent_input'" type="text" ng-disabled="!isEdit">
                     <?php echo __('Repetitions');?>
-                    <input ng-model="item.exercise_item[1].repeatation_from" class="repeat2" type="text" ng-disabled="!isEdit">
+                    <input ng-model="item.exercise_item[1].repeatation_from" class="repeat2" ng-class="isEdit ? '' : 'tranparent_input'" type="text" ng-disabled="!isEdit">
                 </div>
                 <p class="name_exercise">{{model_temp2.Exercise.name}}</p>
             </div>

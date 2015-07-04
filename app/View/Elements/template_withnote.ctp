@@ -26,7 +26,7 @@
             <p class="name_exercise">{{model_temp.Exercise.name}}</p>
         </div>
         <div class="fotter_box" layout-align="center center" layout="row">
-            <input ng-model="item.text" style="width:185px" type="text" ng-disabled="!isEdit">
+            <input ng-model="item.text" ng-class="isEdit ? '' : 'tranparent_input'" style="width:185px; text-align:center; font-weight:normal;" type="text" ng-disabled="!isEdit">
         </div>
     </div>
 </div>
