@@ -51,9 +51,9 @@
             </div>
             <div>            
                 <?php if($language == 'eng') { ?>
-                    <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE.jpg"/>
+                    <!-- <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE.jpg"/> -->
                 <?php } else { ?>
-                    <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE_FR.jpg"/>
+                    <!-- <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE_FR.jpg"/> -->
                 <?php }?>                     
             </div>    
         </div>
