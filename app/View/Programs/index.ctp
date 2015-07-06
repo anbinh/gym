@@ -1,7 +1,7 @@
 <div ng-controller="ProgramListController">
 
-<?php if(!$this->Session->check('is_SHOW_LEGAL_BAR')):?>
-<div class="legal_bar" layout="row" layout-sm="column" layout-align="start center">
+
+<div class="legal_bar" layout="row" layout-sm="column" layout-align="start center" ng-show="isShowLegalBar">
     <div class="close_legal_bar" ng-click="close_legal_bar('0')">
         <img src="/img/images/close_legal_bar.png">
     </div>
@@ -16,7 +16,6 @@
         <a style="color:black; text-decoration: none;" href="javascript:void(0);"><?php echo __('Term of use');?></a>
     </div>
 </div>
-<?php endif;?>
 <ul class="list-inline filter_objective_program">
     <li><img src="/img/images/icon_search.png"/></li>
     <li><?php echo __('OBJECTIVE')?></li>

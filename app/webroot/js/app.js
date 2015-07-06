@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop','dndLists']);
+var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop','dndLists','ngCookies']);
 
 app.controller('ExerciseDetailController', function($scope,$http) {
     var exercise_id = window.location.search;
@@ -1606,7 +1606,13 @@ app.factory('state', function($rootScope) {
 });
 
 
-app.controller('ProgramListController', function($scope,$http,$filter,$modal,$window){
+app.controller('ProgramListController', function($scope,$http,$filter,$modal,$window,$cookies){    
+    $scope.isShowLegalBar = false;
+    var legalBar = $cookies.legalBarCookieStore;
+    if(legalBar == null || angular.isUndefined(legalBar))
+        $scope.isShowLegalBar = true;
+
+
     $scope.programs_list_backup = [];
     $scope.programs_list = [];
     // get list exercise
@@ -1636,20 +1642,18 @@ app.controller('ProgramListController', function($scope,$http,$filter,$modal,$wi
     }    
     
     $scope.close_legal_bar = function(option){
-        // set session close legal bar
-        $http.get('/Apis/setLegalBar.json')
-            .then(function(){                
-                switch(option){
-                    case '0':
-                        break;
-                    case '1':
-                        window.location='/Aptitudes';
-                        break;
-                    case '2':
-                        window.location='/Privacies';        
-                        break;                        
-                }
-            });        
+        switch(option){
+            case '0':
+                $cookies.legalBarCookieStore = 1;
+                $scope.isShowLegalBar = false;
+                break;
+            case '1':
+                window.location='/Aptitudes';
+                break;
+            case '2':
+                window.location='/Privacies';        
+                break;                        
+        }       
     }
 }
 );
