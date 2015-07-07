@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop','dndLists','ngCookies']);
+var app = angular.module('App', ['ngMaterial','ngDropdowns','ui.bootstrap','ngMessages','ngDragDrop','dndLists','ngStorage']);
 
 app.controller('ExerciseDetailController', function($scope,$http) {
     var exercise_id = window.location.search;
@@ -1606,9 +1606,9 @@ app.factory('state', function($rootScope) {
 });
 
 
-app.controller('ProgramListController', function($scope,$http,$filter,$modal,$window,$cookies){    
+app.controller('ProgramListController', function($scope,$http,$filter,$modal,$window,$localStorage){    
     $scope.isShowLegalBar = false;
-    var legalBar = $cookies.legalBarCookieStore;
+    var legalBar = $localStorage.legalBarCookieStore;
     if(legalBar == null || angular.isUndefined(legalBar))
         $scope.isShowLegalBar = true;
 
@@ -1644,7 +1644,7 @@ app.controller('ProgramListController', function($scope,$http,$filter,$modal,$wi
     $scope.close_legal_bar = function(option){
         switch(option){
             case '0':
-                $cookies.legalBarCookieStore = 1;
+                $localStorage.legalBarCookieStore = 1;
                 $scope.isShowLegalBar = false;
                 break;
             case '1':
