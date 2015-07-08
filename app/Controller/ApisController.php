@@ -782,13 +782,6 @@ class ApisController extends AppController {
                 ));
         }
     }
-    public function setLegalBar(){
-        $this->Session->write('is_SHOW_LEGAL_BAR', true);
-        $this->set(array(
-            'message' => true,
-            '_serialize' => array('message')
-        ));
-    }
 
     public function saveProgramEditor(){
         $data = $this->request->input('json_decode',true);

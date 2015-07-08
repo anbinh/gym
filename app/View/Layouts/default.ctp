@@ -27,7 +27,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>        
 	<?php
 		echo $this->Html->css(array(
-            'style?654765',
+            'style?64565464',
             'bower_components/angular-material/angular-material.min',
             'bower_components/angular-dropdown/angular-dropdowns',
             'bootstrap.min',
@@ -43,18 +43,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'bower_components/angular-animate/angular-animate.min',
             'bower_components/angular-aria/angular-aria.min',
             'bower_components/angular-material/angular-material.min',
-            'app?321543543',            
+            'app?31241',            
             'bower_components/angular-dropdown/angular-dropdowns',
             'jquery-ui.min',
             'bower_components/angular/angular-dragdrop.min',            
             'jquery.ui.touch-punch.min',
             'bower_components/angular/angular-drag-and-drop-lists',
             'bootstrap.min',
-            'custom?654765876',
+            'custom?7658765',
             'bower_components/angular-ui/ui-bootstrap-tpls-0.12.1',
             'bower_components/angular/angular-messages',
             'UnityObject2.js',            
-                        
+            'bower_components/angular/ngStorage'     
             /*'bower_components/angular-ui/ui-bootstrap-0.12.1'*/
         ));
 
