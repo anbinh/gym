@@ -26,6 +26,9 @@
             <option value=""><?php echo __('Part')?></option>
             <option ng-repeat="item in body_part_items" value="{{item.id}}">{{item.name}}</option>
         </select>
+        <div>
+            <img ng-show="isShowFilter" style="width:16px; height:16px; margin-top:20px;" src="/img/loader.gif"/>
+        </div>
     </div>
     <div layout="row">
         <div flex>
@@ -51,9 +54,9 @@
             </div>
             <div>            
                 <?php if($language == 'eng') { ?>
-                    <!-- <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE.jpg"/> -->
+                    <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE.jpg"/>
                 <?php } else { ?>
-                    <!-- <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE_FR.jpg"/> -->
+                    <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE_FR.jpg"/>
                 <?php }?>                     
             </div>    
         </div>
