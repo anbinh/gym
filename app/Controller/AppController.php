@@ -30,8 +30,8 @@ class AppController extends Controller {
             }
         }   
             
-        pr($this->getAuthentication());
-        
+        //pr($this->getAuthentication());
+
         $this->setLang($this->language); // call protected method setLang with the lang shortcode
         $this->set('language',$this->language); // send $this->language value to the view
 
