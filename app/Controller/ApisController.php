@@ -264,8 +264,8 @@ class ApisController extends AppController {
         $exercises_list = $this->Exercise->find('all',array('conditions'=>$search));*/
         
         // find all exercise this user like
-        //$exercises_list = $this->Exercise->find('all',array('limit'=>23,'page'=>1));
-        $exercises_list = $this->Exercise->find('all');
+        $exercises_list = $this->Exercise->find('all',array('limit'=>23,'page'=>1));
+        //$exercises_list = $this->Exercise->find('all');
         $this->set(array(
             'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,
@@ -273,8 +273,9 @@ class ApisController extends AppController {
         ));
     }
 
-    public function getListExerciseLoadMore($offset){        
-        $exercises_list_more = $this->Exercise->find('all',array('limit'=>23,'page'=>$offset));
+    public function getListExerciseLoadMore($offset, $category_id, $body_part_id){  
+        $exercises_list_more = $this->filterExercise($category_id, $body_part_id, $offset);
+        //$exercises_list_more = $this->Exercise->find('all',array('limit'=>23,'page'=>$offset));
         $isOver = false;
         if(sizeof($exercises_list_more) < 23)
             $isOver =  true;
@@ -283,6 +284,37 @@ class ApisController extends AppController {
             'isOver' => $isOver,
             '_serialize' => array('exercises_list_more','isOver')
         ));
+    }
+
+    public function getListExerciseByFilter($category_id, $body_part_id){        
+
+        $offset = 0;        
+        $exercise_list = $this->filterExercise($category_id, $body_part_id, $offset);
+
+        $this->set(array(
+            'exercise_list' => $exercise_list,            
+            '_serialize' => array('exercise_list')
+        ));
+    }
+
+    public function filterExercise($category_id, $body_part_id, $offset){
+        $conditions = array('Exercise.category_id'=>$category_id, 'Exercise.bodypart_id' => new MongoRegex("/$body_part_id/i"));
+        // category 
+        if($category_id == -1)
+        {
+            unset($conditions['Exercise.category_id']);
+        }    
+        // body part
+        if($body_part_id == -1)
+        {
+            unset($conditions['Exercise.bodypart_id']);
+        }
+        
+        $search = array('conditions'=>$conditions, 'limit'=>23, 'page'=>$offset);        
+
+        $exercise_list = $this->Exercise->find('all', $search);
+
+        return $exercise_list;
     }
 
     public function getListExerciseLike(){        

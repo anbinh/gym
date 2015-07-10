@@ -53,7 +53,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'custom?7658765',
             'bower_components/angular-ui/ui-bootstrap-tpls-0.12.1',
             'bower_components/angular/angular-messages',
-            'UnityObject2.js',            
+            'UnityObject2',            
             'bower_components/angular/ngStorage'     
             /*'bower_components/angular-ui/ui-bootstrap-0.12.1'*/
         ));
