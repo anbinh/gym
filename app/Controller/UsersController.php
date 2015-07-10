@@ -15,8 +15,10 @@ class UsersController extends AppController {
         $auth = $this->getAuthentication();
         //$auth = $this->User->findById("54cf959dacc46c81b036a729");
         //$auth = $auth['User'];
+
         if (!$auth) {
-            throw new NotFoundException(__('Invalid user'));
+            pr('test');
+            //throw new NotFoundException(__('Invalid user'));
 
         }
         $this->set('user', $auth);
