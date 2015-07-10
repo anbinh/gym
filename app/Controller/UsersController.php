@@ -36,7 +36,7 @@ class UsersController extends AppController {
     }
 
     public function login() {
-        $this->removeAuthentication(); 
+        
          
         if ($this->Cookie->check('GYM.email')) {      
             $username = $this->Cookie->read('GYM.email');          
@@ -59,12 +59,17 @@ class UsersController extends AppController {
                 }
                 $this->redirect('/Programs/index');
             } else {
-                
+                $this->removeAuthentication();  
             }
         }
+        else
+        {
+            $this->removeAuthentication();  
+        }
+
     }
 
-    public function logout(){
+    public function logout(){        
         $auth = $this->getAuthentication();
         if($auth){
             $this->removeAuthentication();
