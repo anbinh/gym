@@ -12,7 +12,7 @@
 	"user":[
 		{
             "text": "Profile page",
-            "href": "/Users"
+            "href": "/Users/index"
         },
         {
             "text": "Sign-out",

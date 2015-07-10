@@ -12,7 +12,7 @@
 	"user":[
 		{
             "text": "Mon profil",
-            "href": "/Users"
+            "href": "/Users/index"
         },
         {
             "text": "Déconnexion",
