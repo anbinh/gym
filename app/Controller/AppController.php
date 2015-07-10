@@ -30,7 +30,8 @@ class AppController extends Controller {
             }
         }   
             
-        //pr($this->getUnauthenticateUrl());
+        pr($this->getAuthentication());
+        
         $this->setLang($this->language); // call protected method setLang with the lang shortcode
         $this->set('language',$this->language); // send $this->language value to the view
 
@@ -43,6 +44,7 @@ class AppController extends Controller {
         }elseif($this->params['controller'] == 'Users' && ($this->params['action'] != 'index' || $this->params['action'] != '')){
             $this->set('curr_page', 'Users');
         }
+
 
         if($this->params['controller'] != 'Apis' && $this->params['controller'] != 'Aptitudes' && $this->params['controller'] != 'Privacies'){
             if($this->params['controller'] == 'Users' && $this->params['action'] == 'change_password' && count($this->params['pass']) > 0)
