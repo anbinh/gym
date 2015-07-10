@@ -2,7 +2,6 @@
 <script type="text/javascript">
     var  id = '<?php echo isset($auth_user['id']) ? $auth_user['id'] : "0"  ?>';
 </script>
-<?php pr($auth_user);?>
 <div ng-controller="ExerciseController">
     <div layout="row" layout="center start" style="height:60px; padding-left:23px;">
         <div style="padding-top:20px;">
