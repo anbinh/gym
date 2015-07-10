@@ -2,6 +2,9 @@
     // init variable
     var  id = '<?php echo isset($user['id']) ? $user['id'] : 0  ?>';
 </script>
+<?php pr($auth_user);?>
+<?php pr($test1);?>
+<?php pr($test2);?>
 <div layout="row" layout-align="center start">
     <div flex ng-controller="UserController" class="UserIndexLeftContent">
         <div layout="column" class="info_user">

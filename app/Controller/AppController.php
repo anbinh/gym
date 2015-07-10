@@ -64,7 +64,9 @@ class AppController extends Controller {
                             if($is_register == null && $this->params['controller'] != 'Exercises' && $this->params['controller'] != 'Programs')
                             {
                                 //$this->saveUnauthenticateUrl('/' . $this->params['controller'] . '/' . $this->params['action']);
-                                $this->redirect('/Users/login');
+                                //$this->redirect('/Users/login');
+                                $this->set('test1',$this->params['controller']);
+                                $this->set('test2',$this->params['action']);
                             }                        
                         }
                         else {
