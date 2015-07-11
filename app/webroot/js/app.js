@@ -1399,7 +1399,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.body_part_id = -1;
 
     $scope.modeCategoryFilter = -1;
-    $scope.current_ofset = 1; 
+    $scope.current_ofset = 0; 
     $scope.isShowFilter = false;  
     // filter action click
     $scope.stretchingClick = function(){
@@ -1415,9 +1415,9 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isStretchingSelected = true;
             $scope.isCardioSelected = false;
             $scope.isMuscleSelected = false;  
-            $scope.modeCategoryFilter = 1;
+            $scope.modeCategoryFilter = 2;
         }         
-        $scope.current_ofset = 1;   
+        $scope.current_ofset = 0;   
         $scope.print_out_view();
     };
     $scope.cardioClick = function() {
@@ -1433,9 +1433,9 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isStretchingSelected = false;
             $scope.isCardioSelected = true;
             $scope.isMuscleSelected = false;  
-            $scope.modeCategoryFilter = 2;
+            $scope.modeCategoryFilter = 3;
         }    
-        $scope.current_ofset = 1;   
+        $scope.current_ofset = 0;   
         $scope.print_out_view();
     };
 
@@ -1452,9 +1452,9 @@ app.controller('ExerciseController', function($scope,$http,$filter){
             $scope.isStretchingSelected = false;
             $scope.isCardioSelected = false;
             $scope.isMuscleSelected = true;
-            $scope.modeCategoryFilter = 3;
+            $scope.modeCategoryFilter = 1;
         }    
-        $scope.current_ofset = 1;   
+        $scope.current_ofset = 0;   
         $scope.print_out_view();
     };   
 
@@ -1468,7 +1468,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         {      
            $scope.body_part_id = -1;
         }   
-        $scope.current_ofset = 1;       
+        $scope.current_ofset = 0;       
         $scope.print_out_view();
     }   
 
@@ -1482,8 +1482,9 @@ app.controller('ExerciseController', function($scope,$http,$filter){
        $scope.isShowFilter = true; 
         // filter by category_id
         $http.get('/Apis/getListExerciseByFilter/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id +'.json')
-                .success(function(res){                                      
+                .success(function(res){           
                     $scope.exercises_list = res.exercise_list;                    
+                    console.log(res);
                     if($scope.exercises_list.length < 23){
                         $scope.isOver = false;                        
                     }      
@@ -1502,6 +1503,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         $http.get('/Apis/getListExerciseLoadMore/' + $scope.current_ofset + '/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id +'.json')
             .then(function(res){     
                 console.log(res.data.exercises_list_more.length);                       
+                console.log(res.data.exercises_list_more); 
                 var i = 0;
                 for(i = 0;i<res.data.exercises_list_more.length;i++)
                 {                    
