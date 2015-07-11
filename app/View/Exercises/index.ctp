@@ -39,7 +39,7 @@
                             <div ng-repeat="exercise in exercises_list" ng-controller="ItemExerciseController" class="exercise_box">
                                 <?php echo $this->element('exercise_box_template');?>
                             </div>
-                            <p style="text-align:center; font-size: 26px;" ng-show="!exercises_list.length"> <?php echo __('No result');?></p>
+                            <p style="text-align:center; font-size: 26px;" ng-show="showNoResult"> <?php echo __('No result');?></p>
                         </div>                        
                     </div>
                 </div>

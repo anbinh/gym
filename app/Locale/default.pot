@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-06-21 15:11+0200\n"
+"POT-Creation-Date: 2015-07-11 17:52+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/UsersController.php:19;31
+#: Controller/UsersController.php:17;28
 msgid "Invalid user"
 msgstr ""
 
@@ -156,7 +156,7 @@ msgstr ""
 #: View/Elements/template_superset.ctp:14
 #: View/Elements/template_withnote.ctp:14
 #: View/Exercises/index.ctp:17
-#: View/Programs/program_editor.ctp:154;168
+#: View/Programs/program_editor.ctp:153;167
 msgid "Stretching"
 msgstr ""
 
@@ -206,35 +206,39 @@ msgstr ""
 msgid "Repetitions"
 msgstr ""
 
-#: View/Exercises/detail.ctp:91
+#: View/Exercises/detail.ctp:102
 msgid "Body Part"
 msgstr ""
 
-#: View/Exercises/detail.ctp:100
+#: View/Exercises/detail.ctp:111
 msgid "Position"
 msgstr ""
 
-#: View/Exercises/detail.ctp:113
+#: View/Exercises/detail.ctp:124
 msgid "Execution"
 msgstr ""
 
-#: View/Exercises/detail.ctp:127
+#: View/Exercises/detail.ctp:138
 msgid "Care"
 msgstr ""
 
 #: View/Exercises/index.ctp:12
-#: View/Programs/program_editor.ctp:153;167
+#: View/Programs/program_editor.ctp:152;166
 msgid "Bodybuilding"
 msgstr ""
 
 #: View/Exercises/index.ctp:22
-#: View/Programs/program_editor.ctp:155;169
+#: View/Programs/program_editor.ctp:154;168
 msgid "Cardio"
 msgstr ""
 
 #: View/Exercises/index.ctp:26
-#: View/Programs/program_editor.ctp:158;172
+#: View/Programs/program_editor.ctp:157;171
 msgid "Part"
+msgstr ""
+
+#: View/Exercises/index.ctp:42
+msgid "No result"
 msgstr ""
 
 #: View/Exercises/login_modal.ctp:3
@@ -340,13 +344,13 @@ msgstr ""
 msgid "Term of use"
 msgstr ""
 
-#: View/Programs/index.ctp:22
-#: View/Programs/program_editor.ctp:118
+#: View/Programs/index.ctp:21
+#: View/Programs/program_editor.ctp:117
 msgid "OBJECTIVE"
 msgstr ""
 
-#: View/Programs/index.ctp:25
-#: View/Programs/program_editor.ctp:120
+#: View/Programs/index.ctp:24
+#: View/Programs/program_editor.ctp:119
 msgid "Choose"
 msgstr ""
 
@@ -376,7 +380,7 @@ msgid "Back to creator"
 msgstr ""
 
 #: View/Programs/program_editor.ctp:62
-#: View/Programs/program_view.ctp:22;24
+#: View/Programs/program_view.ctp:18;20
 msgid "Save"
 msgstr ""
 
@@ -392,35 +396,35 @@ msgstr ""
 msgid "Saving"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:130
+#: View/Programs/program_editor.ctp:129
 msgid "ADD PICTURE"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:136
+#: View/Programs/program_editor.ctp:135
 msgid "Descriptive title"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:139
+#: View/Programs/program_editor.ctp:138
 msgid "Short text about program"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:166
+#: View/Programs/program_editor.ctp:165
 msgid "Choosing"
 msgstr ""
 
-#: View/Programs/program_editor.ctp:179
+#: View/Programs/program_editor.ctp:178
 msgid "Show only"
 msgstr ""
 
-#: View/Programs/program_view.ctp:19
+#: View/Programs/program_view.ctp:15
 msgid "Modify"
 msgstr ""
 
-#: View/Programs/program_view.ctp:21;25
+#: View/Programs/program_view.ctp:17;21
 msgid "Remove from profile"
 msgstr ""
 
-#: View/Programs/program_view.ctp:45
+#: View/Programs/program_view.ctp:41
 msgid "Day"
 msgstr ""
 

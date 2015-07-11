@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-13 17:57+0200\n"
-"PO-Revision-Date: 2015-07-04 16:33+0700\n"
+"POT-Creation-Date: 2015-07-11 17:52+0200\n"
+"PO-Revision-Date: 2015-07-11 22:54+0700\n"
 "Last-Translator: valentino <valentino.nguyen.92@gmail.com>\n"
 "Language-Team: miratik\n"
 "Language: en\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: Controller/UsersController.php:19;31
+#: Controller/UsersController.php:17;28
 msgid "Invalid user"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgstr "Regulier"
 #: View/Elements/template_superset.ctp:14
 #: View/Elements/template_withnote.ctp:14
 #: View/Exercises/index.ctp:17
-#: View/Programs/program_editor.ctp:154;168
+#: View/Programs/program_editor.ctp:153;167
 msgid "Stretching"
 msgstr "Étirement"
 
@@ -208,39 +208,43 @@ msgstr "Séries"
 msgid "Repetitions"
 msgstr "Répétitions"
 
-#: View/Exercises/detail.ctp:91
+#: View/Exercises/detail.ctp:102
 msgid "Body Part"
 msgstr ""
 
-#: View/Exercises/detail.ctp:100
+#: View/Exercises/detail.ctp:111
 msgid "Position"
 msgstr ""
 
-#: View/Exercises/detail.ctp:113
+#: View/Exercises/detail.ctp:124
 msgid "Execution"
 msgstr ""
 
-#: View/Exercises/detail.ctp:127
+#: View/Exercises/detail.ctp:138
 msgid "Care"
 msgstr ""
 
 #: View/Exercises/index.ctp:12
-#: View/Programs/program_editor.ctp:153;167
+#: View/Programs/program_editor.ctp:152;166
 msgid "Bodybuilding"
 msgstr "Musculation"
 
 #: View/Exercises/index.ctp:22
-#: View/Programs/program_editor.ctp:155;169
+#: View/Programs/program_editor.ctp:154;168
 msgid "Cardio"
 msgstr "Cardio"
 
 #: View/Exercises/index.ctp:26
-#: View/Programs/program_editor.ctp:158;172
+#: View/Programs/program_editor.ctp:157;171
 msgid "Part"
 msgstr "Partie"
 
+#: View/Exercises/index.ctp:42
+msgid "No result"
+msgstr "Pas De Résultat"
+
 #: View/Exercises/login_modal.ctp:3
-#: View/Layouts/default.ctp:109
+#: View/Layouts/default.ctp:110
 #: View/Programs/login_modal.ctp:3
 #: View/Users/login.ctp:6
 msgid "Login"
@@ -322,11 +326,11 @@ msgstr "Ne pas avoir un compte?"
 msgid "Sign Up now!"
 msgstr "Inscrivez-vous dès maintenant!"
 
-#: View/Layouts/default.ctp:83
+#: View/Layouts/default.ctp:84
 msgid "program header"
 msgstr "PROGRAMME"
 
-#: View/Layouts/default.ctp:84
+#: View/Layouts/default.ctp:85
 msgid "exercise header"
 msgstr "EXERCICE"
 
@@ -342,13 +346,13 @@ msgstr ""
 msgid "Term of use"
 msgstr "Terme d'utilisation"
 
-#: View/Programs/index.ctp:22
-#: View/Programs/program_editor.ctp:118
+#: View/Programs/index.ctp:21
+#: View/Programs/program_editor.ctp:117
 msgid "OBJECTIVE"
 msgstr ""
 
-#: View/Programs/index.ctp:25
-#: View/Programs/program_editor.ctp:120
+#: View/Programs/index.ctp:24
+#: View/Programs/program_editor.ctp:119
 msgid "Choose"
 msgstr "Choisir"
 
@@ -378,7 +382,7 @@ msgid "Back to creator"
 msgstr "Retour créateur"
 
 #: View/Programs/program_editor.ctp:62
-#: View/Programs/program_view.ctp:22;24
+#: View/Programs/program_view.ctp:18;20
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -394,35 +398,35 @@ msgstr "Remplissez tous les champs"
 msgid "Saving"
 msgstr "Économie"
 
-#: View/Programs/program_editor.ctp:130
+#: View/Programs/program_editor.ctp:129
 msgid "ADD PICTURE"
 msgstr "AJOUTER UNE IMAGE"
 
-#: View/Programs/program_editor.ctp:136
+#: View/Programs/program_editor.ctp:135
 msgid "Descriptive title"
 msgstr "Texte descriptif"
 
-#: View/Programs/program_editor.ctp:139
+#: View/Programs/program_editor.ctp:138
 msgid "Short text about program"
 msgstr "Court descriptif"
 
-#: View/Programs/program_editor.ctp:166
+#: View/Programs/program_editor.ctp:165
 msgid "Choosing"
 msgstr "Choisir"
 
-#: View/Programs/program_editor.ctp:179
+#: View/Programs/program_editor.ctp:178
 msgid "Show only"
 msgstr "Afficher uniquement"
 
-#: View/Programs/program_view.ctp:19
+#: View/Programs/program_view.ctp:15
 msgid "Modify"
 msgstr "Modifier"
 
-#: View/Programs/program_view.ctp:21;25
+#: View/Programs/program_view.ctp:17;21
 msgid "Remove from profile"
 msgstr "Retirer du profil"
 
-#: View/Programs/program_view.ctp:45
+#: View/Programs/program_view.ctp:41
 msgid "Day"
 msgstr "Jour"
 

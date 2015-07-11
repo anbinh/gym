@@ -1361,6 +1361,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.isMoblie = false;
     $scope.isOver = true;
     $scope.showLoader = false;
+    $scope.showNoResult = false;
     // detect is mobile device
     $http.get('/Apis/GetIsOnMobile.json')
         .then(function(res){            
@@ -1483,7 +1484,11 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         // filter by category_id
         $http.get('/Apis/getListExerciseByFilter/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id +'.json')
                 .success(function(res){           
-                    $scope.exercises_list = res.exercise_list;                    
+                    $scope.exercises_list = res.exercise_list;    
+                    // show No Result
+                    $scope.showNoResult = false; 
+                    if(res.exercise_list.length == 0)
+                        $scope.showNoResult = true;                
                     console.log(res);
                     if($scope.exercises_list.length < 23){
                         $scope.isOver = false;                        
@@ -1500,6 +1505,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.loadmore_exercises = function(){       
         $scope.showLoader = true; 
         $scope.current_ofset = $scope.current_ofset + 1;
+        console.log($scope.current_ofset); 
         $http.get('/Apis/getListExerciseLoadMore/' + $scope.current_ofset + '/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id +'.json')
             .then(function(res){     
                 console.log(res.data.exercises_list_more.length);                       
