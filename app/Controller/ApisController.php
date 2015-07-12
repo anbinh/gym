@@ -294,9 +294,13 @@ class ApisController extends AppController {
     public function getListExerciseByFilter($category_id, $body_part_id, $isShowAll = 1){        
         $offset = 0;                
         $exercise_list = $this->filterExercise($category_id, $body_part_id, $offset, $isShowAll);
+        $isOver = false;
+        if(sizeof($exercise_list) < 23)
+            $isOver =  true;
         $this->set(array(
-            'exercise_list' => $exercise_list,            
-            '_serialize' => array('exercise_list')
+            'exercise_list' => $exercise_list, 
+            'isOver' => $isOver,
+            '_serialize' => array('exercise_list', 'isOver')
         ));
     }
 

@@ -603,7 +603,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             $scope.body_part_items = res.data.body_list;
         });
     // get list exercise
-    $scope.isOver = true;
+    $scope.isOver = false;
     $http.get('/Apis/getListExerciseProgramEditor.json')
         .then(function(res){
             $scope.exercises_like = res.data.exercises_like;
@@ -611,7 +611,9 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             $scope.exercises_list_backup = angular.copy(res.data.exercises_list);    
             $scope.isLoadingExercises = false;  
             if(res.data.isOver == true)
-                $scope.isOver = false;             
+                $scope.isOver = false;    
+            else         
+                $scope.isOver = true;
            // console.log($scope.exercises_list_backup.length);
         }).then(function(){// get list programs
 
@@ -664,6 +666,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     $scope.modeCategoryFilter = -1;
     $scope.body_part_id = -1;
     $scope.modeShowAll = 1;
+    $scope.showNoResult = false;
     // load more
     $scope.loadmore_exercises = function(){   
         $scope.showLoader = true;    
@@ -682,16 +685,21 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
     }
     $scope.print_out_view = function(){
        $scope.isShowFilter = true; 
+       $scope.isLoadingExercises = true;
+       $scope.exercises_list = [];
+       $scope.isOver = false;
+       $scope.showNoResult = false;
         // filter by category_id
         $http.get('/Apis/getListExerciseByFilter/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id + '/' + $scope.modeShowAll + '.json')
-                .success(function(res){           
+                .success(function(res){                     
+                    $scope.isLoadingExercises = false;          
                     $scope.exercises_list = res.exercise_list;                                            
                     // show No Result
                     $scope.showNoResult = false; 
                     if(res.exercise_list.length == 0)
                         $scope.showNoResult = true;
 
-                    if($scope.exercises_list.length < 23){
+                    if(res.isOver || $scope.modeShowAll == 0){
                         $scope.isOver = false;                        
                     }      
                     else{
@@ -714,14 +722,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                     } );
         return result;
     }   
-    $scope.chooseFavouriteExerciseClick = function(){
-        // if($scope.showAllExercise){                        
-        //     $scope.showAllExercise = false;            
-        // }
-        // else{            
-        //     $scope.showAllExercise = true;
-            
-        // }  
+    $scope.chooseFavouriteExerciseClick = function(){        
         $scope.current_ofset = 0;
         if($scope.modeShowAll == 1){
             $scope.modeShowAll = 0;      

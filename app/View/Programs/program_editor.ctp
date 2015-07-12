@@ -198,6 +198,9 @@
               </div>                       
             </div> 
           </div> 
+          <div ng-show="showNoResult" style="font-size:20px; color:white; clear:both; with:100%; text-align:center;"> 
+              <p><?php echo __('No result');?></p>
+          </div>
           <div style="clear:both; with:100%; text-align:center;"> 
               <img ng-show="showLoader" src="/img/loader.gif"/> 
           </div>
