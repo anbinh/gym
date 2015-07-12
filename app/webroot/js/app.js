@@ -823,7 +823,10 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 $scope.isStretchingSelected = false;
                 $scope.isCardioSelected = false;
                 $scope.isMuscleSelected = false;
-                $scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));
+                $scope.modeCategoryFilter = -1;
+                $scope.current_ofset = 0;
+                $scope.print_out_view();
+                //$scope.exercises_list = angular.copy($filter('filterExerciseProgramEditor')($scope.exercises_like, $scope.exercises_list_backup, $scope.showAllExercise, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id));
                 break;
         }
 
@@ -1552,7 +1555,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
                     if(res.exercise_list.length == 0)
                         $scope.showNoResult = true;                
                     console.log(res);
-                    if($scope.exercises_list.length < 23){
+                    if(res.isOver){
                         $scope.isOver = false;                        
                     }      
                     else{
