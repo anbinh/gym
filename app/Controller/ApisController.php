@@ -343,7 +343,7 @@ class ApisController extends AppController {
         $search = array('conditions'=>$conditions);        
         $exercise_list = $this->Exercise->find('all', $search);
         usort($exercise_list, array('ApisController', 'compare_length_body_part_id'));
-        $exercise_list = array_slice($exercise_list, $offset*23, 23);
+        $exercise_list = array_slice($exercise_list, $offset*24, 24);
 
         return $exercise_list;
     }
