@@ -609,6 +609,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
             $scope.exercises_list = angular.copy(res.data.exercises_list);
             $scope.exercises_list_backup = angular.copy(res.data.exercises_list);    
             $scope.isLoadingExercises = false;
+            console.log($scope.exercises_list_backup.length);
         }).then(function(){// get list programs
 
             if(program_id){
@@ -1283,8 +1284,10 @@ function getCategoryFilter(isStretchingSelected, isCardioSelected, isMuscleSelec
    return mode;
 }
 function exercisePartFilter(input, body_part_id){        
+    body_part_id = 'n' + body_part_id + 'n';
     // filter by bodypart_id
     input = input.filter(function(element){
+
 
         var j, flag = false;                
         var arr_temp = element.Exercise.bodypart_id.split('.');
@@ -1292,13 +1295,6 @@ function exercisePartFilter(input, body_part_id){
             //console.log(arr_temp.indexOf(body_part_id));    
             flag = true;
         }
-        
-        // for(j = 0; j < element.Exercise.muscle.length; j++){                    
-        //     if(element.Exercise.muscle[j].bodypart_id == body_part_id){
-        //         flag = true;                        
-        //         break;
-        //     }                    
-        // }
 
         return flag;           
     });
