@@ -226,6 +226,7 @@ class ApisController extends AppController {
     public function getListExerciseProgramEditor(){
         $user = $this->getAuthentication();
         $exercises_like = array();
+        $isOver = false;
         if($user)
         {
             $user = $this->User->findById($user['id']);
@@ -237,11 +238,15 @@ class ApisController extends AppController {
             $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
         }        
         
-        $exercises_list = $this->Exercise->find('all');
+        //$exercises_list = $this->Exercise->find('all', array('limit'=>23));
+        $exercises_list = $this->filterExercise(-1, -1, 0, true);
+        if(sizeof($exercises_list) < 23)
+            $isOver = true;
         $this->set(array(
             'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,
-            '_serialize' => array('exercises_list','exercises_like')
+            'isOver' => $isOver,
+            '_serialize' => array('exercises_list','exercises_like','isOver')
         ));
     }
     public function getListExercise(){
@@ -274,7 +279,7 @@ class ApisController extends AppController {
     }
 
     public function getListExerciseLoadMore($offset, $category_id, $body_part_id){          
-        $exercises_list_more = $this->filterExercise($category_id, $body_part_id, $offset);
+        $exercises_list_more = $this->filterExercise($category_id, $body_part_id, $offset, 1);
         //$exercises_list_more = $this->Exercise->find('all',array('limit'=>23,'page'=>$offset));
         $isOver = false;
         if(sizeof($exercises_list_more) < 23)
@@ -286,9 +291,9 @@ class ApisController extends AppController {
         ));
     }
 
-    public function getListExerciseByFilter($category_id, $body_part_id){        
+    public function getListExerciseByFilter($category_id, $body_part_id, $isShowAll = 1){        
         $offset = 0;                
-        $exercise_list = $this->filterExercise($category_id, $body_part_id, $offset);
+        $exercise_list = $this->filterExercise($category_id, $body_part_id, $offset, $isShowAll);
         $this->set(array(
             'exercise_list' => $exercise_list,            
             '_serialize' => array('exercise_list')
@@ -301,11 +306,11 @@ class ApisController extends AppController {
         
         return count($temp1) > count($temp2);
     }
-    public function filterExercise($category_id, $body_part_id, $offset){
+    public function filterExercise($category_id, $body_part_id, $offset, $isShowAll){
         if($body_part_id != -1){
             $body_part_id = 'n'.$body_part_id.'n';    
         }    
-        $conditions = array('Exercise.category_id'=>$category_id, 'Exercise.bodypart_id' => new MongoRegex("/$body_part_id/i"));
+        $conditions = array('_id' =>'','Exercise.category_id'=>$category_id, 'Exercise.bodypart_id' => new MongoRegex("/$body_part_id/i"));
         // category 
         if($category_id == -1)
         {
@@ -316,7 +321,24 @@ class ApisController extends AppController {
         {
             unset($conditions['Exercise.bodypart_id']);
         }
-        
+        // exercises like
+        if($isShowAll == 1){
+            unset($conditions['_id']);   
+        }
+        if($isShowAll == 0){
+            $user = $this->getAuthentication();
+            $exercises_like = array();
+            if($user)
+            {
+                $user = $this->User->findById($user['id']);
+                $user = $user['User'];
+                // $search = array(
+                //     '_id' => array('$in' => $user['favorite_exercises'])
+                // );
+                $conditions['_id'] = array('$in' => $user['favorite_exercises']);
+                //$exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
+            } 
+        }
         //$search = array('conditions'=>$conditions, 'limit'=>23, 'page'=>$offset);        
         $search = array('conditions'=>$conditions);        
         $exercise_list = $this->Exercise->find('all', $search);

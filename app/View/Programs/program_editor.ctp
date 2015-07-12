@@ -197,7 +197,13 @@
                 <p>{{exercise.Exercise.name}}</p>
               </div>                       
             </div> 
-          </div>  
+          </div> 
+          <div style="clear:both; with:100%; text-align:center;"> 
+              <img ng-show="showLoader" src="/img/loader.gif"/> 
+          </div>
+          <div ng-show="isOver" style="clear:both; with:100%; text-align:center;">             
+              <img style="cursor: pointer;" ng-click="loadmore_exercises()" src="/img/images/LOAD_MORE.jpg"/>
+          </div>
       </div>
     </div>
   </div>
