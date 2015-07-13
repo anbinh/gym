@@ -1540,11 +1540,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
 
     // 
     // filter by category
-    $scope.print_out_view = function(){                
-       // $scope.exercises_list = angular.copy($filter('filterExercise')($http, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id, $scope.showAllExercise));    
-       //$filter('filterExercise')($scope, $http, $scope.isStretchingSelected, $scope.isCardioSelected, $scope.isMuscleSelected, $scope.body_part_id, $scope.showAllExercise);
-    
-      
+    $scope.print_out_view = function(){                      
        $scope.isShowFilter = true; 
         // filter by category_id
         $http.get('/Apis/getListExerciseByFilter/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id +'.json')
@@ -1945,8 +1941,8 @@ app.controller('LoginModalInstanceCtrl', function($scope,$modalInstance, $http){
     };
 
     FB.init({
-        appId: '577637839045306',
-        //appId: '609280322537059', // gym.miratik.com account test
+        appId: '577637839045306', // server
+        //appId: '707291562709868', // local
         status: true,
         cookie: true,
         oauth: true

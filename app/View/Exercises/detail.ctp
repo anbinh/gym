@@ -91,7 +91,7 @@
                       <source src="<?php echo $exercise['Exercise']['video'];?>" type="video/mp4" />
                     </video>
                 <?php } else {?>   
-                    <img src="<?php echo $exercise['Exercise']['photo'];?>" class="img-responsive"/>
+                    <img src="<?php echo $exercise['Exercise']['video'];?>" class="img-responsive"/>
                 <?php }
                     } else {?>
                     <img src="<?php echo $exercise['Exercise']['web_player'];?>" class="img_exercise_detail"/>
