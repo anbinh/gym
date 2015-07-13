@@ -54,12 +54,12 @@ class UsersController extends AppController {
                 }
                 $this->redirect('/Programs/index');
             } else {
-                $this->removeAuthentication();  
+                //$this->removeAuthentication();  
             }
         }
         else
         {
-            $this->removeAuthentication();  
+            //$this->removeAuthentication();  
         }
 
     }
