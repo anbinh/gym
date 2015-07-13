@@ -1,4 +1,3 @@
-<script src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
     var  id = '<?php echo isset($auth_user['id']) ? $auth_user['id'] : "0"  ?>';
 </script>
