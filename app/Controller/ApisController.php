@@ -262,45 +262,48 @@ class ApisController extends AppController {
             );
             $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
         }  
-        // find all exercise
-        /*$search = array(
-            '_id' => array('$nin' => $user['favorite_exercises'])
-        );
-        $exercises_list = $this->Exercise->find('all',array('conditions'=>$search));*/
-        
-        // find all exercise this user like
-        $exercises_list = $this->Exercise->find('all',array('limit'=>23,'page'=>1));
-        //$exercises_list = $this->Exercise->find('all');
+        // find all exercise       
+        $exercises_list = $this->filterExercise(-1, -1, 0, true);
+        $isOver = false;
+        if(sizeof($exercises_list) < 23)
+            $isOver = true;
         $this->set(array(
             'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,
-            '_serialize' => array('exercises_list','exercises_like')
+            'isOver' => $isOver,
+            '_serialize' => array('exercises_list','exercises_like','isOver')
         ));
     }
 
     public function getListExerciseLoadMore($offset, $category_id, $body_part_id){          
         $exercises_list_more = $this->filterExercise($category_id, $body_part_id, $offset, 1);
-        //$exercises_list_more = $this->Exercise->find('all',array('limit'=>23,'page'=>$offset));
+        $exercises_like = $this->getExercisesLike();
+
         $isOver = false;
         if(sizeof($exercises_list_more) < 23)
             $isOver =  true;
         $this->set(array(
             'exercises_list_more' => $exercises_list_more,
             'isOver' => $isOver,
-            '_serialize' => array('exercises_list_more','isOver')
+            'exercises_like' => $exercises_like,
+            '_serialize' => array('exercises_list_more','isOver', 'exercises_like')
         ));
     }
 
     public function getListExerciseByFilter($category_id, $body_part_id, $isShowAll = 1){        
         $offset = 0;                
         $exercise_list = $this->filterExercise($category_id, $body_part_id, $offset, $isShowAll);
+        $exercises_like = $this->getExercisesLike();
+
         $isOver = false;
         if(sizeof($exercise_list) < 23)
             $isOver =  true;
+
         $this->set(array(
             'exercise_list' => $exercise_list, 
             'isOver' => $isOver,
-            '_serialize' => array('exercise_list', 'isOver')
+            'exercises_like' => $exercises_like, 
+            '_serialize' => array('exercise_list', 'isOver', 'exercises_like')
         ));
     }
 
@@ -351,7 +354,20 @@ class ApisController extends AppController {
 
         return $exercise_list;
     }
-
+    public function getExercisesLike(){
+        $user = $this->getAuthentication();
+        $exercises_like = array();
+        if($user)
+        {
+            $user = $this->User->findById($user['id']);
+            $user = $user['User'];
+            $search = array(
+                '_id' => array('$in' => $user['favorite_exercises'])
+            );
+            $exercises_like = $this->Exercise->find('all',array('conditions'=>$search));            
+        }   
+        return $exercises_like;
+    }
     public function getListExerciseLike(){        
         $user = $this->getAuthentication();
         $exercises_like = array();
