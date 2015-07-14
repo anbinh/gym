@@ -240,13 +240,17 @@ class ApisController extends AppController {
         
         //$exercises_list = $this->Exercise->find('all', array('limit'=>23));
         $exercises_list = $this->filterExercise(-1, -1, 0, true);
+        //list all exercises
+        $exercises_list_backup = $this->Exercise->find('all');
+
         if(sizeof($exercises_list) < 23)
             $isOver = true;
         $this->set(array(
             'exercises_list' => $exercises_list,
             'exercises_like' => $exercises_like,
+            'exercises_list_backup' =>  $exercises_list_backup,
             'isOver' => $isOver,
-            '_serialize' => array('exercises_list','exercises_like','isOver')
+            '_serialize' => array('exercises_list','exercises_like','isOver', 'exercises_list_backup')
         ));
     }
     public function getListExercise(){
@@ -385,7 +389,7 @@ class ApisController extends AppController {
             '_serialize' => array('exercises_like')
         ));
     }
-
+       
     public function getListBodyPart(){
         $lang = $this->Session->read('Config.language');
         $body_list = $this->BodyPart->find('all');
@@ -908,7 +912,7 @@ class ApisController extends AppController {
                 $sFileName = $this->generateRandomString().'.'.$ext;
                 $file_uri = '/upload/image/'.$sFileName;     
                 //local path
-                //$pathSave = $_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri;     
+               // $pathSave = $_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri;     
 
                 //server path
                 $pathSave = $_SERVER['DOCUMENT_ROOT'].$file_uri;     

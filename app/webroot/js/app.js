@@ -608,7 +608,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         .then(function(res){
             $scope.exercises_like = res.data.exercises_like;
             $scope.exercises_list = angular.copy(res.data.exercises_list);
-            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);    
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list_backup);    
             $scope.isLoadingExercises = false;  
             if(res.data.isOver == true)
                 $scope.isOver = false;    
