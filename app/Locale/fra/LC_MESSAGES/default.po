@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-11 17:52+0200\n"
-"PO-Revision-Date: 2015-07-11 22:54+0700\n"
+"PO-Revision-Date: 2015-07-15 21:30+0700\n"
 "Last-Translator: valentino <valentino.nguyen.92@gmail.com>\n"
 "Language-Team: miratik\n"
 "Language: en\n"
@@ -210,19 +210,19 @@ msgstr "Répétitions"
 
 #: View/Exercises/detail.ctp:102
 msgid "Body Part"
-msgstr ""
+msgstr "Régions"
 
 #: View/Exercises/detail.ctp:111
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: View/Exercises/detail.ctp:124
 msgid "Execution"
-msgstr ""
+msgstr "Exécution"
 
 #: View/Exercises/detail.ctp:138
 msgid "Care"
-msgstr ""
+msgstr "Mise en garde"
 
 #: View/Exercises/index.ctp:12
 #: View/Programs/program_editor.ctp:152;166
