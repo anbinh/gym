@@ -539,7 +539,7 @@ app.directive( 'creator', function ( $compile ) {
 
 app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,$compile,$timeout,fileUpload){
     $scope.exercises_list_backup = [];
-    $scope.exercises_beforefilter_backup = [];
+    //$scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
     $scope.body_part_id = "";
     $scope.exercise_type = ""; // select type of exercise when using on Iphone portrait device   
@@ -608,7 +608,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         .then(function(res){
             $scope.exercises_like = res.data.exercises_like;
             $scope.exercises_list = angular.copy(res.data.exercises_list);
-            $scope.exercises_list_backup = angular.copy(res.data.exercises_list);    
+            $scope.exercises_list_backup = angular.copy(res.data.exercises_list_backup);    
             $scope.isLoadingExercises = false;  
             if(res.data.isOver == true)
                 $scope.isOver = false;    
@@ -678,6 +678,7 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
                 {                    
                     $scope.exercises_list.push( angular.copy(res.data.exercises_list_more[i]) );    
                 }
+                $scope.exercises_like = res.data.exercises_like;
                 if(res.data.isOver == true)
                     $scope.isOver = false;              
                 $scope.showLoader = false;        
@@ -693,7 +694,8 @@ app.controller('ExerciseProgramEditorController', function($scope,$http,$filter,
         $http.get('/Apis/getListExerciseByFilter/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id + '/' + $scope.modeShowAll + '.json')
                 .success(function(res){                     
                     $scope.isLoadingExercises = false;          
-                    $scope.exercises_list = res.exercise_list;                                            
+                    $scope.exercises_list = res.exercise_list;   
+                    $scope.exercises_like = res.exercises_like;                                         
                     // show No Result
                     $scope.showNoResult = false; 
                     if(res.exercise_list.length == 0)
@@ -1264,143 +1266,6 @@ app.service('fileUpload', ['$http', function ($http) {
     }
 }]);
 
-app.filter('filterExerciseProgramEditor', function(){
-    return function(exercises_like, exercises_list_backup, showAllExercise, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
-       var results = [];            
-        if(showAllExercise){            
-            results = exercises_list_backup.slice();  
-           // console.log('1');
-        }
-        else{
-            results = exercises_like.slice();            
-           // console.log('2');
-        }
-        if(isMuscleSelected){
-            results = exerciseOptionFilter(results, 1).slice();             
-        }
-        if(isStretchingSelected){
-            results = exerciseOptionFilter(results, 2).slice();            
-        }
-        if(isCardioSelected){
-            results = exerciseOptionFilter(results, 3).slice();            
-        }  
-        if(body_part_id != ""){
-            results = exercisePartFilter(results, body_part_id);
-        }       
-        return results;
-    }
-});
-app.filter('filterExercise', function(){
-    // return function(isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id) {
-    //    var results = [];           
-    // var mode = 0;
-    // if(isStretchingSelected){
-    //     mode = 1;
-    // }
-    // else if(isCardioSelected){
-    //     mode = 2;
-    // }
-    // else if(isMuscleSelected){
-    //     mode = 3;
-    // }
-    // $http.get('/Apis/getListExercise/'+mode+'/'+'.json')
-    //     .then(function(res){    
-    //         console.log(res);        
-    //         $scope.exercises_like = res.data.exercises_like;
-    //         $scope.exercises_list = angular.copy(res.data.exercises_list);
-    //         $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
-    //         //$scope.print_out_view(angular.copy(res.data.exercises_list));
-    //     });   
-    // return results;
-    // }
-    return function(http, isStretchingSelected, isCardioSelected, isMuscleSelected, body_part_id, showAllExercise) {
-        
-        var results = [];           
-        
-        var mode = 0;
-        if(isStretchingSelected){
-            mode = 1;
-        }
-        else if(isCardioSelected){
-            mode = 2;
-        }
-        else if(isMuscleSelected){
-            mode = 3;
-        }       
-   
-        http.get('/Apis/getListExerciseByFilter/'+mode+'/'+'.json')
-                .then(function(res){                   
-                    results = res.data.exercises_list;
-                    console.log(res);
-                });     
-
-        return results;
-    }
-});
-function getCategoryFilter(isStretchingSelected, isCardioSelected, isMuscleSelected)
-{
-    var mode = 0;
-    if(isStretchingSelected){
-        mode = 1;
-    }
-    else if(isCardioSelected){
-        mode = 2;
-    }
-    else if(isMuscleSelected){
-        mode = 3;
-    }       
-   
-   return mode;
-}
-function exercisePartFilter(input, body_part_id){        
-    body_part_id = 'n' + body_part_id + 'n';
-    // filter by bodypart_id
-    input = input.filter(function(element){
-
-
-        var j, flag = false;                
-        var arr_temp = element.Exercise.bodypart_id.split('.');
-        if(arr_temp.indexOf(body_part_id) != -1){
-            //console.log(arr_temp.indexOf(body_part_id));    
-            flag = true;
-        }
-
-        return flag;           
-    });
-    
-    for(var i = 0; i < input.length; i++){
-        input.sort(function(a, b){
-            if(a.Exercise.bodypart_id.split('.').length > b.Exercise.bodypart_id.split('.').length)
-                return true;
-            return false;
-        });
-    }
-    
-    return input;
-}
-function exerciseOptionFilter(input , mode){    
-    var option = "";    
-    switch (mode)
-    {
-        case 1:
-            option = "1";
-            break;
-        case 2:
-            option = "2";
-            break;
-        case 3:
-            option = "3";
-            break;
-        default :
-            return input;
-    }
-       
-    input = input.filter(function(element){
-        return element.Exercise.category_id == option;
-    });
-    
-    return input;
-}
 app.controller('ItemExerciseProgramEditorController', function($scope,$http,$filter,$modal,$window){    
     
     $scope.getImage = function() {
@@ -1420,7 +1285,7 @@ app.controller('ItemExerciseProgramEditorController', function($scope,$http,$fil
 
 app.controller('ExerciseController', function($scope,$http,$filter){
     $scope.exercises_list_backup = [];
-    $scope.exercises_beforefilter_backup = [];
+   // $scope.exercises_beforefilter_backup = [];
     $scope.exercises_list = [];
     $scope.exercises_list_for_loadmore = [];
     $scope.isMoblie = false;
@@ -1434,8 +1299,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         });
     // get list exercise    
     $http.get('/Apis/getListExercise.json')
-        .then(function(res){    
-            console.log(res);        
+        .then(function(res){           
             $scope.exercises_like = res.data.exercises_like;
             $scope.exercises_list = angular.copy(res.data.exercises_list);
             $scope.exercises_list_backup = angular.copy(res.data.exercises_list);
@@ -1545,7 +1409,8 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         // filter by category_id
         $http.get('/Apis/getListExerciseByFilter/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id +'.json')
                 .success(function(res){           
-                    $scope.exercises_list = res.exercise_list;    
+                    $scope.exercises_list = res.exercise_list;
+                    $scope.exercises_like = res.exercises_like;     
                     // show No Result
                     $scope.showNoResult = false; 
                     if(res.exercise_list.length == 0)
@@ -1568,9 +1433,7 @@ app.controller('ExerciseController', function($scope,$http,$filter){
         $scope.current_ofset = $scope.current_ofset + 1;
         console.log($scope.current_ofset); 
         $http.get('/Apis/getListExerciseLoadMore/' + $scope.current_ofset + '/' + $scope.modeCategoryFilter + '/' + $scope.body_part_id +'.json')
-            .then(function(res){     
-                console.log(res.data.exercises_list_more.length);                       
-                console.log(res.data.exercises_list_more); 
+            .then(function(res){                    
                 var i = 0;
                 for(i = 0;i<res.data.exercises_list_more.length;i++)
                 {                    
@@ -1578,8 +1441,8 @@ app.controller('ExerciseController', function($scope,$http,$filter){
                 }
                 if(res.data.isOver == true)
                     $scope.isOver = false;
-                //$scope.print_out_view();    
-                //$scope.exercises_list = $scope.exercises_list_backup;
+                
+                $scope.exercises_like = res.data.exercises_like; 
                 $scope.showLoader = false;        
         });          
     }  
