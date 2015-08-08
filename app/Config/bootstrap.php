@@ -123,6 +123,8 @@ Configure::write('availableLanguages', array('eng' => 'English','fra' => 'French
 // Constant
 define('APP_FB_ID', '577637839045306'); // Server
 //define('APP_FB_ID', '707291562709868'); // localhost
+define('WEBROOT','/app/webroot'); // Server
+//define('WEBROOT',''); // localhost
 define('USER_ROLE', 'user');
 define('ADMIN_ROLE', 'admin');
 define('LANG_ENG', 'eng');

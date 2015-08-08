@@ -90,8 +90,8 @@ class UsersController extends AppController {
                     $sFileName = $this->generateRandomString().'.'.$ext;
                     $file_uri = '/upload/image/'.$sFileName;
                     $data['User']['picture'] = $file_uri;
-                    //move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/app/webroot'.$file_uri);
-                    move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri);
+                    move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].WEBROOT.$file_uri);
+                    //move_uploaded_file($_FILES['picture']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].$file_uri);
                 }
             }
             else{
