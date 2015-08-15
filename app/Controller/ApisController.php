@@ -584,6 +584,11 @@ class ApisController extends AppController {
             {
                 $program['Program']['creator_id'] = "";
                 $program['Program']['author'] = "";
+
+                if ($user['role'] == 'admin') {
+                    $program['Program']['is_public'] = 0;
+                }
+
                 $this->Program->save($program);
             }
             $this->User->mongoNoSetOperator = '$pull';
